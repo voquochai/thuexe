@@ -319,7 +319,7 @@ return [
 	],
 	'attribute' => [
 		'san-pham' 	=>	[
-			'product_hosting'	=>	true,
+			'product_hosting'	=>	false,
 			'product_colors'	=>	true,
 			'product_sizes'	=>	true,
 			'product_tags'	=>	false,

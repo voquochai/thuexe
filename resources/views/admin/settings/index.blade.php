@@ -5,6 +5,7 @@
 </li>
 @endsection
 @section('content')
+
 <div class="row">
 	@include('admin.blocks.messages')
 	<div class="col-md-12">
@@ -313,7 +314,7 @@
                                         <div class="col-md-9 col-lg-9">
                                             <div class="fileinput {{ ( @$item['logo'] && file_exists(public_path($path.'/'.@$item['logo'])) ) ? 'fileinput-exists' : 'fileinput-new' }}" data-provides="fileinput">
                                                 <div class="fileinput-new thumbnail">
-                                                    <img src="{{ asset('noimage/190x30') }}" alt="">
+                                                    <img src="{{ asset('noimage/80x60') }}" alt="">
                                                 </div>
                                                 <div class="fileinput-preview fileinput-exists thumbnail">
                                                     @if( @$item['logo'] && file_exists(public_path($path.'/'.@$item['logo'])) )

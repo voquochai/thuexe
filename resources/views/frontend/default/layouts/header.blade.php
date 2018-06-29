@@ -1,10 +1,10 @@
-<header class="header-section section">
+<header class="header-section">
     <div class="header-top">
         <div class="container">
             <div class="header-top-left">
                 <ul>
-                    <li> <a href="tel:{{ config('settings.site_hotline') }}"> <i class="pe-7s-phone"></i> <span class="hidden-xs">{{ config('settings.site_hotline') }}</span> </a> </li>
-                    <li> <a href="mailto:{{ config('settings.site_email') }}"> <i class="pe-7s-mail-open"></i> <span class="hidden-xs">{{ config('settings.site_email') }}</span> </a> </li>
+                    <li> <a href="tel:{{ config('settings.site_hotline') }}"> <i class="fa fa-phone"></i> <span class="hidden-xs">{{ config('settings.site_hotline') }}</span> </a> </li>
+                    <li> <a href="mailto:{{ config('settings.site_email') }}"> <i class="fa fa-envelope"></i> <span class="hidden-xs">{{ config('settings.site_email') }}</span> </a> </li>
                 </ul>
             </div>
             <div class="header-top-right">
@@ -41,7 +41,7 @@
             </div>
         </div>
     </div>
-    <div class="header-bottom sticker">
+    <div class="header-bottom">
         <div class="container">
             <div class="row">
                 <div class="col-md-2 col-sm-6 col-xs-6">
@@ -56,10 +56,6 @@
                             <button class="search-toggle" data-toggle="modal" data-target="#searchModal" ><i class="pe-7s-search"></i></button>
                         </div>
                     </div>
-                </div>
-                <!-- primary-menu -->
-                <div class="col-md-8 col-xs-12">
-                    @include('frontend.default.layouts.navbar')
                 </div>
             </div>
         </div>

@@ -21,12 +21,12 @@ class AppServiceProvider extends ServiceProvider
             $settings = [];
             if( $items !== null ){
                 foreach( $items as $k => $v ){
-                    $settings[$v['name']] = json_decode($v['value']) ? json_decode($v['value'],true) : $v['value'];
+                    json_decode($v['value']);
+                    $settings[$v['name']] = json_last_error() == JSON_ERROR_STATE_MISMATCH ? json_decode($v['value'],true) : $v['value'];
                 }
             }
             return $settings;
         });
-
         config()->set('settings',$settings);
         if(@$settings['email_host']) config()->set('mail.host',$settings['email_host']);
         if(@$settings['email_port']) config()->set('mail.port',$settings['email_port']);

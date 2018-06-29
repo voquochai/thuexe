@@ -1,7 +1,6 @@
 <!Doctype html>
-<html lang="{{ app()->getLocale() }}">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="{{ app()->getLocale() }}">
 <head>
-    <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="robots" content="noindex, nofollow" />
@@ -42,7 +41,7 @@
     <link rel="stylesheet" href="{{ asset('public/packages/bootstrap-toastr/toastr.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/packages/bootstrap-select/css/bootstrap-select.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/themes/default/css/pe-icon-7-stroke.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('public/themes/default/css/plugins.css') }}">
     <link rel="stylesheet" href="{{ asset('public/css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('public/themes/default/css/style.css') }}">
@@ -52,7 +51,7 @@
     {{ config('settings.script_head') }}
 
 </head>
-<body>
+<body {{ $page['class'] ? 'class="'.$page['class'].'"' : '' }} >
     <div id="fb-root"></div>
     <script async defer>(function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
@@ -64,6 +63,7 @@
 
 	<div class="wrapper">
 		@include('frontend.default.layouts.header')
+        @include('frontend.default.layouts.navbar')
 		@include('frontend.default.layouts.search')
 
 		@if(Route::currentRouteName() == 'frontend.home.index' || Route::currentRouteName() == 'frontend.domain.check_whois')

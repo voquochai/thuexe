@@ -33,9 +33,11 @@ class SettingController extends Controller
     	$items = Setting::all();
     	if( $items !== null ){
     		foreach( $items as $k => $v ){
-    			$this->_data['item'][$v['name']] = json_decode($v['value']) ? json_decode($v['value'],true) : $v['value'];
+                json_decode($v['value']);
+    			$this->_data['item'][$v['name']] = json_last_error() == JSON_ERROR_STATE_MISMATCH ? json_decode($v['value'],true) : $v['value'];
     		}
     	}
+
     	return view('admin.settings.index', $this->_data);
     }
 

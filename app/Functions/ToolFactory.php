@@ -5,40 +5,42 @@ use Intervention\Image\Facades\Image;
 class ToolFactory {
 
     public function setType($type=''){
+        $data['page']['title'] = __('site.home');
+        $data['page']['class'] = 'page-home';
         $data['type'] = $type;
+
         switch($type){
             case "san-pham":
-                $data['page_title'] = __('site.product');
+                $data['page']['title'] = __('site.product');
                 $data['template'] = "product";
                 break;
             case "dich-vu":
-                $data['page_title'] = __('site.service');
+                $data['page']['title'] = __('site.service');
                 $data['template'] = "post";
                 break;
             case "thu-thuat":
-                $data['page_title'] = __('site.tip');
+                $data['page']['title'] = __('site.tip');
                 $data['template'] = "post";
                 break;
             case "gioi-thieu":
-                $data['page_title'] = __('site.about');
+                $data['page']['title'] = __('site.about');
                 $data['template'] = "page";
                 break;
             case "chinh-sach-quy-dinh":
-                $data['page_title'] = "Chính sách & Quy định";
+                $data['page']['title'] = "Chính sách & Quy định";
                 $data['template'] = "post";
                 break;
             case "ho-tro-khach-hang":
-                $data['page_title'] = "Hỗ trợ khách hàng";
+                $data['page']['title'] = "Hỗ trợ khách hàng";
                 $data['template'] = "post";
                 break;
             default:
-                $data['page_title'] = __('site.home');
                 $data['template'] = "index";
                 break;
         }
         if($type !=''){
             $data['breadcrumb'] = '<li> <a href="'.url('/').'">'.__('site.home').'</a> </li>';
-            $data['breadcrumb'] .= '<li> <a href="'.url('/'.$type).'"> '.$data['page_title'].' </a> </li>';
+            $data['breadcrumb'] .= '<li> <a href="'.url('/'.$type).'"> '.$data['page']['title'].' </a> </li>';
         }
         return $data;
     }
