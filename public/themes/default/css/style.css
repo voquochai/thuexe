@@ -274,7 +274,7 @@ h6 a {
     padding: 10px;
 }
 .header-top ul > li:hover > a{
-    color: #39efdc;
+    color: #94da46;
 }
 .header-top ul li a i{
     margin-right: 5px;
@@ -284,7 +284,9 @@ h6 a {
     position: absolute;
     min-width: 150px;
     background-color: #fff;
-    box-shadow: 0px 0px 2px #333;
+    -webkit-box-shadow: 0 0px 4px 0 rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 0px 4px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0px 4px 0 rgba(0, 0, 0, 0.2);
     right: 0px;
     top: 120%;
     padding: 5px 0px;
@@ -313,10 +315,25 @@ h6 a {
     right: 31px;
 }
 .header-top ul ul li{
+    position: relative;
     width: 100%;
 }
-.header-top ul ul li:hover{
-    background-color: #f2f2f2;
+.header-top ul ul li:before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 2px;
+    height: 0%;
+    background: #94da46;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.header-top ul ul li:hover:before{
+    height: 100%;
 }
 .header-top ul ul li a{
     font-size: 13px;
@@ -332,9 +349,16 @@ h6 a {
 .header-top-left{
     float: left;
 }
+.header-top-left ul li:first-child a{
+    padding-left: 0px;
+}
 .header-top-right{
     float: right;
 }
+.header-top-right ul li:first-child a{
+    padding-right: 0px;
+}
+
 /*-- Header bottom --*/
 .header-bottom{
     position: relative;
@@ -343,7 +367,7 @@ h6 a {
 
 /*-- Header logo --*/
 .header-logo {
-    padding: 22px 0;
+    padding: 21px 0;
 }
 .header-logo a {
     display: inline-block;
@@ -361,18 +385,20 @@ h6 a {
 .header-search .search-toggle {
     background-color: transparent;
     border: medium none;
-    color: #303030;
+    color: #666;
     display: block;
-    height: 30px;
+    height: 35px;
     padding: 0;
 }
 .header-search .search-toggle i {
     display: block;
     font-size: 24px;
-    line-height: 30px;
+    line-height: 35px;
+    -webkit-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
 }
 .header-search .search-toggle i:hover{
-    color: #5dafef;
+    color: #94da46;
 } 
 /*-- Header Cart --*/
 .header-cart {
@@ -382,15 +408,16 @@ h6 a {
 .header-cart .cart-toggle {
     display: block;
     padding: 0 10px;
+    color: #666;
     position: relative;
 }
 .header-cart .cart-toggle i {
     display: block;
-    font-size: 24px;
-    line-height: 30px;
+    font-size: 35px;
+    line-height: 35px;
 }
 .header-cart .cart-toggle span {
-    background-color: #ffae00;
+    background-color: #94da46;
     border-radius: 50%;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
     color: #fff;
@@ -406,7 +433,21 @@ h6 a {
 }
 
 /*-- Main Menu --*/
-.main-menu { background-color: #1f2a37; }
+.navbar-section {background-color: #1f2a37; }
+.navbar-social{
+    margin: 0;
+    padding: 0;
+}
+.navbar-social > li{
+    display: inline-block;
+    list-style: none;
+}
+.navbar-social > li > a{
+    display: block;
+    padding: 15px 10px;
+    font-size: 20px;
+}
+
 .navbar-nav,
 .navbar-nav ul{
     margin: 0;
@@ -438,35 +479,12 @@ h6 a {
     color: #94da46;
 }
 
-.navbar-nav > li > a span.yolo_sub_label {
-    font-size: 11px;
-}
-/* Change ' +' in order to change the Dropdown symbol */
 .navbar-nav li > a:after {
     font-family: FontAwesome;
     content: ' \f107';
 }
 .navbar-nav li > a:only-child:after {
     content: '';
-}
-span.yolo_sub_label {
-    font-size: 10px;
-    font-weight: normal;
-    color: #eeeeee;
-    letter-spacing: 0;
-    line-height: 1;
-    display: inline-block;
-    padding: 1px 2px;
-    vertical-align: baseline;
-    margin-left: 4px;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
-    -moz-background-clip: padding-box;
-    -webkit-background-clip: padding-box;
-    background-clip: padding-box;
-    position: relative;
-    top: -1px;
 }
 /* 1. MEGA MENU STYLE COLUMN */
 .navbar-nav > li.menu_style_column > ul {
@@ -476,7 +494,7 @@ span.yolo_sub_label {
     position: absolute;
     display: none;
     width: 100%;
-    top: 98%;
+    top: 100%;
     left: 0;
     opacity: 0;
     visibility: hidden;
@@ -550,7 +568,7 @@ span.yolo_sub_label {
 .navbar-nav > li.menu_style_dropdown > ul {
     position: absolute;
     display: none;
-    top: 98%;
+    top: 100%;
     opacity: 0;
     visibility: hidden;
     overflow: hidden;

@@ -8,15 +8,10 @@
 @media only screen and (min-width: 992px) and (max-width: 1169px) {
     /*-- Header --*/
     .header-section{
-        height: 120px;
     }
     .header-logo{
         padding-top: 15px;
         padding-bottom: 15px;
-    }
-    .header-search,
-    .header-cart{
-        padding: 25px 0;
     }
     .header-search .search-toggle {
         padding: 0;
@@ -45,7 +40,6 @@
     .header-section {
     }
     .header-option-btns {
-        padding-right: 50px;
     }
     /*-- Footer --*/
     .footer-widget:nth-child(2n+1) {
@@ -63,15 +57,6 @@
     .mean-nav > ul > li > a{
         padding: 10px 25px;
     }
-    .domain-section .domain-inner{
-        padding: 20px 50px 40px;
-    }
-    .domain-checkup-right i{
-        margin-left: 0px;
-    }
-    .domain-checkup-right .btn{
-        padding: 15px;
-    }
 }
 /* Large Mobile :480px. */
 @media only screen and (max-width: 767px) {
@@ -87,43 +72,9 @@
         box-shadow: none;
         position: static;
     }
-    .header-option-btns {
-        padding-right: 50px;
-    }
     .header-logo {
         padding: 21px 0;
         width: 150px;
-    }
-    .mean-nav {
-        box-shadow: none;
-    }
-    .mean-nav > ul > li > a {
-        padding: 6px 0;
-    }
-    .mean-nav ul li li a,
-    .mean-nav ul li li li a,
-    .mean-nav ul li li li li a {
-        padding: 3px 0;
-    }
-    .mean-nav ul li li:hover a {
-        padding: 3px 0;
-    }
-
-    .domain-checkup-left,
-    .domain-checkup-right{
-        width: 100%;
-    }
-    .domain-checkup-left{
-        margin-right: 0px;
-        margin-bottom: 30px;
-    }
-    .domain-checkup-right{
-        text-align: center;
-    }
-    .domain-checkup-right .btn{
-        display: inline-block;
-        padding: 10px 30px;
-        width: auto;
     }
 
     /*-- Footer --*/
@@ -164,18 +115,13 @@
 }
 
 @media only screen and (max-width: 579px) {
-    .domain-section .domain-inner{
-        padding: 20px 30px;
-    }
-    .domain-inner h3{
-        margin-top: 0px;
-    }
+
 }
 
 /* small mobile :320px. */
 @media only screen and (max-width: 479px) {
-    .container {
-        /*width: 300px;*/
+    .header-top-left {
+        display: none;
     }
     .col-xs-wide {
         width: 100%;
@@ -229,7 +175,4 @@
     .login-reg-form form label.inline {
         float: left;
     }
-}
-@media only screen and (max-width: 479px) {
-
 }

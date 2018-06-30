@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 29, 2018 lúc 08:20 PM
--- Phiên bản máy phục vụ: 10.1.30-MariaDB
--- Phiên bản PHP: 5.6.33
+-- Thời gian đã tạo: Th6 30, 2018 lúc 12:19 PM
+-- Phiên bản máy phục vụ: 10.1.32-MariaDB
+-- Phiên bản PHP: 5.6.36
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -85,7 +85,9 @@ INSERT INTO `categories` (`id`, `parent`, `image`, `alt`, `icon`, `priority`, `s
 (3, 0, NULL, NULL, NULL, 2, 'publish', 'san-pham', NULL, '2018-06-29 17:26:21', '2018-06-29 17:26:21'),
 (4, 0, NULL, NULL, NULL, 3, 'publish', 'san-pham', NULL, '2018-06-29 17:28:09', '2018-06-29 17:28:09'),
 (5, 0, NULL, NULL, NULL, 4, 'publish', 'san-pham', NULL, '2018-06-29 17:28:19', '2018-06-29 17:28:19'),
-(6, 2, NULL, NULL, NULL, 1, 'publish', 'san-pham', NULL, '2018-06-29 18:03:16', '2018-06-29 18:03:21');
+(6, 2, NULL, NULL, NULL, 1, 'publish', 'san-pham', NULL, '2018-06-29 18:03:16', '2018-06-29 18:03:21'),
+(7, 0, NULL, NULL, NULL, 1, 'publish', 'tin-tuc', NULL, '2018-06-30 10:15:42', '2018-06-30 10:15:42'),
+(8, 0, NULL, NULL, NULL, 2, 'publish', 'tin-tuc', NULL, '2018-06-30 10:17:20', '2018-06-30 10:17:20');
 
 -- --------------------------------------------------------
 
@@ -115,7 +117,9 @@ INSERT INTO `category_languages` (`id`, `title`, `slug`, `description`, `content
 (4, 'Thời trang nữ', 'thoi-trang-nu', NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 3),
 (5, 'Couple', 'couple', NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 4),
 (6, 'Phụ kiện', 'phu-kien', NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 5),
-(7, 'Áo thun nam', 'ao-thun-nam', NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 6);
+(7, 'Áo thun nam', 'ao-thun-nam', NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 6),
+(8, 'Danh mục tin tức 1', 'danh-muc-tin-tuc-1', NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 7),
+(9, 'Danh mục tin tức 2', 'danh-muc-tin-tuc-2', NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 8);
 
 -- --------------------------------------------------------
 
@@ -229,6 +233,17 @@ CREATE TABLE `links` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `links`
+--
+
+INSERT INTO `links` (`id`, `email`, `phone`, `facebook`, `skype`, `youtube`, `icon`, `link`, `image`, `alt`, `priority`, `status`, `type`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, NULL, NULL, NULL, NULL, NULL, '<i class=\"fa fa-facebook\"></i>', NULL, NULL, NULL, 1, 'publish', 'social', NULL, '2018-06-30 06:53:18', '2018-06-30 06:53:18'),
+(2, NULL, NULL, NULL, NULL, NULL, '<i class=\"fa fa-twitter\"></i>', NULL, NULL, NULL, 2, 'publish', 'social', NULL, '2018-06-30 06:53:34', '2018-06-30 06:53:34'),
+(3, NULL, NULL, NULL, NULL, NULL, '<i class=\"fa fa-dribbble\"></i>', NULL, NULL, NULL, 3, 'publish', 'social', NULL, '2018-06-30 06:54:06', '2018-06-30 06:54:06'),
+(4, NULL, NULL, NULL, NULL, NULL, '<i class=\"fa fa-skype\"></i>', NULL, NULL, NULL, 4, 'publish', 'social', NULL, '2018-06-30 06:55:03', '2018-06-30 06:55:03'),
+(5, NULL, NULL, NULL, NULL, NULL, '<i class=\"fa fa-google-plus\"></i>', NULL, NULL, NULL, 5, 'publish', 'social', NULL, '2018-06-30 06:55:32', '2018-06-30 06:55:32');
+
 -- --------------------------------------------------------
 
 --
@@ -242,6 +257,17 @@ CREATE TABLE `link_languages` (
   `language` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `link_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `link_languages`
+--
+
+INSERT INTO `link_languages` (`id`, `title`, `description`, `language`, `link_id`) VALUES
+(1, 'Facebook', NULL, 'vi', 1),
+(2, 'Twitter', NULL, 'vi', 2),
+(3, 'Dribbble', NULL, 'vi', 3),
+(4, 'Skype', NULL, 'vi', 4),
+(5, 'Google Plus', NULL, 'vi', 5);
 
 -- --------------------------------------------------------
 
@@ -1445,13 +1471,13 @@ ALTER TABLE `attribute_languages`
 -- AUTO_INCREMENT cho bảng `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `category_languages`
 --
 ALTER TABLE `category_languages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT cho bảng `comments`
@@ -1481,13 +1507,13 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT cho bảng `links`
 --
 ALTER TABLE `links`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `link_languages`
 --
 ALTER TABLE `link_languages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `media_libraries`

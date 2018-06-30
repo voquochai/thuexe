@@ -189,30 +189,9 @@ return [
 		'path'    =>	'uploads/products'
 	],
 	'post' => [
-		'tieu-chi' 	=>	[
-			'page-title'	=>	'Tiêu chí',
-			'category'    =>	false,
-			'description' =>	true,
-			'contents'    =>	false,
-			'link'    =>	true,
-			'seo'	=>	false,
-			'attributes'    =>	false,
-			'image'       =>	true,
-			'images'      =>	false,
-			'thumbs'	=>	[
-				'_small' => [
-					'width'  =>	130,
-					'height' =>	130,
-				],
-			],
-			'status'      => [
-				'publish'     => 'Hiển thị',
-			],
-			'post_tags'	=>	false,
-		],
-		'dich-vu' 	=>	[
-			'page-title'	=>	'Dịch vụ',
-			'category'    =>	false,
+		'tin-tuc' 	=>	[
+			'page-title'	=>	'Tin tức',
+			'category'    =>	true,
 			'description' =>	true,
 			'contents'    =>	true,
 			'link'    =>	true,
@@ -231,8 +210,8 @@ return [
 			],
 			'post_tags'	=>	true,
 		],
-		'thu-thuat' 	=>	[
-			'page-title'	=>	'Thủ thuật',
+		'dich-vu' 	=>	[
+			'page-title'	=>	'Dịch vụ',
 			'category'    =>	false,
 			'description' =>	true,
 			'contents'    =>	true,
@@ -525,24 +504,6 @@ return [
 		'path'    =>	'uploads/photos'
 	],
 	'link' => [
-        'tieu-chi' 	=>	[
-            'page-title'	=>	'Tiêu chí',
-            'description' =>	true,
-            'support' =>	false,
-			'icon' =>	true,
-			'youtube' =>	false,
-            'link'    =>	false,
-            'image'       =>	false,
-            'thumbs'	=>	[
-                '_small' => [
-                    'width'  =>	300,
-                    'height' =>	200,
-                ],
-            ],
-            'status'      => [
-                'publish'     => 'Hiển thị',
-            ]
-        ],
         'social' 	=>	[
             'page-title'	=>	'Mạng xã hội',
             'description' =>	false,
