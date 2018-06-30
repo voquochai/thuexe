@@ -56,7 +56,29 @@
                     <div class="header-option-btns float-right">
                         <!-- Header-search -->
                         <div class="header-search float-left">
-                            <button class="search-toggle" data-toggle="modal" data-target="#searchModal" ><i class="pe-7s-search"></i></button>
+                            <button class="search-toggle" data-toggle="modal" data-target="#searchModal" ><i class="fa fa-search"></i></button>
+                        </div>
+                        <div class="header-cart float-left">
+                            <!-- Cart Toggle -->
+                            <a class="cart-toggle" href="#" data-toggle="dropdown">
+                                <i class="fa fa-shopping-bag"></i>
+                                <span class="countCart">0</span>
+                            </a>
+                            <!-- Mini Cart Brief -->
+                            <div class="mini-cart-brief dropdown-menu text-left" style="display:none;">
+                                <div class="cart-items"><p>You have <span class="countCart">0</span> <span>items</span>  in your shopping bag</p></div>
+                                <!-- Cart Products -->
+                                <div class="all-cart-product clearfix">
+                                    <ul></ul>
+                                </div>
+
+                                <!-- Cart Total -->
+                                <div class="cart-totals">
+                                    <h5>Total <span class="floatright shopping-cart__total">$0.00</span></h5>
+                                </div>
+                                <!-- Cart Button -->
+                                <div class="cart-bottom  clearfix"><a href="/checkout">Check Out</a></div>
+                            </div>
                         </div>
                     </div>
                 </div>

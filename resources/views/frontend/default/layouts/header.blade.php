@@ -3,8 +3,8 @@
         <div class="container">
             <div class="header-top-left">
                 <ul>
-                    <li> <a href="tel:{{ config('settings.site_hotline') }}"> <i class="fa fa-phone"></i> <span>{{ config('settings.site_hotline') }}</span> </a> </li>
-                    <li> <a href="mailto:{{ config('settings.site_email') }}"> <i class="fa fa-envelope"></i> <span>{{ config('settings.site_email') }}</span> </a> </li>
+                    <li> <a href="tel:{{ config('settings.site_hotline') }}"> <i class="fa fa-phone"></i> <span class="hidden-xs">{{ config('settings.site_hotline') }}</span> </a> </li>
+                    <li> <a href="mailto:{{ config('settings.site_email') }}"> <i class="fa fa-envelope"></i> <span class="hidden-xs">{{ config('settings.site_email') }}</span> </a> </li>
                 </ul>
             </div>
             <div class="header-top-right">

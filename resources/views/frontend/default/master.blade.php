@@ -64,6 +64,7 @@
 	<div class="wrapper">
 		@include('frontend.default.layouts.header')
         @include('frontend.default.layouts.navbar')
+        {{--
 		@include('frontend.default.layouts.search')
 
 		@if(Route::currentRouteName() == 'frontend.home.index' || Route::currentRouteName() == 'frontend.domain.check_whois')
@@ -75,7 +76,7 @@
 		@yield('content')
 
 		@include('frontend.default.layouts.brand')
-		@include('frontend.default.layouts.footer')
+		@include('frontend.default.layouts.footer')--}}
 	</div>
 	<!-- Body main wrapper end -->
     

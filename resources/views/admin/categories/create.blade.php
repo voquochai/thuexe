@@ -176,7 +176,7 @@
                     
                     @if($siteconfig[$type]['icon'])
                     <div class="form-group">
-                        <label class="control-label">Font Icon</label>
+                        <label class="control-label"> <a href="https://fontawesome.com/v4.7.0/icons/" rel="nofollow" target="_blank"> Font Icon </a> </label>
                         <div>
                             <input type="text" name="data[icon]" class="form-control" value="{{ old('data.icon') }}">
                         </div>

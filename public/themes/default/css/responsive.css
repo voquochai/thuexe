@@ -22,17 +22,6 @@
     .header-cart .cart-toggle {
         padding: 0 10px 0 0;
     }
-    /*-- Menu --*/
-    .main-menu.menu-right {
-        margin-right: 20px;
-    }
-    .main-menu > ul > li {
-        margin: 0 10px;
-    }
-    .main-menu > ul > li a{
-        padding-top: 30px;
-        padding-bottom: 30px;
-    }
 }
 /* Tablet desktop :768px. */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -54,9 +43,8 @@
     .header-section {
         height: auto;
     }
-    .mean-nav > ul > li > a{
-        padding: 10px 25px;
-    }
+    #main-menu{ display: none; }
+    #hamburger{ display: block; }
 }
 /* Large Mobile :480px. */
 @media only screen and (max-width: 767px) {
@@ -120,9 +108,6 @@
 
 /* small mobile :320px. */
 @media only screen and (max-width: 479px) {
-    .header-top-left {
-        display: none;
-    }
     .col-xs-wide {
         width: 100%;
     }
