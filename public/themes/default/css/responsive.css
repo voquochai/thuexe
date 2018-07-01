@@ -31,9 +31,7 @@
     .header-option-btns {
     }
     /*-- Footer --*/
-    .footer-widget:nth-child(2n+1) {
-        clear: both;
-    }
+    
     .footer-widget.link-widget {
         padding-left: 15px;
     }

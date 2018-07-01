@@ -48,7 +48,6 @@
     <link rel="stylesheet" href="{{ asset('public/themes/default/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('public/themes/default/css/responsive.css') }}">
     @yield('custom_css')
-
     {{ config('settings.script_head') }}
 
 </head>
@@ -95,8 +94,8 @@
 	<script src="{{ asset('public/themes/default/js/plugins.js') }}"></script>
 	<script src="{{ asset('public/js/app.js') }}"></script>
 	<script src="{{ asset('public/themes/default/js/main.js') }}"></script>
-	@yield('custom_script')
 
+	@yield('custom_script')
     {{ config('settings.script_body') }}
 </body>
 

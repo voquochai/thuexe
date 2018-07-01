@@ -48,7 +48,6 @@
     <link rel="stylesheet" href="<?php echo e(asset('public/themes/default/css/style.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('public/themes/default/css/responsive.css')); ?>">
     <?php echo $__env->yieldContent('custom_css'); ?>
-
     <?php echo e(config('settings.script_head')); ?>
 
 
@@ -97,8 +96,8 @@
 	<script src="<?php echo e(asset('public/themes/default/js/plugins.js')); ?>"></script>
 	<script src="<?php echo e(asset('public/js/app.js')); ?>"></script>
 	<script src="<?php echo e(asset('public/themes/default/js/main.js')); ?>"></script>
-	<?php echo $__env->yieldContent('custom_script'); ?>
 
+	<?php echo $__env->yieldContent('custom_script'); ?>
     <?php echo e(config('settings.script_body')); ?>
 
 </body>

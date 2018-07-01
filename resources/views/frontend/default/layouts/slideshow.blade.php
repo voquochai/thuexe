@@ -1,6 +1,6 @@
 @php $slideshow = get_photos('slideshow',$lang); @endphp
 <!-- START SLIDER SECTION -->
-<section class="slider-section section">
+<section class="slider-section">
 	<div id="home-slider" class="slides">
 		@forelse($slideshow as $slide)
 		<img src="{{ asset('public/uploads/photos/'.$slide->image) }}" alt="" title="#slider-caption-0"  />

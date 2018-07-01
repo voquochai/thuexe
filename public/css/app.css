@@ -75,46 +75,6 @@ code {
     min-width: 120px !important;
 }
 
-/*-- Overlay --*/
-.overlay {
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    z-index: 1;
-}
-.overlay::before {
-    background-color: #000;
-    content: "";
-    height: 100%;
-    left: 0;
-    opacity: 0.6;
-    position: absolute;
-    top: 0;
-    width: 100%;
-}
-/*-- Scroll Up --*/
-#scrollUp {
-    background-color: transparent;
-    border: 2px solid #ffae00;
-    border-radius: 50%;
-    bottom: 28px;
-    color: #ffae00;
-    height: 40px;
-    position: fixed;
-    right: 30px;
-    text-align: center;
-    width: 40px;
-}
-#scrollUp i {
-    display: block;
-    font-size: 24px;
-    line-height: 35px;
-}
-#scrollUp:hover {
-    background-color: #ffae00;
-    color: #fff;
-}
 /* Rounded Element */
 .rounded-2 {
     border-radius: 2px !important;
@@ -247,11 +207,38 @@ code {
 .mt-15 {
     margin-top: 15px;
 }
+.pt-5 {
+    padding-top: 5px;
+}
 .pt-10 {
     padding-top: 10px;
 }
+.pt-15 {
+    padding-top: 15px;
+}
 .pt-20 {
     padding-top: 20px;
+}
+.pt-25 {
+    padding-top: 25px;
+}
+.pt-30 {
+    padding-top: 30px;
+}
+.pt-35 {
+    padding-top: 35px;
+}
+.pt-40 {
+    padding-top: 40px;
+}
+.pt-45 {
+    padding-top: 45px;
+}
+.pt-50 {
+    padding-top: 50px;
+}
+.pt-55 {
+    padding-top: 55px;
 }
 .pt-60 {
     padding-top: 60px;
@@ -261,6 +248,10 @@ code {
 }
 .pb-60 {
     padding-bottom: 60px;
+}
+.ptb-20 {
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 .ptb-60 {
     padding-top: 60px;
@@ -961,4 +952,54 @@ td > .mt-checkbox.mt-checkbox-single {
 }
 .table-responsive .table thead tr th{
     text-align: center;
+}
+
+.btn-site{
+    color: #fff;
+    background-color: #94da46;
+}
+
+.btn-site:hover{
+    color: #94da46;
+    background-color: #fff;
+}
+/*-- Overlay --*/
+.overlay {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+}
+.overlay::before {
+    background-color: #000;
+    content: "";
+    height: 100%;
+    left: 0;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+/*-- Scroll Up --*/
+#scrollUp {
+    background-color: transparent;
+    border: 2px solid #94da46;
+    border-radius: 50%;
+    bottom: 28px;
+    color: #94da46;
+    height: 40px;
+    position: fixed;
+    right: 30px;
+    text-align: center;
+    width: 40px;
+}
+#scrollUp i {
+    display: block;
+    font-size: 24px;
+    line-height: 35px;
+}
+#scrollUp:hover {
+    background-color: #fff;
+    color: #94da46;
 }

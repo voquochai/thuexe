@@ -2149,7 +2149,7 @@ span.sub_label {
 	margin-right: 15px;
 }
 .footer-social a:hover {
-	color: #ffae00;
+	color: #94da46;
 }
 .footer-social a i {
 	display: block;
@@ -2157,20 +2157,19 @@ span.sub_label {
 	line-height: 17px;
 }
 /*-- Footer Bottom Section --*/
-.footer-bottom-section {
-	background-color: #282828;
-	border-top: 1px solid #333;
+.footer-bottom {
+	background-color: #121A22;
 }
-.footer-bottom-section .copyright {}
-.footer-bottom-section .copyright p {
+.footer-bottom .copyright {}
+.footer-bottom .copyright p {
 	color: #ddd;
 	font-size: 14px;
 	margin-bottom: 0;
 }
-.footer-bottom-section .copyright p a {
+.footer-bottom .copyright p a {
 	color: #ddd;
 }
-.footer-bottom-section .copyright p a:hover {
+.footer-bottom .copyright p a:hover {
 	color: #ffae00;
 }
 .footer-bottom-section .payment-method {}

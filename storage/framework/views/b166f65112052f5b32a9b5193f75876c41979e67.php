@@ -1,6 +1,6 @@
 <?php  $slideshow = get_photos('slideshow',$lang);  ?>
 <!-- START SLIDER SECTION -->
-<section class="slider-section section">
+<section class="slider-section">
 	<div id="home-slider" class="slides">
 		<?php $__empty_1 = true; $__currentLoopData = $slideshow; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slide): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
 		<img src="<?php echo e(asset('public/uploads/photos/'.$slide->image)); ?>" alt="" title="#slider-caption-0"  />
