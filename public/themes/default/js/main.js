@@ -40,17 +40,17 @@
     /*-- WOW --*/
     // new WOW().init();
     /*-- Nivo Slider --*/
-    // $('#home-slider').nivoSlider({
-    //     directionNav: true,
-    //     animSpeed: 1000,
-    //     effect: 'random',
-    //     slices: 18,
-    //     pauseTime: 5000,
-    //     pauseOnHover: true,
-    //     controlNav: false,
-    //     prevText: '<i class="pe-7s-angle-left-circle"></i>',
-    //     nextText: '<i class="pe-7s-angle-right-circle"></i>'
-    // });
+    $('#home-slider').nivoSlider({
+        directionNav: true,
+        animSpeed: 1000,
+        effect: 'random',
+        slices: 18,
+        pauseTime: 5000,
+        pauseOnHover: true,
+        controlNav: false,
+        prevText: '<i class="pe-7s-angle-left-circle"></i>',
+        nextText: '<i class="pe-7s-angle-right-circle"></i>'
+    });
     /*-- Testimonial Slider --*/
     // $('.testimonial-slider').slick({
     //     slidesToShow: 1,
@@ -159,23 +159,23 @@
     //     }
     // })
     /*-- Youtube Background Video --*/
-    // $(".youtube-bg").YTPlayer();
+    $(".youtube-bg").YTPlayer();
     /*-- Text Animation --*/
-    // $('.tlt').textillate({
-    //     loop: true,
-    //     in: {
-    //         effect: 'fadeInRight',
-    //     },
-    //     out: {
-    //         effect: 'fadeOutLeft',
-    //     },
-    // });
+    $('.tlt').textillate({
+        loop: true,
+        in: {
+            effect: 'fadeInRight',
+        },
+        out: {
+            effect: 'fadeOutLeft',
+        },
+    });
     /*-- ScrollUp --*/
-    // $.scrollUp({
-    //     scrollText: '<i class="fa fa-angle-up"></i>',
-    //     easingType: 'linear',
-    //     scrollSpeed: 900,
-    //     animation: 'fade'
-    // });
+    $.scrollUp({
+        scrollText: '<i class="fa fa-angle-up"></i>',
+        easingType: 'linear',
+        scrollSpeed: 900,
+        animation: 'fade'
+    });
 
 })(jQuery);

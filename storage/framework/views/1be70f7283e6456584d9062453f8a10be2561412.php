@@ -41,6 +41,7 @@
     <link rel="stylesheet" href="<?php echo e(asset('public/packages/bootstrap-toastr/toastr.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('public/packages/bootstrap-select/css/bootstrap-select.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('public/css/font-awesome.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('public/css/pe-icon-7-stroke.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('public/css/animate.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('public/themes/default/css/plugins.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('public/css/app.css')); ?>">
@@ -65,7 +66,17 @@
 	<div class="wrapper">
 		<?php echo $__env->make('frontend.default.layouts.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         <?php echo $__env->make('frontend.default.layouts.navbar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+		<?php echo $__env->make('frontend.default.layouts.search', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+		<?php if(Route::currentRouteName() == 'frontend.home.index' || Route::currentRouteName() == 'frontend.domain.check_whois'): ?>
+			<?php echo $__env->make('frontend.default.layouts.slideshow', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+		<?php else: ?>
+			<?php echo $__env->make('frontend.default.layouts.breadcrumb', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+		<?php endif; ?>
         
+		<?php echo $__env->yieldContent('content'); ?>
+        
+		<?php echo $__env->make('frontend.default.layouts.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 	</div>
 	<!-- Body main wrapper end -->
     
