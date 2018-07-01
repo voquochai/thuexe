@@ -490,7 +490,7 @@ var App = function() {
                 }
             }).done(function(response){
                 btn.button('reset');
-                if(response.redirect != ''){
+                if( typeof response.redirect !== 'undefined'){
                     window.location.href=response.redirect;
                 }
                 if(response.type == 'success'){

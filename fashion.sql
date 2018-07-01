@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0.1
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 30, 2018 lúc 12:19 PM
--- Phiên bản máy phục vụ: 10.1.32-MariaDB
--- Phiên bản PHP: 5.6.36
+-- Thời gian đã tạo: Th7 01, 2018 lúc 05:46 PM
+-- Phiên bản máy phục vụ: 10.1.30-MariaDB
+-- Phiên bản PHP: 5.6.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -86,8 +86,7 @@ INSERT INTO `categories` (`id`, `parent`, `image`, `alt`, `icon`, `priority`, `s
 (4, 0, NULL, NULL, NULL, 3, 'publish', 'san-pham', NULL, '2018-06-29 17:28:09', '2018-06-29 17:28:09'),
 (5, 0, NULL, NULL, NULL, 4, 'publish', 'san-pham', NULL, '2018-06-29 17:28:19', '2018-06-29 17:28:19'),
 (6, 2, NULL, NULL, NULL, 1, 'publish', 'san-pham', NULL, '2018-06-29 18:03:16', '2018-06-29 18:03:21'),
-(7, 0, NULL, NULL, NULL, 1, 'publish', 'tin-tuc', NULL, '2018-06-30 10:15:42', '2018-06-30 10:15:42'),
-(8, 0, NULL, NULL, NULL, 2, 'publish', 'tin-tuc', NULL, '2018-06-30 10:17:20', '2018-06-30 10:17:20');
+(7, 0, NULL, NULL, NULL, 1, 'publish', 'tin-tuc', NULL, '2018-06-30 16:01:24', '2018-06-30 16:01:24');
 
 -- --------------------------------------------------------
 
@@ -118,8 +117,7 @@ INSERT INTO `category_languages` (`id`, `title`, `slug`, `description`, `content
 (5, 'Couple', 'couple', NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 4),
 (6, 'Phụ kiện', 'phu-kien', NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 5),
 (7, 'Áo thun nam', 'ao-thun-nam', NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 6),
-(8, 'Danh mục tin tức 1', 'danh-muc-tin-tuc-1', NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 7),
-(9, 'Danh mục tin tức 2', 'danh-muc-tin-tuc-2', NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 8);
+(8, 'Danh mục tin tức 1', 'danh-muc-tin-tuc-1', NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 7);
 
 -- --------------------------------------------------------
 
@@ -238,11 +236,10 @@ CREATE TABLE `links` (
 --
 
 INSERT INTO `links` (`id`, `email`, `phone`, `facebook`, `skype`, `youtube`, `icon`, `link`, `image`, `alt`, `priority`, `status`, `type`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, NULL, NULL, NULL, NULL, NULL, '<i class=\"fa fa-facebook\"></i>', NULL, NULL, NULL, 1, 'publish', 'social', NULL, '2018-06-30 06:53:18', '2018-06-30 06:53:18'),
-(2, NULL, NULL, NULL, NULL, NULL, '<i class=\"fa fa-twitter\"></i>', NULL, NULL, NULL, 2, 'publish', 'social', NULL, '2018-06-30 06:53:34', '2018-06-30 06:53:34'),
-(3, NULL, NULL, NULL, NULL, NULL, '<i class=\"fa fa-dribbble\"></i>', NULL, NULL, NULL, 3, 'publish', 'social', NULL, '2018-06-30 06:54:06', '2018-06-30 06:54:06'),
-(4, NULL, NULL, NULL, NULL, NULL, '<i class=\"fa fa-skype\"></i>', NULL, NULL, NULL, 4, 'publish', 'social', NULL, '2018-06-30 06:55:03', '2018-06-30 06:55:03'),
-(5, NULL, NULL, NULL, NULL, NULL, '<i class=\"fa fa-google-plus\"></i>', NULL, NULL, NULL, 5, 'publish', 'social', NULL, '2018-06-30 06:55:32', '2018-06-30 06:55:32');
+(1, NULL, NULL, NULL, NULL, NULL, '<i class=\"fa fa-facebook\"></i>', NULL, NULL, NULL, 1, 'publish', 'social', NULL, '2018-06-30 17:14:40', '2018-06-30 17:14:40'),
+(2, NULL, NULL, NULL, NULL, NULL, '<i class=\"fa fa-twitter\"></i>', NULL, NULL, NULL, 2, 'publish', 'social', NULL, '2018-06-30 17:16:48', '2018-06-30 17:16:48'),
+(3, NULL, NULL, NULL, NULL, NULL, '<i class=\"fa fa-google-plus\"></i>', NULL, NULL, NULL, 3, 'publish', 'social', NULL, '2018-06-30 17:17:13', '2018-06-30 17:17:13'),
+(4, NULL, NULL, NULL, NULL, NULL, '<i class=\"fa fa-skype\"></i>', NULL, NULL, NULL, 4, 'publish', 'social', NULL, '2018-06-30 17:17:48', '2018-06-30 17:17:48');
 
 -- --------------------------------------------------------
 
@@ -265,9 +262,8 @@ CREATE TABLE `link_languages` (
 INSERT INTO `link_languages` (`id`, `title`, `description`, `language`, `link_id`) VALUES
 (1, 'Facebook', NULL, 'vi', 1),
 (2, 'Twitter', NULL, 'vi', 2),
-(3, 'Dribbble', NULL, 'vi', 3),
-(4, 'Skype', NULL, 'vi', 4),
-(5, 'Google Plus', NULL, 'vi', 5);
+(3, 'Google plus', NULL, 'vi', 3),
+(4, 'Skype', NULL, 'vi', 4);
 
 -- --------------------------------------------------------
 
@@ -467,7 +463,7 @@ INSERT INTO `pages` (`id`, `link`, `image`, `alt`, `priority`, `status`, `type`,
 (1, NULL, NULL, NULL, 1, 'publish', 'gioi-thieu', 0, NULL, NULL, NULL),
 (2, NULL, NULL, NULL, 1, 'publish', 'tuyen-dung', 0, NULL, NULL, NULL),
 (3, NULL, NULL, NULL, 1, 'publish', 'lien-he', 0, NULL, NULL, NULL),
-(4, NULL, NULL, NULL, 1, 'publish', 'footer', 0, NULL, NULL, NULL);
+(4, NULL, NULL, NULL, 1, 'publish', 'footer', 0, NULL, NULL, '2018-07-01 06:20:02');
 
 -- --------------------------------------------------------
 
@@ -497,7 +493,7 @@ INSERT INTO `page_languages` (`id`, `title`, `slug`, `description`, `contents`, 
 (4, 'Tuyển dụng', 'tuyen-dung', NULL, NULL, NULL, 'en', 2),
 (5, 'Liên hệ', 'lien-he', NULL, NULL, NULL, 'vi', 3),
 (6, 'Liên hệ', 'lien-he', NULL, NULL, NULL, 'en', 3),
-(7, 'Footer', 'footer', NULL, NULL, NULL, 'vi', 4),
+(7, 'Footer', 'footer', NULL, '<p>We are a creative company that specializes in strategy & design. We like to create things with like - minded people who are serious about their passions.</p>', NULL, 'vi', 4),
 (8, 'Footer', 'footer', NULL, NULL, NULL, 'en', 4);
 
 -- --------------------------------------------------------
@@ -559,6 +555,14 @@ CREATE TABLE `photos` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `photos`
+--
+
+INSERT INTO `photos` (`id`, `link`, `image`, `alt`, `priority`, `status`, `type`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, NULL, '2018-07/slider-1.jpg', NULL, 1, 'publish', 'slideshow', NULL, '2018-07-01 05:39:18', '2018-07-01 05:39:18'),
+(2, NULL, '2018-07/slider-2.jpg', NULL, 2, 'publish', 'slideshow', NULL, '2018-07-01 05:40:34', '2018-07-01 05:40:34');
+
 -- --------------------------------------------------------
 
 --
@@ -572,6 +576,14 @@ CREATE TABLE `photo_languages` (
   `language` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `photo_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `photo_languages`
+--
+
+INSERT INTO `photo_languages` (`id`, `title`, `description`, `language`, `photo_id`) VALUES
+(1, NULL, NULL, 'vi', 1),
+(2, NULL, NULL, 'vi', 2);
 
 -- --------------------------------------------------------
 
@@ -738,11 +750,11 @@ INSERT INTO `products` (`id`, `code`, `regular_price`, `sale_price`, `original_p
 (3, '8425074', 290000, 200000, 50000, 500, NULL, NULL, NULL, NULL, 1, 'publish', NULL, 1, 1, 'san-pham', 0, NULL, '2018-06-29 15:43:52', '2018-06-29 15:43:52'),
 (4, '8665', 290000, 200000, 50000, 500, NULL, NULL, NULL, NULL, 1, 'publish', NULL, 1, 1, 'san-pham', 0, NULL, '2018-06-29 15:43:52', '2018-06-29 15:43:52'),
 (5, '555879722', 290000, 200000, 50000, 500, NULL, NULL, NULL, NULL, 1, 'publish', NULL, 1, 1, 'san-pham', 0, NULL, '2018-06-29 15:43:52', '2018-06-29 15:43:52'),
-(6, '1', 290000, 200000, 50000, 500, NULL, NULL, NULL, NULL, 1, 'publish', NULL, 1, 1, 'san-pham', 0, NULL, '2018-06-29 15:43:52', '2018-06-29 15:43:52'),
-(7, '5252', 290000, 200000, 50000, 500, NULL, NULL, NULL, NULL, 1, 'publish', NULL, 1, 1, 'san-pham', 0, NULL, '2018-06-29 15:43:52', '2018-06-29 15:43:52'),
-(8, '4', 290000, 200000, 50000, 500, NULL, NULL, NULL, NULL, 1, 'publish', NULL, 1, 1, 'san-pham', 0, NULL, '2018-06-29 15:43:52', '2018-06-29 15:43:52'),
-(9, '26855', 290000, 200000, 50000, 500, NULL, NULL, NULL, NULL, 1, 'publish', NULL, 1, 1, 'san-pham', 0, NULL, '2018-06-29 15:43:52', '2018-06-29 15:43:52'),
-(10, '77443553', 290000, 200000, 50000, 500, NULL, NULL, NULL, NULL, 1, 'publish', NULL, 1, 1, 'san-pham', 0, NULL, '2018-06-29 15:43:52', '2018-06-29 15:43:52');
+(6, '1', 290000, 200000, 50000, 500, NULL, '2018-07/product5.jpg', NULL, '', 1, 'publish', NULL, 1, 1, 'san-pham', 0, NULL, '2018-06-29 15:43:52', '2018-07-01 15:46:01'),
+(7, '5252', 290000, 200000, 50000, 500, NULL, '2018-07/product4.jpg', NULL, '', 1, 'publish,new', NULL, 1, 1, 'san-pham', 0, NULL, '2018-06-29 15:43:52', '2018-07-01 15:45:39'),
+(8, '4', 290000, 200000, 50000, 500, NULL, '2018-07/product3.jpg', NULL, '', 1, 'publish,new', NULL, 1, 1, 'san-pham', 0, NULL, '2018-06-29 15:43:52', '2018-07-01 15:45:13'),
+(9, '26855', 290000, 200000, 50000, 500, NULL, '2018-07/product2.jpg', NULL, '', 1, 'publish,new', NULL, 1, 1, 'san-pham', 0, NULL, '2018-06-29 15:43:52', '2018-07-01 15:45:00'),
+(10, '77443553', 290000, 200000, 50000, 500, NULL, '2018-07/product1.jpg', NULL, '', 1, 'publish,new', NULL, 1, 1, 'san-pham', 0, NULL, '2018-06-29 15:43:52', '2018-07-01 15:44:46');
 
 -- --------------------------------------------------------
 
@@ -790,15 +802,15 @@ INSERT INTO `product_languages` (`id`, `title`, `slug`, `description`, `contents
 (8, 'Maximo Considine', 'maximo-considine', 'Fuga ut est dolor consequatur pariatur. Sapiente enim eligendi molestiae. Excepturi ut quia eos vel possimus.', 'Repudiandae molestiae saepe aut quia. Temporibus voluptatem dolor non repellendus provident corrupti corrupti. Quidem sunt atque corrupti. Doloribus quas autem sed deserunt sit.', NULL, '{\"title\":\"Maximo Considine\",\"keywords\":\"Maximo Considine\",\"description\":\"Maximo Considine\"}', 'en', 4),
 (9, 'Mr. Willy Larson', 'mr-willy-larson', 'Dolor nihil excepturi facilis dignissimos quis. Non eos doloribus tenetur. Est eius ipsa ut blanditiis laboriosam aperiam nesciunt consequatur.', 'Est quibusdam ut molestiae laudantium aut nesciunt consequuntur. Repellendus adipisci rerum quis non dolore voluptatibus ut.', NULL, '{\"title\":\"Mr. Willy Larson\",\"keywords\":\"Mr. Willy Larson\",\"description\":\"Mr. Willy Larson\"}', 'vi', 5),
 (10, 'Dr. Dannie Schmidt MD', 'dr-dannie-schmidt-md', 'Repellendus consequatur ab rem soluta. Recusandae perspiciatis tempora maiores et. Ut dolor perspiciatis sequi rerum minima. Est aliquam ut et aut eos expedita quibusdam.', 'Quas qui cumque occaecati iusto distinctio. Nesciunt et a quia est. Neque quis error explicabo non dolorum culpa iusto quod. Corrupti harum ipsam et odio.', NULL, '{\"title\":\"Dr. Dannie Schmidt MD\",\"keywords\":\"Dr. Dannie Schmidt MD\",\"description\":\"Dr. Dannie Schmidt MD\"}', 'en', 5),
-(11, 'Mr. Tyler Lockman', 'mr-tyler-lockman', 'Necessitatibus sed amet libero nam possimus est atque. Et suscipit nemo qui aut. Non et neque ut odio excepturi.', 'Esse rerum sint sit iusto placeat. Nulla tempora est deleniti sit blanditiis error ducimus.', NULL, '{\"title\":\"Mr. Tyler Lockman\",\"keywords\":\"Mr. Tyler Lockman\",\"description\":\"Mr. Tyler Lockman\"}', 'vi', 6),
+(11, 'Tên sản phẩm 5', 'ten-san-pham-5', 'Necessitatibus sed amet libero nam possimus est atque. Et suscipit nemo qui aut. Non et neque ut odio excepturi.', '<p>Esse rerum sint sit iusto placeat. Nulla tempora est deleniti sit blanditiis error ducimus.</p>', '[{\"name\":null,\"value\":null}]', '{\"title\":\"Mr. Tyler Lockman\",\"keywords\":\"Mr. Tyler Lockman\",\"description\":\"Mr. Tyler Lockman\"}', 'vi', 6),
 (12, 'Mckenna Hudson', 'mckenna-hudson', 'Magnam natus aspernatur qui aut. Sit enim et quia est quia rem. Explicabo aliquam beatae magnam quaerat tempora. Facere libero cum ut sed dolorem.', 'Officia id vitae praesentium. Odit iste ut error porro et. Aut maxime voluptatem error tenetur illum.', NULL, '{\"title\":\"Mckenna Hudson\",\"keywords\":\"Mckenna Hudson\",\"description\":\"Mckenna Hudson\"}', 'en', 6),
-(13, 'Alessia Blanda', 'alessia-blanda', 'Quia velit omnis voluptas saepe hic impedit placeat. Et aliquam consequuntur dolorum. Veritatis ut sit ducimus officia saepe ut.', 'Quo explicabo eos nulla voluptatibus amet expedita. Quis itaque mollitia eius cum quaerat enim saepe. Sed nihil non omnis asperiores. Numquam aut ullam consectetur.', NULL, '{\"title\":\"Alessia Blanda\",\"keywords\":\"Alessia Blanda\",\"description\":\"Alessia Blanda\"}', 'vi', 7),
+(13, 'Tên sản phẩm 4', 'ten-san-pham-4', 'Quia velit omnis voluptas saepe hic impedit placeat. Et aliquam consequuntur dolorum. Veritatis ut sit ducimus officia saepe ut.', '<p>Quo explicabo eos nulla voluptatibus amet expedita. Quis itaque mollitia eius cum quaerat enim saepe. Sed nihil non omnis asperiores. Numquam aut ullam consectetur.</p>', '[{\"name\":null,\"value\":null}]', '{\"title\":\"Alessia Blanda\",\"keywords\":\"Alessia Blanda\",\"description\":\"Alessia Blanda\"}', 'vi', 7),
 (14, 'Tavares Altenwerth', 'tavares-altenwerth', 'Saepe mollitia velit placeat rerum cumque architecto. Magnam est voluptatum vitae ut earum dolore illo qui.', 'Mollitia et nihil possimus at modi et. Necessitatibus sed et quia eligendi temporibus quo. Sapiente atque accusamus aut quia qui nihil quis. Deleniti necessitatibus nostrum maiores quas esse voluptates dolor. Voluptas quas illo qui occaecati.', NULL, '{\"title\":\"Tavares Altenwerth\",\"keywords\":\"Tavares Altenwerth\",\"description\":\"Tavares Altenwerth\"}', 'en', 7),
-(15, 'Gwendolyn Abshire', 'gwendolyn-abshire', 'Autem hic mollitia natus maiores est sed quo iste. Ea quis enim ut repudiandae. Quod voluptatem ut ipsam.', 'Temporibus ut aspernatur consequatur vel est voluptate necessitatibus. Omnis quia hic quibusdam fugiat aspernatur cumque. Non non nulla illo soluta.', NULL, '{\"title\":\"Gwendolyn Abshire\",\"keywords\":\"Gwendolyn Abshire\",\"description\":\"Gwendolyn Abshire\"}', 'vi', 8),
+(15, 'Tên sản phẩm 3', 'ten-san-pham-3', 'Autem hic mollitia natus maiores est sed quo iste. Ea quis enim ut repudiandae. Quod voluptatem ut ipsam.', '<p>Temporibus ut aspernatur consequatur vel est voluptate necessitatibus. Omnis quia hic quibusdam fugiat aspernatur cumque. Non non nulla illo soluta.</p>', '[{\"name\":null,\"value\":null}]', '{\"title\":\"Gwendolyn Abshire\",\"keywords\":\"Gwendolyn Abshire\",\"description\":\"Gwendolyn Abshire\"}', 'vi', 8),
 (16, 'Anjali Kessler', 'anjali-kessler', 'Repellat quae consequatur qui rem sed sapiente. Quia dignissimos sint maxime molestiae sunt qui ipsum provident. Doloribus consequatur dignissimos illum corrupti alias.', 'Nihil pariatur architecto sit quas. Et excepturi et alias est dolor tempora cum inventore. Est ea vero incidunt ut. Molestias culpa voluptatum error repudiandae id.', NULL, '{\"title\":\"Anjali Kessler\",\"keywords\":\"Anjali Kessler\",\"description\":\"Anjali Kessler\"}', 'en', 8),
-(17, 'Jade Huel', 'jade-huel', 'Sed consequatur et reiciendis cumque maiores. Natus inventore vitae in quia voluptate. Veniam commodi aut doloribus dolorem. Suscipit rerum adipisci perspiciatis sapiente. Aliquid et delectus dicta.', 'Est quia in accusamus aut qui quia fugiat. Similique nulla maxime odit odio. Id mollitia animi similique fuga ut iste qui. Fugit quibusdam porro optio ut molestiae inventore sed aut.', NULL, '{\"title\":\"Jade Huel\",\"keywords\":\"Jade Huel\",\"description\":\"Jade Huel\"}', 'vi', 9),
+(17, 'Tên sản phẩm 2', 'ten-san-pham-2', 'Sed consequatur et reiciendis cumque maiores. Natus inventore vitae in quia voluptate. Veniam commodi aut doloribus dolorem. Suscipit rerum adipisci perspiciatis sapiente. Aliquid et delectus dicta.', '<p>Est quia in accusamus aut qui quia fugiat. Similique nulla maxime odit odio. Id mollitia animi similique fuga ut iste qui. Fugit quibusdam porro optio ut molestiae inventore sed aut.</p>', '[{\"name\":null,\"value\":null}]', '{\"title\":\"Jade Huel\",\"keywords\":\"Jade Huel\",\"description\":\"Jade Huel\"}', 'vi', 9),
 (18, 'Alexie Lang DDS', 'alexie-lang-dds', 'Sunt quasi velit sed. Beatae ut assumenda saepe nisi ut modi. Harum rerum ipsum cupiditate in facilis ut.', 'Officiis consequatur dolorem et delectus enim unde. Aliquam in accusantium sed quo et saepe. Id voluptas rem quod qui ut qui. Dolore odit molestias nulla maxime sapiente eveniet provident.', NULL, '{\"title\":\"Alexie Lang DDS\",\"keywords\":\"Alexie Lang DDS\",\"description\":\"Alexie Lang DDS\"}', 'en', 9),
-(19, 'Prof. Casey Terry PhD', 'prof-casey-terry-phd', 'Totam eum nobis velit consequatur veritatis at. Ducimus autem autem et facilis. Et corrupti culpa veritatis rem. Sit dolore similique itaque omnis voluptatem voluptatem.', 'Voluptas sit laboriosam in ut eos in. Omnis voluptatem eveniet ipsa eius. Consequatur neque ad sit consequuntur temporibus incidunt. Ex et ut reprehenderit optio eum et doloribus.', NULL, '{\"title\":\"Prof. Casey Terry PhD\",\"keywords\":\"Prof. Casey Terry PhD\",\"description\":\"Prof. Casey Terry PhD\"}', 'vi', 10),
+(19, 'Tên sản phẩm 1', 'ten-san-pham-1', 'Totam eum nobis velit consequatur veritatis at. Ducimus autem autem et facilis. Et corrupti culpa veritatis rem. Sit dolore similique itaque omnis voluptatem voluptatem.', '<p>Voluptas sit laboriosam in ut eos in. Omnis voluptatem eveniet ipsa eius. Consequatur neque ad sit consequuntur temporibus incidunt. Ex et ut reprehenderit optio eum et doloribus.</p>', '[{\"name\":null,\"value\":null}]', '{\"title\":\"Prof. Casey Terry PhD\",\"keywords\":\"Prof. Casey Terry PhD\",\"description\":\"Prof. Casey Terry PhD\"}', 'vi', 10),
 (20, 'Mr. Chelsey Kshlerin DVM', 'mr-chelsey-kshlerin-dvm', 'Dolorem et nihil exercitationem cum qui. A et velit deleniti delectus voluptas vitae debitis. Culpa vitae quasi tempore maiores. Et consequatur beatae doloremque.', 'Temporibus sed ipsa et quia. Dolor numquam aut magni officia ut nam. Dolor et unde atque veritatis inventore consequatur quibusdam.', NULL, '{\"title\":\"Mr. Chelsey Kshlerin DVM\",\"keywords\":\"Mr. Chelsey Kshlerin DVM\",\"description\":\"Mr. Chelsey Kshlerin DVM\"}', 'en', 10);
 
 -- --------------------------------------------------------
@@ -942,8 +954,8 @@ INSERT INTO `settings` (`id`, `name`, `value`) VALUES
 (1, 'maintenance', 'off'),
 (2, 'language', 'vi'),
 (3, 'date_custom_format', NULL),
-(4, 'product_per_page', '0'),
-(5, 'thumbs', '{\"product\":{\"_small\":{\"width\":\"0\",\"height\":\"0\"},\"_medium\":{\"width\":\"0\",\"height\":\"0\"},\"_large\":{\"width\":\"0\",\"height\":\"0\"}}}'),
+(4, 'product_per_page', '12'),
+(5, 'thumbs', '{\"product\":{\"_small\":{\"width\":\"400\",\"height\":\"400\"},\"_medium\":{\"width\":\"600\",\"height\":\"600\"},\"_large\":{\"width\":\"1000\",\"height\":\"1000\"}}}'),
 (6, 'post_per_page', '0'),
 (7, 'site_name', 'Fashion'),
 (8, 'site_slogan', NULL),
@@ -953,7 +965,7 @@ INSERT INTO `settings` (`id`, `name`, `value`) VALUES
 (12, 'site_fax', NULL),
 (13, 'site_hotline', '0123456789'),
 (14, 'site_url', NULL),
-(15, 'site_copyright', NULL),
+(15, 'site_copyright', 'KHOWEBONLINE @ 2018 COPYRIGHT'),
 (16, 'fanpage', NULL),
 (17, 'google_coordinates', NULL),
 (18, 'email_host', NULL),
@@ -1471,13 +1483,13 @@ ALTER TABLE `attribute_languages`
 -- AUTO_INCREMENT cho bảng `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `category_languages`
 --
 ALTER TABLE `category_languages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `comments`
@@ -1507,13 +1519,13 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT cho bảng `links`
 --
 ALTER TABLE `links`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `link_languages`
 --
 ALTER TABLE `link_languages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `media_libraries`
@@ -1567,13 +1579,13 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT cho bảng `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `photo_languages`
 --
 ALTER TABLE `photo_languages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `posts`

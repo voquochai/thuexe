@@ -1,7 +1,7 @@
 @php
     $socials = get_links('social',$lang);
 @endphp
-<section class="navbar-section">
+<section class="navbar-section sticker">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">

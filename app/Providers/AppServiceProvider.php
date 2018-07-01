@@ -21,8 +21,7 @@ class AppServiceProvider extends ServiceProvider
             $settings = [];
             if( $items !== null ){
                 foreach( $items as $k => $v ){
-                    json_decode($v['value']);
-                    $settings[$v['name']] = json_last_error() == JSON_ERROR_STATE_MISMATCH ? json_decode($v['value'],true) : $v['value'];
+                    $settings[$v['name']] = is_array(json_decode($v['value'],true)) ? json_decode($v['value'],true) : $v['value'];
                 }
             }
             return $settings;

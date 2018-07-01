@@ -1660,7 +1660,12 @@ span.sub_label {
 }
 
 /*-- Nivo Direction Nav --*/
-.nivo-directionNav {}
+.nivo-directionNav {
+	display: none;
+}
+#home-slider:hover .nivo-directionNav{
+	display: block;
+}
 .nivo-directionNav a {
 	display: block;
 	height: 40px;
@@ -1669,13 +1674,13 @@ span.sub_label {
 	top: 50%;
 	color: #fff;
 }
-.nivo-directionNav a:hover {
-	color: #94da46;
-}
 .nivo-directionNav a i {
 	display: block;
 	font-size: 48px;
 	line-height: 40px;
+}
+.nivo-directionNav a:hover {
+	color: #94da46;
 }
 .nivo-prevNav {
 	left: 50px;
@@ -2109,8 +2114,10 @@ span.sub_label {
 .footer-widget {}
 .widget-title {
 	margin-bottom: 40px;
-	font-size: 18px;
+	font-size: 16px;
 	color: #fff;
+	text-transform: uppercase;
+	/*font-family: 'Pacifico', cursive;*/
 	font-weight: 600;
 }
 .footer-widget p a {
@@ -2163,7 +2170,7 @@ span.sub_label {
 .footer-bottom .copyright {}
 .footer-bottom .copyright p {
 	color: #ddd;
-	font-size: 14px;
+	font-size: 12px;
 	margin-bottom: 0;
 }
 .footer-bottom .copyright p a {
