@@ -44,16 +44,6 @@ class HomeController extends Controller
     }
 
     public function index(Request $request){
-        $this->_data['criteria'] = DB::table('posts as A')
-            ->leftjoin('post_languages as B', 'A.id', '=', 'B.post_id')
-            ->select('A.id','A.link','A.image','A.alt','B.title','B.slug','B.description')
-            ->where('B.language',$this->_data['lang'])
-            ->whereRaw('FIND_IN_SET(\'publish\',A.status)')
-            ->where('A.type','tieu-chi')
-            ->orderBy('A.priority','asc')
-            ->orderBy('A.id','desc')
-            ->limit(5)
-            ->get();
 
         $this->_data['new_products'] = DB::table('products as A')
             ->leftjoin('product_languages as B', 'A.id', '=', 'B.product_id')
@@ -66,16 +56,7 @@ class HomeController extends Controller
             ->limit(10)
             ->get();
 
-        $this->_data['customers'] = DB::table('posts as A')
-            ->leftjoin('post_languages as B', 'A.id', '=', 'B.post_id')
-            ->select('A.id','A.link','A.image','A.alt','B.title','B.description')
-            ->where('B.language',$this->_data['lang'])
-            ->whereRaw('FIND_IN_SET(\'publish\',A.status) and FIND_IN_SET(\'index\',A.status)')
-            ->where('A.type','khach-hang')
-            ->orderBy('A.priority','asc')
-            ->orderBy('A.id','desc')
-            ->limit(5)
-            ->get();
+        $this->_data['single_post'] = get_pages('san-pham-moi');
 
         $this->_data['new_posts'] = DB::table('posts as A')
             ->leftjoin('post_languages as B', 'A.id', '=', 'B.post_id')

@@ -30,30 +30,14 @@ class TemplateFactory {
                         <a href="#" class="add-to-wishlist" data-ajax="id='. $product->id .'" title="Wishlist"></a>
                     </div>
                     <div class="info">
-                        <h2 class="title"><a href="'.$link.'">'.$product->title.'</a>
-                            <span class="code">#'.$product->code.' - Sales: 61.6K - 
-                                <span class="rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <span>(5.8K)</span>
-                                </span>
-                            </span>
-                        </h2>
+                        <span class="price">
+                            '.self::getTemplateProductPrice($product->regular_price, $product->sale_price).'
+                        </span>
+                        <h2 class="title"><a href="'.$link.'">'.$product->title.'</a></h2>
                     </div>
                     <div class="action">
-                        <p class="float-left">
-                            <span class="price">
-                            '.self::getTemplateProductPrice($product->regular_price, $product->sale_price).'
-                            </span>
-                        </p>
-                        <p class="float-right">
-                            <a href="#" class="btn btn-success" > Xem trước </a>
-                            <a href="#" class="btn btn-info add-to-cart" data-ajax="id='. $product->id .'"> Mua ngay </a>
-                            
-                        </p>
+                        <a href="#" class="btn btn-success" > Xem trước </a>
+                        <a href="#" class="btn btn-info add-to-cart" data-ajax="id='. $product->id .'"> Mua ngay </a>
                     </div>
                 </div>
             </div>

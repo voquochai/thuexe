@@ -1694,50 +1694,35 @@ span.sub_label {
 .single-post {
 	text-align: center;
 }
-.single-post:hover img{
-	-webkit-transform: scale(0.9);
-			transform: scale(0.9);
-}
-.single-post img {
-	max-height: 120px;
-	-webkit-transition: .3s;
-	transition: .3s;
-}
 .single-post h2 {
-	font-size: 17px;
+	font-size: 30px;
 	color: #3e445b;
 	font-weight: 600;
 	-webkit-transition: .3s;
 	transition: .3s;
 
 }
-.single-post:hover h2{
-	color: #5DAFEF;
+.single-post h2 span{
+	color: #94da46;
 }
+
 .single-post p {
 	color: #536d87;
-	padding: 0 10px;
+	padding: 20px 0px 10px;
 }
 
 /*-- Product section --*/
 .product-section {
-	background-color: #fafafa;
+	background-color: #fff;
 }
 .product-item{
 	position: relative;
 	margin-bottom: 30px;
-	border-radius: 4px;
-	-webkit-border-radius: 4px;
-	background-color: #fff;
-	box-shadow: 0 0 16px #ccc;
-	transition: all .3s ease;
-	-webkit-transition: all .3s ease;
 }
 .product-item:hover{
-	box-shadow: 0 0 16px #999;
 }
 .product-item:hover .title a{
-	color: #5dafef;
+	color: #94da46;
 }
 .product-item:after{
 	content: '';
@@ -1745,16 +1730,24 @@ span.sub_label {
 	clear: both;
 }
 .product-item .image{
-	position: relative;
-	border-radius: 4px 4px 0px 0px;
-	-webkit-border-radius: 4px 4px 0px 0px;
 	overflow: hidden;
 }
 .product-item .image img{
 	width: 100%;
+	transform: scale(1);
+	-webkit-transform: scale(1);
+	transition: all .3s;
+	-webkit-transition: all .3s;
+}
+.product-item:hover .image img{
+	transform: scale(1.2);
+	-webkit-transform: scale(1.2);
 }
 .product-item .info{
-	padding: 10px;
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+	padding: 0px 20px;
 }
 .product-item .title{
 	margin: 0px;
@@ -1782,25 +1775,25 @@ span.sub_label {
 }
 
 .product-item .action{
+	display: none;
 	padding: 10px;
 }
 .product-item .action p{
 	margin-bottom: 0px;
 }
-.product-item .action .price,
-.product-item .action .rating{
+.product-item .price,
+.product-item .rating{
 	display: block;
 }
-.product-item .action .price span{
-	display: block;
-	line-height: 17px;
+.product-item .price span{
 }
-.product-item .action .price .new{
+.product-item .price .new{
 	font-weight: bold;
-	font-size: 17px;
-	color: #f00;
+	font-size: 25px;
+	color: #000;
 }
-.product-item .action .price .old{
+.product-item .price .old{
+	font-size: 15px;
 	color: #999;
 	text-decoration: line-through;
 }

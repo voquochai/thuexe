@@ -147,13 +147,13 @@
                     <div class="form-group">
                         <label class="control-label">Hình ảnh</label>
                         <div>
-                            <div class="fileinput <?php echo e(( $item->image && public_path( get_thumbnail($folder.'/'.$item->image) ) ) ? 'fileinput-exists' : 'fileinput-new'); ?>" data-provides="fileinput">
+                            <div class="fileinput <?php echo e(( $item->image && file_exists(public_path(get_thumbnail($path.'/'.$item->image))) ) ? 'fileinput-exists' : 'fileinput-new'); ?>" data-provides="fileinput">
                                 <div class="fileinput-new thumbnail">
                                     <img src="<?php echo e(asset('noimage/'.$thumbs['_small']['width'].'x'.$thumbs['_small']['height'])); ?>" alt="">
                                 </div>
                                 <div class="fileinput-preview fileinput-exists thumbnail">
-                                    <?php if( $item->image && public_path( get_thumbnail($folder.'/'.$item->image) ) ): ?>
-                                    <img src="<?php echo e(asset( get_thumbnail('public/'.$folder.'/'.$item->image) )); ?>" alt="">
+                                    <?php if( $item->image && file_exists(public_path(get_thumbnail($path.'/'.$item->image))) ): ?>
+                                    <img src="<?php echo e(asset( get_thumbnail('public/'.$path.'/'.$item->image) )); ?>" alt="">
                                     <?php endif; ?>
                                 </div>
                                 <div>
@@ -162,7 +162,7 @@
                                         <span class="fileinput-exists"> Thay đổi </span>
                                         <input type="file" name="image">
                                     </span>
-                                    <a href="javascript:;" class="btn btn-delete-file default fileinput-exists" data-dismiss="fileinput" data-ajax="act=delete_file|table=pages|id=<?php echo e($item->id); ?>|config=page|type=<?php echo e($type); ?>"> Xóa </a>
+                                    <a href="javascript:;" class="btn btn-delete-file default fileinput-exists" data-dismiss="fileinput" data-ajax="act=delete_file|path=<?php echo e($path.'/'.$item->image); ?>|thumbs=<?php echo e(json_encode($thumbs)); ?>"> Xóa </a>
                                 </div>
                             </div>
                         </div>

@@ -353,6 +353,23 @@ return [
 		]
 	],
 	'page' => [
+		'san-pham-moi' 	=>	[
+			'page-title'	=>	'Sản phẩm mới',
+			'description' =>	true,
+			'contents'    =>	false,
+			'link'    =>	false,
+			'seo'	=>	false,
+			'image'       =>	true,
+			'thumbs'	=>	[
+				'_small' => [
+					'width'  =>	370,
+					'height' =>	230,
+				],
+			],
+			'status'      => [
+				'publish'     => 'Hiển thị',
+			]
+		],
 		'gioi-thieu' 	=>	[
 			'page-title'	=>	'Giới thiệu',
 			'description' =>	false,
