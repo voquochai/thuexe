@@ -27,7 +27,6 @@ class TemplateFactory {
                 <div class="product-item">
                     <div class="image">
                         <a href="'.$link.'"><img src="'. ( $product->image && file_exists(public_path('/uploads/products/'.$product->image)) ? asset( 'public/uploads/products/'.get_thumbnail($product->image, '_medium') ) : asset('noimage/350x350') ) .'" alt="'.$product->alt.'" /></a>
-                        <a href="#" class="add-to-wishlist" data-ajax="id='. $product->id .'" title="Wishlist"></a>
                     </div>
                     <div class="info">
                         <span class="price">
@@ -36,9 +35,11 @@ class TemplateFactory {
                         <h2 class="title"><a href="'.$link.'">'.$product->title.'</a></h2>
                     </div>
                     <div class="action">
-                        <a href="#" class="btn btn-success" > Xem trước </a>
-                        <a href="#" class="btn btn-info add-to-cart" data-ajax="id='. $product->id .'"> Mua ngay </a>
+                        <a href="#" class="btn add-to-wishlist dropdown-toggle tooltips" data-style="default" data-container="body" data-placement="top" data-original-title="Yêu thích" data-ajax="id='. $product->id .'"> <i class="fa fa-heart-o"></i> </a>
+                        <a href="#" class="btn dropdown-toggle tooltips add-to-cart" data-style="default" data-container="body" data-placement="top" data-original-title="Giỏ hàng" data-ajax="id='. $product->id .'"> <i class="fa fa-shopping-cart"></i> </a>
+                        <a href="#" class="btn dropdown-toggle tooltips" data-style="default" data-container="body" data-placement="top" data-original-title="Xem nhanh" > <i class="fa fa-search"></i> </a>
                     </div>
+                    <a href="'.$link.'" class="link"></a>
                 </div>
             </div>
 		';

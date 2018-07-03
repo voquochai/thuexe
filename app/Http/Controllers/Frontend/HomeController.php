@@ -73,9 +73,9 @@ class HomeController extends Controller
     }
 
     public function contact(){
-        $this->_data['page_title'] = __('site.contact');
+        $this->_data['page']['title'] = __('site.contact');
         $this->_data['breadcrumb'] = '<li> <a href="'.url('/').'">'.__('site.home').'</a> </li>';
-        $this->_data['breadcrumb'] .= '<li> <a href="'.url('/lien-he').'"> '.$this->_data['page_title'].' </a> </li>';
+        $this->_data['breadcrumb'] .= '<li> <a href="'.url('/lien-he').'"> '.$this->_data['page']['title'].' </a> </li>';
         $this->_data['contact'] = get_pages('lien-he',$this->_data['lang']);
         if( $this->_data['contact'] && $this->_data['contact']->meta_seo !='' ){
             $current_seo = json_decode($this->_data['contact']->meta_seo);
@@ -330,9 +330,9 @@ class HomeController extends Controller
     }
 
     public function viewed(Request $request){
-        $this->_data['page_title'] = __('site.viewed');
+        $this->_data['page']['title'] = __('site.viewed');
         $this->_data['breadcrumb'] = '<li> <a href="'.url('/').'">'.__('site.home').'</a> </li>';
-        $this->_data['breadcrumb'] .= '<li> <a href="'.url('/lien-he').'"> '.$this->_data['page_title'].' </a> </li>';
+        $this->_data['breadcrumb'] .= '<li> <a href="'.url('/lien-he').'"> '.$this->_data['page']['title'].' </a> </li>';
         $this->_data['meta_seo'] = set_meta_tags($this->_data['lang']);
         $viewed = is_array($viewed = json_decode($request->cookie('viewed'), true)) ? $viewed : [];
         if( count($viewed) > 0 ){

@@ -1,7 +1,7 @@
 @extends('frontend.default.master')
 @section('content')
 <!-- PAGE SECTION START -->
-<div class="page-section section pt-60 pb-60 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
+<div class="page-section pt-60 pb-60 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
     <div class="container">
         <div class="row">
             <div class="col-lg-9 col-md-8 col-xs-12">

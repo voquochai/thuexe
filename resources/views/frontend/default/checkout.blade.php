@@ -1,7 +1,7 @@
 @extends('frontend.default.master')
 @section('content')
 <!-- PAGE SECTION START -->
-<div class="page-section section pt-100 pb-60">
+<div class="page-section pt-100 pb-60">
     <div class="container">
         <div class="row">
             @include('frontend.default.blocks.messages')

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 01, 2018 lúc 05:46 PM
+-- Thời gian đã tạo: Th7 03, 2018 lúc 06:20 PM
 -- Phiên bản máy phục vụ: 10.1.30-MariaDB
 -- Phiên bản PHP: 5.6.33
 
@@ -463,7 +463,8 @@ INSERT INTO `pages` (`id`, `link`, `image`, `alt`, `priority`, `status`, `type`,
 (1, NULL, NULL, NULL, 1, 'publish', 'gioi-thieu', 0, NULL, NULL, NULL),
 (2, NULL, NULL, NULL, 1, 'publish', 'tuyen-dung', 0, NULL, NULL, NULL),
 (3, NULL, NULL, NULL, 1, 'publish', 'lien-he', 0, NULL, NULL, NULL),
-(4, NULL, NULL, NULL, 1, 'publish', 'footer', 0, NULL, NULL, '2018-07-01 06:20:02');
+(4, NULL, NULL, NULL, 1, 'publish', 'footer', 0, NULL, NULL, '2018-07-01 06:20:02'),
+(5, NULL, '2018-07/single-img.jpg', NULL, 1, 'publish', 'san-pham-moi', 0, NULL, '2018-07-02 15:26:29', '2018-07-02 15:37:49');
 
 -- --------------------------------------------------------
 
@@ -494,7 +495,8 @@ INSERT INTO `page_languages` (`id`, `title`, `slug`, `description`, `contents`, 
 (5, 'Liên hệ', 'lien-he', NULL, NULL, NULL, 'vi', 3),
 (6, 'Liên hệ', 'lien-he', NULL, NULL, NULL, 'en', 3),
 (7, 'Footer', 'footer', NULL, '<p>We are a creative company that specializes in strategy & design. We like to create things with like - minded people who are serious about their passions.</p>', NULL, 'vi', 4),
-(8, 'Footer', 'footer', NULL, NULL, NULL, 'en', 4);
+(8, 'Footer', 'footer', NULL, NULL, NULL, 'en', 4),
+(9, 'Sản phẩm mới', 'san-pham-moi', 'Lorem ipsum dolor sit amet, consectetur adipisc elit Nam mattis sapien a ipsum dapibus Ut nec massadui maecenas vel justo ipsum tincidunt tempor.', NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 5);
 
 -- --------------------------------------------------------
 
@@ -560,7 +562,7 @@ CREATE TABLE `photos` (
 --
 
 INSERT INTO `photos` (`id`, `link`, `image`, `alt`, `priority`, `status`, `type`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, NULL, '2018-07/slider-1.jpg', NULL, 1, 'publish', 'slideshow', NULL, '2018-07-01 05:39:18', '2018-07-01 05:39:18'),
+(1, 'https://google.com.vn', '2018-07/slider-1.jpg', NULL, 1, 'publish', 'slideshow', NULL, '2018-07-01 05:39:18', '2018-07-03 15:13:34'),
 (2, NULL, '2018-07/slider-2.jpg', NULL, 2, 'publish', 'slideshow', NULL, '2018-07-01 05:40:34', '2018-07-01 05:40:34');
 
 -- --------------------------------------------------------
@@ -582,7 +584,7 @@ CREATE TABLE `photo_languages` (
 --
 
 INSERT INTO `photo_languages` (`id`, `title`, `description`, `language`, `photo_id`) VALUES
-(1, NULL, NULL, 'vi', 1),
+(1, 'Fashion store', 'Lorem ipsum dolor sit amet, consectetur adipisc elit', 'vi', 1),
 (2, NULL, NULL, 'vi', 2);
 
 -- --------------------------------------------------------
@@ -750,7 +752,7 @@ INSERT INTO `products` (`id`, `code`, `regular_price`, `sale_price`, `original_p
 (3, '8425074', 290000, 200000, 50000, 500, NULL, NULL, NULL, NULL, 1, 'publish', NULL, 1, 1, 'san-pham', 0, NULL, '2018-06-29 15:43:52', '2018-06-29 15:43:52'),
 (4, '8665', 290000, 200000, 50000, 500, NULL, NULL, NULL, NULL, 1, 'publish', NULL, 1, 1, 'san-pham', 0, NULL, '2018-06-29 15:43:52', '2018-06-29 15:43:52'),
 (5, '555879722', 290000, 200000, 50000, 500, NULL, NULL, NULL, NULL, 1, 'publish', NULL, 1, 1, 'san-pham', 0, NULL, '2018-06-29 15:43:52', '2018-06-29 15:43:52'),
-(6, '1', 290000, 200000, 50000, 500, NULL, '2018-07/product5.jpg', NULL, '', 1, 'publish', NULL, 1, 1, 'san-pham', 0, NULL, '2018-06-29 15:43:52', '2018-07-01 15:46:01'),
+(6, '1', 290000, 200000, 50000, 500, NULL, '2018-07/product5.jpg', NULL, '', 1, 'publish,new', NULL, 1, 1, 'san-pham', 0, NULL, '2018-06-29 15:43:52', '2018-07-01 15:46:01'),
 (7, '5252', 290000, 200000, 50000, 500, NULL, '2018-07/product4.jpg', NULL, '', 1, 'publish,new', NULL, 1, 1, 'san-pham', 0, NULL, '2018-06-29 15:43:52', '2018-07-01 15:45:39'),
 (8, '4', 290000, 200000, 50000, 500, NULL, '2018-07/product3.jpg', NULL, '', 1, 'publish,new', NULL, 1, 1, 'san-pham', 0, NULL, '2018-06-29 15:43:52', '2018-07-01 15:45:13'),
 (9, '26855', 290000, 200000, 50000, 500, NULL, '2018-07/product2.jpg', NULL, '', 1, 'publish,new', NULL, 1, 1, 'san-pham', 0, NULL, '2018-06-29 15:43:52', '2018-07-01 15:45:00'),
@@ -1561,13 +1563,13 @@ ALTER TABLE `order_details`
 -- AUTO_INCREMENT cho bảng `pages`
 --
 ALTER TABLE `pages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `page_languages`
 --
 ALTER TABLE `page_languages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT cho bảng `permissions`

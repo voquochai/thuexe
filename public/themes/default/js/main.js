@@ -38,7 +38,7 @@
     });
 
     /*-- WOW --*/
-    // new WOW().init();
+    new WOW().init();
     /*-- Nivo Slider --*/
     $('#home-slider').nivoSlider({
         directionNav: true,

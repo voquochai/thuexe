@@ -3,9 +3,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
-                    <h2>{{ $page['title'] }}</h2>
+                    <h2><?php echo e($page['title']); ?></h2>
                     <ul class="breadcrumb">
-                        {!! $breadcrumb !!}
+                        <?php echo $breadcrumb; ?>
+
                     </ul>
                 </div>
             </div>

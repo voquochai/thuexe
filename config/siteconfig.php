@@ -198,7 +198,7 @@ return [
 			'seo'	=>	true,
 			'attributes'    =>	false,
 			'image'       =>	true,
-			'images'      =>	true,
+			'images'      =>	false,
 			'thumbs'	=>	[
 				'_small' => [
 					'width'  =>	360,
@@ -219,11 +219,32 @@ return [
 			'seo'	=>	true,
 			'attributes'    =>	false,
 			'image'       =>	true,
-			'images'      =>	true,
+			'images'      =>	false,
 			'thumbs'	=>	[
 				'_small' => [
 					'width'  =>	360,
 					'height' =>	240,
+				],
+			],
+			'status'      => [
+				'publish'     => 'Hiển thị',
+			],
+			'post_tags'	=>	true,
+		],
+		'bo-suu-tap' 	=>	[
+			'page-title'	=>	'Bộ sưu tập',
+			'category'    =>	false,
+			'description' =>	true,
+			'contents'    =>	true,
+			'link'    =>	true,
+			'seo'	=>	true,
+			'attributes'    =>	false,
+			'image'       =>	true,
+			'images'      =>	true,
+			'thumbs'	=>	[
+				'_small' => [
+					'width'  =>	500,
+					'height' =>	500,
 				],
 			],
 			'status'      => [

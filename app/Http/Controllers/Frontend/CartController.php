@@ -47,9 +47,9 @@ class CartController extends Controller
         });
     }
     public function index(Request $request){
-        $this->_data['page_title'] = __('site.cart');
+        $this->_data['page']['title'] = __('site.cart');
         $this->_data['breadcrumb'] = '<li> <a href="'.url('/').'">'.__('site.home').'</a> </li>';
-        $this->_data['breadcrumb'] .= '<li> <a href="'.url('/gio-hang').'"> '.$this->_data['page_title'].' </a> </li>';
+        $this->_data['breadcrumb'] .= '<li> <a href="'.url('/gio-hang').'"> '.$this->_data['page']['title'].' </a> </li>';
         if(count($this->_data['cart']) > 0) {
             $sumCartPrice = $sumOrderPrice = 0;
             $countCart = count($this->_data['cart']);
@@ -80,9 +80,9 @@ class CartController extends Controller
         return view('frontend.default.cart', $this->_data);
     }
     public function tracking(Request $request){
-        $this->_data['page_title'] = __('site.tracking');
+        $this->_data['page']['title'] = __('site.tracking');
         $this->_data['breadcrumb'] = '<li> <a href="'.url('/').'">'.__('site.home').'</a> </li>';
-        $this->_data['breadcrumb'] .= '<li> '.$this->_data['page_title'].' </li>';
+        $this->_data['breadcrumb'] .= '<li> '.$this->_data['page']['title'].' </li>';
         $this->_data['item'] = Order::where('email',$request->email)->where('code',$request->code)->first();
         if ($this->_data['item'] !== null) {
             $this->_data['product'] = $this->_data['item']->details()->get()->first();
@@ -91,9 +91,9 @@ class CartController extends Controller
         
     }
     public function checkOut(Request $request){
-        $this->_data['page_title'] = __('site.checkout');
+        $this->_data['page']['title'] = __('site.checkout');
         $this->_data['breadcrumb'] = '<li> <a href="'.url('/').'">'.__('site.home').'</a> </li>';
-        $this->_data['breadcrumb'] .= '<li> <a href="'.url('/thanh-toan').'"> '.$this->_data['page_title'].' </a> </li>';
+        $this->_data['breadcrumb'] .= '<li> <a href="'.url('/thanh-toan').'"> '.$this->_data['page']['title'].' </a> </li>';
         $this->_data['payments'] = DB::table('posts as A')
             ->leftjoin('post_languages as B', 'A.id', '=', 'B.post_id')
             ->select('A.id','A.link','B.title','B.slug','B.description')
@@ -211,9 +211,9 @@ class CartController extends Controller
         }
     }
     public function thankYou(){
-        $this->_data['page_title'] = __('cart.continue_shopping');
+        $this->_data['page']['title'] = __('cart.continue_shopping');
         $this->_data['breadcrumb'] = '<li> <a href="'.url('/').'">'.__('site.home').'</a> </li>';
-        $this->_data['breadcrumb'] .= '<li> <a href="'.url('/san-pham').'"> '.$this->_data['page_title'].' </a> </li>';
+        $this->_data['breadcrumb'] .= '<li> <a href="'.url('/san-pham').'"> '.$this->_data['page']['title'].' </a> </li>';
         return view('frontend.default.thankyou',$this->_data);
     }
     public function checkCoupon(){

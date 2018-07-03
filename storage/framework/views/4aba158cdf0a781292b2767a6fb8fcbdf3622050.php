@@ -1,6 +1,6 @@
 <?php $__env->startSection('content'); ?>
 <!-- PRODUCT SECTION START -->
-<section class="product-section ptb-60 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
+<section class="product-section pt-60 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
     <div class="container">
         <div class="row display-flex">
             <?php $__empty_1 = true; $__currentLoopData = $new_products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $val): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
@@ -21,5 +21,12 @@
     </div>
 </section>
 <!-- PRODUCT SECTION END -->
+
+<section class="collection-section pt-40 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
+    <div class="container">
+        <div class="section-title"> <h2>Bộ <span>sưu tập</span> </h2> </div>
+    </div>
+</section>
+
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('frontend.default.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

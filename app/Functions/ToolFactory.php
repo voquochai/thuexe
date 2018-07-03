@@ -18,8 +18,8 @@ class ToolFactory {
                 $data['page']['title'] = __('site.service');
                 $data['template'] = "post";
                 break;
-            case "thu-thuat":
-                $data['page']['title'] = __('site.tip');
+            case "tin-tuc":
+                $data['page']['title'] = __('site.news');
                 $data['template'] = "post";
                 break;
             case "gioi-thieu":

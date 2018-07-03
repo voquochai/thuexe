@@ -19,9 +19,6 @@ textarea,
 	-webkit-transition: all 0.3s ease 0s;
 	transition: all 0.3s ease 0s;
 }
-.btn{
-	min-width: 100px;
-}
 .btn,
 .form-control,
 .alert{
@@ -87,19 +84,15 @@ h6 a {
 /*-- Section Title --*/
 .section-title {
 	margin-bottom: 40px;
-	text-align: center;
-}
-.section-title:after{
-	content: '';
-	display: inline-block;
-	width: 97px;
-	height: 20px;
-	background: url('../images/section-shape.png') no-repeat; 
 }
 .section-title h2 {
-	font-weight: 700;
-	color: #536d87;
-	font-size: 36px;
+	font-weight: 600;
+	color: #333;
+	font-size: 30px;
+	margin: 0px;
+}
+.section-title h2 span {
+	color: #94da46;
 }
 .section-title span {
 	color: #5dafef;
@@ -1592,71 +1585,44 @@ span.sub_label {
 }
 /*-- Hero Video Content --*/
 .hero-video-caption {
-	background-color: rgba(240, 240, 240, 0.8);
+	/*background-color: rgba(240, 240, 240, 0.8);*/
 	padding: 250px 0;
 }
 /*-- Slider Content --*/
-.hero-slider-content {}
+.hero-slider-content {
+	text-align: center;
+}
 .hero-slider-content h4 {
 	font-weight: 500;
 	margin-bottom: 15px;
 	text-transform: uppercase;
 }
-.hero-slider-content h1 {
+.hero-slider-content h2 {
 	font-size: 50px;
+	color: #94da46;
 	font-weight: 700;
 	margin-bottom: 15px;
-	margin-left: -3px;
 	text-transform: uppercase;
 }
 .hero-slider-content p {
-	color: #282828;
-	line-height: 28px;
+	color: #fff;
+	font-size: 40px;
 	margin-bottom: 30px;
 	padding: 0;
 }
 .hero-slider-content a {
-	background-color: #282828;
-	color: #fff;
+	background-color: #fff;
+	color: #94da46;
 	display: inline-block;
-	font-size: 13px;
+	font-size: 20px;
 	font-weight: 500;
 	height: 40px;
-	line-height: 24px;
 	padding: 8px 30px;
 	text-transform: uppercase;
 }
 .hero-slider-content a:hover {
-	background-color: #ffae00;
-}
-
-/*-- Slider Content 2 --*/
-.hero-slider-content-2 {}
-.hero-slider-content-2 h1 {
-	font-size: 36px;
-	font-weight: 700;
-	margin-bottom: 30px;
-	margin-left: -3px;
-	text-transform: uppercase;
-}
-.hero-slider-content-2 h1 span {
-	font-size: 60px;
-	text-transform: uppercase;
-	display: block;
-}
-.hero-slider-content-2 a {
-	background-color: #282828;
 	color: #fff;
-	display: inline-block;
-	font-size: 13px;
-	font-weight: 500;
-	height: 40px;
-	line-height: 24px;
-	padding: 8px 30px;
-	text-transform: uppercase;
-}
-.hero-slider-content-2 a:hover {
-	background-color: #ffae00;
+	background-color: #94da46;
 }
 
 /*-- Nivo Direction Nav --*/
@@ -1773,14 +1739,6 @@ span.sub_label {
 	font-size: 13px;
 	color: #c49f47;
 }
-
-.product-item .action{
-	display: none;
-	padding: 10px;
-}
-.product-item .action p{
-	margin-bottom: 0px;
-}
 .product-item .price,
 .product-item .rating{
 	display: block;
@@ -1797,10 +1755,54 @@ span.sub_label {
 	color: #999;
 	text-decoration: line-through;
 }
-.product-item .action:after{
-	content:'';
-	display: block;
-	clear: both;
+.product-item .link{
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+    background-color: rgba(215, 255, 241, 0.7);
+    -webkit-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.product-item:hover .link{
+	opacity: 1;
+	visibility: visible;
+}
+.product-item .action{
+	text-align: center;
+    position: absolute;
+    top: 50%;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform: translate3d(0, -50%, 0);
+    transform: translate3d(0, -50%, 0);
+    left: 0;
+    right: 0;
+    z-index: 3;
+    -webkit-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.product-item:hover .action{
+	opacity: 1;
+	visibility: visible;
+}
+
+.product-item .action a{
+	background: #fff;
+	color: #333;
+	padding: 10px 15px;
+	margin: 0px 5px;
+}
+
+.product-item .action a:hover{
+	background: #94da46;
+	color: #fff;
 }
 
 .display-list .product-item .image{
