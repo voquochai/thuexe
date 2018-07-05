@@ -3,7 +3,7 @@
 <section class="slider-section">
 	<div id="home-slider" class="slides">
 		<?php $__empty_1 = true; $__currentLoopData = $slideshow; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $slide): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-		<img src="<?php echo e(asset('public/uploads/photos/'.$slide->image)); ?>" alt="" title="#slider-caption-<?php echo e($key); ?>"  />
+		<img src="<?php echo e(asset('public/uploads/photos/'.$slide->image)); ?>" alt="<?php echo e($slide->alt); ?>" title="#slider-caption-<?php echo e($key); ?>"  />
 		<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
 		<?php endif; ?>
 	</div>

@@ -123,6 +123,12 @@ if (!function_exists('get_template_post')) {
     }
 }
 
+if (!function_exists('get_template_collection')) {
+    function get_template_collection($post,$type='bai-viet',$show=4) {
+        return Template::getTemplateCollection($post,$type,$show);
+    }
+}
+
 if (!function_exists('get_template_single_post')) {
     function get_template_single_post($post,$type='bai-viet',$show=4) {
         return Template::getTemplateSinglePost($post,$type,$show);

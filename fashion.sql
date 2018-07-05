@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 03, 2018 lúc 06:20 PM
+-- Thời gian đã tạo: Th7 05, 2018 lúc 07:49 PM
 -- Phiên bản máy phục vụ: 10.1.30-MariaDB
 -- Phiên bản PHP: 5.6.33
 
@@ -85,8 +85,9 @@ INSERT INTO `categories` (`id`, `parent`, `image`, `alt`, `icon`, `priority`, `s
 (3, 0, NULL, NULL, NULL, 2, 'publish', 'san-pham', NULL, '2018-06-29 17:26:21', '2018-06-29 17:26:21'),
 (4, 0, NULL, NULL, NULL, 3, 'publish', 'san-pham', NULL, '2018-06-29 17:28:09', '2018-06-29 17:28:09'),
 (5, 0, NULL, NULL, NULL, 4, 'publish', 'san-pham', NULL, '2018-06-29 17:28:19', '2018-06-29 17:28:19'),
-(6, 2, NULL, NULL, NULL, 1, 'publish', 'san-pham', NULL, '2018-06-29 18:03:16', '2018-06-29 18:03:21'),
-(7, 0, NULL, NULL, NULL, 1, 'publish', 'tin-tuc', NULL, '2018-06-30 16:01:24', '2018-06-30 16:01:24');
+(6, 2, NULL, NULL, NULL, 1, 'publish,index', 'san-pham', NULL, '2018-06-29 18:03:16', '2018-06-29 18:03:21'),
+(7, 0, NULL, NULL, NULL, 1, 'publish', 'tin-tuc', NULL, '2018-06-30 16:01:24', '2018-06-30 16:01:24'),
+(8, 3, NULL, NULL, NULL, 1, 'index,publish', 'san-pham', NULL, '2018-07-05 17:06:22', '2018-07-05 17:06:22');
 
 -- --------------------------------------------------------
 
@@ -117,7 +118,8 @@ INSERT INTO `category_languages` (`id`, `title`, `slug`, `description`, `content
 (5, 'Couple', 'couple', NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 4),
 (6, 'Phụ kiện', 'phu-kien', NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 5),
 (7, 'Áo thun nam', 'ao-thun-nam', NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 6),
-(8, 'Danh mục tin tức 1', 'danh-muc-tin-tuc-1', NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 7);
+(8, 'Danh mục tin tức 1', 'danh-muc-tin-tuc-1', NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 7),
+(9, 'Áo thun nữ', 'ao-thun-nu', NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 8);
 
 -- --------------------------------------------------------
 
@@ -563,7 +565,9 @@ CREATE TABLE `photos` (
 
 INSERT INTO `photos` (`id`, `link`, `image`, `alt`, `priority`, `status`, `type`, `deleted_at`, `created_at`, `updated_at`) VALUES
 (1, 'https://google.com.vn', '2018-07/slider-1.jpg', NULL, 1, 'publish', 'slideshow', NULL, '2018-07-01 05:39:18', '2018-07-03 15:13:34'),
-(2, NULL, '2018-07/slider-2.jpg', NULL, 2, 'publish', 'slideshow', NULL, '2018-07-01 05:40:34', '2018-07-01 05:40:34');
+(2, NULL, '2018-07/slider-2.jpg', NULL, 2, 'publish', 'slideshow', NULL, '2018-07-01 05:40:34', '2018-07-01 05:40:34'),
+(3, NULL, '2018-07/banner1.jpg', 'Label banner 1', 1, 'publish', 'banner', NULL, '2018-07-05 17:27:04', '2018-07-05 17:41:55'),
+(4, NULL, '2018-07/banner2.jpg', 'Label banner 2', 2, 'publish', 'banner', NULL, '2018-07-05 17:27:16', '2018-07-05 17:42:01');
 
 -- --------------------------------------------------------
 
@@ -585,7 +589,9 @@ CREATE TABLE `photo_languages` (
 
 INSERT INTO `photo_languages` (`id`, `title`, `description`, `language`, `photo_id`) VALUES
 (1, 'Fashion store', 'Lorem ipsum dolor sit amet, consectetur adipisc elit', 'vi', 1),
-(2, NULL, NULL, 'vi', 2);
+(2, NULL, NULL, 'vi', 2),
+(3, 'Banner 1', NULL, 'vi', 3),
+(4, 'Banner 2', NULL, 'vi', 4);
 
 -- --------------------------------------------------------
 
@@ -634,7 +640,15 @@ INSERT INTO `posts` (`id`, `link`, `image`, `alt`, `attachments`, `priority`, `s
 (17, NULL, NULL, NULL, NULL, 1, 'publish', 1, 1, 'tin-tuc', 0, NULL, '2018-06-29 15:43:53', '2018-06-29 15:43:53'),
 (18, NULL, NULL, NULL, NULL, 1, 'publish', 1, 1, 'tin-tuc', 0, NULL, '2018-06-29 15:43:53', '2018-06-29 15:43:53'),
 (19, NULL, NULL, NULL, NULL, 1, 'publish', 1, 1, 'tin-tuc', 0, NULL, '2018-06-29 15:43:53', '2018-06-29 15:43:53'),
-(20, NULL, NULL, NULL, NULL, 1, 'publish', 1, 1, 'tin-tuc', 0, NULL, '2018-06-29 15:43:53', '2018-06-29 15:43:53');
+(20, NULL, NULL, NULL, NULL, 1, 'publish', 1, 1, 'tin-tuc', 0, NULL, '2018-06-29 15:43:53', '2018-06-29 15:43:53'),
+(21, NULL, '2018-07/portfolio1.jpg', NULL, '', 1, 'publish', 1, 1, 'bo-suu-tap', 0, NULL, '2018-07-05 15:22:12', '2018-07-05 15:33:54'),
+(22, NULL, '2018-07/portfolio2.jpg', NULL, NULL, 1, 'publish', 1, 1, 'bo-suu-tap', 0, NULL, '2018-07-05 15:34:13', '2018-07-05 15:34:13'),
+(23, NULL, '2018-07/portfolio3.jpg', NULL, NULL, 1, 'publish', 1, 1, 'bo-suu-tap', 0, NULL, '2018-07-05 15:34:27', '2018-07-05 15:34:27'),
+(24, NULL, '2018-07/portfolio4.jpg', NULL, NULL, 1, 'publish', 1, 1, 'bo-suu-tap', 0, NULL, '2018-07-05 15:34:38', '2018-07-05 15:34:38'),
+(25, NULL, '2018-07/portfolio5.jpg', NULL, NULL, 1, 'publish', 1, 1, 'bo-suu-tap', 0, NULL, '2018-07-05 15:34:48', '2018-07-05 15:34:48'),
+(26, NULL, '2018-07/portfolio6-400x800.jpg', NULL, '', 1, 'publish', 1, 1, 'bo-suu-tap', 0, NULL, '2018-07-05 15:34:59', '2018-07-05 16:24:03'),
+(27, NULL, '2018-07/portfolio7.jpg', NULL, NULL, 1, 'publish', 1, 1, 'bo-suu-tap', 0, NULL, '2018-07-05 15:35:11', '2018-07-05 15:35:11'),
+(28, NULL, '2018-07/portfolio8.jpg', NULL, NULL, 1, 'publish', 1, 1, 'bo-suu-tap', 0, NULL, '2018-07-05 15:35:22', '2018-07-05 15:35:22');
 
 -- --------------------------------------------------------
 
@@ -711,7 +725,15 @@ INSERT INTO `post_languages` (`id`, `title`, `slug`, `description`, `contents`, 
 (37, 'Alda O\'Kon', 'alda-okon', 'Et voluptas nisi ratione omnis. Cum fuga repellendus quia. Voluptatem quos itaque ullam doloremque nesciunt non quaerat.', 'Totam voluptate dolorem quasi facilis fugit. Aut ullam dolorem eveniet labore voluptatem quod illo. Fugit magni ut aut ipsum fugiat ut quo unde. Aut quos ut omnis perspiciatis.', NULL, '{\"title\":\"Alda O\'Kon\",\"keywords\":\"Alda O\'Kon\",\"description\":\"Alda O\'Kon\"}', 'vi', 19),
 (38, 'Kenneth Fahey', 'kenneth-fahey', 'Modi sed quae quasi dicta consequuntur in doloremque et. Aut ipsa voluptatem officiis in laborum velit. Adipisci labore sed et veniam dolorem. Laboriosam reiciendis nisi alias sit.', 'Modi sed corporis dolores dolore et. Earum nulla perferendis voluptatibus numquam est libero commodi. Maiores consequatur in cum quas. Atque qui corporis libero praesentium. Est repudiandae iste corrupti esse est.', NULL, '{\"title\":\"Kenneth Fahey\",\"keywords\":\"Kenneth Fahey\",\"description\":\"Kenneth Fahey\"}', 'en', 19),
 (39, 'Ms. Kitty Kunde', 'ms-kitty-kunde', 'Tempora vitae aut voluptatem. Fuga ab fuga aperiam facilis at voluptas est. Placeat perspiciatis id tempore ut esse. Autem rem excepturi quam repellendus ipsam illo molestias.', 'Recusandae doloremque quod ipsam quia reiciendis qui blanditiis. Eligendi cupiditate quas ut hic ut animi. Quos sit consectetur et neque aliquid. Reprehenderit minima nisi similique corporis non harum.', NULL, '{\"title\":\"Ms. Kitty Kunde\",\"keywords\":\"Ms. Kitty Kunde\",\"description\":\"Ms. Kitty Kunde\"}', 'vi', 20),
-(40, 'Malinda Wintheiser', 'malinda-wintheiser', 'Fugiat porro mollitia doloremque rerum. Ut sit eos reiciendis eligendi amet distinctio. Sunt et at exercitationem dolorem ut sed.', 'Enim totam eum tempore facere ipsam quis. Deleniti distinctio eius omnis dolores quia reprehenderit. Et veritatis incidunt est culpa et.', NULL, '{\"title\":\"Malinda Wintheiser\",\"keywords\":\"Malinda Wintheiser\",\"description\":\"Malinda Wintheiser\"}', 'en', 20);
+(40, 'Malinda Wintheiser', 'malinda-wintheiser', 'Fugiat porro mollitia doloremque rerum. Ut sit eos reiciendis eligendi amet distinctio. Sunt et at exercitationem dolorem ut sed.', 'Enim totam eum tempore facere ipsam quis. Deleniti distinctio eius omnis dolores quia reprehenderit. Et veritatis incidunt est culpa et.', NULL, '{\"title\":\"Malinda Wintheiser\",\"keywords\":\"Malinda Wintheiser\",\"description\":\"Malinda Wintheiser\"}', 'en', 20),
+(41, 'Bộ sưu tập 01', 'bo-suu-tap-01', NULL, NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 21),
+(42, 'Bộ sưu tập 02', 'bo-suu-tap-02', NULL, NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 22),
+(43, 'Bộ sưu tập 03', 'bo-suu-tap-03', NULL, NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 23),
+(44, 'Bộ sưu tập 04', 'bo-suu-tap-04', NULL, NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 24),
+(45, 'Bộ sưu tập 05', 'bo-suu-tap-05', NULL, NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 25),
+(46, 'Bộ sưu tập 06', 'bo-suu-tap-06', NULL, NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 26),
+(47, 'Bộ sưu tập 07', 'bo-suu-tap-07', NULL, NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 27),
+(48, 'Bộ sưu tập 08', 'bo-suu-tap-08', NULL, NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 28);
 
 -- --------------------------------------------------------
 
@@ -1485,13 +1507,13 @@ ALTER TABLE `attribute_languages`
 -- AUTO_INCREMENT cho bảng `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `category_languages`
 --
 ALTER TABLE `category_languages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT cho bảng `comments`
@@ -1581,25 +1603,25 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT cho bảng `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `photo_languages`
 --
 ALTER TABLE `photo_languages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT cho bảng `post_languages`
 --
 ALTER TABLE `post_languages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT cho bảng `products`

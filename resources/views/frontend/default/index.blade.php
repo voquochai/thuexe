@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row display-flex">
             @forelse($new_products as $key => $val)
-            	@if($key == 1)
+            	@if($key == 1 && $single_post)
             	<div class="col-md-4 col-sm-6 col-xs-12">
             		<div class="single-post">
 	            		<h2 class="title"> Sản phẩm <span>mới</span> </h2>
@@ -25,6 +25,28 @@
 <section class="collection-section pt-40 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
     <div class="container">
         <div class="section-title"> <h2>Bộ <span>sưu tập</span> </h2> </div>
+    </div>
+    <div class="collection-wrap">
+        @forelse($collections as $key => $val)
+            {!! get_template_collection($val,'bo-suu-tap',4) !!}
+        @empty
+        @endforelse
+    </div>
+</section>
+
+<section class="banner-section pt-60 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
+    <div class="container">
+        <div class="section-title pb-40 text-center"> <h2>Banner</h2> </div>
+        <div class="banner-wrap display-flex">
+            @forelse($banners as $key => $banner)
+            <div class="banner-item col-xs-6 col-xs-wide">
+                <img src="{{ asset('public/uploads/photos/'.$banner->image) }}" alt="{{ $banner->alt }}" />
+                <h3 class="title">{{ $banner->title }}</h3>
+                <span class="label">{{ $banner->alt }}</span>
+            </div>
+            @empty
+            @endforelse
+        </div>
     </div>
 </section>
 

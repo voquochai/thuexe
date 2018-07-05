@@ -58,6 +58,19 @@ class HomeController extends Controller
 
         $this->_data['single_post'] = get_pages('san-pham-moi');
 
+        $this->_data['collections'] = DB::table('posts as A')
+            ->leftjoin('post_languages as B', 'A.id', '=', 'B.post_id')
+            ->select('A.id','A.link','A.image','A.alt','A.updated_at','B.title','B.slug','B.description')
+            ->where('B.language',$this->_data['lang'])
+            ->whereRaw('FIND_IN_SET(\'publish\',A.status)')
+            ->where('A.type','bo-suu-tap')
+            ->orderBy('A.priority','asc')
+            ->orderBy('A.id','desc')
+            ->limit(8)
+            ->get();
+
+        $this->_data['banners'] = get_photos('banner');
+
         $this->_data['new_posts'] = DB::table('posts as A')
             ->leftjoin('post_languages as B', 'A.id', '=', 'B.post_id')
             ->select('A.id','A.link','A.image','A.alt','A.updated_at','B.title','B.slug','B.description')

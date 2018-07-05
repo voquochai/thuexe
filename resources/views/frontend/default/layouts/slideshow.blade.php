@@ -3,7 +3,7 @@
 <section class="slider-section">
 	<div id="home-slider" class="slides">
 		@forelse($slideshow as $key => $slide)
-		<img src="{{ asset('public/uploads/photos/'.$slide->image) }}" alt="" title="#slider-caption-{{ $key }}"  />
+		<img src="{{ asset('public/uploads/photos/'.$slide->image) }}" alt="{{ $slide->alt }}" title="#slider-caption-{{ $key }}"  />
 		@empty
 		@endforelse
 	</div>

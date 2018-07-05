@@ -86,7 +86,7 @@ h6 a {
 	margin-bottom: 40px;
 }
 .section-title h2 {
-	font-weight: 600;
+	font-weight: 700;
 	color: #333;
 	font-size: 30px;
 	margin: 0px;
@@ -2030,7 +2030,7 @@ span.sub_label {
 	text-align: center;
 	line-height: 30px;
 	color: #5DAFEF;
-	border: 1px solid#D0E2F4;
+	border: 1px solid #D0E2F4;
 	border-radius: 50%;
 	-webkit-transition: .3s;
 	transition: .3s;
@@ -2053,6 +2053,95 @@ span.sub_label {
 }
 .blog-item:hover .title a{
 	color: #5dafef;
+}
+
+.collection-wrap:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+.collection-item{
+	padding: 0px;
+}
+.collection-item:nth-child(5){
+	width: 50%;
+}
+.collection-item .image{
+	position: relative;
+	overflow: hidden;
+}
+.collection-item .title{
+	margin-top: 0px;
+}
+.collection-item .title a{
+	color: #94da46;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-shadow: 0px 0px 3px #000;
+}
+.collection-item .social{
+	margin-bottom: 0px;
+}
+.collection-item .social span {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	color: #fff;
+	border-radius: 50%;
+	-webkit-transition: .3s;
+	transition: .3s;
+	margin-right: 5px;
+	font-size: 14px;
+}
+.collection-item .social span:hover {
+	color: #fff;
+	background: #94da46;
+}
+.collection-item .desc{
+	position: absolute;
+    background: #333;
+    background: rgba(75,75,75,0.7);
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: -webkit-radial-gradient(circle, rgba(0, 0, 0, 0.1), #000000);
+    background: -o-radial-gradient(circle, rgba(0, 0, 0, 0.1), #000000);
+    background: -moz-radial-gradient(circle, rgba(0, 0, 0, 0.1), #000000);
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.1), #000000);
+    opacity: 0;
+}
+.collection-item:hover .desc{
+	opacity: 1;
+}
+.collection-item .desc div{
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+}
+
+.banner-item{
+	padding: 0px;
+}
+.banner-item .title{
+	cursor: pointer;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    margin: 0;
+    -moz-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -webkit-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out;
+    transition: all 0.35s ease-in-out;
+    font-size: 60px;
+    color: #fff;
 }
 
 /*-- Post detail --*/

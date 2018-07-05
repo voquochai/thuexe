@@ -501,8 +501,8 @@ return [
             'image'       =>	true,
             'thumbs'	=>	[
                 '_small' => [
-                    'width'  =>	570,
-                    'height' =>	285,
+                    'width'  =>	585,
+                    'height' =>	580,
                 ],
             ],
             'status'      => [

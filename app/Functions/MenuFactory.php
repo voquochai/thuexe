@@ -50,8 +50,9 @@ class MenuFactory{
 	}
 	public function getMenu($self=0,$parent=0,$lvl=0){
 		if( isset($this->_data[$parent]) ){
+
 			if( is_array($this->_open) ){
-				$this->_result.= (count($this->_open) > $lvl) ? $this->_open[$lvl] : $this->_open[--$lvl];
+				$this->_result.= (count($this->_open) > $lvl) ? $this->_open[$lvl] : $this->_open[$lvl-1];
 			}else{
 				$this->_result.= $this->_open;
 			}
@@ -66,7 +67,7 @@ class MenuFactory{
 				$slug=$v->slug;
 				if( $id == $self ) $isActive = 'class="active"'; else $isActive = '';
 				$this->_result.= "<a href='$this->_baseurl/$slug' data-lvl='$lvl' $isActive >".$icon.$v->title."</a>";
-				$this->getMenu($self,$id,++$lvl);
+				$this->getMenu($self,$id,$lvl+1);
 				$this->_result.= $this->_closeitem;
 			}
 			if( is_array($this->_close) ){

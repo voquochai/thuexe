@@ -51,6 +51,18 @@
         prevText: '<i class="pe-7s-angle-left-circle"></i>',
         nextText: '<i class="pe-7s-angle-right-circle"></i>'
     });
+
+    var $container = $('div.collection-wrap');
+    $container.imagesLoaded(function () {
+        $container.isotope({
+            itemSelector: '.collection-item',
+            layoutMode: 'packery',
+            packery: {}
+        }).isotope('layout');
+    });
+    $('div.collection-item .image').hoverdir({
+        hoverElem: '.desc'
+    });
     /*-- Testimonial Slider --*/
     // $('.testimonial-slider').slick({
     //     slidesToShow: 1,
