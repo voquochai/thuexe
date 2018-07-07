@@ -83,7 +83,7 @@ h6 a {
 }
 /*-- Section Title --*/
 .section-title {
-	margin-bottom: 40px;
+	margin-bottom: 60px;
 }
 .section-title h2 {
 	font-weight: 600;
@@ -1683,7 +1683,6 @@ span.sub_label {
 }
 .product-item{
 	position: relative;
-	margin-bottom: 30px;
 }
 .product-item:hover{
 }
@@ -1969,7 +1968,6 @@ span.sub_label {
 /*-- Blog Item --*/
 .blog-item {
 	text-align: center;
-	margin-bottom: 50px;
 	border-radius: 5px;
 	-webkit-transition: .3s;
 	transition: .3s;
@@ -2071,7 +2069,7 @@ span.sub_label {
 	color: #94da46;
 }
 .blog-item:hover{
-
+	box-shadow: 0px 0px 10px #999;
 }
 .blog-item:hover .image:before{
 	-webkit-transform: scale(1);
@@ -2286,6 +2284,11 @@ span.sub_label {
 }
 
 /*-- Slick --*/
+.slick-blog .slick-slide:active,
+.slick-blog .slick-slide:visited,
+.slick-blog .slick-slide:focus{
+	outline: none;
+}
 .slick-blog .slick-next:before,
 .slick-blog .slick-prev:before{
 	color: #000;

@@ -14,16 +14,16 @@ class TemplateFactory {
 		return $price;
 		
 	}
-	public function getTemplateProduct($product,$type='san-pham',$show=4){
+	public function getTemplateProduct($product,$type='san-pham',$show=4, $moreClass=''){
         if($type == '') $type = $product->type;
 		$link = ($product->link) ? $product->link : route('frontend.home.page',['type' => $type, 'slug' => $product->slug]);
-        if($show==6){ $cls = "col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-wide"; }
-        elseif($show==4){ $cls = "col-md-3 col-sm-4 col-xs-6 col-xs-wide"; }
-        elseif($show==3){ $cls = "col-md-4 col-sm-6 col-xs-12"; }
-        elseif($show==2){ $cls = "col-sm-6 col-xs-12"; }
-        elseif($show==1){ $cls = "col-xs-12"; }
+        if($show==6){ $class = "col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-wide"; }
+        elseif($show==4){ $class = "col-md-3 col-sm-4 col-xs-6 col-xs-wide"; }
+        elseif($show==3){ $class = "col-md-4 col-sm-6 col-xs-12"; }
+        elseif($show==2){ $class = "col-sm-6 col-xs-12"; }
+        elseif($show==1){ $class = "col-xs-12"; }
 		$template = '
-            <div class="'.$cls.'">
+            <div class="'.$class.' '.$moreClass.'">
                 <div class="product-item">
                     <div class="image">
                         <a href="'.$link.'"><img src="'. ( $product->image && file_exists(public_path('/uploads/products/'.$product->image)) ? asset( 'public/uploads/products/'.get_thumbnail($product->image, '_medium') ) : asset('noimage/350x350') ) .'" alt="'.$product->alt.'" /></a>
@@ -47,16 +47,16 @@ class TemplateFactory {
 		return $template;
 	}
 
-    public function getTemplatePost($post,$type='bai-viet',$show=4){
+    public function getTemplatePost($post,$type='bai-viet',$show=4,$moreClass=''){
         if($type == '') $type = $post->type;
         $link = ($post->link) ? $post->link : route('frontend.home.page',['type' => $type, 'slug' => $post->slug]);
-        if($show==6){ $cls = "col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-wide"; }
-        elseif($show==4){ $cls = "col-md-3 col-sm-4 col-xs-6 col-xs-wide"; }
-        elseif($show==3){ $cls = "col-md-4 col-sm-6 col-xs-12"; }
-        elseif($show==2){ $cls = "col-sm-6 col-xs-12"; }
-        elseif($show==1){ $cls = "col-xs-12"; }
+        if($show==6){ $class = "col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-wide"; }
+        elseif($show==4){ $class = "col-md-3 col-sm-4 col-xs-6 col-xs-wide"; }
+        elseif($show==3){ $class = "col-md-4 col-sm-6 col-xs-12"; }
+        elseif($show==2){ $class = "col-sm-6 col-xs-12"; }
+        elseif($show==1){ $class = "col-xs-12"; }
         $template = '
-            <div class="'.$cls.' mb-40">
+            <div class="'.$class.' '.$moreClass.'">
                 <div class="blog-item">
                     <a class="image" href="'.$link.'"><img src="'. ( $post->image && file_exists(public_path('/uploads/posts/'.$post->image)) ? asset( 'public/uploads/posts/'.get_thumbnail($post->image) ) : asset('noimage/330x220') ) .'" alt="'.$post->alt.'" /></a>
                     <div class="desc">
@@ -72,16 +72,16 @@ class TemplateFactory {
         return $template;
     }
 
-    public function getTemplateCollection($post,$type='bai-viet',$show=4){
+    public function getTemplateCollection($post,$type='bai-viet',$show=4,$moreClass=''){
         if($type == '') $type = $post->type;
         $link = ($post->link) ? $post->link : route('frontend.home.page',['type' => $type, 'slug' => $post->slug]);
-        if($show==6){ $cls = "col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-wide"; }
-        elseif($show==4){ $cls = "col-md-3 col-sm-4 col-xs-6 col-xs-wide"; }
-        elseif($show==3){ $cls = "col-md-4 col-sm-6 col-xs-12"; }
-        elseif($show==2){ $cls = "col-sm-6 col-xs-12"; }
-        elseif($show==1){ $cls = "col-xs-12"; }
+        if($show==6){ $class = "col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-wide"; }
+        elseif($show==4){ $class = "col-md-3 col-sm-4 col-xs-6 col-xs-wide"; }
+        elseif($show==3){ $class = "col-md-4 col-sm-6 col-xs-12"; }
+        elseif($show==2){ $class = "col-sm-6 col-xs-12"; }
+        elseif($show==1){ $class = "col-xs-12"; }
         $template = '
-            <div class="collection-item '.$cls.'">
+            <div class="collection-item '.$class.' '.$moreClass.'">
                 <div class="image">
                     <img src="'. ( $post->image && file_exists(public_path('/uploads/posts/'.$post->image)) ? asset( 'public/uploads/posts/'.$post->image ) : asset('noimage/500x500') ) .'" alt="'.$post->alt.'" />
                     <div class="desc">
@@ -103,16 +103,16 @@ class TemplateFactory {
         return $template;
     }
 
-    public function getTemplateSinglePost($post,$type='bai-viet',$show=4){
+    public function getTemplateSinglePost($post,$type='bai-viet',$show=4,$moreClass=''){
         if($type == '') $type = $post->type;
         $link = ($post->link) ? $post->link : route('frontend.home.page',['type' => $type, 'slug' => $post->slug]);
-        if($show==6){ $cls = "col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-wide"; }
-        elseif($show==4){ $cls = "col-md-3 col-sm-4 col-xs-6 col-xs-wide"; }
-        elseif($show==3){ $cls = "col-md-4 col-sm-6 col-xs-12"; }
-        elseif($show==2){ $cls = "col-sm-6 col-xs-12"; }
-        elseif($show==1){ $cls = "col-xs-12"; }
+        if($show==6){ $class = "col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-wide"; }
+        elseif($show==4){ $class = "col-md-3 col-sm-4 col-xs-6 col-xs-wide"; }
+        elseif($show==3){ $class = "col-md-4 col-sm-6 col-xs-12"; }
+        elseif($show==2){ $class = "col-sm-6 col-xs-12"; }
+        elseif($show==1){ $class = "col-xs-12"; }
         $template = '
-            <div class="'.$cls.' mb-40">
+            <div class="'.$class.' '.$moreClass.'">
                 <div class="single-post">
                     <img src="'. ( $post->image && file_exists(public_path('/uploads/posts/'.$post->image)) ? asset( 'public/uploads/posts/'.get_thumbnail($post->image) ) : asset('noimage/330x220') ) .'" alt="'.$post->alt.'" />
                     <h2 class="title">'.$post->title.'</h2>

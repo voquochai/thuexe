@@ -1,5 +1,5 @@
 <?php  $links = get_links('tieu-chi',$lang);  ?>
-<div class="service-section section pt-70 pb-40">
+<div class="service-section ptb-60">
     <div class="container">
         <div class="row">
             <?php $__empty_1 = true; $__currentLoopData = $links; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $link): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>

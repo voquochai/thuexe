@@ -1,5 +1,5 @@
 @php $links = get_links('tieu-chi',$lang); @endphp
-<div class="service-section section pt-70 pb-40">
+<section class="service-section ptb-60">
     <div class="container">
         <div class="row">
             @forelse($links as $link)
@@ -16,4 +16,4 @@
             @endforelse
         </div>
     </div>
-</div>
+</section>

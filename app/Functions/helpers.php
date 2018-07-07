@@ -106,8 +106,8 @@ if (!function_exists('get_product_in_warehouses')) {
 
 // Template
 if (!function_exists('get_template_product')) {
-    function get_template_product($product,$type='san-pham',$show=4) {
-        return Template::getTemplateProduct($product,$type,$show);
+    function get_template_product($product,$type='san-pham',$show=4,$moreClass='') {
+        return Template::getTemplateProduct($product,$type,$show,$moreClass);
     }
 }
 
@@ -118,20 +118,20 @@ if (!function_exists('get_template_product_price')) {
 }
 
 if (!function_exists('get_template_post')) {
-    function get_template_post($post,$type='bai-viet',$show=4) {
-        return Template::getTemplatePost($post,$type,$show);
+    function get_template_post($post,$type='bai-viet',$show=4,$moreClass='') {
+        return Template::getTemplatePost($post,$type,$show,$moreClass);
     }
 }
 
 if (!function_exists('get_template_collection')) {
-    function get_template_collection($post,$type='bai-viet',$show=4) {
-        return Template::getTemplateCollection($post,$type,$show);
+    function get_template_collection($post,$type='bai-viet',$show=4,$moreClass='') {
+        return Template::getTemplateCollection($post,$type,$show,$moreClass);
     }
 }
 
 if (!function_exists('get_template_single_post')) {
-    function get_template_single_post($post,$type='bai-viet',$show=4) {
-        return Template::getTemplateSinglePost($post,$type,$show);
+    function get_template_single_post($post,$type='bai-viet',$show=4,$moreClass='') {
+        return Template::getTemplateSinglePost($post,$type,$show,$moreClass);
     }
 }
 

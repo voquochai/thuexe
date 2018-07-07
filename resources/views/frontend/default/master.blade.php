@@ -75,6 +75,7 @@
         
 		@yield('content')
         
+        @include('frontend.default.layouts.brand')
 		@include('frontend.default.layouts.footer')
 	</div>
 	<!-- Body main wrapper end -->
