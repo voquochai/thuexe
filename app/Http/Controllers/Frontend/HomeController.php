@@ -79,7 +79,7 @@ class HomeController extends Controller
             ->where('A.type','tin-tuc')
             ->orderBy('A.priority','asc')
             ->orderBy('A.id','desc')
-            ->limit(3)
+            ->limit(6)
             ->get();
         
         return view('frontend.default.index', $this->_data);

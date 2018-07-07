@@ -206,6 +206,7 @@ return [
 				],
 			],
 			'status'      => [
+				'new'     => 'Mới',
 				'publish'     => 'Hiển thị',
 			],
 			'post_tags'	=>	true,

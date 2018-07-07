@@ -1,34 +1,19 @@
 <?php $__env->startSection('content'); ?>
-<!-- CRITERIA SECTION START -->
-<section class="criteria-section section ptb-60 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
-    <div class="container">
-        <div class="row">
-            <div class="section-title text-center col-xs-12 mb-70">
-                <h2> Tại sao chọn <span> Kho Web Online ?</span> </h2>
-            </div>
-        </div>
-        <div class="row display-flex">
-            <?php $__empty_1 = true; $__currentLoopData = $criteria; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $val): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                <?php echo get_template_single_post($val,'bai-viet',3); ?>
-
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-            <?php endif; ?>
-        </div>
-    </div>
-</section>
-<!-- CRITERIA SECTION END -->
-
 <!-- PRODUCT SECTION START -->
-<section class="product-section section ptb-60 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
+<section class="product-section pt-60" data-wow-duration="2s" data-wow-delay="0.2s">
     <div class="container">
-        <div class="row">
-            <div class="section-title text-center col-xs-12 mb-70">
-                <h2> Kho web <span> Chuẩn Seo </span> </h2>
-            </div>
-        </div>
         <div class="row display-flex">
-            <?php $__empty_1 = true; $__currentLoopData = $new_products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $val): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                <?php echo get_template_product($val,'san-pham',3); ?>
+            <?php $__empty_1 = true; $__currentLoopData = $new_products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $val): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+            	<?php if($key == 1 && $single_post): ?>
+            	<div class="col-md-4 col-sm-6 col-xs-12">
+            		<div class="single-post">
+	            		<h2 class="title"> Sản phẩm <span>mới</span> </h2>
+	            		<p class="desc"><?php echo e($single_post->description); ?></p>
+	            		<p class="image"><img src="<?php echo e(( $single_post->image && file_exists(public_path('/uploads/pages/'.$single_post->image)) ? asset( 'public/uploads/pages/'.get_thumbnail($single_post->image, '_small') ) : asset('noimage/370x230') )); ?>"></p>
+            		</div>
+            	</div>
+            	<?php endif; ?>
+            	<?php echo get_template_product($val,'san-pham',3); ?>
 
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
             <?php endif; ?>
@@ -37,136 +22,51 @@
 </section>
 <!-- PRODUCT SECTION END -->
 
-<!-- PRICING TABLE SECTION START -->
-<section class="pricing-table-section section ptb-60 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
+<section class="collection-section pt-40" data-wow-duration="2s" data-wow-delay="0.2s">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="section-title">
-                    <h2><span>Bảng giá</span> dịch vụ </h2>
-                </div>
-            </div>
-        </div>
+        <div class="section-title"> <h2>Bộ <span>sưu tập</span> </h2> </div>
+    </div>
+    <div class="collection-wrap">
+        <?php $__empty_1 = true; $__currentLoopData = $collections; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $val): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+            <?php echo get_template_collection($val,'bo-suu-tap',4); ?>
 
-        <div class="row display-flex">
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="single-pricing-table">
-                    <h2>Cá nhân</h2>
-                    <img src="<?php echo e(asset('public/themes/default/images/pricing/pricing-icon-2.png')); ?>" alt="pricing-icon">
-                    <div class="pricing-amount">
-                        <span class="price">1.000.000</span>
-                        <sup><span class="currency">đ</span></sup>
-                        <span class="subscription"> / 1 năm </span>
-                    </div>
-                    <div class="pricing-content">
-                        <ul>
-                            <li>Dung lượng <span>1GB</span></li>
-                            <li>Băng thông <span>30GB</span></li>
-                            <li>Địa chỉ Email <span>5</span></li>
-                            <li>Park/ Addon Domain <span>1</span></li>
-                            <li>Giao diện website <span>1</span></li>
-                            <li>Upload dữ liệu <b class="fa fa-question-circle tooltips" data-style="default" data-container="body" data-placement="bottom" data-original-title="Không hỗ trợ upload dữ liệu, chỉnh sửa hình ảnh, nội dung"></b> <i class="fa fa-close fa-fw"></i></li>
-                            <li>Chỉnh sửa giao diện <i class="fa fa-close fa-fw"></i></li>
-                            <li>Sao lưu dữ liệu <b class="fa fa-question-circle tooltips" title="Sao lưu 1 lần vào cuối tháng"></b> <span>1 / Tháng</span></li>
-                            <li>Hỗ trợ 24/7 <i class="fa fa-check fa-fw"></i></li>
-                        </ul>
-                        <a class="pricing-btn blue-btn" href="#"> Đăng ký </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="single-pricing-table blue">
-                    <h2>Doanh nghiệp</h2>
-                    <img src="<?php echo e(asset('public/themes/default/images/pricing/pricing-icon-4.png')); ?>" alt="pricing-icon">
-                    <div class="pricing-amount">
-                        <span class="price">3.000.000</span>
-                        <sup><span class="currency">đ</span></sup>
-                        <span class="subscription"> / 1 năm </span>
-                    </div>
-                    <div class="pricing-content">
-                        <ul>
-                            <li>Dung lượng <span>4GB</span></li>
-                            <li>Băng thông <span>120GB</span></li>
-                            <li>Địa chỉ Email <span>4</span></li>
-                            <li>Park/ Addon Domain <span>4</span></li>
-                            <li>Giao diện website <span>2</span></li>
-                            <li>Upload dữ liệu <b class="fa fa-question-circle tooltips" data-style="default" data-container="body" data-placement="bottom" data-original-title="Hỗ trợ upload 100 sản phẩm, 50 bài viết và chỉnh sửa hình ảnh"></b> <i class="fa fa-check fa-fw"></i></li>
-                            <li>Chỉnh sửa giao diện <i class="fa fa-check fa-fw"></i></li>
-                            <li>Sao lưu dữ liệu <b class="fa fa-question-circle tooltips" data-style="default" data-container="body" data-placement="bottom" data-original-title="Sao lưu 2 lần vào giữa và cuối tháng"></b> <span>2 / Tháng</span></li>
-                            <li>Hỗ trợ 24/7 <i class="fa fa-check fa-fw"></i></li>
-                        </ul>
-                        <a class="pricing-btn blue-btn" href="#"> Đăng ký </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="single-pricing-table">
-                    <h2>Thương mại</h2>
-                    <img src="<?php echo e(asset('public/themes/default/images/pricing/pricing-icon-3.png')); ?>" alt="pricing-icon">
-                    <div class="pricing-amount">
-                        <span class="price">5.000.000</span>
-                        <sup><span class="currency">đ</span></sup>
-                        <span class="subscription"> / 1 năm </span>
-                    </div>
-                    <div class="pricing-content">
-                        <ul>
-                            <li>Dung lượng <span>7GB</span></li>
-                            <li>Băng thông <span>Unlimited</span></li>
-                            <li>Địa chỉ Email <span>7</span></li>
-                            <li>Park/ Addon Domain <span>7</span></li>
-                            <li>Giao diện website <span>3</span></li>
-                            <li>Upload dữ liệu <b class="fa fa-question-circle tooltips" data-style="default" data-container="body" data-placement="bottom" data-original-title="Hỗ trợ upload 500 sản phẩm, 100 bài viết và chỉnh sửa hình ảnh"></b> <i class="fa fa-check fa-fw"></i></li>
-                            <li>Chỉnh sửa giao diện <i class="fa fa-check fa-fw"></i></li>
-                            <li>Sao lưu dữ liệu <b class="fa fa-question-circle tooltips" data-style="default" data-container="body" data-placement="bottom" data-original-title="Sao lưu 3 lần vào ngày 5, 15, 25 hàng tháng"></b> <span>3 / Tháng</span></li>
-                            <li>Hỗ trợ 24/7 <i class="fa fa-check fa-fw"></i></li>
-                        </ul>
-                        <a class="pricing-btn blue-btn" href="#"> Đăng ký </a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+        <?php endif; ?>
     </div>
 </section>
-<!-- PRICING TABLE SECTION END -->
 
-<!-- FAN FACT SECTION START -->
-<section class="fan-fact-section section ptb-60">
+<section class="banner-section pt-60" data-wow-duration="2s" data-wow-delay="0.2s">
     <div class="container">
+        <div class="section-title pb-40 text-center"> <h2>Banner</h2> </div>
+        <div class="banner-wrap display-flex">
+            <?php $__empty_1 = true; $__currentLoopData = $banners; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $banner): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+            <div class="banner-item col-xs-6 col-xs-wide">
+                <img src="<?php echo e(asset('public/uploads/photos/'.$banner->image)); ?>" alt="<?php echo e($banner->alt); ?>" />
+                <h3 class="title"><?php echo e($banner->title); ?></h3>
+                <span class="label <?php echo e(($key+1)%2 == 0 ? 'label-left' : 'label-right'); ?>"><?php echo e($banner->alt); ?></span>
+            </div>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+            <?php endif; ?>
+        </div>
+    </div>
+</section>
+
+<section class="blog-section pt-60" data-wow-duration="2s" data-wow-delay="0.2s">
+    <div class="container">
+        <div class="section-title"> <h2>Tin tức <span>mới</span> </h2> </div>
         <div class="row">
-            <div class="col-md-3 col-sm-3 col-xs-6">
-                <div class="single-items">
-                    <h2><b data-counter="counterup" data-value="1000">0</b>+</h2>
-                    <img src="<?php echo e(asset('public/themes/default/images/fan-fact/fan-fact-1.png')); ?>" alt="fan-fact-icon">
-                    <h4>Registared Domains</h4>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-6">
-                <div class="single-items">
-                    <h2><b data-counter="counterup" data-value="1000">0</b>+</h2>
-                    <img src="<?php echo e(asset('public/themes/default/images/fan-fact/fan-fact-2.png')); ?>" alt="fan-fact-icon">
-                    <h4>Sites Hosted</h4>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-6">
-                <div class="single-items">
-                    <h2><b data-counter="counterup" data-value="1000">0</b>+</h2>
-                    <img src="<?php echo e(asset('public/themes/default/images/fan-fact/fan-fact-3.png')); ?>" alt="fan-fact-icon">
-                    <h4>Happy Clients</h4>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-6">
-                <div class="single-items">
-                    <h2><b data-counter="counterup" data-value="1000">0</b>+</h2>
-                    <img src="<?php echo e(asset('public/themes/default/images/fan-fact/fan-fact-4.png')); ?>" alt="fan-fact-icon">
-                    <h4>Awards Won</h4>
-                </div>
+            <div class="slick-blog">
+                <?php $__empty_1 = true; $__currentLoopData = $new_posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $val): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                    <div>
+                    <?php echo get_template_post($val,'tin-tuc',1); ?>
+
+                    </div>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                <?php endif; ?>
             </div>
         </div>
     </div>
 </section>
-<!-- FAN FACT SECTION END -->
 
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('frontend.default.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

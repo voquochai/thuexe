@@ -63,19 +63,17 @@
     $('div.collection-item .image').hoverdir({
         hoverElem: '.desc'
     });
-    /*-- Testimonial Slider --*/
-    // $('.testimonial-slider').slick({
-    //     slidesToShow: 1,
-    //     slidesToScroll: 1,
-    //     prevArrow: '<button type="button" class="arrow-prev"><i class="pe-7s-angle-left-circle"></i></button>',
-    //     nextArrow: '<button type="button" class="arrow-next"><i class="pe-7s-angle-right-circle"></i></button>',
-    //     responsive: [{
-    //         breakpoint: 767,
-    //         settings: {
-    //             arrows: false,
-    //         }
-    //     }, ]
-    // });
+    /*-- Blog Slider --*/
+    $('.slick-blog').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        responsive: [{
+            breakpoint: 767,
+            settings: {
+                arrows: false,
+            }
+        }, ]
+    });
     /*-- Product Slider 4 Item --*/
     // $('.product-slider-4').slick({
     //     speed: 700,

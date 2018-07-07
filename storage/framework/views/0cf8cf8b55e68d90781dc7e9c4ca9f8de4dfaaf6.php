@@ -1,5 +1,5 @@
 <!Doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="<?php echo e(app()->getLocale()); ?>">
+<html lang="<?php echo e(app()->getLocale()); ?>">
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -36,18 +36,19 @@
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo e(asset('public/uploads/photos/'.config('settings.favicon'))); ?>">
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&subset=vietnamese">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=vietnamese">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico&amp;subset=vietnamese">
     <link rel="stylesheet" href="<?php echo e(asset('public/css/bootstrap.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('public/packages/bootstrap-toastr/toastr.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('public/packages/bootstrap-select/css/bootstrap-select.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('public/css/font-awesome.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('public/css/pe-icon-7-stroke.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('public/css/animate.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('public/themes/default/css/plugins.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('public/css/app.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('public/themes/default/css/style.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('public/themes/default/css/responsive.css')); ?>">
     <?php echo $__env->yieldContent('custom_css'); ?>
-
     <?php echo e(config('settings.script_head')); ?>
 
 
@@ -74,8 +75,7 @@
 		<?php endif; ?>
         
 		<?php echo $__env->yieldContent('content'); ?>
-
-		<?php echo $__env->make('frontend.default.layouts.brand', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        
 		<?php echo $__env->make('frontend.default.layouts.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 	</div>
 	<!-- Body main wrapper end -->
@@ -97,8 +97,8 @@
 	<script src="<?php echo e(asset('public/themes/default/js/plugins.js')); ?>"></script>
 	<script src="<?php echo e(asset('public/js/app.js')); ?>"></script>
 	<script src="<?php echo e(asset('public/themes/default/js/main.js')); ?>"></script>
-	<?php echo $__env->yieldContent('custom_script'); ?>
 
+	<?php echo $__env->yieldContent('custom_script'); ?>
     <?php echo e(config('settings.script_body')); ?>
 
 </body>

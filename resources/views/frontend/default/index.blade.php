@@ -1,7 +1,7 @@
 @extends('frontend.default.master')
 @section('content')
 <!-- PRODUCT SECTION START -->
-<section class="product-section pt-60 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
+<section class="product-section pt-60" data-wow-duration="2s" data-wow-delay="0.2s">
     <div class="container">
         <div class="row display-flex">
             @forelse($new_products as $key => $val)
@@ -22,7 +22,7 @@
 </section>
 <!-- PRODUCT SECTION END -->
 
-<section class="collection-section pt-40 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
+<section class="collection-section pt-40" data-wow-duration="2s" data-wow-delay="0.2s">
     <div class="container">
         <div class="section-title"> <h2>Bộ <span>sưu tập</span> </h2> </div>
     </div>
@@ -34,7 +34,7 @@
     </div>
 </section>
 
-<section class="banner-section pt-60 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
+<section class="banner-section pt-60" data-wow-duration="2s" data-wow-delay="0.2s">
     <div class="container">
         <div class="section-title pb-40 text-center"> <h2>Banner</h2> </div>
         <div class="banner-wrap display-flex">
@@ -42,10 +42,26 @@
             <div class="banner-item col-xs-6 col-xs-wide">
                 <img src="{{ asset('public/uploads/photos/'.$banner->image) }}" alt="{{ $banner->alt }}" />
                 <h3 class="title">{{ $banner->title }}</h3>
-                <span class="label">{{ $banner->alt }}</span>
+                <span class="label {{ ($key+1)%2 == 0 ? 'label-left' : 'label-right' }}">{{ $banner->alt }}</span>
             </div>
             @empty
             @endforelse
+        </div>
+    </div>
+</section>
+
+<section class="blog-section pt-60" data-wow-duration="2s" data-wow-delay="0.2s">
+    <div class="container">
+        <div class="section-title"> <h2>Tin tức <span>mới</span> </h2> </div>
+        <div class="row">
+            <div class="slick-blog">
+                @forelse($new_posts as $key => $val)
+                    <div>
+                    {!! get_template_post($val,'tin-tuc',1) !!}
+                    </div>
+                @empty
+                @endforelse
+            </div>
         </div>
     </div>
 </section>

@@ -3,5 +3,5 @@
     <div class="form-group">
         <input type="email" value="" name="email" class="form-control" placeholder="Email Address" required>
     </div>
-    <button type="submit" class="btn btn-warning btn-ajax" data-ajax="act=newsletter|type=newsletter"> <?php echo e(__('account.register')); ?> </button>
+    <button type="submit" class="btn btn-site btn-ajax bold uppercase" data-ajax="act=newsletter|type=newsletter"> <?php echo e(__('account.register')); ?> </button>
 </form>

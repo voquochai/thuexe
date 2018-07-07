@@ -61,15 +61,9 @@ class TemplateFactory {
                     <a class="image" href="'.$link.'"><img src="'. ( $post->image && file_exists(public_path('/uploads/posts/'.$post->image)) ? asset( 'public/uploads/posts/'.get_thumbnail($post->image) ) : asset('noimage/330x220') ) .'" alt="'.$post->alt.'" /></a>
                     <div class="desc">
                         <h3 class="title"><a href="'.$link.'">'.$post->title.'</a></h3>
-                        <p> <span class="meta"><i class="pe-7s-date"></i> '.date(( config('settings.date_format') == 'custom' ? config('settings.date_custom_format') : config('settings.date_format') ),strtotime($post->updated_at)).'</span> </p>
-                        <p>'.substr($post->description,0,100).' <a href="'.$link.'">[...]</a> </p>
-                        <p class="social">
-                            <a href="#" target="_blank"><span class="fa fa-facebook"></span></a>
-                            <a href="#" target="_blank"><span class="fa fa-twitter"></span></a>
-                            <a href="#" target="_blank"><span class="fa fa-vimeo"></span></a>
-                            <a href="#" target="_blank"><span class="fa fa-pinterest"></span></a>
-                            <a href="#" target="_blank"><span class="fa fa-google"></span></a>
-                        </p>
+                        <p class="meta"> <span><i class="pe-7s-date"></i> '.date(( config('settings.date_format') == 'custom' ? config('settings.date_custom_format') : config('settings.date_format') ),strtotime($post->updated_at)).'</span> </p>
+                        <p>'.substr($post->description,0,100).'</p>
+                        <p><a href="'.$link.'">[...]</a></p>
                     </div>
                 </div>
             </div>
