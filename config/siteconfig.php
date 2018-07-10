@@ -510,15 +510,15 @@ return [
                 'publish'     => 'Hiển thị',
             ]
         ],
-        'bank' 	=>	[
-            'page-title'	=>	'Bank',
+        'partners' 	=>	[
+            'page-title'	=>	'Đối tác',
             'description' =>	false,
             'link'    =>	false,
             'image'       =>	true,
             'thumbs'	=>	[
                 '_small' => [
-                    'width'  =>	40,
-                    'height' =>	24,
+                    'width'  =>	200,
+                    'height' =>	100,
                 ],
             ],
             'status'      => [

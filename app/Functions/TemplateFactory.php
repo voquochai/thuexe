@@ -19,8 +19,8 @@ class TemplateFactory {
 		$link = ($product->link) ? $product->link : route('frontend.home.page',['type' => $type, 'slug' => $product->slug]);
         if($show==6){ $class = "col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-wide"; }
         elseif($show==4){ $class = "col-md-3 col-sm-4 col-xs-6 col-xs-wide"; }
-        elseif($show==3){ $class = "col-md-4 col-sm-6 col-xs-12"; }
-        elseif($show==2){ $class = "col-sm-6 col-xs-12"; }
+        elseif($show==3){ $class = "col-md-4 col-sm-6 col-xs-6 col-xs-wide"; }
+        elseif($show==2){ $class = "col-sm-6 col-xs-6 col-xs-wide"; }
         elseif($show==1){ $class = "col-xs-12"; }
 		$template = '
             <div class="'.$class.' '.$moreClass.'">

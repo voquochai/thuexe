@@ -6,7 +6,7 @@
         <div class="row display-flex">
             @forelse($new_products as $key => $val)
             	@if($key == 1 && $single_post)
-            	<div class="col-md-4 col-sm-6 col-xs-12 mb-30">
+            	<div class="col-md-4 col-sm-6 col-xs-6 col-xs-wide mb-30">
             		<div class="single-post">
 	            		<h2 class="title"> Sản phẩm <span>mới</span> </h2>
 	            		<p class="desc">{{ $single_post->description }}</p>

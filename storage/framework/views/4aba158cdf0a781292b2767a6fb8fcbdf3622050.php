@@ -5,7 +5,7 @@
         <div class="row display-flex">
             <?php $__empty_1 = true; $__currentLoopData = $new_products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $val): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
             	<?php if($key == 1 && $single_post): ?>
-            	<div class="col-md-4 col-sm-6 col-xs-12 mb-30">
+            	<div class="col-md-4 col-sm-6 col-xs-6 col-xs-wide mb-30">
             		<div class="single-post">
 	            		<h2 class="title"> Sản phẩm <span>mới</span> </h2>
 	            		<p class="desc"><?php echo e($single_post->description); ?></p>

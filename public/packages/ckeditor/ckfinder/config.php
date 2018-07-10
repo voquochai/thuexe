@@ -34,7 +34,10 @@ function CheckAuthentication()
 	// ... where $_SESSION['IsAuthorized'] is set to "true" as soon as the
 	// user logs in your system. To be able to use session variables don't
 	// forget to add session_start() at the top of this file.
-	return Auth::check();
+	if( Auth::check() ){
+		return true;
+	}
+	return false;
 }
 
 // LicenseKey : Paste your license key here. If left blank, CKFinder will be
@@ -63,7 +66,7 @@ Examples:
 
 ATTENTION: The trailing slash is required.
 */
-$config_url=$_SERVER["SERVER_NAME"].'/laravel/shop';
+$config_url=$_SERVER["SERVER_NAME"].'/laravel/begreen';
 $baseUrl = 'http://'.$config_url.'/public/uploads/';
 
 /*

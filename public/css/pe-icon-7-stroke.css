@@ -24,6 +24,19 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.pe-7s-2x {
+    font-size: 20px
+}
+.pe-7s-3x {
+    font-size: 30px
+}
+.pe-7s-4x {
+    font-size: 40px
+}
+.pe-7s-5x {
+    font-size: 50px
+}
+
 .pe-7s-album:before {
 	content: "\e6aa";
 }

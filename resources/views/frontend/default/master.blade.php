@@ -27,7 +27,7 @@
     <meta property="og:image" content="{{ @$meta_seo->image }}" />
     <meta property="og:description" content="{{ @$meta_seo->description }}" />
     <meta property="og:site_name" content="{{ config('settings.site_name') }}" />
-    <meta property="fb:admins" content="Facebook numberic ID" />
+    <meta property="fb:admins" content="{{ config('settings.facebook_app_id') }}" />
     <!-- Geo data -->
     <meta name="geo.placename" content="Viet Nam" />
     <meta name="geo.position" content="x;x" />
@@ -52,7 +52,7 @@
     {{ config('settings.script_head') }}
 
 </head>
-<body {{ $page['class'] ? 'class="'.$page['class'].'"' : '' }} >
+<body {{ $site['class'] ? 'class="'.$site['class'].'"' : '' }} >
     <div id="fb-root"></div>
     <script async defer>(function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];

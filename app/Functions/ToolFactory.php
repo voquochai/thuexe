@@ -5,33 +5,34 @@ use Intervention\Image\Facades\Image;
 class ToolFactory {
 
     public function setType($type=''){
-        $data['page']['title'] = __('site.home');
-        $data['page']['class'] = 'page-home';
+        $data['site']['title'] = __('site.home');
+        $data['site']['class'] = 'site-home';
         $data['type'] = $type;
 
         switch($type){
+            case "gioi-thieu":
+                $data['site']['title'] = __('site.about');
+                $data['template'] = "page";
+                break;
             case "san-pham":
-                $data['page']['title'] = __('site.product');
+                $data['site']['title'] = __('site.product');
                 $data['template'] = "product";
                 break;
             case "dich-vu":
-                $data['page']['title'] = __('site.service');
+                $data['site']['title'] = __('site.service');
                 $data['template'] = "post";
                 break;
             case "tin-tuc":
-                $data['page']['title'] = __('site.news');
+                $data['site']['title'] = __('site.news');
                 $data['template'] = "post";
                 break;
-            case "gioi-thieu":
-                $data['page']['title'] = __('site.about');
-                $data['template'] = "page";
-                break;
+            
             case "chinh-sach-quy-dinh":
-                $data['page']['title'] = "Chính sách & Quy định";
+                $data['site']['title'] = "Chính sách & Quy định";
                 $data['template'] = "post";
                 break;
             case "ho-tro-khach-hang":
-                $data['page']['title'] = "Hỗ trợ khách hàng";
+                $data['site']['title'] = "Hỗ trợ khách hàng";
                 $data['template'] = "post";
                 break;
             default:
@@ -40,7 +41,7 @@ class ToolFactory {
         }
         if($type !=''){
             $data['breadcrumb'] = '<li> <a href="'.url('/').'">'.__('site.home').'</a> </li>';
-            $data['breadcrumb'] .= '<li> <a href="'.url('/'.$type).'"> '.$data['page']['title'].' </a> </li>';
+            $data['breadcrumb'] .= '<li> <a href="'.url('/'.$type).'"> '.$data['site']['title'].' </a> </li>';
         }
         return $data;
     }

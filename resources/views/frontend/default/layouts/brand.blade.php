@@ -1,19 +1,10 @@
-@php $links = get_links('tieu-chi',$lang); @endphp
-<section class="service-section ptb-60">
-    <div class="container">
-        <div class="row">
-            @forelse($links as $link)
-            <div class="single-service col-md-3 col-sm-6 col-xs-6 mb-30">
-                <div class="service-icon">
-                    {!! $link->icon !!}
-                </div>
-                <div class="service-title">
-                    <h3> {{ $link->title }} </h3>
-                    <p> {{ $link->description }} </p>
-                </div>
-            </div>
-            @empty
-            @endforelse
-        </div>
+@php $photos = get_photos('partners',$lang); @endphp
+<section class="partners-section pt-60">
+    <div class="slick-partners">
+    @forelse($photos as $photo)
+        <div>
+            <a href="{{ $photo->link }}"><img src="{{ ( $photo->image && file_exists(public_path('/uploads/photos/'.$photo->image)) ? asset( 'public/uploads/photos/'.get_thumbnail($photo->image) ) : asset('noimage/200x100') ) }}" alt="{{ $photo->alt }}" /></a></div>
+    @empty
+    @endforelse
     </div>
 </section>

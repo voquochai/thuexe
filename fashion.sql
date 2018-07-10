@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0.1
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 07, 2018 lúc 11:43 AM
--- Phiên bản máy phục vụ: 10.1.32-MariaDB
--- Phiên bản PHP: 5.6.36
+-- Thời gian đã tạo: Th7 10, 2018 lúc 07:09 PM
+-- Phiên bản máy phục vụ: 10.1.30-MariaDB
+-- Phiên bản PHP: 5.6.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -567,7 +567,15 @@ INSERT INTO `photos` (`id`, `link`, `image`, `alt`, `priority`, `status`, `type`
 (1, 'https://google.com.vn', '2018-07/slider-1.jpg', NULL, 1, 'publish', 'slideshow', NULL, '2018-07-01 05:39:18', '2018-07-03 15:13:34'),
 (2, NULL, '2018-07/slider-2.jpg', NULL, 2, 'publish', 'slideshow', NULL, '2018-07-01 05:40:34', '2018-07-01 05:40:34'),
 (3, NULL, '2018-07/banner1.jpg', 'Label banner 1', 1, 'publish', 'banner', NULL, '2018-07-05 17:27:04', '2018-07-05 17:41:55'),
-(4, NULL, '2018-07/banner2.jpg', 'Label banner 2', 2, 'publish', 'banner', NULL, '2018-07-05 17:27:16', '2018-07-05 17:42:01');
+(4, NULL, '2018-07/banner2.jpg', 'Label banner 2', 2, 'publish', 'banner', NULL, '2018-07-05 17:27:16', '2018-07-05 17:42:01'),
+(5, NULL, NULL, NULL, 1, 'publish', 'partners', NULL, '2018-07-08 05:06:05', '2018-07-08 05:06:05'),
+(6, NULL, NULL, NULL, 2, 'publish', 'partners', NULL, '2018-07-08 05:06:25', '2018-07-08 05:06:25'),
+(7, NULL, NULL, NULL, 3, 'publish', 'partners', NULL, '2018-07-08 05:06:34', '2018-07-08 05:06:34'),
+(8, NULL, NULL, NULL, 4, 'publish', 'partners', NULL, '2018-07-08 05:06:43', '2018-07-08 05:06:43'),
+(9, NULL, NULL, NULL, 5, 'publish', 'partners', NULL, '2018-07-08 05:06:54', '2018-07-08 05:06:54'),
+(10, NULL, NULL, NULL, 6, 'publish', 'partners', NULL, '2018-07-08 05:07:06', '2018-07-08 05:07:06'),
+(11, NULL, NULL, NULL, 7, 'publish', 'partners', NULL, '2018-07-10 04:27:55', '2018-07-10 04:27:55'),
+(12, NULL, NULL, NULL, 8, 'publish', 'partners', NULL, '2018-07-10 04:28:05', '2018-07-10 04:28:05');
 
 -- --------------------------------------------------------
 
@@ -591,7 +599,15 @@ INSERT INTO `photo_languages` (`id`, `title`, `description`, `language`, `photo_
 (1, 'Fashion store', 'Lorem ipsum dolor sit amet, consectetur adipisc elit', 'vi', 1),
 (2, NULL, NULL, 'vi', 2),
 (3, 'Banner 1', NULL, 'vi', 3),
-(4, 'Banner 2', NULL, 'vi', 4);
+(4, 'Banner 2', NULL, 'vi', 4),
+(5, 'Logo 01', NULL, 'vi', 5),
+(6, 'Logo 02', NULL, 'vi', 6),
+(7, 'Logo 03', NULL, 'vi', 7),
+(8, 'Logo 04', NULL, 'vi', 8),
+(9, 'Logo 05', NULL, 'vi', 9),
+(10, 'Logo 06', NULL, 'vi', 10),
+(11, 'Logo 07', NULL, 'vi', 11),
+(12, 'Logo 08', NULL, 'vi', 12);
 
 -- --------------------------------------------------------
 
@@ -1603,13 +1619,13 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT cho bảng `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT cho bảng `photo_languages`
 --
 ALTER TABLE `photo_languages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT cho bảng `posts`
