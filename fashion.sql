@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 10, 2018 lúc 07:09 PM
+-- Thời gian đã tạo: Th7 12, 2018 lúc 07:09 PM
 -- Phiên bản máy phục vụ: 10.1.30-MariaDB
 -- Phiên bản PHP: 5.6.33
 
@@ -462,7 +462,7 @@ CREATE TABLE `pages` (
 --
 
 INSERT INTO `pages` (`id`, `link`, `image`, `alt`, `priority`, `status`, `type`, `viewed`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, NULL, NULL, NULL, 1, 'publish', 'gioi-thieu', 0, NULL, NULL, NULL),
+(1, NULL, NULL, NULL, 1, 'publish', 'gioi-thieu', 0, NULL, NULL, '2018-07-12 16:53:28'),
 (2, NULL, NULL, NULL, 1, 'publish', 'tuyen-dung', 0, NULL, NULL, NULL),
 (3, NULL, NULL, NULL, 1, 'publish', 'lien-he', 0, NULL, NULL, NULL),
 (4, NULL, NULL, NULL, 1, 'publish', 'footer', 0, NULL, NULL, '2018-07-01 06:20:02'),
@@ -490,7 +490,7 @@ CREATE TABLE `page_languages` (
 --
 
 INSERT INTO `page_languages` (`id`, `title`, `slug`, `description`, `contents`, `meta_seo`, `language`, `page_id`) VALUES
-(1, 'Giới thiệu', 'gioi-thieu', NULL, NULL, NULL, 'vi', 1),
+(1, 'Về chúng tôi', 've-chung-toi', NULL, '<div class=\"row\">\r\n<div class=\"col-md-6\">\r\n<h3>What is Lorem Ipsum?</h3>\r\n\r\n<p style=\"text-align: justify;\"><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\r\n</div>\r\n\r\n<div class=\"col-md-6\">\r\n<h3>Why do we use it?</h3>\r\n\r\n<p style=\"text-align: justify;\">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>\r\n</div>\r\n\r\n<div class=\"col-md-6\">\r\n<h3>Where does it come from?</h3>\r\n\r\n<p style=\"text-align: justify;\">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.</p>\r\n\r\n<p style=\"text-align: justify;\">The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>\r\n</div>\r\n\r\n<div class=\"col-md-6\">\r\n<h3>Where can I get some?</h3>\r\n\r\n<p style=\"text-align: justify;\">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>\r\n</div>\r\n</div>', '{\"title\":\"Gi\\u1edbi thi\\u1ec7u\",\"keywords\":null,\"description\":null}', 'vi', 1),
 (2, 'Giới thiệu', 'gioi-thieu', NULL, NULL, NULL, 'en', 1),
 (3, 'Tuyển dụng', 'tuyen-dung', NULL, NULL, NULL, 'vi', 2),
 (4, 'Tuyển dụng', 'tuyen-dung', NULL, NULL, NULL, 'en', 2),
@@ -575,7 +575,8 @@ INSERT INTO `photos` (`id`, `link`, `image`, `alt`, `priority`, `status`, `type`
 (9, NULL, NULL, NULL, 5, 'publish', 'partners', NULL, '2018-07-08 05:06:54', '2018-07-08 05:06:54'),
 (10, NULL, NULL, NULL, 6, 'publish', 'partners', NULL, '2018-07-08 05:07:06', '2018-07-08 05:07:06'),
 (11, NULL, NULL, NULL, 7, 'publish', 'partners', NULL, '2018-07-10 04:27:55', '2018-07-10 04:27:55'),
-(12, NULL, NULL, NULL, 8, 'publish', 'partners', NULL, '2018-07-10 04:28:05', '2018-07-10 04:28:05');
+(12, NULL, NULL, NULL, 8, 'publish', 'partners', NULL, '2018-07-10 04:28:05', '2018-07-10 04:28:05'),
+(13, 'http://localhost/laravel/begreen/gioi-thieu', '2018-07/bg-ab-title.jpg', 'Giới thiệu', 1, 'publish', 'background', NULL, '2018-07-12 15:41:57', '2018-07-12 15:41:57');
 
 -- --------------------------------------------------------
 
@@ -607,7 +608,8 @@ INSERT INTO `photo_languages` (`id`, `title`, `description`, `language`, `photo_
 (9, 'Logo 05', NULL, 'vi', 9),
 (10, 'Logo 06', NULL, 'vi', 10),
 (11, 'Logo 07', NULL, 'vi', 11),
-(12, 'Logo 08', NULL, 'vi', 12);
+(12, 'Logo 08', NULL, 'vi', 12),
+(13, 'Giới thiệu', NULL, 'vi', 13);
 
 -- --------------------------------------------------------
 
@@ -949,7 +951,7 @@ CREATE TABLE `seos` (
 --
 
 INSERT INTO `seos` (`id`, `link`, `priority`, `status`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 'http://localhost/laravel/begreen', 0, 'publish', NULL, NULL, '2018-06-29 17:22:32');
+(1, 'http://localhost/laravel/begreen', 0, 'publish', NULL, NULL, '2018-07-12 14:57:41');
 
 -- --------------------------------------------------------
 
@@ -1619,13 +1621,13 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT cho bảng `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT cho bảng `photo_languages`
 --
 ALTER TABLE `photo_languages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT cho bảng `posts`

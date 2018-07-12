@@ -51,11 +51,11 @@
     </div>
 </section>
 
-<section class="blog-section pt-60" data-wow-duration="2s" data-wow-delay="0.2s">
+<section class="post-section ptb-60" data-wow-duration="2s" data-wow-delay="0.2s">
     <div class="container">
         <div class="section-title"> <h2>Tin tức <span>mới</span> </h2> </div>
         <div class="row">
-            <div class="slick-blog">
+            <div class="slick-post">
                 <?php $__empty_1 = true; $__currentLoopData = $new_posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $val): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                     <div>
                     <?php echo get_template_post($val,'tin-tuc',1); ?>

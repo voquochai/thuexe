@@ -1,5 +1,5 @@
 <?php  $photos = get_photos('partners',$lang);  ?>
-<section class="partners-section pt-60">
+<section class="partners-section">
     <div class="slick-partners">
     <?php $__empty_1 = true; $__currentLoopData = $photos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $photo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
         <div>

@@ -52,7 +52,7 @@
     {{ config('settings.script_head') }}
 
 </head>
-<body {{ $site['class'] ? 'class="'.$site['class'].'"' : '' }} >
+<body {!! $site['class'] ? 'class="'.$site['class'].'"' : '' !!} >
     <div id="fb-root"></div>
     <script async defer>(function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
@@ -67,7 +67,7 @@
         @include('frontend.default.layouts.navbar')
 		@include('frontend.default.layouts.search')
 
-		@if(Route::currentRouteName() == 'frontend.home.index' || Route::currentRouteName() == 'frontend.domain.check_whois')
+		@if(Route::currentRouteName() == 'frontend.home.index')
 			@include('frontend.default.layouts.slideshow')
 		@else
 			@include('frontend.default.layouts.breadcrumb')

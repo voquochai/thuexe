@@ -1,9 +1,9 @@
-<section class="breadcrumb-section">
+<section <?php if( @$bg_breadcrumb->image && file_exists(public_path('/uploads/photos/'.@$bg_breadcrumb->image)) ): ?> class="breadcrumb-section" style="background-image: url('<?php echo e(asset( 'public/uploads/photos/'.$bg_breadcrumb->image )); ?>')" <?php else: ?> class="breadcrumb-section no-background" <?php endif; ?> >
     <div class="page-breadcrumb">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
-                    <h2><?php echo e($site['title']); ?></h2>
+                    <p><?php echo e($site['title']); ?></p>
                     <ul class="breadcrumb">
                         <?php echo $breadcrumb; ?>
 

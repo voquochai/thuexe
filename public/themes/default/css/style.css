@@ -123,15 +123,22 @@ h6 a {
 	background-color: #ffae00;
 	color: #fff;
 }
-
-.page-breadcrumb h2 {
+/*-- Page Breadcrumb --*/
+.breadcrumb-section{
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.page-breadcrumb{
+	padding: 100px 0px;
+}
+.page-breadcrumb p {
 	font-size: 30px;
-	font-weight: bold;
+	font-weight: 600;
 	color: #fff;
-	margin-bottom: 15px;
+	margin-bottom: 5px;
 	text-transform: uppercase;
 }
-/*-- Page Breadcrumb --*/
 .page-breadcrumb .breadcrumb {
 	background-color: transparent;
 	margin: 0;
@@ -148,10 +155,25 @@ h6 a {
 	color: #fff;
 }
 .page-breadcrumb .breadcrumb li:hover a {
-	color: #fff;
+	color: #94da46;
 }
 .page-breadcrumb .breadcrumb li.active {
-	color: #fff;
+	color: #94da46;
+}
+.breadcrumb-section.no-background{
+	background-color: #f2f2f2;
+}
+.breadcrumb-section.no-background .page-breadcrumb{
+	padding: 20px 0px;
+}
+.breadcrumb-section.no-background .page-breadcrumb p{
+	color: #333;
+}
+.breadcrumb-section.no-background .page-breadcrumb .breadcrumb > li + li::before {
+	color: #333;
+}
+.breadcrumb-section.no-background .page-breadcrumb .breadcrumb li a{
+	color: #333;
 }
 
 /*-- Sidebar --*/
@@ -356,10 +378,15 @@ h6 a {
 .header-logo {
 	padding: 21px 0;
 }
+.header-logo h1,
+.header-logo h2{
+	margin: 0px;
+}
 .header-logo a {
 	display: inline-block;
 }
 .header-logo a img {}
+.header-logo a strong { display: none; }
 
 /*-- Header Options --*/
 .header-option-btns {}
@@ -1963,21 +1990,21 @@ span.sub_label {
 	margin-bottom: 20px;
 }
 
-/*-- Blog Section --*/
-.blog-section {}
-/*-- Blog Item --*/
-.blog-item {
+/*-- Post Section --*/
+.post-section {}
+/*-- Post Item --*/
+.post-item {
 	text-align: center;
 	border-radius: 5px;
 	-webkit-transition: .3s;
 	transition: .3s;
 	overflow: hidden;
 }
-.blog-item .image {
+.post-item .image {
 	display: block;
 	position: relative;
 }
-.blog-item .image::before {
+.post-item .image::before {
 	top: 0;
     left: 0;
     height: 100%;
@@ -1995,7 +2022,7 @@ span.sub_label {
     -o-transform: scale(0.8);
     transform: scale(0.8);
 }
-.blog-item .image::after {
+.post-item .image::after {
 	content: '\f0c1';
     position: absolute;
     font-family: FontAwesome;
@@ -2014,10 +2041,10 @@ span.sub_label {
     -o-transition: all 0.35s ease 0.2s;
     transition: all 0.35s ease 0.2s;
 }
-.blog-item .image img{
+.post-item .image img{
 	width: 100%;
 }
-.blog-item .desc {
+.post-item .desc {
 	padding: 30px 15px 0px;
 	border: 1px solid#d0e2f4;
 	border-top: 0;
@@ -2025,28 +2052,28 @@ span.sub_label {
 	-webkit-transition: .3s;
 	transition: .3s;
 }
-.blog-item .desc .title {
+.post-item .desc .title {
 	font-size: 17px;
 	font-weight: 600;
 	margin-top: 0px; 
 }
-.blog-item .desc .title a {
+.post-item .desc .title a {
 	color: #3e445b;
 }
-.blog-item .desc p {
+.post-item .desc p {
 	font-size: 14px;
 	color: #536d87;
 	margin-bottom: 20px;
 }
-.blog-item .desc .meta {
+.post-item .desc .meta {
 	color: #c5cdd5;
 	font-size: 12px;
 	margin-bottom: 10px;
 }
-.blog-item .desc .social{
+.post-item .desc .social{
 	margin-bottom: 0px;
 }
-.blog-item .desc .social span {
+.post-item .desc .social span {
 	display: inline-block;
 	width: 30px; height: 30px;
 	background: #D0E2F4;
@@ -2060,25 +2087,25 @@ span.sub_label {
 	margin-right: 10px;
 	font-size: 14px;
 }
-.blog-item .desc .social span:hover {
+.post-item .desc .social span:hover {
 	color: #fff;
 	background: #5DAFEF;
 	border-color: #5DAFEF;
 }
-.blog-item .desc a:hover {
+.post-item .desc a:hover {
 	color: #94da46;
 }
-.blog-item:hover{
+.post-item:hover{
 	box-shadow: 0px 0px 10px #999;
 }
-.blog-item:hover .image:before{
+.post-item:hover .image:before{
 	-webkit-transform: scale(1);
     -ms-transform: scale(1);
     -o-transform: scale(1);
     transform: scale(1);
     opacity: 1;
 }
-.blog-item:hover .image:after{
+.post-item:hover .image:after{
 	-moz-transform: translate(-50%, -50%) scale(1);
     -webkit-transform: translate(-50%, -50%) scale(1);
     -ms-transform: translate(-50%, -50%) scale(1);
@@ -2086,11 +2113,54 @@ span.sub_label {
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
 }
-.blog-item:hover .desc {
+.post-item:hover .desc {
 	border-color: #fff;
 }
-.blog-item:hover .title a{
+.post-item:hover .title a{
 	color: #94da46;
+}
+
+/*-- Post detail --*/
+.post-detail,
+.post-detail .title,
+.post-detail .meta,
+.post-detail .desc,
+.post-detail .image,
+.post-detail .content{
+	float: left;
+	width: 100%;
+}
+
+.post-detail .title {
+	font-size: 30px;
+    color: #3e445b;
+    font-weight: 600;
+	margin-top: 0px;
+	margin-bottom: 15px;
+}
+.post-detail .meta {
+	margin-bottom: 15px;
+}
+.post-detail .meta span {
+	display: block;
+	float: left;
+	margin-right: 15px;
+}
+.post-detail .meta span a {
+	display: block;
+	font-size: 13px;
+	padding-left: 2px;
+}
+.post-detail .meta span a:hover {
+	color: #5dafef
+}
+.post-detail .meta span a i {
+	line-height: 26px;
+	margin-right: 6px;
+}
+.post-detail .image {
+	text-align: center;
+	margin: 20px 0px;
 }
 
 .collection-wrap:after{
@@ -2241,56 +2311,14 @@ span.sub_label {
 	left: -30px;
 }
 
-/*-- Post detail --*/
-.post-detail,
-.post-detail .title,
-.post-detail .meta,
-.post-detail .desc,
-.post-detail .image,
-.post-detail .content{
-	float: left;
-	width: 100%;
-}
-
-.post-detail .title {
-	font-size: 24px;
-	font-weight: bold;
-	margin-top: 0px;
-	margin-bottom: 15px;
-}
-.post-detail .meta {
-	margin-bottom: 15px;
-}
-.post-detail .meta span {
-	display: block;
-	float: left;
-	margin-right: 15px;
-}
-.post-detail .meta span a {
-	display: block;
-	font-size: 13px;
-	padding-left: 2px;
-}
-.post-detail .meta span a:hover {
-	color: #5dafef
-}
-.post-detail .meta span a i {
-	line-height: 26px;
-	margin-right: 6px;
-}
-.post-detail .image {
-	text-align: center;
-	margin: 20px 0px;
-}
-
 /*-- Slick --*/
-.slick-blog .slick-slide:active,
-.slick-blog .slick-slide:visited,
-.slick-blog .slick-slide:focus{
+.slick-post .slick-slide:active,
+.slick-post .slick-slide:visited,
+.slick-post .slick-slide:focus{
 	outline: none;
 }
-.slick-blog .slick-next:before,
-.slick-blog .slick-prev:before{
+.slick-post .slick-next:before,
+.slick-post .slick-prev:before{
 	color: #000;
 }
 
@@ -2927,7 +2955,7 @@ span.sub_label {
 .contact-form form textarea {
 	border: 1px solid #ddd;
 	display: block;
-	height: 130px;
+	height: 132px;
 	padding: 7px 15px;
 	width: 100%;
 }

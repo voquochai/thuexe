@@ -1,12 +1,12 @@
 @extends('frontend.default.master')
 @section('content')
 <!-- PAGE SECTION START -->
-<div class="page-section pt-60 pb-60 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
+<section class="page-section ptb-60">
     <div class="container">
         <div class="row">
             <div class="col-lg-9 col-md-8 col-xs-12">
                 <div class="post-detail">
-                    <h3 class="title">{{ $post->title }}</h3>
+                    <h1 class="title">{{ $post->title }}</h1>
                     <div class="meta">
                         <span><a href="{{ url('/'.$type.'/'.$category->slug) }}"><i class="fa fa-tags"></i> {{ @$category->title }} </a></span>
                         <span><a><i class="fa fa-user"></i> {{ @$author->name }}</a></span>
@@ -28,6 +28,6 @@
             </div>
         </div>
     </div>
-</div>
+</section>
 <!-- PAGE SECTION END -->
 @endsection

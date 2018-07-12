@@ -49,7 +49,11 @@
             <div class="row">
                 <div class="col-md-2 col-sm-6 col-xs-6">
                     <div class="header-logo">
-                        <a href="<?php echo e(url('/')); ?>"><img src="<?php echo e((config('settings.logo') && file_exists(public_path('/uploads/photos/'.config('settings.logo'))) ? asset('public/uploads/photos/'.config('settings.logo')) : asset('noimage/190x30'))); ?>" alt="main logo"></a>
+                        <?php if(Route::currentRouteName() == 'frontend.home.index'): ?>
+                        <h1><a href="<?php echo e(url('/')); ?>"><img src="<?php echo e((config('settings.logo') && file_exists(public_path('/uploads/photos/'.config('settings.logo'))) ? asset('public/uploads/photos/'.config('settings.logo')) : asset('noimage/190x30'))); ?>" alt="main logo"><strong><?php echo e(config('settings.site_name')); ?></strong></a></h1>
+                        <?php else: ?>
+                        <h2><a href="<?php echo e(url('/')); ?>"><img src="<?php echo e((config('settings.logo') && file_exists(public_path('/uploads/photos/'.config('settings.logo'))) ? asset('public/uploads/photos/'.config('settings.logo')) : asset('noimage/190x30'))); ?>" alt="main logo"><strong><?php echo e(config('settings.site_name')); ?></strong></a></h2>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="col-md-2 col-sm-6 col-xs-6 float-right">

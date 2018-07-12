@@ -26,7 +26,6 @@ class ToolFactory {
                 $data['site']['title'] = __('site.news');
                 $data['template'] = "post";
                 break;
-            
             case "chinh-sach-quy-dinh":
                 $data['site']['title'] = "Chính sách & Quy định";
                 $data['template'] = "post";
@@ -40,6 +39,7 @@ class ToolFactory {
                 break;
         }
         if($type !=''){
+            $data['bg_breadcrumb'] = self::getPhotoByUrl(url()->current(),'background',app()->getLocale());
             $data['breadcrumb'] = '<li> <a href="'.url('/').'">'.__('site.home').'</a> </li>';
             $data['breadcrumb'] .= '<li> <a href="'.url('/'.$type).'"> '.$data['site']['title'].' </a> </li>';
         }
@@ -171,6 +171,19 @@ class ToolFactory {
             ->get();
     }
 
+    public function getPhotoByUrl($url,$type,$lang='vi'){
+        return DB::table('photos as A')
+            ->leftjoin('photo_languages as B', 'A.id','=','B.photo_id' )
+            ->select('A.*','B.title','B.description')
+            ->where('B.language',$lang)
+            ->whereRaw('FIND_IN_SET(\'publish\',A.status)')
+            ->where('A.type',$type)
+            ->where('A.link',$url)
+            ->orderBy('A.priority','asc')
+            ->orderBy('A.id','desc')
+            ->first();
+    }
+
     public function getLinks($type,$lang='vi'){
         return DB::table('links as A')
             ->leftjoin('link_languages as B', 'A.id','=','B.link_id' )
@@ -199,9 +212,9 @@ class ToolFactory {
         return DB::table('seos as A')
             ->leftjoin('seo_languages as B', 'A.id','=','B.seo_id' )
             ->select('A.*','B.slug','B.title','B.meta_seo')
+            ->where('B.language',$lang)
             ->whereRaw('FIND_IN_SET(\'publish\',A.status)')
             ->where('A.link', $url )
-            ->where('B.language',$lang)
             ->orderBy('A.priority','asc')
             ->orderBy('A.id','desc')
             ->first();

@@ -29,11 +29,12 @@ class CartController extends Controller
      */
     private $_data;
     public function __construct(Request $request){
-        $this->_data = set_type($request->type);
         $this->middleware(function($request,$next){
-            $this->_data['lang'] = (session('lang')) ? session('lang') : config('settings.language');
-            App::setLocale($this->_data['lang']);
-            $this->_data['meta_seo'] = set_meta_tags($this->_data['lang']);
+            $lang = (session('lang')) ? session('lang') : config('settings.language');
+            App::setLocale($lang);
+            $this->_data = set_type($request->type,$lang);
+            $this->_data['lang'] = $lang;
+            $this->_data['meta_seo'] = set_meta_tags($lang);
             View::share('siteconfig', config('siteconfig'));
             $this->_data['cart'] = is_array($cart = json_decode($request->cookie('cart'), true)) ? $cart : [];
             $this->_data['coupon'] = is_array($coupon = json_decode($request->cookie('coupon'), true)) ? $coupon : [];

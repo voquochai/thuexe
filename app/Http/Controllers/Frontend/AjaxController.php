@@ -24,9 +24,6 @@ class AjaxController extends Controller
 	public function index(Request $request){
         
         switch($request->act){
-            case 'whois':
-                $data = $this->checkWhoIs($request);
-                break;
             case 'newsletter':
                 $data = $this->newsletter($request);
                 break;
@@ -41,22 +38,6 @@ class AjaxController extends Controller
                 break;
         }
         return response()->json($data);
-    }
-
-    public function checkWhoIs(Request $request){
-        $domain = $request->domain;
-        $result = file_get_contents("https://daily.pavietnam.vn/interface.php?username=htglobal&apikey=d54f6146b9f16e2f7686657adbc186a4&cmd=check_whois&domain=$domain");
-        if($result == '0'){
-            $data['class'] = "danger";
-            $data['text'] = "Đã đăng ký";
-        }elseif($result == '1'){
-            $data['class'] = "info";
-            $data['text'] = "Chưa đăng ký";
-        }else{
-            $data['class'] = "warning";
-            $data['text'] = "Lỗi tìm kiếm";
-        }
-        return $data;
     }
     
     public function newsletter($request){

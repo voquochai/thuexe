@@ -66,7 +66,7 @@
     });
 
     /*-- Slick Slider --*/
-    $('.slick-blog').slick({
+    $('.slick-post').slick({
         slidesToShow: 3,
         slidesToScroll: 1,
         prevArrow: '<div class="arrow-prev"><i class="pe-7s-angle-left pe-7s-5x"></i></div>',

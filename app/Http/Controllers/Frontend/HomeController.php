@@ -26,11 +26,12 @@ class HomeController extends Controller
     private $_data;
 
     public function __construct(Request $request){
-        $this->_data = set_type($request->type);
         $this->middleware(function($request,$next){
-            $this->_data['lang'] = (session('lang')) ? session('lang') : config('settings.language');
-            $this->_data['meta_seo'] = set_meta_tags($this->_data['lang']);
-            App::setLocale($this->_data['lang']);
+            $lang = (session('lang')) ? session('lang') : config('settings.language');
+            App::setLocale($lang);
+            $this->_data = set_type($request->type,$lang);
+            $this->_data['lang'] = $lang;
+            $this->_data['meta_seo'] = set_meta_tags($lang);
             View::share('siteconfig', config('siteconfig'));
             $this->_data['domain'] = is_array($domain = json_decode($request->cookie('domain'), true)) ? $domain : [];
             $cart = is_array($cart = json_decode($request->cookie('cart'), true)) ? $cart : [];
@@ -213,12 +214,12 @@ class HomeController extends Controller
             return view('frontend.default.posts',$this->_data);
         }elseif($this->_data['template'] == 'page'){
             $this->_data['page'] = get_pages($type);
-            // if( $this->_data['page'] && $this->_data['page']->meta_seo !='' ){
-            //     $current_seo = json_decode($this->_data['page']->meta_seo);
-            //     $current_seo->title ? $this->_data['meta_seo']->title = $current_seo->title : '';
-            //     $current_seo->keywords ? $this->_data['meta_seo']->keywords = $current_seo->keywords : '';
-            //     $current_seo->description ? $this->_data['meta_seo']->description = $current_seo->description : '';
-            // }
+            if( $this->_data['page'] && $this->_data['page']->meta_seo !='' ){
+                $current_seo = json_decode($this->_data['page']->meta_seo);
+                $current_seo->title ? $this->_data['meta_seo']->title = $current_seo->title : '';
+                $current_seo->keywords ? $this->_data['meta_seo']->keywords = $current_seo->keywords : '';
+                $current_seo->description ? $this->_data['meta_seo']->description = $current_seo->description : '';
+            }
             return view('frontend.default.page',$this->_data);
         }
         return abort(404);

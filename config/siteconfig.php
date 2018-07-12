@@ -525,6 +525,21 @@ return [
                 'publish'     => 'Hiển thị',
             ]
         ],
+        'background' 	=>	[
+            'page-title'	=>	'Background',
+            'description' =>	false,
+            'link'    =>	true,
+            'image'       =>	true,
+            'thumbs'	=>	[
+                '_small' => [
+                    'width'  =>	1920,
+                    'height' =>	450,
+                ],
+            ],
+            'status'      => [
+                'publish'     => 'Hiển thị',
+            ]
+        ],
 		'default' 	=>	[
 			'page-title'	=>	'Hình ảnh',
 			'description' =>	false,

@@ -1,5 +1,4 @@
-@extends('frontend.default.master')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <!-- PAGE SECTION START -->
 <section class="page-section pt-60">
     <div class="container">
@@ -33,12 +32,12 @@
         </div>
         <div class="row contact-form">
             <div class="col-xs-12">
-                <h3>{{ __('site.contact_form') }}</h3>
+                <h3><?php echo e(__('site.contact_form')); ?></h3>
                 <form id="contact-form" action="mail.php#" method="post">
                     <div class="row">
                         <div class="col-xs-12 col-sm-6">
                             <div class="form-group">
-                                <label for="name">{{ __('site.name') }}</label>
+                                <label for="name"><?php echo e(__('site.name')); ?></label>
                                 <input id="name" name="name" type="text">
                             </div>
                             <div class="form-group">
@@ -46,17 +45,17 @@
                                 <input id="email" name="email" type="email">
                             </div>
                             <div class="form-group">
-                                <label for="subject">{{ __('site.subject') }}</label>
+                                <label for="subject"><?php echo e(__('site.subject')); ?></label>
                                 <input id="subject" name="subject" type="text">
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-6">
                             <div class="form-group">
-                                <label for="message">{{ __('site.message') }}</label>
+                                <label for="message"><?php echo e(__('site.message')); ?></label>
                                 <textarea name="message" id="message"></textarea>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-ajax" data-ajax="act=contact|type=contact"> {{ __('site.send') }} </button>
+                                <button type="submit" class="btn btn-primary btn-ajax" data-ajax="act=contact|type=contact"> <?php echo e(__('site.send')); ?> </button>
                             </div>
                         </div>
                     </div>
@@ -68,7 +67,7 @@
     <div class="contact-map">
         <div>
             <input id="origin-input" class="controls" type="text" placeholder="Enter an origin location">
-            {{--<input id="destination-input" class="controls" type="text" placeholder="Enter a destination location">--}}
+            
             <div id="mode-selector" class="controls">
                 <input type="radio" name="type" id="changemode-walking" checked="checked">
                 <label for="changemode-walking">Walking</label>
@@ -84,9 +83,9 @@
     </div>
 </section>
 <!-- PAGE SECTION END -->
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('custom_css')
+<?php $__env->startSection('custom_css'); ?>
 <style>
 .controls {margin-top: 10px;border: 1px solid transparent;border-radius: 2px 0 0 2px;box-sizing: border-box;-moz-box-sizing: border-box;height: 32px;outline: none;box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
@@ -99,20 +98,20 @@
 #mode-selector {color: #fff;background-color: #4d90fe;margin-left: 12px;padding: 5px 11px 0px 11px;}
 #mode-selector label {font-size: 13px;font-weight: 300;}
 </style>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('custom_script')
-@php
+<?php $__env->startSection('custom_script'); ?>
+<?php 
 if(@config('settings.google_coordinates')){
     $coordinates = str_replace(['(',')'],'',config('settings.google_coordinates'));
     $coordinates = explode(', ',$coordinates);
 }else{
     $coordinates = explode(', ',config('siteconfig.general.google_coordinates'));
 }
-@endphp
+ ?>
 <script>
     function initMap() {
-        var coordinates = { 'lat':{{$coordinates[0]}}, 'lng':{{$coordinates[1]}} };
+        var coordinates = { 'lat':<?php echo e($coordinates[0]); ?>, 'lng':<?php echo e($coordinates[1]); ?> };
         var map = new google.maps.Map(document.getElementById('google-map'), {
             mapTypeControl: false,
             center: coordinates,
@@ -124,7 +123,7 @@ if(@config('settings.google_coordinates')){
             map: map
         });
         var infowindow = new google.maps.InfoWindow({
-            content: '{{ config('settings.site_name') }}'
+            content: '<?php echo e(config('settings.site_name')); ?>'
         });
         marker.addListener('click', function() {
             infowindow.open(map, marker);
@@ -214,4 +213,5 @@ if(@config('settings.google_coordinates')){
 
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmtm5XL4qL8zyjf6lGxz6-9hkeu45-UiI&libraries=places&callback=initMap"></script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('frontend.default.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -4,12 +4,11 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-xs-12">
-                <!-- Single Blog Post -->
-                <div class="single-blog-post">
-                    <div class="blog-info">
-                        <h3 class="title"><?php echo e($page->title); ?></h3>
-                        <?php echo $page->contents; ?>                     
-                    </div>
+                <!-- Single Detail -->
+                <div class="post-detail">
+                    <h1 class="title"><?php echo e($page->title); ?></h1>
+                    <?php echo $page->contents; ?>
+
                 </div>
             </div>
         </div>

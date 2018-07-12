@@ -1,5 +1,5 @@
 @php $photos = get_photos('partners',$lang); @endphp
-<section class="partners-section pt-60">
+<section class="partners-section">
     <div class="slick-partners">
     @forelse($photos as $photo)
         <div>

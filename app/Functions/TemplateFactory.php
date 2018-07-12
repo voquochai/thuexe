@@ -57,7 +57,7 @@ class TemplateFactory {
         elseif($show==1){ $class = "col-xs-12"; }
         $template = '
             <div class="'.$class.' '.$moreClass.'">
-                <div class="blog-item">
+                <div class="post-item">
                     <a class="image" href="'.$link.'"><img src="'. ( $post->image && file_exists(public_path('/uploads/posts/'.$post->image)) ? asset( 'public/uploads/posts/'.get_thumbnail($post->image) ) : asset('noimage/330x220') ) .'" alt="'.$post->alt.'" /></a>
                     <div class="desc">
                         <h3 class="title"><a href="'.$link.'">'.$post->title.'</a></h3>

@@ -32,15 +32,16 @@ class MemberController extends Controller
     private $_data;
 
     public function __construct(Request $request){
-        $this->_data = set_type($request->type);
         $this->middleware(function($request,$next){
-            $this->_data['lang'] = (session('lang')) ? session('lang') : config('settings.language');
-            App::setLocale($this->_data['lang']);
-            $this->_data['meta_seo'] = set_meta_tags('',$this->_data['lang']);
+            $lang = (session('lang')) ? session('lang') : config('settings.language');
+            App::setLocale($lang);
+            $this->_data = set_type($request->type,$lang);
+            $this->_data['lang'] = $lang;
+            $this->_data['meta_seo'] = set_meta_tags($lang);
 
-            $this->_data['page_title'] = __('site.member');
+            $this->_data['site']['title'] = __('site.member');
             $this->_data['breadcrumb'] = '<li> <a href="'.url('/').'">'.__('site.home').'</a> </li>';
-            $this->_data['breadcrumb'] .= '<li> <a href="'.url('/member').'"> '.$this->_data['page_title'].' </a> </li>';
+            $this->_data['breadcrumb'] .= '<li> <a href="'.url('/member').'"> '.$this->_data['site']['title'].' </a> </li>';
 
             View::share('siteconfig', config('siteconfig'));
             $cart = is_array($cart = json_decode($request->cookie('cart'), true)) ? $cart : [];

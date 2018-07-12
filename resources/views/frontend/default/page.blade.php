@@ -5,12 +5,10 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-xs-12">
-                <!-- Single Blog Post -->
-                <div class="single-blog-post">
-                    <div class="blog-info">
-                        <h3 class="title">{{ $page->title }}</h3>
-                        {!! $page->contents !!}                     
-                    </div>
+                <!-- Single Detail -->
+                <div class="post-detail">
+                    <h1 class="title">{{ $page->title }}</h1>
+                    {!! $page->contents !!}
                 </div>
             </div>
         </div>
