@@ -5,7 +5,7 @@
         <div class="row display-flex">
             <?php $__empty_1 = true; $__currentLoopData = $new_products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $val): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
             	<?php if($key == 1 && $single_post): ?>
-            	<div class="col-md-4 col-sm-6 col-xs-12">
+            	<div class="col-md-4 col-sm-6 col-xs-6 col-xs-wide mb-30">
             		<div class="single-post">
 	            		<h2 class="title"> Sản phẩm <span>mới</span> </h2>
 	            		<p class="desc"><?php echo e($single_post->description); ?></p>
@@ -13,7 +13,7 @@
             		</div>
             	</div>
             	<?php endif; ?>
-            	<?php echo get_template_product($val,'san-pham',3); ?>
+            	<?php echo get_template_product($val,'san-pham',3,'mb-30'); ?>
 
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
             <?php endif; ?>
@@ -51,11 +51,11 @@
     </div>
 </section>
 
-<section class="blog-section pt-60" data-wow-duration="2s" data-wow-delay="0.2s">
+<section class="post-section ptb-60" data-wow-duration="2s" data-wow-delay="0.2s">
     <div class="container">
         <div class="section-title"> <h2>Tin tức <span>mới</span> </h2> </div>
         <div class="row">
-            <div class="slick-blog">
+            <div class="slick-post">
                 <?php $__empty_1 = true; $__currentLoopData = $new_posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $val): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                     <div>
                     <?php echo get_template_post($val,'tin-tuc',1); ?>

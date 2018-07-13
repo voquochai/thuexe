@@ -30,7 +30,7 @@ return [
 
     /* Contact */
     'contact_info'  =>  'Thông tin liên hệ',
-    'contact_form'  =>  'Form liên hệ',
+    'contact_form'  =>  'Form <span>liên hệ</span>',
     'name'  =>  'Họ và tên',
     'address'   =>  'Địa chỉ',
     'phone' =>  'Điện thoại',

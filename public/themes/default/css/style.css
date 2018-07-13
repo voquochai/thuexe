@@ -1689,7 +1689,7 @@ span.sub_label {
 }
 .single-post h2 {
 	font-size: 30px;
-	color: #3e445b;
+	color: #1f2a37;
 	font-weight: 600;
 	-webkit-transition: .3s;
 	transition: .3s;
@@ -2058,7 +2058,7 @@ span.sub_label {
 	margin-top: 0px; 
 }
 .post-item .desc .title a {
-	color: #3e445b;
+	color: #1f2a37;
 }
 .post-item .desc p {
 	font-size: 14px;
@@ -2133,7 +2133,7 @@ span.sub_label {
 
 .post-detail .title {
 	font-size: 30px;
-    color: #3e445b;
+    color: #1f2a37;
     font-weight: 600;
 	margin-top: 0px;
 	margin-bottom: 15px;
@@ -2900,7 +2900,7 @@ span.sub_label {
 	font-size: 35px;
 	width: 64px;
 	height: 64px;
-	background: #5dafef;
+	background: #1f2a37;
 	line-height: 64px;
 	color: #fff;
 	border-radius: 50%;
@@ -2911,12 +2911,12 @@ span.sub_label {
 	font-size: 18px;
 	padding: 0 25px;
 	font-weight: 500;
-	color: #3e445b;
+	color: #1f2a37;
 }
 .contact-info a {
 	font-size: 18px;
 	font-weight: 500;
-	color: #3e445b;
+	color: #1f2a37;
 	text-decoration: none;
 }
 .contact-form {
@@ -2925,21 +2925,22 @@ span.sub_label {
 	position: relative;
 	z-index: 10;
 	background: #fff;
-	width: 100%;
 }
 .contact-form h3 {
-	font-size: 36px;
-	color: #3e445b;
-	font-weight: bold;
+	font-size: 30px;
+    color: #1f2a37;
+    font-weight: 600;
 	text-align: center;
 	margin-bottom: 50px;
-	text-transform: uppercase;
+}
+.contact-form h3 span{
+	color: #94da46;
 }
 .contact-form form {}
 .contact-form form label {
 	display: block;
 	font-size: 14px;
-	font-weight: bold;
+	font-weight: 600;
 	line-height: 14px;
 	margin-bottom: 10px;
 	color: #536d87;
@@ -2987,10 +2988,53 @@ span.sub_label {
 }
 .contact-map {
 	margin-top: -150px;
+	position:relative;
+	padding-bottom: 50%;
+	height:0;
+	overflow:hidden;
+	clear: both;
 }
-#google-map{
-	height: 800px;
+.contact-map #google-map{
+	position: absolute !important;
+	height: 100%;
 	width: 100%;
+}
+.contact-map .controls {
+	border: 1px solid transparent;
+	border-radius: 2px 0 0 2px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	height: 32px;
+	outline: none;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+.contact-map #location-input{
+	margin-left: 15px;
+	margin-top: 100px;
+}
+.contact-map #origin-input,
+.contact-map #destination-input{
+	width: 100%;
+	background-color: #fff;
+	font-size: 15px;
+	font-weight: 300;
+	padding: 0 11px 0 13px;
+	text-overflow: ellipsis;
+}
+.contact-map #origin-input:focus,
+.contact-map #destination-input:focus {
+	border-color: #4d90fe;
+}
+.contact-map #mode-selector {
+	color: #fff;
+	background-color: #4d90fe;
+	margin-left: 15px;
+	margin-top: 100px;
+	padding: 5px 11px 0px 11px;
+}
+.contact-map #mode-selector label {
+	font-size: 13px;
+	font-weight: 300;
 }
 
 /*-- Comment Wrapper --*/

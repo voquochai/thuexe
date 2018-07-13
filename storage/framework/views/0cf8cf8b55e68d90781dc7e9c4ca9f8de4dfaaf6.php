@@ -27,7 +27,7 @@
     <meta property="og:image" content="<?php echo e(@$meta_seo->image); ?>" />
     <meta property="og:description" content="<?php echo e(@$meta_seo->description); ?>" />
     <meta property="og:site_name" content="<?php echo e(config('settings.site_name')); ?>" />
-    <meta property="fb:admins" content="Facebook numberic ID" />
+    <meta property="fb:admins" content="<?php echo e(config('settings.facebook_app_id')); ?>" />
     <!-- Geo data -->
     <meta name="geo.placename" content="Viet Nam" />
     <meta name="geo.position" content="x;x" />
@@ -53,7 +53,7 @@
 
 
 </head>
-<body <?php echo e($page['class'] ? 'class="'.$page['class'].'"' : ''); ?> >
+<body <?php echo $site['class'] ? 'class="'.$site['class'].'"' : ''; ?> >
     <div id="fb-root"></div>
     <script async defer>(function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
@@ -68,7 +68,7 @@
         <?php echo $__env->make('frontend.default.layouts.navbar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 		<?php echo $__env->make('frontend.default.layouts.search', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
-		<?php if(Route::currentRouteName() == 'frontend.home.index' || Route::currentRouteName() == 'frontend.domain.check_whois'): ?>
+		<?php if(Route::currentRouteName() == 'frontend.home.index'): ?>
 			<?php echo $__env->make('frontend.default.layouts.slideshow', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 		<?php else: ?>
 			<?php echo $__env->make('frontend.default.layouts.breadcrumb', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
@@ -76,6 +76,7 @@
         
 		<?php echo $__env->yieldContent('content'); ?>
         
+        <?php echo $__env->make('frontend.default.layouts.brand', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 		<?php echo $__env->make('frontend.default.layouts.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 	</div>
 	<!-- Body main wrapper end -->
