@@ -27,10 +27,10 @@ body {
 /* Links */
 a {
     text-shadow: none;
-    color: #337ab7;
+    color: #1f2a37;
 }
 a:hover {
-    color: #23527c;
+    color: #94da46;
 }
 a:focus,
 a:hover,

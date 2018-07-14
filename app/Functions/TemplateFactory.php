@@ -14,7 +14,7 @@ class TemplateFactory {
 		return $price;
 		
 	}
-	public function getTemplateProduct($product,$type='san-pham',$show=4, $moreClass=''){
+	public function getTemplateProduct($product,$type='san-pham',$show=4,$moreClass=''){
         if($type == '') $type = $product->type;
 		$link = ($product->link) ? $product->link : route('frontend.home.page',['type' => $type, 'slug' => $product->slug]);
         if($show==6){ $class = "col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-wide"; }
@@ -52,8 +52,8 @@ class TemplateFactory {
         $link = ($post->link) ? $post->link : route('frontend.home.page',['type' => $type, 'slug' => $post->slug]);
         if($show==6){ $class = "col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-wide"; }
         elseif($show==4){ $class = "col-md-3 col-sm-4 col-xs-6 col-xs-wide"; }
-        elseif($show==3){ $class = "col-md-4 col-sm-6 col-xs-12"; }
-        elseif($show==2){ $class = "col-sm-6 col-xs-12"; }
+        elseif($show==3){ $class = "col-md-4 col-sm-6 col-xs-6 col-xs-wide"; }
+        elseif($show==2){ $class = "col-sm-6 col-xs-6 col-xs-wide"; }
         elseif($show==1){ $class = "col-xs-12"; }
         $template = '
             <div class="'.$class.' '.$moreClass.'">
@@ -77,8 +77,8 @@ class TemplateFactory {
         $link = ($post->link) ? $post->link : route('frontend.home.page',['type' => $type, 'slug' => $post->slug]);
         if($show==6){ $class = "col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-wide"; }
         elseif($show==4){ $class = "col-md-3 col-sm-4 col-xs-6 col-xs-wide"; }
-        elseif($show==3){ $class = "col-md-4 col-sm-6 col-xs-12"; }
-        elseif($show==2){ $class = "col-sm-6 col-xs-12"; }
+        elseif($show==3){ $class = "col-md-4 col-sm-6 col-xs-6 col-xs-wide"; }
+        elseif($show==2){ $class = "col-sm-6 col-xs-6 col-xs-wide"; }
         elseif($show==1){ $class = "col-xs-12"; }
         $template = '
             <div class="collection-item '.$class.' '.$moreClass.'">
@@ -108,8 +108,8 @@ class TemplateFactory {
         $link = ($post->link) ? $post->link : route('frontend.home.page',['type' => $type, 'slug' => $post->slug]);
         if($show==6){ $class = "col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-wide"; }
         elseif($show==4){ $class = "col-md-3 col-sm-4 col-xs-6 col-xs-wide"; }
-        elseif($show==3){ $class = "col-md-4 col-sm-6 col-xs-12"; }
-        elseif($show==2){ $class = "col-sm-6 col-xs-12"; }
+        elseif($show==3){ $class = "col-md-4 col-sm-6 col-xs-6 col-xs-wide"; }
+        elseif($show==2){ $class = "col-sm-6 col-xs-6 col-xs-wide"; }
         elseif($show==1){ $class = "col-xs-12"; }
         $template = '
             <div class="'.$class.' '.$moreClass.'">
@@ -137,10 +137,10 @@ class TemplateFactory {
                 $id=$v->id;
                 $result .= '<li>';
                 $result .= '
-                    <div class="single-comment fix" data-lvl="'.$id.'"">
+                    <div class="single-comment" data-lvl="'.$id.'"">
                         <div class="image float-left"><img src="'.asset('noimage/50x50').'" alt="" class="img-circle"></div>
-                        <div class="content fix">
-                            <div class="head fix">
+                        <div class="content">
+                            <div class="head">
                                 <div class="author-time">
                                     <h4>'.$v->name.'</h4>
                                     <span>'.Tool::niceTime($v->created_at).'</span>

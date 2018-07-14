@@ -22916,7 +22916,7 @@ var calculateUrlStopWordsCountResult = function calculateUrlStopWordsCountResult
             score: 5,
             text: i18n.dngettext("js-text-analysis",
             /* Translators: %1$s opens a link to a wikipedia article about stop words, %2$s closes the link */
-            "The slug for this page contains a %1$sstop word%2$s, consider removing it.", "The slug for this page contains %1$sstop words%2$s, consider removing them.", stopWordCount)
+            "Slug cho trang này chứa một từ %1$sstop word%2$s, hãy xem xét xóa nó.", "Slug cho trang này chứa %1$sstop words%2$s, hãy xem xét xóa chúng.", stopWordCount)
         };
     }
     return {};

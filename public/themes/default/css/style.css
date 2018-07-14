@@ -39,7 +39,7 @@ a,
 button,
 input {
 	outline: medium none;
-	color: #666666;
+	color: #1f2a37;
 }
 h1 a,
 h2 a,
@@ -101,6 +101,8 @@ h6 a {
 .page-pagination {}
 .page-pagination ul {
 	display: inline-block;
+	margin: 0px;
+	padding: 0px;
 }
 .page-pagination ul li {
 	display: block;
@@ -120,7 +122,7 @@ h6 a {
 	line-height: 36px;
 }
 .page-pagination ul li.active a {
-	background-color: #ffae00;
+	background-color: #94da46;
 	color: #fff;
 }
 /*-- Page Breadcrumb --*/
@@ -146,7 +148,6 @@ h6 a {
 }
 .page-breadcrumb .breadcrumb li {
 	color: #fff;
-	text-transform: uppercase;
 }
 .page-breadcrumb .breadcrumb > li + li::before {
 	color: #fff;
@@ -189,7 +190,7 @@ h6 a {
 }
 .sidebar-widget .title{
 	font-weight: bold;
-	color: #333;
+	color: #1f2a37;
 	margin-top: 0px;
 }
 .sidebar-widget ul{
@@ -213,8 +214,9 @@ h6 a {
 }
 .sidebar-widget .category li a {
 	display: block;
-	font-size: 15px;
+	font-size: 14px;
 	padding: 10px 0px;
+	font-weight: 600;
 }
 .sidebar-widget .category li a::before {
 	content: "\f105";
@@ -225,7 +227,7 @@ h6 a {
 	margin-right: 10px;
 }
 .sidebar-widget .category li a.active {
-	color: #5dafef;
+	color: #94da46;
 }
 .sidebar-widget .category li a:hover {
 	padding-left: 10px;
@@ -2152,7 +2154,7 @@ span.sub_label {
 	padding-left: 2px;
 }
 .post-detail .meta span a:hover {
-	color: #5dafef
+	color: #94da46
 }
 .post-detail .meta span a i {
 	line-height: 26px;
@@ -2321,6 +2323,10 @@ span.sub_label {
 .slick-post .slick-prev:before{
 	color: #000;
 }
+.slick-post,
+.slick-partners{ height: 0px; overflow: hidden; }
+.slick-post.slick-slider,
+.slick-partners.slick-slider{ height: auto;}
 
 /*-- Footer section --*/
 .footer-section{
@@ -3043,7 +3049,8 @@ span.sub_label {
 	width: 100%;
 }
 .comment-wrapper h3 {
-	color: #333;
+	color: #1f2a37;
+    font-weight: 600;
 	display: block;
 	font-size: 20px;
 	margin-bottom: 20px;
@@ -3106,11 +3113,12 @@ span.sub_label {
 .comment-form form {}
 .comment-form form label {
 	display: block;
-	font-size: 14px;
-	font-weight: 400;
-	line-height: 14px;
-	margin-bottom: 10px;
-	text-transform: capitalize;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 14px;
+    margin-bottom: 10px;
+    color: #536d87;
+    text-transform: capitalize;
 }
 .comment-form form input {
 	border: 1px solid #ddd;
