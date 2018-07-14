@@ -247,11 +247,10 @@ Route::get('/noimage/{width}x{height}', function(Intervention\Image\Facades\Imag
 //         return $img->response();
 // 	}
 // })->where('img','.*');
-// Route::get('/thumbnail/{width}x{height}x{zc}/{file}', function(Intervention\Image\Facades\Image $image, $w, $h, $zc, $file){
-// 	return $image::make( public_path($file) )
-// 		->fit($w,$h)
-// 		->response();
-// })->where('file','.*');
+Route::get('/thumbnail/{width}x{height}x{zc}/{file}', function(Intervention\Image\Facades\Image $image, $w, $h, $zc, $file){
+	return $image::make( public_path($file) )
+		->resize($w,$h)->response();
+})->where('file','.*');
 
 Route::get('/download/{file}', function($file){
 	return response()->download(public_path($file));

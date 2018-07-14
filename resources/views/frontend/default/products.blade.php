@@ -7,7 +7,7 @@
             <div class="col-lg-9 col-md-8 col-xs-12 pull-right">
                 <div class="row display-flex">
                     @forelse($products as $product)
-                        {!! get_template_product($product,$type,3,'mb-40') !!}
+                        {!! get_template_product($product,$type,3,'mb-30') !!}
                     @empty
                     <div class="col-xs-12"><p> Sản phẩm chưa cập nhật </p></div>
                     @endforelse

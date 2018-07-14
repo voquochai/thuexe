@@ -122,6 +122,7 @@
 @media only screen and (max-width: 479px) {
     .col-xs-wide {
         width: 100%;
+        margin: 0px;
     }
     /*-- Section Title --*/
     .section-title {

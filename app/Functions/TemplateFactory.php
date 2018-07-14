@@ -14,9 +14,15 @@ class TemplateFactory {
 		return $price;
 		
 	}
-	public function getTemplateProduct($product,$type='san-pham',$show=4,$moreClass=''){
+	public function getTemplateProduct($product,$type='',$show=4,$moreClass=''){
         if($type == '') $type = $product->type;
 		$link = ($product->link) ? $product->link : route('frontend.home.page',['type' => $type, 'slug' => $product->slug]);
+        $arrStatus = explode(',',$product->status);
+        $status = '<div class="icons">';
+        if(in_array('new', $arrStatus)){ $status .= '<span class="new">New</span>'; }
+        if(in_array('hot', $arrStatus)){ $status .= '<span class="hot">Hot</span>'; }
+        if($product->sale_price > 0){ $status .= '<span class="sale">Sale</span>'; }
+        $status .= '</div>';
         if($show==6){ $class = "col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-wide"; }
         elseif($show==4){ $class = "col-md-3 col-sm-4 col-xs-6 col-xs-wide"; }
         elseif($show==3){ $class = "col-md-4 col-sm-6 col-xs-6 col-xs-wide"; }
@@ -34,6 +40,7 @@ class TemplateFactory {
                         </span>
                         <h2 class="title"><a href="'.$link.'">'.$product->title.'</a></h2>
                     </div>
+                    '.$status.'
                     <div class="action">
                         <a href="#" class="btn add-to-wishlist dropdown-toggle tooltips" data-style="default" data-container="body" data-placement="top" data-original-title="Yêu thích" data-ajax="id='. $product->id .'"> <i class="fa fa-heart-o"></i> </a>
                         <a href="#" class="btn dropdown-toggle tooltips add-to-cart" data-style="default" data-container="body" data-placement="top" data-original-title="Giỏ hàng" data-ajax="id='. $product->id .'"> <i class="fa fa-shopping-cart"></i> </a>
@@ -47,7 +54,7 @@ class TemplateFactory {
 		return $template;
 	}
 
-    public function getTemplatePost($post,$type='bai-viet',$show=4,$moreClass=''){
+    public function getTemplatePost($post,$type='',$show=4,$moreClass=''){
         if($type == '') $type = $post->type;
         $link = ($post->link) ? $post->link : route('frontend.home.page',['type' => $type, 'slug' => $post->slug]);
         if($show==6){ $class = "col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-wide"; }
@@ -72,7 +79,7 @@ class TemplateFactory {
         return $template;
     }
 
-    public function getTemplateCollection($post,$type='bai-viet',$show=4,$moreClass=''){
+    public function getTemplateCollection($post,$type='',$show=4,$moreClass=''){
         if($type == '') $type = $post->type;
         $link = ($post->link) ? $post->link : route('frontend.home.page',['type' => $type, 'slug' => $post->slug]);
         if($show==6){ $class = "col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-wide"; }
@@ -103,7 +110,7 @@ class TemplateFactory {
         return $template;
     }
 
-    public function getTemplateSinglePost($post,$type='bai-viet',$show=4,$moreClass=''){
+    public function getTemplateSinglePost($post,$type='',$show=4,$moreClass=''){
         if($type == '') $type = $post->type;
         $link = ($post->link) ? $post->link : route('frontend.home.page',['type' => $type, 'slug' => $post->slug]);
         if($show==6){ $class = "col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-wide"; }

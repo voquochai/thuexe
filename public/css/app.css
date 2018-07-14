@@ -260,6 +260,12 @@ code {
     padding-top: 60px;
     padding-bottom: 60px;
 }
+.pd-5{
+    padding: 5px;
+}
+.pd-10{
+    padding: 10px;
+}
 /* IE8 & IE9 mode utilities */
 .visible-ie8 {
     display: none;

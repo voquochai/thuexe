@@ -48,7 +48,7 @@ class HomeController extends Controller
 
         $this->_data['new_products'] = DB::table('products as A')
             ->leftjoin('product_languages as B', 'A.id', '=', 'B.product_id')
-            ->select('A.id','A.code','A.regular_price','A.sale_price','A.link','A.image','A.alt','A.category_id','A.user_id','A.type','B.title', 'B.slug')
+            ->select('A.id','A.code','A.regular_price','A.sale_price','A.link','A.image','A.alt','A.category_id','A.user_id','A.type','A.status','B.title', 'B.slug')
             ->where('B.language',$this->_data['lang'])
             ->whereRaw('FIND_IN_SET(\'publish\',A.status) and FIND_IN_SET(\'new\',A.status)')
             ->where('A.type','san-pham')
@@ -126,7 +126,7 @@ class HomeController extends Controller
             if($this->_data['template'] == 'product'){
                 $this->_data['products'] = DB::table('products as A')
                     ->leftjoin('product_languages as B', 'A.id', '=', 'B.product_id')
-                    ->select('A.id','A.code','A.regular_price','A.sale_price','A.link','A.image','A.alt','A.category_id','A.user_id','A.type','B.title', 'B.slug')
+                    ->select('A.id','A.code','A.regular_price','A.sale_price','A.link','A.image','A.alt','A.category_id','A.user_id','A.type','A.status','B.title', 'B.slug')
                     ->where('B.language',$this->_data['lang'])
                     ->whereRaw('FIND_IN_SET(\'publish\',A.status)')
                     ->where('A.category_id',$category_id)
@@ -192,7 +192,7 @@ class HomeController extends Controller
 
             $this->_data['products'] = DB::table('products as A')
                 ->leftjoin('product_languages as B', 'A.id', '=', 'B.product_id')
-                ->select('A.id','A.code','A.regular_price','A.sale_price','A.link','A.image','A.alt','A.category_id','A.user_id','A.type','B.title', 'B.slug')
+                ->select('A.id','A.code','A.regular_price','A.sale_price','A.link','A.image','A.alt','A.category_id','A.user_id','A.type','A.status','B.title', 'B.slug')
                 ->where('B.language',$this->_data['lang'])
                 ->whereRaw($whereRaw)
                 ->where('A.type',$type)
@@ -259,7 +259,6 @@ class HomeController extends Controller
 
                 $this->_data['images'] = get_media($this->_data['product']->attachments);
                 $this->_data['attributes'] = $this->_data['product']->attributes ? json_decode($this->_data['product']->attributes,true) : [];
-                $this->_data['hosting'] = get_attributes('product_hosting');
                 $this->_data['tags'] = get_attributes('product_tags');
 
                 $comments = DB::table('comments')
@@ -280,7 +279,7 @@ class HomeController extends Controller
 
                 $this->_data['products'] = DB::table('products as A')
                     ->leftjoin('product_languages as B', 'A.id', '=', 'B.product_id')
-                    ->select('A.id','A.code','A.regular_price','A.sale_price','A.link','A.image','A.alt','A.category_id','A.user_id','A.type','B.title', 'B.slug')
+                    ->select('A.id','A.code','A.regular_price','A.sale_price','A.link','A.image','A.alt','A.category_id','A.user_id','A.type','A.status','B.title', 'B.slug')
                     ->where('B.language',$this->_data['lang'])
                     ->whereRaw('FIND_IN_SET(\'publish\',A.status)')
                     ->where('A.id','!=',$this->_data['product']->id)
@@ -358,7 +357,7 @@ class HomeController extends Controller
         if( count($viewed) > 0 ){
             $this->_data['products'] = DB::table('products as A')
                 ->leftjoin('product_languages as B', 'A.id', '=', 'B.product_id')
-                ->select('A.id','A.code','A.regular_price','A.sale_price','A.link','A.image','A.alt','A.category_id','A.user_id','A.type','B.title', 'B.slug')
+                ->select('A.id','A.code','A.regular_price','A.sale_price','A.link','A.image','A.alt','A.category_id','A.user_id','A.type','A.status','B.title', 'B.slug')
                 ->where('B.language',$this->_data['lang'])
                 ->whereIn('A.id',$viewed)
                 ->orderBy('A.priority','asc')

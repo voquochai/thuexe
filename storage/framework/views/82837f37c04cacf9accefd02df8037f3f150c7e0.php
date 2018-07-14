@@ -6,33 +6,25 @@
             <div class="col-md-4 col-xs-6 col-xs-wide mb-40">
                 <div>
                     <span class="pe-7s-headphones"></span>
-                    <p>
-                        <a href="tel:326578912">+145987565</a> <br> <a href="tel:326578912">+145987565</a>
-                    </p>
+                    <p><a href="tel:<?php echo e(config('settings.site_hotline')); ?>"> <?php echo e(config('settings.site_hotline')); ?> </a></p>
                 </div>
             </div>
             <div class="col-md-4 col-xs-6 col-xs-wide mb-40">
                 <div>
                     <span class="pe-7s-map-2"></span>
-                    <p>
-                        28 Green Tower, Street Name, New York City, USA
-                    </p>
+                    <p><?php echo e(config('settings.site_address')); ?></p>
                 </div>
             </div>
             <div class="col-md-4 col-xs-6 col-xs-wide mb-40">
                 <div>
                     <span class="pe-7s-mail"></span>
-                    <p>
-                        <a href="mailto:support@khowebonline.com">support@khowebonline.com</a>
-                        <br>
-                        <a href="mailto:support@khowebonline.com">support@khowebonline.com</a>
-                    </p>
+                    <p><a href="mailto:<?php echo e(config('settings.site_email')); ?>"><?php echo e(config('settings.site_email')); ?></a></p>
                 </div>
             </div>
         </div>
         <div class="row contact-form">
             <div class="col-xs-12">
-                <h3><?php echo e(__('site.contact_form')); ?></h3>
+                <h3><?php echo __('site.contact_form'); ?></h3>
                 <form id="contact-form" action="mail.php#" method="post">
                     <div class="row">
                         <div class="col-xs-12 col-sm-6">
@@ -65,39 +57,19 @@
         </div>
     </div>
     <div class="contact-map">
-        <div>
+        <div id="location-input">
             <input id="origin-input" class="controls" type="text" placeholder="Enter an origin location">
             
-            <div id="mode-selector" class="controls">
-                <input type="radio" name="type" id="changemode-walking" checked="checked">
-                <label for="changemode-walking">Walking</label>
-
-                <input type="radio" name="type" id="changemode-transit">
-                <label for="changemode-transit">Transit</label>
-
-                <input type="radio" name="type" id="changemode-driving">
-                <label for="changemode-driving">Driving</label>
-            </div>
-            <div id="google-map"></div>
         </div>
+        <div id="mode-selector" class="controls">
+            <label for="changemode-walking"><input type="radio" name="type" id="changemode-walking" checked="checked"> Walking</label>
+            <label for="changemode-transit"><input type="radio" name="type" id="changemode-transit"> Transit</label>
+            <label for="changemode-driving"><input type="radio" name="type" id="changemode-driving"> Driving</label>
+        </div>
+        <div id="google-map"></div>
     </div>
 </section>
 <!-- PAGE SECTION END -->
-<?php $__env->stopSection(); ?>
-
-<?php $__env->startSection('custom_css'); ?>
-<style>
-.controls {margin-top: 10px;border: 1px solid transparent;border-radius: 2px 0 0 2px;box-sizing: border-box;-moz-box-sizing: border-box;height: 32px;outline: none;box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-}
-
-#origin-input,
-#destination-input {background-color: #fff;font-size: 15px;font-weight: 300;margin-left: 12px;padding: 0 11px 0 13px;text-overflow: ellipsis;width: 400px;
-}
-#origin-input:focus,
-#destination-input:focus {border-color: #4d90fe;}
-#mode-selector {color: #fff;background-color: #4d90fe;margin-left: 12px;padding: 5px 11px 0px 11px;}
-#mode-selector label {font-size: 13px;font-weight: 300;}
-</style>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('custom_script'); ?>
@@ -141,6 +113,7 @@ if(@config('settings.google_coordinates')){
         this.originPlaceId = null;
         this.destinationPlaceId = 'ChIJNzoTviAqdTERjSKuU09WIiI';
         this.travelMode = 'DRIVING';
+        var locationInput = document.getElementById('location-input');
         var originInput = document.getElementById('origin-input');
         var destinationInput = document.getElementById('destination-input');
         var modeSelector = document.getElementById('mode-selector');
@@ -158,8 +131,7 @@ if(@config('settings.google_coordinates')){
         this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
         this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
 
-        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(originInput);
-        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(destinationInput);
+        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(locationInput);
         this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(modeSelector);
     }
 
