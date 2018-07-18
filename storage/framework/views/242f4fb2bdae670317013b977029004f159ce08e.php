@@ -47,7 +47,7 @@
                                 <textarea name="message" id="message"></textarea>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-ajax" data-ajax="act=contact|type=contact"> <?php echo e(__('site.send')); ?> </button>
+                                <button type="submit" class="btn btn-site btn-ajax" data-ajax="act=contact|type=contact"> <?php echo e(__('site.send')); ?> </button>
                             </div>
                         </div>
                     </div>

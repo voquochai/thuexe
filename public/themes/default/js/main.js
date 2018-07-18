@@ -139,6 +139,7 @@
         speed: 700,
         slidesToShow: countProImg > 3 ? 3 : 4,
         slidesToScroll: 1,
+        focusOnSelect: true,
         prevArrow: '<div class="arrow-prev"><i class="pe-7s-angle-left pe-7s-3x"></i></div>',
         nextArrow: '<div class="arrow-next"><i class="pe-7s-angle-right pe-7s-3x"></i></div>',
         responsive: [{
@@ -154,28 +155,6 @@
         },]
     });
     
-    /*-- Price Range --*/
-    // $('#price-range').slider({
-    //     range: true,
-    //     min: 0,
-    //     max: 300,
-    //     values: [40, 250],
-    //     slide: function(event, ui) {
-    //         $('.ui-slider-handle:eq(0)').html('<span>' + '$' + ui.values[0] + '</span>');
-    //         $('.ui-slider-handle:eq(1)').html('<span>' + '$' + ui.values[1] + '</span>');
-    //     }
-    // });
-    // $('.ui-slider-handle:eq(0)').html('<span>' + '$' + $("#price-range").slider("values", 0) + '</span>');
-    // $('.ui-slider-handle:eq(1)').html('<span>' + '$' + $("#price-range").slider("values", 1) + '</span>');
-    // /*-- Checkout Form Collapse on Checkbox --*/
-    // $('.checkout-form input[type="checkbox"]').on('click', function() {
-    //     var $collapse = $(this).data('target');
-    //     if ($(this).is(':checked')) {
-    //         $('.collapse[data-collapse="' + $collapse + '"]').slideDown();
-    //     } else {
-    //         $('.collapse[data-collapse="' + $collapse + '"]').slideUp();
-    //     }
-    // })
     /*-- Youtube Background Video --*/
     $(".youtube-bg").YTPlayer();
     /*-- Text Animation --*/

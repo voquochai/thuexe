@@ -224,7 +224,7 @@ var App = function() {
         $('body').on('click', '#add-to-cart', function(e){
             e.preventDefault();
             var btn = $(this);
-            var qty = $('.product-quantity input').val();
+            var qty = $('.quantity input').val();
             if( typeof qty === 'undefined' ) qty = 1;
 
             var color = $('.color-list .active').attr('data-id');
@@ -246,23 +246,6 @@ var App = function() {
                 countCart.html(response.countCart);
                 sumCartPrice.html(response.sumCartPrice);
                 sumOrderPrice.html(response.sumOrderPrice);
-                toastr[response.type](response.message, response.title);
-            });
-        });
-
-        $('body').on('click', '.btn-buy-domain', function(e){
-            e.preventDefault();
-            var btn = $(this);
-            var dataAjax = btn.data('ajax').replace(/\|/g,'&')+'&_token='+Laravel.csrfToken;
-            $.ajax({
-                type: 'POST',
-                url : Laravel.baseUrl+'/gio-hang/domain',
-                data: dataAjax,
-                beforeSend: function(){
-                    btn.button('loading');
-                }
-            }).done(function(response){
-                btn.button('reset');
                 toastr[response.type](response.message, response.title);
             });
         });
@@ -332,7 +315,7 @@ var App = function() {
         });
 
         /*-- Product Quantity --*/
-        $('.product-quantity').append('<span class="dec qtybtn"><i class="fa fa-angle-left"></i></span><span class="inc qtybtn"><i class="fa fa-angle-right"></i></span>');
+        $('.quantity').append('<span class="dec qtybtn"><i class="fa fa-angle-left"></i></span><span class="inc qtybtn"><i class="fa fa-angle-right"></i></span>');
         $('.qtybtn').on('click', function() {
             var $button = $(this);
             var $input = $button.parent().find('input');

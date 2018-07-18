@@ -259,6 +259,8 @@ class HomeController extends Controller
 
                 $this->_data['images'] = get_media($this->_data['product']->attachments);
                 $this->_data['attributes'] = $this->_data['product']->attributes ? json_decode($this->_data['product']->attributes,true) : [];
+                $this->_data['colors'] = get_attributes('product_colors');
+                $this->_data['sizes'] = get_attributes('product_sizes');
                 $this->_data['tags'] = get_attributes('product_tags');
 
                 $comments = DB::table('comments')

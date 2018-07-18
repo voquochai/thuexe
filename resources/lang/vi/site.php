@@ -44,6 +44,8 @@ return [
     'reset' =>  'Làm mới',
 
     /* Product */
+    'product_color'  =>  'Màu sắc',
+    'product_size'  =>  'Kích thước',
     'product_price'  =>  'Giá bán',
     'product_code'  =>  'Mã sản phẩm',
     'product_detail'   =>  'Chi tiết sản phẩm',
