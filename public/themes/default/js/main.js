@@ -154,6 +154,29 @@
             }
         },]
     });
+
+    $('.slick-product-other').slick({
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        prevArrow: '<div class="arrow-prev"><i class="pe-7s-angle-left pe-7s-5x"></i></div>',
+        nextArrow: '<div class="arrow-next"><i class="pe-7s-angle-right pe-7s-5x"></i></div>',
+        responsive: [{
+            breakpoint: 991,
+            settings: {
+                slidesToShow: 3,
+            }
+        }, {
+            breakpoint: 767,
+            settings: {
+                slidesToShow: 2,
+            }
+        }, {
+            breakpoint: 479,
+            settings: {
+                slidesToShow: 1,
+            }
+        }]
+    });
     
     /*-- Youtube Background Video --*/
     $(".youtube-bg").YTPlayer();

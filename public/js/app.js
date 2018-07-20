@@ -224,7 +224,7 @@ var App = function() {
         $('body').on('click', '#add-to-cart', function(e){
             e.preventDefault();
             var btn = $(this);
-            var qty = $('.quantity input').val();
+            var qty = $('.product-quantity input').val();
             if( typeof qty === 'undefined' ) qty = 1;
 
             var color = $('.color-list .active').attr('data-id');
@@ -315,7 +315,7 @@ var App = function() {
         });
 
         /*-- Product Quantity --*/
-        $('.quantity').append('<span class="dec qtybtn"><i class="fa fa-angle-left"></i></span><span class="inc qtybtn"><i class="fa fa-angle-right"></i></span>');
+        $('.product-quantity').append('<span class="dec qtybtn"><i class="fa fa-angle-left"></i></span><span class="inc qtybtn"><i class="fa fa-angle-right"></i></span>');
         $('.qtybtn').on('click', function() {
             var $button = $(this);
             var $input = $button.parent().find('input');

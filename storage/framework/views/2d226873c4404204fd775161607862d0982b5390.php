@@ -69,7 +69,7 @@
                                 <span class="countCart">0</span>
                             </a>
                             <!-- Mini Cart Brief -->
-                            <div class="mini-cart-brief dropdown-menu text-left" style="display:none;">
+                            <div class="mini-cart-brief dropdown-menu text-left">
                                 <div class="cart-items"><p>You have <span class="countCart">0</span> <span>items</span>  in your shopping bag</p></div>
                                 <!-- Cart Products -->
                                 <div class="all-cart-product clearfix">

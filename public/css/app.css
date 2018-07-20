@@ -938,3 +938,75 @@ td > .mt-checkbox.mt-checkbox-single {
     background-color: #fff;
     color: #94da46;
 }
+
+/*-- Quantity --*/
+.product-quantity {
+    border: 1px solid #ddd;
+    display: block;
+    float: left;
+    margin-right: 30px;
+    padding: 0 35px;
+    position: relative;
+}
+.product-quantity input {
+    border: medium none;
+    height: 32px;
+    text-align: center;
+    width: 50px;
+}
+.product-quantity span {
+    cursor: pointer;
+    display: block;
+    height: 32px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 35px;
+}
+.product-quantity span i {
+    display: block;
+    font-size: 18px;
+    line-height: 32px;
+}
+.product-quantity span.inc {
+    right: 0;
+}
+.product-quantity span.dec {
+    left: 0;
+}
+.color-list,
+.size-list {
+    float: left;
+}
+.color-list button,
+.size-list button {
+    position: relative;
+    border: 1px solid #eee;
+    display: block;
+    float: left;
+    width: 30px;
+    height: 30px;
+    margin: 5px 10px 5px 0px;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+.color-list button i,
+.size-list button i {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    color: #94da46;
+    display: block;
+    font-size: 13px;
+    line-height: 30px;
+    opacity: 0;
+}
+.color-list button.active,
+.size-list button.active {
+    border-color: #333 !important;
+}
+.color-list button.active i,
+.size-list button.active i {
+    opacity: 1 !important;
+}

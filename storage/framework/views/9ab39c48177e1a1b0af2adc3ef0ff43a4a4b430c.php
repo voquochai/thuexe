@@ -2,11 +2,11 @@
 <!-- PAGE SECTION START -->
 <section class="page-section ptb-60">
     <div class="container">
-        <div class="row mb-30">
-            <div class="col-xs-12 mb-30">
+        <div class="row">
+            <div class="col-xs-12">
                 <div class="product-details">
                     <div class="row">
-                        <div class="col-md-5 col-md-offset-0 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2 col-xs-wide mb-30">
+                        <div class="col-md-5 col-md-offset-0 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 col-xs-wide mb-30">
                             <div class="image">
                                 <div class="slick-product-image">
                                     <div>
@@ -40,7 +40,7 @@
                             <div class="info">
                                 <ul>
                                     <li><h1 class="title"><?php echo e($product->title); ?></h1></li>
-                                    <li><label><?php echo e(__('site.product_price')); ?>:</label><span class="price"><?php echo get_template_product_price($product->regular_price,$product->sale_price); ?></span></li>
+                                    <li><span class="price"><?php echo get_template_product_price($product->regular_price,$product->sale_price); ?></span></li>
 
                                     <?php $__empty_1 = true; $__currentLoopData = $attributes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $attribute): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                         <?php if( $attribute['name'] !== null && $attribute['value'] !== null ): ?>
@@ -74,7 +74,7 @@
 
                                     <li>
                                         <label><?php echo e(__('cart.quantity')); ?>:</label>
-                                        <div class="quantity">
+                                        <div class="product-quantity">
                                             <input type="text" name="quantity" value="1">
                                         </div>
                                         <a href="#" id="add-to-cart" class="btn btn-site uppercase" data-ajax="id=<?php echo e($product->id); ?>"> Thêm giỏ hàng </a>
@@ -83,64 +83,43 @@
                                     <li>
                                         <label>Share:</label>
                                         <div class="share-icons">
-                                            <a target="_blank" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo e(url()->current()); ?>"><i class="fa fa-facebook"></i>  facebook</a>
-                                            <a target="_blank" class="twitter" href="https://twitter.com/home?status=<?php echo e(url()->current()); ?>"><i class="fa fa-twitter"></i>  twitter</a>
-                                            <a target="_blank" class="google" href="https://plus.google.com/share?url=<?php echo e(url()->current()); ?>"><i class="fa fa-google-plus"></i>  google</a>
-                                            <a target="_blank" class="pinterest" href="https://pinterest.com/pin/create/button/?url=<?php echo e(url()->current()); ?>&media=<?php echo e(asset('public/uploads/products/'.$product->image)); ?>&description=<?php echo e($product->description); ?>"><i class="fa fa-pinterest"></i>  pinterest</a>
+                                            <a target="_blank" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo e(url()->current()); ?>"><i class="fa fa-facebook"></i> facebook</a>
+                                            <a target="_blank" class="twitter" href="https://twitter.com/home?status=<?php echo e(url()->current()); ?>"><i class="fa fa-twitter"></i> twitter</a>
+                                            <a target="_blank" class="google" href="https://plus.google.com/share?url=<?php echo e(url()->current()); ?>"><i class="fa fa-google-plus"></i> google</a>
+                                            <a target="_blank" class="pinterest" href="https://pinterest.com/pin/create/button/?url=<?php echo e(url()->current()); ?>&media=<?php echo e(asset('public/uploads/products/'.$product->image)); ?>&description=<?php echo e($product->description); ?>"><i class="fa fa-pinterest"></i> pinterest</a>
                                         </div>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="content">
-                        <?php echo $product->contents; ?>
+                </div>
+                <div class="product-contents">
+                    <?php echo $product->contents; ?>
 
-                    </div>
                 </div>
                 <!-- Comments Wrapper -->
                 <?php echo $__env->make('frontend.default.blocks.comment', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             </div>
-            <div class="col-md-4 col-sm-12 col-xs-12 mb-40">
-                <div class="sidebar" id="app-cart">
-                    <div class="sidebar-widget mb-40">
-                        <div class="product-attributes">
-                            <ul>
-                            
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="sidebar-widget mb-40">
-                        <div class="product-price">
-                            <div class="float-left"><label></label></div>
-                            <div class="float-right"></div>
-                        </div>
-                    </div>
-                    
+        </div>
+        <div class="row">
+            <div class="section-title text-center">
+                <h2><?php echo e(__('site.product_other')); ?></h2>
+            </div>
+            <div class="slick-product-other">
+                
+                <?php $__empty_1 = true; $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                <div>
+                    <?php echo get_template_product($item,$type,1); ?>
+
                 </div>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                <?php endif; ?>
+                
             </div>
         </div>
     </div>
 </section>
 <!-- PAGE SECTION END -->
-    
-<!-- PRODUCT SECTION START -->
-<section class="page-section pb-60">
-    <div class="container">
-        <div class="row">
-            <div class="section-title text-center col-xs-12 mb-70">
-                <h2><?php echo e(__('site.product_other')); ?></h2>
-            </div>
-        </div>
-        <div class="row display-flex">
-            <?php $__empty_1 = true; $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                <?php echo get_template_product($item,$type,3); ?>
-
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-            <?php endif; ?>
-        </div>
-    </div>
-</section>
-<!-- PRODUCT SECTION END --> 
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('frontend.default.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
