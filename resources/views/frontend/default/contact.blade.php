@@ -31,21 +31,21 @@
                         <div class="col-xs-12 col-sm-6">
                             <div class="form-group">
                                 <label for="name">{{ __('site.name') }}</label>
-                                <input id="name" name="name" type="text">
+                                <input id="name" name="name" type="text" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input id="email" name="email" type="email">
+                                <input id="email" name="email" type="email" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="subject">{{ __('site.subject') }}</label>
-                                <input id="subject" name="subject" type="text">
+                                <input id="subject" name="subject" type="text" class="form-control">
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-6">
                             <div class="form-group">
                                 <label for="message">{{ __('site.message') }}</label>
-                                <textarea name="message" id="message"></textarea>
+                                <textarea name="message" id="message" class="form-control"></textarea>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-site btn-ajax" data-ajax="act=contact|type=contact"> {{ __('site.send') }} </button>

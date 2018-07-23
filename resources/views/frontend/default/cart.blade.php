@@ -1,7 +1,7 @@
 @extends('frontend.default.master')
 @section('content')
 <!-- PAGE SECTION START -->
-<div class="page-section pt-100 pb-60">
+<section class="page-section ptb-60">
     <div class="container">
         <div class="row">
             <form action="#">               
@@ -81,6 +81,6 @@
             </form> 
         </div>
     </div>
-</div>
+</section>
 <!-- PAGE SECTION END --> 
 @endsection

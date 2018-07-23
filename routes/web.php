@@ -286,7 +286,6 @@ Route::group(['as'=>'frontend.', 'namespace'=>'Frontend', 'middleware'=>'checkMa
 	Route::post('/gio-hang/delete', 'CartController@deleteCart')->name('cart.delete');
 	Route::post('/gio-hang/update', 'CartController@updateCart')->name('cart.update');
 	Route::post('/gio-hang/coupon', 'CartController@coupon')->name('cart.coupon');
-	Route::post('/gio-hang/domain', 'CartController@buyDomain')->name('cart.domain');
 
 	Route::get('/viewed', 'HomeController@viewed')->name('home.viewed');
 	Route::get('/wishlist', 'WishListController@index')->name('wishlist.index');

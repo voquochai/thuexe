@@ -262,10 +262,10 @@ var App = function() {
                 url : Laravel.baseUrl+'/gio-hang/add',
                 data: dataAjax,
                 beforeSend: function(){
-                    btn.button('loading');
+                    btn.find('i').removeClass().addClass('fa fa-spinner fa-pulse');
                 }
             }).done(function(response){
-                btn.button('reset');
+                btn.find('i').removeClass().addClass('fa fa-shopping-cart');
                 countCart.html(response.countCart);
                 sumCartPrice.html(response.sumCartPrice);
                 sumOrderPrice.html(response.sumOrderPrice);

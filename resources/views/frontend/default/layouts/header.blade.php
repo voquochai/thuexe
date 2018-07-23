@@ -61,24 +61,28 @@
                         </div>
                         <div class="header-cart float-left">
                             <!-- Cart Toggle -->
-                            <a class="cart-toggle" href="#" data-toggle="dropdown">
+                            <a class="cart-toggle" href="javascript:;">
                                 <i class="pe-7s-cart"></i>
-                                <span class="countCart">0</span>
+                                <span class="countCart">{{$countCart}}</span>
                             </a>
                             <!-- Mini Cart Brief -->
-                            <div class="mini-cart-brief dropdown-menu text-left">
-                                <div class="cart-items"><p>You have <span class="countCart">0</span> <span>items</span>  in your shopping bag</p></div>
+                            <div class="mini-cart text-left">
+                                <div class="cart-top">
+                                    <p>{!! __('cart.has_item',['attribute'=>$countCart]) !!}</p>
+                                </div>
                                 <!-- Cart Products -->
-                                <div class="all-cart-product clearfix">
+                                <div class="cart-items clearfix">
                                     <ul></ul>
                                 </div>
-
                                 <!-- Cart Total -->
-                                <div class="cart-totals">
-                                    <h5>Total <span class="floatright shopping-cart__total">$0.00</span></h5>
+                                <div class="cart-total">
+                                    <p>{{ __('cart.total') }} <span class="float-right sumOrderPrice">{{ $sumOrderPrice }}</span></p>
                                 </div>
                                 <!-- Cart Button -->
-                                <div class="cart-bottom  clearfix"><a href="/checkout">Check Out</a></div>
+                                <div class="cart-bottom clearfix">
+                                    <a href="{{ route('frontend.cart.index') }}" class="btn btn-site float-left">{{ __('site.cart') }}</a>
+                                    <a href="{{ route('frontend.cart.checkout') }}" class="btn btn-site float-right">{{ __('site.checkout') }}</a>
+                                </div>
                             </div>
                         </div>
                     </div>

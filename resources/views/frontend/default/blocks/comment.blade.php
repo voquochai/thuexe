@@ -15,18 +15,18 @@
             <div class="row">
 	            <div class="col-sm-4 col-xs-12">
 	                <label for="name">{{ __('site.name') }}</label>
-	                <input name="name" type="text">
+	                <input name="name" type="text" class="form-control">
 	            </div>
 	            <div class="col-sm-8 col-xs-12">
 	                <label for="email">Email</label>
-	                <input name="email" type="text">
+	                <input name="email" type="text" class="form-control">
 	            </div>
 	            <div class="col-xs-12">
 					<label for="description">{{ __('site.content') }}</label>
-					<textarea name="description"></textarea>
+					<textarea name="description" class="form-control"></textarea>
 				</div>
 	            <div class="col-xs-12">
-	                <button type="submit" class="btn btn-primary btn-ajax" data-ajax="act=comment|type=default"> {{ __('site.send_comment') }} </button>
+	                <button type="submit" class="btn btn-site btn-ajax" data-ajax="act=comment|type=default"> {{ __('site.send_comment') }} </button>
 				</div>
 			</div>
 		</form>

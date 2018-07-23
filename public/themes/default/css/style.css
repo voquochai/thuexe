@@ -44,8 +44,7 @@ a:hover {
 	text-decoration: none;
 }
 a,
-button,
-input {
+button{
 	outline: medium none;
 	color: #1f2a37;
 }
@@ -455,6 +454,102 @@ h6 a {
 	text-align: center;
 	top: 0;
 	width: 17px;
+}
+.header-cart .mini-cart{
+	visibility: hidden;
+	position: absolute;
+	min-width: 320px;
+	background-color: #fff;
+	-webkit-box-shadow: 0 0px 4px 0 rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0 0px 4px 0 rgba(0, 0, 0, 0.2);
+	box-shadow: 0 0px 4px 0 rgba(0, 0, 0, 0.2);
+	right: 0px;
+	top: 120%;
+	padding: 20px;
+	transition: all .3s ease;
+	-webkit-transition: all .3s ease;
+	opacity: 0;
+}
+.header-cart .mini-cart:before{
+	content: '';
+	display: inline-block;
+	position: absolute;
+	border-left: 7px solid transparent;
+	border-right:7px solid transparent;
+	border-bottom: 7px solid rgba(0,0,0,0.2);
+	top: -6px;
+	right: 15px;
+}
+.header-cart .mini-cart:after{
+	content: '';
+	display: inline-block;
+	position: absolute;
+	border-left: 6px solid transparent;
+	border-right:6px solid transparent;
+	border-bottom: 6px solid #fff;
+	top: -5px;
+	right: 16px;
+}
+.header-cart:hover .mini-cart{
+	top: 100%;
+	opacity: 1;
+	visibility: visible;
+	z-index: 100;
+}
+.header-cart .mini-cart .cart-top{
+    border-bottom: 1px solid #eee;
+    margin: 0 -20px 20px;
+    padding: 0 20px 15px;
+}
+.header-cart .mini-cart .cart-top p{
+	margin-bottom: 0px;
+}
+.header-cart .mini-cart .cart-top p span{
+    color: #94da46;
+}
+.header-cart .mini-cart .cart-total{
+	padding: 10px 20px;
+    margin: 0 -20px;
+    margin-bottom: 15px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+.header-cart .mini-cart .cart-total p{
+	margin-bottom: 0px;
+	text-align: left;
+}
+.header-cart .mini-cart .cart-bottom{
+	text-align: center;
+}
+.header-cart .mini-cart .cart-bottom a{
+	min-width: 130px;
+	padding: 10px 15px;
+	text-transform: uppercase;
+}
+.header-cart .mini-cart .cart-bottom a:nth-child(2){
+	background-color: #94da46;
+}
+
+.header-cart ul li{
+	position: relative;
+	width: 100%;
+}
+.header-cart ul li:before {
+	position: absolute;
+	content: '';
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 2px;
+	height: 0%;
+	background: #94da46;
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+.header-cart ul li:hover:before{
+	height: 100%;
 }
 
 /*-- Header bottom --*/
@@ -2005,7 +2100,17 @@ span.sub_label {
     line-height: 32px;
     margin-right: 10px;
 }
+.product-details .product-quantity input{
+	height: 50px;
+}
+.product-details .product-quantity span{
+	height: 50px;
+}
+.product-details .product-quantity span i{
+	line-height: 50px;
+}
 .product-details #add-to-cart{
+	padding: 15px 40px;
 	font-weight: 600;
 }
 .product-details #add-to-cart:active,
@@ -2479,7 +2584,9 @@ span.sub_label {
 	width: 100%;
 }
 /*-- Cart Table Head --*/
-.cart-table table thead {}
+.cart-table table thead {
+	background-color: #1f2a37;
+}
 .cart-table table thead tr {}
 .cart-table table thead tr th {
 	border-bottom: 1px solid #ddd;
@@ -2491,6 +2598,7 @@ span.sub_label {
 	text-transform: uppercase;
 	vertical-align: middle;
 	white-space: nowrap;
+	color: #fff;
 }
 /*-- Cart Table Body --*/
 .cart-table table tbody {}
@@ -3008,32 +3116,8 @@ span.sub_label {
 	color: #536d87;
 	text-transform: capitalize;
 }
-.contact-form form input[type="text"],
-.contact-form form input[type="email"] {
-	border: 1px solid #ddd;
-	height: 40px;
-	padding: 7px 15px;
-	width: 100%;
-}
 .contact-form form textarea {
-	border: 1px solid #ddd;
-	display: block;
-	height: 132px;
-	padding: 7px 15px;
-	width: 100%;
-}
-.contact-form form input[type="submit"] {
-	background-color: #282828;
-	border: medium none;
-	color: #fff;
-	height: 40px;
-	margin: 0;
-	padding: 7px 50px;
-	text-transform: uppercase;
-	width: auto;
-}
-.contact-form form input[type="submit"]:hover {
-	background-color: #ffae00;
+	height: 115px;
 }
 .contact-form form .btn-ajax{
 	padding: 15px 40px;
@@ -3176,24 +3260,14 @@ span.sub_label {
     text-transform: capitalize;
 }
 .comment-form form input {
-	border: 1px solid #ddd;
-	float: left;
-	height: 40px;
 	margin-bottom: 20px;
-	padding: 7px 15px;
-	width: 100%;
 }
 .comment-form form textarea {
-	border: 1px solid #ddd;
-	float: left;
 	height: 120px;
 	margin-bottom: 20px;
-	padding: 7px 15px;
-	width: 100%;
 }
 .comment-form form button[type="submit"] {
 	padding: 15px 40px;
-	background: #5dafef;
 	text-decoration: none;
 	font-weight: 600;
 	font-size: 14px;

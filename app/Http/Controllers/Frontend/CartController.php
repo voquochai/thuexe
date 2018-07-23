@@ -38,12 +38,6 @@ class CartController extends Controller
             View::share('siteconfig', config('siteconfig'));
             $this->_data['cart'] = is_array($cart = json_decode($request->cookie('cart'), true)) ? $cart : [];
             $this->_data['coupon'] = is_array($coupon = json_decode($request->cookie('coupon'), true)) ? $coupon : [];
-            if (count($this->_data['cart']) > 0) {
-                $this->_data['countCart'] = count($this->_data['cart']);
-                
-            }else{
-                $this->_data['countCart'] = 0;
-            }
             return $next($request);
         });
     }
@@ -104,7 +98,7 @@ class CartController extends Controller
             ->orderBy('A.priority','asc')
             ->orderBy('A.id','desc')
             ->get();
-        if (count($this->_data['cart']) > 0) {
+        if(count($this->_data['cart']) > 0) {
             $sumCartPrice = $sumOrderPrice = 0;
             $countCart = count($this->_data['cart']);
             foreach ($this->_data['cart'] as $key => $val) {
@@ -325,24 +319,6 @@ class CartController extends Controller
         }
         if($flag) return true;
         return false;
-    }
-    public function buyDomain(Request $request){
-        $domain = $request->domain;
-        $price = (int)$request->price;
-        if ( $request->ajax() ) {
-            $cookieDomain = cookie('domain', json_encode(['name'=>$domain, 'price'=>$price]), 720);
-            return response()->json([
-                'type'    =>  'success',
-                'title' =>  '',
-                'message' => "Đăng ký tên miền $domain thành công",
-            ])->withCookie($cookieDomain);
-        }else{
-            return response()->json([
-                'type'    =>  'warning',
-                'title' =>  '',
-                'message' => "Đăng ký tên miền $domain thất bại"
-            ]);
-        }
     }
     public function addToCart(Request $request){
         $id = $request->id;

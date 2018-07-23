@@ -30,24 +30,24 @@
                         <div class="col-xs-12 col-sm-6">
                             <div class="form-group">
                                 <label for="name"><?php echo e(__('site.name')); ?></label>
-                                <input id="name" name="name" type="text">
+                                <input id="name" name="name" type="text" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input id="email" name="email" type="email">
+                                <input id="email" name="email" type="email" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="subject"><?php echo e(__('site.subject')); ?></label>
-                                <input id="subject" name="subject" type="text">
+                                <input id="subject" name="subject" type="text" class="form-control">
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-6">
                             <div class="form-group">
                                 <label for="message"><?php echo e(__('site.message')); ?></label>
-                                <textarea name="message" id="message"></textarea>
+                                <textarea name="message" id="message" class="form-control"></textarea>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-ajax" data-ajax="act=contact|type=contact"> <?php echo e(__('site.send')); ?> </button>
+                                <button type="submit" class="btn btn-site btn-ajax" data-ajax="act=contact|type=contact"> <?php echo e(__('site.send')); ?> </button>
                             </div>
                         </div>
                     </div>

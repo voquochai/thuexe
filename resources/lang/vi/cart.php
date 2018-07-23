@@ -3,7 +3,7 @@
 return [
     'add_to_cart' => 'Thêm giỏ hàng',
     'buy_now' => 'Mua ngay',
-    'has_item' => 'Hiện có <span> :attribute sản phẩm </span> trong giỏ hàng',
+    'has_item' => 'Hiện có <span class="countCart"> :attribute sản phẩm </span> trong giỏ hàng',
     'no_item' => 'Hiện không có sản phẩm trong giỏ hàng',
     'continue_shopping' => 'Tiếp tục mua hàng',
     'enter_coupon' => 'Nhập mã coupon của bạn',
