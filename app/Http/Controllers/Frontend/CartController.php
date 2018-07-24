@@ -384,7 +384,8 @@ class CartController extends Controller
                     'message' => __('cart.added'),
                     'countCart' => $countCart,
                     'sumCartPrice' => number_format($totalPrice['sumCartPrice'], 0, ',', '.'),
-                    'sumOrderPrice' => number_format($totalPrice['sumOrderPrice'], 0, ',', '.')
+                    'sumOrderPrice' => number_format($totalPrice['sumOrderPrice'], 0, ',', '.'),
+                    'miniCart'  =>  self::miniCart()
                 ])->withCookie($cookieCart)->withCookie($cookieCoupon);
             }else{
                 return response()->json([
@@ -458,6 +459,27 @@ class CartController extends Controller
         $cookieCart = cookie('cart', '', 720);
         $cookieCoupon = cookie('coupon', '', 720);
         return redirect()->route('frontend.cart.index')->withCookie($cookieCart)->withCookie($cookieCoupon);
+    }
+
+    public function miniCart(){
+        $str = '';
+        if (count($this->_data['cart']) > 0) {
+            foreach($this->_data['cart'] as $key => $val){
+                $str .= '<tr id="pro-key-'.$key.'">
+                    <td class="pro-thumbnail"><a href="#"><img src="'.$val['image'].'" alt="" /></a></td>
+                    <td class="pro-title"><a href="#">'.$val['title'].'</a>
+                        '.($val['color_title'] ? $val['color_title'].' - ' : '').($val['size_title'] ? $val['size_title'] : '').'
+                    </td>
+                    <td class="pro-price"><span>'.$val['price'].'</span></td>
+                    <td class="pro-quantity"><div class="product-quantity"><input type="text" value="'.$val['qty'].'" class="update-cart" data-ajax="key='.$key.'" /></div></td>
+                    <td class="pro-subtotal sumProPrice">'.($val['price']*$val['qty']).'</td>
+                    <td class="pro-remove"><a href="#" class="delete-cart" data-ajax="key='.$key.'" >×</a></td>
+                </tr>';
+            }
+        } else {
+            $str = '<tr> <td colspan="30">'.__('cart.no_item').'</td> </tr>';
+        }
+        return $str;
     }
     
 }

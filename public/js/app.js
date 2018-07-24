@@ -221,6 +221,7 @@ var App = function() {
         var countCart = $('.countCart');
         var sumCartPrice = $('.sumCartPrice');
         var sumOrderPrice = $('.sumOrderPrice');
+        var miniCart = $('.mini-cart .cart-items');
         $('body').on('click', '#add-to-cart', function(e){
             e.preventDefault();
             var btn = $(this);
@@ -269,6 +270,7 @@ var App = function() {
                 countCart.html(response.countCart);
                 sumCartPrice.html(response.sumCartPrice);
                 sumOrderPrice.html(response.sumOrderPrice);
+                miniCart.html(response.miniCart);
                 toastr[response.type](response.message, response.title);
             });
         });
