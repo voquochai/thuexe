@@ -281,6 +281,7 @@ Route::group(['as'=>'frontend.', 'namespace'=>'Frontend', 'middleware'=>'checkMa
 	Route::get('/thankyou', 'CartController@thankYou')->name('cart.thankyou');
 
 	Route::get('/gio-hang', 'CartController@index')->name('cart.index');
+	Route::get('/gio-hang/load', 'CartController@miniCart')->name('cart.mini_cart');
 	Route::get('/gio-hang/delete-all', 'CartController@deleteAll')->name('cart.delete_all');
 	Route::post('/gio-hang/add', 'CartController@addToCart')->name('cart.add');
 	Route::post('/gio-hang/delete', 'CartController@deleteCart')->name('cart.delete');
@@ -291,9 +292,6 @@ Route::group(['as'=>'frontend.', 'namespace'=>'Frontend', 'middleware'=>'checkMa
 	Route::get('/wishlist', 'WishListController@index')->name('wishlist.index');
 	Route::post('/wishlist/add', 'WishListController@addToWishList')->name('wishlist.add');
 	Route::post('/wishlist/delete', 'WishListController@deleteWishList')->name('wishlist.delete');
-
-	Route::get('/kiem-tra-ten-mien' , 'DomainController@checkWhoIs')->name('domain.check_whois');
-	Route::post('/kiem-tra-ten-mien' , 'DomainController@checkWhoIs')->name('domain.check_whois');
 
 	Route::get('/{type}/{slug}.html' , 'HomeController@page')->name('home.page');
 	Route::get('/{type}/{slug}' , 'HomeController@category')->name('home.category');

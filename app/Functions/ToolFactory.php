@@ -367,6 +367,7 @@ class ToolFactory {
                 @$products[$id][$color][$size]['color_title'] = $item->color_title;
                 @$products[$id][$color][$size]['size_title'] = $item->size_title;
                 @$products[$id][$color][$size]['import'] += (int)$item->product_qty;
+                @$products[$id][$color][$size]['export'] = 0;
             }
         }
 

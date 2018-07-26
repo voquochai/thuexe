@@ -32,6 +32,7 @@ textarea,
 	color: #fff;
     background-color: #94da46;
 }
+.toast-top-right{ top: 10%; }
 
 a:focus,
 .btn:focus {
@@ -530,26 +531,57 @@ h6 a {
 	background-color: #94da46;
 }
 
+.header-cart .mini-cart .single-cart {
+	margin-bottom: 15px;
+}
+.header-cart .mini-cart .single-cart .cart-image {
+	display: block;
+	float: left;
+	margin-right: 15px;
+	width: 75px;
+}
+.header-cart .mini-cart .single-cart .cart-image a {
+	display: block;
+}
+.header-cart .mini-cart .single-cart .cart-image a img {
+	width: 100%;
+}
+.header-cart .mini-cart .single-cart .cart-info {
+	overflow: hidden;
+	padding-right: 15px;
+	position: relative;
+}
+.header-cart .mini-cart .single-cart .cart-info h5 {
+	font-size: 14px;
+	font-weight: 600;
+	margin-top: 0px;
+	text-transform: capitalize;
+}
+.header-cart .mini-cart .single-cart .cart-info h5 a {}
+.header-cart .mini-cart .single-cart .cart-info p {
+	margin: 0;
+	font-size: 13px;
+}
+.header-cart .mini-cart .single-cart .delete-cart {
+	line-height: 18px;
+	font-size: 20px;
+	padding: 0;
+	position: absolute;
+	right: 5px;
+	top: 0;
+}
+.header-cart .mini-cart .single-cart .delete-cart i {
+	display: block;
+	font-size: 16px;
+}
+.header-cart ul{
+	margin: 0px;
+	padding: 0px;
+}
 .header-cart ul li{
 	position: relative;
 	width: 100%;
-}
-.header-cart ul li:before {
-	position: absolute;
-	content: '';
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	width: 2px;
-	height: 0%;
-	background: #94da46;
-	-webkit-transition: all 0.3s;
-	-o-transition: all 0.3s;
-	transition: all 0.3s;
-}
-.header-cart ul li:hover:before{
-	height: 100%;
+	list-style: none;
 }
 
 /*-- Header bottom --*/

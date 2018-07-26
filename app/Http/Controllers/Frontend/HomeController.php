@@ -33,36 +33,6 @@ class HomeController extends Controller
             $this->_data['lang'] = $lang;
             $this->_data['meta_seo'] = set_meta_tags($lang);
             View::share('siteconfig', config('siteconfig'));
-            $this->_data['domain'] = is_array($domain = json_decode($request->cookie('domain'), true)) ? $domain : [];
-            $this->_data['cart'] = is_array($cart = json_decode($request->cookie('cart'), true)) ? $cart : [];
-            $this->_data['coupon'] = is_array($coupon = json_decode($request->cookie('coupon'), true)) ? $coupon : [];
-            if(count($this->_data['cart']) > 0) {
-                $sumCartPrice = $sumOrderPrice = 0;
-                $countCart = count($this->_data['cart']);
-                foreach ($this->_data['cart'] as $key => $val) {
-                    $sumCartPrice += $val['price']*$val['qty'];
-                    $this->_data['cart'][$key]['price'] =   number_format($val['price'], 0, ',', '.');
-                    $this->_data['cart'][$key]['sumProPrice'] =   number_format($val['price']*$val['qty'], 0, ',', '.');
-                }
-                if( count($this->_data['coupon']) > 0 ){
-                    if($this->_data['coupon']['change_conditions_type'] == 'percentage_discount_from_total_cart'){
-                        $sumOrderPrice = $sumCartPrice - (($this->_data['coupon']['coupon_amount']/100)*$sumCartPrice);
-                    }else{
-                        $sumOrderPrice = $sumCartPrice - $this->_data['coupon']['coupon_amount'];
-                    }
-                }else{
-                    $sumOrderPrice = $sumCartPrice;
-                }
-                if($sumOrderPrice < 0) $sumOrderPrice = 0;
-                $this->_data['countCart'] = $countCart;
-                $this->_data['sumCartPrice'] = number_format($sumCartPrice, 0, ',', '.');
-                $this->_data['sumOrderPrice'] = number_format($sumOrderPrice, 0, ',', '.');
-                
-            }else{
-                $this->_data['countCart'] = 0;
-                $this->_data['sumCartPrice'] = 0;
-                $this->_data['sumOrderPrice'] = 0;
-            }
             return $next($request);
         });
     }

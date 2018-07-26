@@ -3,7 +3,7 @@
 return [
     'add_to_cart' => 'Thêm giỏ hàng',
     'buy_now' => 'Mua ngay',
-    'has_item' => 'Hiện có <span class="countCart"> :attribute sản phẩm </span> trong giỏ hàng',
+    'has_item' => 'Hiện có <span class="countCart">:attribute</span> sản phẩm trong giỏ hàng',
     'no_item' => 'Hiện không có sản phẩm trong giỏ hàng',
     'continue_shopping' => 'Tiếp tục mua hàng',
     'enter_coupon' => 'Nhập mã coupon của bạn',
@@ -25,7 +25,12 @@ return [
     'deleted'  =>  'Đã xóa sản phẩm khỏi giỏ hàng',
     'failing'  =>  'Thêm sản phẩm thất bại',
     'not_exist'  =>  'Sản phẩm không tồn tại trong giỏ hàng',
-    'sale'  =>  'Bạn được giảm giá :attribute trên tổng đơn hàng',
+    'coupon_sale'  =>  'Bạn được giảm giá :attribute trên tổng đơn hàng',
+    'coupon_over'  =>  'Mã coupon <b>:code</b> đã hết số lần sử dụng',
+    'coupon_min'  =>  'Mã coupon <b>:code</b> chỉ áp dụng cho đơn hàng có tổng giá trị từ <b>:price</b>',
+    'coupon_max'  =>  'Mã coupon <b>:code</b> chỉ áp dụng cho đơn hàng có tổng giá trị đến <b>:price</b>',
+    'coupon_begin'  =>  'Mã coupon <b>:code</b> chỉ áp dụng từ ngày <b>:date</b>',
+    'coupon_end'  =>  'Mã coupon <b>:code</b> chỉ áp dụng đến ngày <b>:date</b>',
 
     /* Checkout */
 

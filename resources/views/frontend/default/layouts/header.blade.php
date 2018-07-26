@@ -63,20 +63,18 @@
                             <!-- Cart Toggle -->
                             <a class="cart-toggle" href="javascript:;">
                                 <i class="pe-7s-cart"></i>
-                                <span class="countCart">{{$countCart}}</span>
+                                <span class="countCart"></span>
                             </a>
                             <!-- Mini Cart Brief -->
-                            <div class="mini-cart text-left">
+                            <div class="mini-cart">
                                 <div class="cart-top">
-                                    <p>{!! __('cart.has_item',['attribute'=>$countCart]) !!}</p>
+                                    <p>{!! __('cart.has_item',['attribute'=>0]) !!}</p>
                                 </div>
                                 <!-- Cart Products -->
-                                <div class="cart-items clearfix">
-                                    <ul></ul>
-                                </div>
+                                <div class="cart-items clearfix"></div>
                                 <!-- Cart Total -->
                                 <div class="cart-total">
-                                    <p>{{ __('cart.total') }} <span class="float-right sumOrderPrice">{{ $sumOrderPrice }}</span></p>
+                                    <p>{{ __('cart.total') }} <span class="float-right sumOrderPrice"></span></p>
                                 </div>
                                 <!-- Cart Button -->
                                 <div class="cart-bottom clearfix">

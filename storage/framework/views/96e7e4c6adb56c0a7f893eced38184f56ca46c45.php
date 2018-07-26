@@ -56,9 +56,9 @@
                             </div>
                             <div id="result-coupon">
                                 <?php if( $coupon ): ?>
-                                <div class="custom-alerts alert alert-success fade in">
+                                <div class="custom-alerts alert alert-<?php echo e($coupon['effective']['type']); ?> fade in">
                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-                                    <i class="fa-lg fa fa-check"></i> <?php echo e(__('cart.sale',['attribute'=>$coupon['coupon_amount_text']])); ?>
+                                    <i class="fa-lg fa fa-<?php echo e($coupon['effective']['icon']); ?>"></i> <?php echo $coupon['effective']['message']; ?>
 
                                 </div>
                                 <?php endif; ?>
@@ -76,12 +76,12 @@
                                     </thead>
                                     <tbody>
                                         <?php $__empty_1 = true; $__currentLoopData = $cart; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $val): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                                            <tr>
+                                            <tr class="pro-key-<?php echo e($key); ?>">
                                                 <td class="product-name">
                                                     <?php echo e($val['title'].($val['color_title'] ? ' - '.$val['color_title'] : '').($val['size_title'] ? ' - '.$val['size_title'] : '')); ?> <strong class="product-qty"> × <?php echo e($val['qty']); ?> </strong>
                                                 </td>
                                                 <td class="product-total">
-                                                    <span class="amount"><?php echo e($val['sumProPrice']); ?></span>
+                                                    <span class="amount"><?php echo e(get_currency_vn($val['price']*$val['qty'],'')); ?></span>
                                                 </td>
                                             </tr>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
@@ -91,11 +91,11 @@
                                     <tfoot>
                                         <tr>
                                             <th><?php echo e(__('cart.cart_total')); ?></th>
-                                            <td><span class="sumCartPrice"><?php echo e($sumCartPrice); ?></span></td>
+                                            <td><span class="sumCartPrice"></span></td>
                                         </tr>
                                         <tr>
                                             <th><?php echo e(__('cart.order_total')); ?></th>
-                                            <td><strong class="sumOrderPrice"><?php echo e($sumOrderPrice); ?></strong>
+                                            <td><strong class="sumOrderPrice"></strong>
                                             </td>
                                         </tr>                               
                                     </tfoot>

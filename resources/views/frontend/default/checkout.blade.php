@@ -56,9 +56,9 @@
                             </div>
                             <div id="result-coupon">
                                 @if( $coupon )
-                                <div class="custom-alerts alert alert-success fade in">
+                                <div class="custom-alerts alert alert-{{ $coupon['effective']['type'] }} fade in">
                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-                                    <i class="fa-lg fa fa-check"></i> {{ __('cart.sale',['attribute'=>$coupon['coupon_amount_text']]) }}
+                                    <i class="fa-lg fa fa-{{ $coupon['effective']['icon'] }}"></i> {!! $coupon['effective']['message'] !!}
                                 </div>
                                 @endif
                             </div>
@@ -75,12 +75,12 @@
                                     </thead>
                                     <tbody>
                                         @forelse($cart as $key => $val)
-                                            <tr>
+                                            <tr class="pro-key-{{ $key }}">
                                                 <td class="product-name">
                                                     {{ $val['title'].($val['color_title'] ? ' - '.$val['color_title'] : '').($val['size_title'] ? ' - '.$val['size_title'] : '') }} <strong class="product-qty"> × {{ $val['qty'] }} </strong>
                                                 </td>
                                                 <td class="product-total">
-                                                    <span class="amount">{{ $val['sumProPrice'] }}</span>
+                                                    <span class="amount">{{ get_currency_vn($val['price']*$val['qty'],'') }}</span>
                                                 </td>
                                             </tr>
                                         @empty
@@ -90,11 +90,11 @@
                                     <tfoot>
                                         <tr>
                                             <th>{{ __('cart.cart_total') }}</th>
-                                            <td><span class="sumCartPrice">{{ $sumCartPrice }}</span></td>
+                                            <td><span class="sumCartPrice"></span></td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('cart.order_total') }}</th>
-                                            <td><strong class="sumOrderPrice">{{ $sumOrderPrice }}</strong>
+                                            <td><strong class="sumOrderPrice"></strong>
                                             </td>
                                         </tr>                               
                                     </tfoot>

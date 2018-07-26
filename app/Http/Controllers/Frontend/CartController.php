@@ -45,33 +45,6 @@ class CartController extends Controller
         $this->_data['site']['title'] = __('site.cart');
         $this->_data['breadcrumb'] = '<li> <a href="'.url('/').'">'.__('site.home').'</a> </li>';
         $this->_data['breadcrumb'] .= '<li> <a href="'.url('/gio-hang').'"> '.$this->_data['site']['title'].' </a> </li>';
-        if(count($this->_data['cart']) > 0) {
-            $sumCartPrice = $sumOrderPrice = 0;
-            $countCart = count($this->_data['cart']);
-            foreach ($this->_data['cart'] as $key => $val) {
-                $sumCartPrice += $val['price']*$val['qty'];
-                $this->_data['cart'][$key]['price'] =   number_format($val['price'], 0, ',', '.');
-                $this->_data['cart'][$key]['sumProPrice'] =   number_format($val['price']*$val['qty'], 0, ',', '.');
-            }
-            if( count($this->_data['coupon']) > 0 ){
-                if($this->_data['coupon']['change_conditions_type'] == 'percentage_discount_from_total_cart'){
-                    $sumOrderPrice = $sumCartPrice - (($this->_data['coupon']['coupon_amount']/100)*$sumCartPrice);
-                }else{
-                    $sumOrderPrice = $sumCartPrice - $this->_data['coupon']['coupon_amount'];
-                }
-            }else{
-                $sumOrderPrice = $sumCartPrice;
-            }
-            if($sumOrderPrice < 0) $sumOrderPrice = 0;
-            $this->_data['countCart'] = $countCart;
-            $this->_data['sumCartPrice'] = number_format($sumCartPrice, 0, ',', '.');
-            $this->_data['sumOrderPrice'] = number_format($sumOrderPrice, 0, ',', '.');
-            
-        }else{
-            $this->_data['countCart'] = 0;
-            $this->_data['sumCartPrice'] = 0;
-            $this->_data['sumOrderPrice'] = 0;
-        }
         return view('frontend.default.cart', $this->_data);
     }
     public function tracking(Request $request){
@@ -99,26 +72,6 @@ class CartController extends Controller
             ->orderBy('A.id','desc')
             ->get();
         if(count($this->_data['cart']) > 0) {
-            $sumCartPrice = $sumOrderPrice = 0;
-            $countCart = count($this->_data['cart']);
-            foreach ($this->_data['cart'] as $key => $val) {
-                $sumCartPrice += $val['price']*$val['qty'];
-                $this->_data['cart'][$key]['price'] =   number_format($val['price'], 0, ',', '.');
-                $this->_data['cart'][$key]['sumProPrice'] =   number_format($val['price']*$val['qty'], 0, ',', '.');
-            }
-            if( count($this->_data['coupon']) > 0 ){
-                if($this->_data['coupon']['change_conditions_type'] == 'percentage_discount_from_total_cart'){
-                    $sumOrderPrice = $sumCartPrice - (($this->_data['coupon']['coupon_amount']/100)*$sumCartPrice);
-                }else{
-                    $sumOrderPrice = $sumCartPrice - $this->_data['coupon']['coupon_amount'];
-                }
-            }else{
-                $sumOrderPrice = $sumCartPrice;
-            }
-            if($sumOrderPrice < 0) $sumOrderPrice = 0;
-            $this->_data['countCart'] = $countCart;
-            $this->_data['sumCartPrice'] = number_format($sumCartPrice, 0, ',', '.');
-            $this->_data['sumOrderPrice'] = number_format($sumOrderPrice, 0, ',', '.');
             return view('frontend.default.checkout', $this->_data);
         }
         return redirect()->route('frontend.home.index');
@@ -196,8 +149,8 @@ class CartController extends Controller
                 $order->code = update_code($order->id,'DH');
                 $order->save();
                 $order->details()->saveMany($dataInsert);
-                $cookieCart = cookie('cart', '', 720);
-                $cookieCoupon = cookie('coupon', '', 720);
+                $cookieCart = cookie('cart','', 720);
+                $cookieCoupon = cookie('coupon','', 720);
                 if(@config('settings.email_username') !='') Mail::to($order->email)->send(new OrderConfirmation($order));
                 return redirect()->route('frontend.cart.thankyou')->with('orderCode', $order->code)->withCookie($cookieCart)->withCookie($cookieCoupon);
             }
@@ -212,65 +165,94 @@ class CartController extends Controller
         return view('frontend.default.thankyou',$this->_data);
     }
     public function checkCoupon(){
-        $data = ['type' =>'success','icon' =>'check'];
+
+        if($this->_data['coupon']['change_conditions_type'] == 'percentage_discount_from_total_cart'){
+            $sale = $this->_data['coupon']['coupon_amount'].'%';
+        }else{
+            $sale = get_currency_vn($this->_data['coupon']['coupon_amount']);
+        }
+
+        $data = ['type' =>'success','icon' =>'check', 'message' => __('cart.coupon_sale',['attribute'=>$sale])];
         $sumCartPrice = 0;
         foreach ($this->_data['cart'] as $key => $val) {
             $sumCartPrice += $val['price']*$val['qty'];
         }
+        
+
         if( $this->_data['coupon']['used'] >= $this->_data['coupon']['number_of_uses'] ){
             $data = [
                 'type' =>'danger',
                 'icon' =>'warning',
-                'message'   =>  'Mã coupon <b>'.$this->_data['coupon']['code'].'</b> đã hết số lần sử dụng'
+                'message'   =>  __('cart.coupon_over',['code'=>$this->_data['coupon']['code']])
             ];
         }
         if( $this->_data['coupon']['min_restriction_amount'] > 0 && $sumCartPrice < $this->_data['coupon']['min_restriction_amount'] ){
             $data = [
                 'type' =>'danger',
                 'icon' =>'warning',
-                'message'   =>  'Mã coupon <b>'.$this->_data['coupon']['code'].'</b> chỉ áp dụng cho đơn hàng có tổng giá trị từ <b>'.number_format($this->_data['coupon']['min_restriction_amount'],0,',','.').' đ</b>'
+                'message'   =>  __('cart.coupon_min',['code'=>$this->_data['coupon']['code'], 'price'=>get_currency_vn($this->_data['coupon']['min_restriction_amount'])])
             ];
         }
         if( $this->_data['coupon']['max_restriction_amount'] > 0 && $sumCartPrice > $this->_data['coupon']['max_restriction_amount'] ){
             $data = [
                 'type' =>'danger',
                 'icon' =>'warning',
-                'message'   =>  'Mã coupon <b>'.$this->_data['coupon']['code'].'</b> chỉ áp dụng cho đơn hàng có tổng giá trị đến <b>'.number_format($this->_data['coupon']['max_restriction_amount'],0,',','.').' đ</b>'
+                'message'   =>  __('cart.coupon_max',['code'=>$this->_data['coupon']['code'], 'price'=>get_currency_vn($this->_data['coupon']['max_restriction_amount'])])
             ];
         }
         if( $this->_data['coupon']['begin_at'] !== null && time() < strtotime($this->_data['coupon']['begin_at']) ){
             $data = [
                 'type' =>'danger',
                 'icon' =>'warning',
-                'message'   =>  'Mã coupon <b>'.$this->_data['coupon']['code'].'</b> chỉ áp dụng từ ngày <b>'.$this->_data['coupon']['begin_at'].'</b>'
+                'message'   =>  __('cart.coupon_begin',['code'=>$this->_data['coupon']['code'], 'date'=>$this->_data['coupon']['begin_at']])
             ];
         }
         if( $this->_data['coupon']['end_at'] !== null && time() > strtotime($this->_data['coupon']['end_at']) ){
             $data = [
                 'type' =>'danger',
                 'icon' =>'warning',
-                'message'   =>  'Mã coupon <b>'.$this->_data['coupon']['code'].'</b> chỉ áp dụng đến ngày <b>'.$this->_data['coupon']['end_at'].'</b>'
+                'message'   =>  __('cart.coupon_end',['code'=>$this->_data['coupon']['code'], 'date'=>$this->_data['coupon']['end_at']])
             ];
         }
-        
+        $this->_data['coupon']['effective'] = $data;
         return $data;
     }
     public function getTotalPrice(){
         $sumCartPrice = $sumOrderPrice = 0;
+        $miniCart = '<ul>';
+        $data = [];
         foreach ($this->_data['cart'] as $key => $val) {
             $sumCartPrice += $val['price']*$val['qty'];
+            $miniCart .= '<li id="pro-key-'.$key.'">
+                <div class="single-cart clearfix">
+                    <div class="cart-image"><a href="#"><img src="'.$val['image'].'" alt="" /></a></div>
+                    <div class="cart-info">
+                        <h5><a href="#">'.$val['title'].'</a>
+                        '.($val['color_title'] ? $val['color_title'].' - ' : '').($val['size_title'] ? $val['size_title'] : '').'</h5>
+                        <p>'.__('cart.price').': '.get_currency_vn($val['price'],'').'</p>
+                        <p>'.__('cart.quantity').': '.$val['qty'].'</p>
+                    </div>
+                    <a href="#" class="delete-cart" data-ajax="key='.$key.'" >×</a>
+                </div>
+            </li>';
         }
         if( count($this->_data['coupon']) > 0 ){
-            if($this->_data['coupon']['change_conditions_type'] == 'percentage_discount_from_total_cart'){
-                $sumOrderPrice = $sumCartPrice - (($this->_data['coupon']['coupon_amount']/100)*$sumCartPrice);
+            $data = self::checkCoupon();
+            if($data['type'] == 'danger'){
+                $sumOrderPrice = $sumCartPrice;
             }else{
-                $sumOrderPrice = $sumCartPrice - $this->_data['coupon']['coupon_amount'];
+                if($this->_data['coupon']['change_conditions_type'] == 'percentage_discount_from_total_cart'){
+                    $sumOrderPrice = $sumCartPrice - (($this->_data['coupon']['coupon_amount']/100)*$sumCartPrice);
+                }else{
+                    $sumOrderPrice = $sumCartPrice - $this->_data['coupon']['coupon_amount'];
+                }
             }
         }else{
             $sumOrderPrice = $sumCartPrice;
         }
         if($sumOrderPrice < 0) $sumOrderPrice = 0;
-        return ['sumCartPrice' => $sumCartPrice, 'sumOrderPrice' => $sumOrderPrice];
+        $miniCart .= '</ul>';
+        return ['sumCartPrice' => $sumCartPrice, 'sumOrderPrice' => $sumOrderPrice, 'miniCart' => $miniCart, 'coupon' => $data];
     }
     public function coupon(Request $request){
         if ($request->ajax()) {
@@ -282,23 +264,17 @@ class CartController extends Controller
                 if($data['type'] == 'danger'){
                     return response()->json($data);
                 }
-                if($this->_data['coupon']['change_conditions_type'] == 'percentage_discount_from_total_cart'){
-                    $sale = $this->_data['coupon']['coupon_amount'].'%';
-                }else{
-                    $sale = number_format($this->_data['coupon']['coupon_amount'],0,',','.').' VNĐ';
-                }
-                $this->_data['coupon']['coupon_amount_text'] = $sale;
+                $totalPrice = self::getTotalPrice();
                 $countCart = count($this->_data['cart']);
                 $cookieCart = cookie('cart', json_encode($this->_data['cart']), 720);
                 $cookieCoupon = cookie('coupon', json_encode($this->_data['coupon']), 720);
-                $totalPrice = self::getTotalPrice();
                 return response()->json([
                     'type'  =>  'success',
-                    'message'   =>  __('cart.sale',['attribute'=>$sale]),
+                    'message'   =>  $data['message'],
                     'icon'  =>  'check',
                     'countCart' => $countCart,
-                    'sumCartPrice' => number_format($totalPrice['sumCartPrice'], 0, ',', '.'),
-                    'sumOrderPrice' => number_format($totalPrice['sumOrderPrice'], 0, ',', '.')
+                    'sumCartPrice' => get_currency_vn($totalPrice['sumCartPrice'],''),
+                    'sumOrderPrice' => get_currency_vn($totalPrice['sumOrderPrice'],'')
                 ])->withCookie($cookieCart)->withCookie($cookieCoupon);
             }
             return response()->json([
@@ -373,19 +349,19 @@ class CartController extends Controller
                         'size_title' => @$size->title,
                     ];
                 }
-                
+                $totalPrice = self::getTotalPrice();
                 $countCart = count($this->_data['cart']);
                 $cookieCart = cookie('cart', json_encode($this->_data['cart']), 720);
                 $cookieCoupon = cookie('coupon', json_encode($this->_data['coupon']), 720);
-                $totalPrice = self::getTotalPrice();
+                
                 return response()->json([
                     'type'    =>  'success',
                     'title' =>  '',
                     'message' => __('cart.added'),
                     'countCart' => $countCart,
-                    'sumCartPrice' => number_format($totalPrice['sumCartPrice'], 0, ',', '.'),
-                    'sumOrderPrice' => number_format($totalPrice['sumOrderPrice'], 0, ',', '.'),
-                    'miniCart'  =>  self::miniCart()
+                    'sumCartPrice' => get_currency_vn($totalPrice['sumCartPrice'],''),
+                    'sumOrderPrice' => get_currency_vn($totalPrice['sumOrderPrice'],''),
+                    'miniCart'  =>  $totalPrice['miniCart']
                 ])->withCookie($cookieCart)->withCookie($cookieCoupon);
             }else{
                 return response()->json([
@@ -412,19 +388,22 @@ class CartController extends Controller
             } elseif (isset($this->_data['cart'][$key])) {
                 unset($this->_data['cart'][$key]);
             }
+            $totalPrice = self::getTotalPrice();
             $countCart = count($this->_data['cart']);
             $cookieCart = cookie('cart', json_encode($this->_data['cart']), 720);
             $cookieCoupon = cookie('coupon', json_encode($this->_data['coupon']), 720);
-            $totalPrice = self::getTotalPrice();
+            
             return response()->json([
                 'key' => $key,
                 'type'    =>  'success',
                 'title' =>  '',
                 'message' => __('cart.updated'),
-                'sumProPrice'  => number_format($this->_data['cart'][$key]['sumProPrice'], 0, ',', '.'),
+                'sumProPrice'  => get_currency_vn($this->_data['cart'][$key]['sumProPrice'],''),
                 'countCart' => $countCart,
-                'sumCartPrice' => number_format($totalPrice['sumCartPrice'], 0, ',', '.'),
-                'sumOrderPrice' => number_format($totalPrice['sumOrderPrice'], 0, ',', '.')
+                'sumCartPrice' => get_currency_vn($totalPrice['sumCartPrice'],''),
+                'sumOrderPrice' => get_currency_vn($totalPrice['sumOrderPrice'],''),
+                'miniCart'  =>  $totalPrice['miniCart'],
+                'coupon'  =>  $totalPrice['coupon']
             ])->withCookie($cookieCart)->withCookie($cookieCoupon);
         }
     }
@@ -434,18 +413,21 @@ class CartController extends Controller
             if ( isset($this->_data['cart'][$key]) ) {
                 unset($this->_data['cart'][$key]);
             }
+            $totalPrice = self::getTotalPrice();
             $countCart = count($this->_data['cart']);
             $cookieCart = cookie('cart', json_encode($this->_data['cart']), 720);
             $cookieCoupon = cookie('coupon', json_encode($this->_data['coupon']), 720);
-            $totalPrice = self::getTotalPrice();
+            
             return response()->json([
                 'key' => $key,
                 'type'    =>  'success',
                 'title' =>  '',
                 'message' => __('cart.deleted'),
                 'countCart' => $countCart,
-                'sumCartPrice' => number_format($totalPrice['sumCartPrice'], 0, ',', '.'),
-                'sumOrderPrice' => number_format($totalPrice['sumOrderPrice'], 0, ',', '.')
+                'sumCartPrice' => get_currency_vn($totalPrice['sumCartPrice'],''),
+                'sumOrderPrice' => get_currency_vn($totalPrice['sumOrderPrice'],''),
+                'miniCart'  =>  $totalPrice['miniCart'],
+                'coupon'  =>  $totalPrice['coupon']
             ])->withCookie($cookieCart)->withCookie($cookieCoupon);
         }else{
             return response()->json([
@@ -456,30 +438,31 @@ class CartController extends Controller
         }
     }
     public function deleteAll(Request $request){
-        $cookieCart = cookie('cart', '', 720);
-        $cookieCoupon = cookie('coupon', '', 720);
+        $cookieCart = cookie('cart','', 720);
+        $cookieCoupon = cookie('coupon','', 720);
         return redirect()->route('frontend.cart.index')->withCookie($cookieCart)->withCookie($cookieCoupon);
     }
 
     public function miniCart(){
-        $str = '';
-        if (count($this->_data['cart']) > 0) {
-            foreach($this->_data['cart'] as $key => $val){
-                $str .= '<tr id="pro-key-'.$key.'">
-                    <td class="pro-thumbnail"><a href="#"><img src="'.$val['image'].'" alt="" /></a></td>
-                    <td class="pro-title"><a href="#">'.$val['title'].'</a>
-                        '.($val['color_title'] ? $val['color_title'].' - ' : '').($val['size_title'] ? $val['size_title'] : '').'
-                    </td>
-                    <td class="pro-price"><span>'.$val['price'].'</span></td>
-                    <td class="pro-quantity"><div class="product-quantity"><input type="text" value="'.$val['qty'].'" class="update-cart" data-ajax="key='.$key.'" /></div></td>
-                    <td class="pro-subtotal sumProPrice">'.($val['price']*$val['qty']).'</td>
-                    <td class="pro-remove"><a href="#" class="delete-cart" data-ajax="key='.$key.'" >×</a></td>
-                </tr>';
-            }
-        } else {
-            $str = '<tr> <td colspan="30">'.__('cart.no_item').'</td> </tr>';
+        if(count($this->_data['cart']) > 0) {
+            $totalPrice = self::getTotalPrice();
+            $countCart = count($this->_data['cart']);
+            $cookieCart = cookie('cart', json_encode($this->_data['cart']), 720);
+            $cookieCoupon = cookie('coupon', json_encode($this->_data['coupon']), 720);
+            return response()->json([
+                'countCart' => $countCart,
+                'sumCartPrice' => get_currency_vn($totalPrice['sumCartPrice'],''),
+                'sumOrderPrice' => get_currency_vn($totalPrice['sumOrderPrice'],''),
+                'miniCart'  =>  $totalPrice['miniCart']
+            ])->withCookie($cookieCart)->withCookie($cookieCoupon);
+        }else{
+            return response()->json([
+                'countCart' => 0,
+                'sumCartPrice' => 0,
+                'sumOrderPrice' => 0,
+                'miniCart'  =>  ''
+            ]);
         }
-        return $str;
     }
     
 }

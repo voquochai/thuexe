@@ -217,11 +217,32 @@ var App = function() {
 
     }
 
+    var handGetCookie = function (cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0; i<ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1);
+            if (c.indexOf(name) != -1) return c.substring(name.length,c.length);
+        }
+        return "";
+    }
+
     var handleCart = function (){
         var countCart = $('.countCart');
         var sumCartPrice = $('.sumCartPrice');
         var sumOrderPrice = $('.sumOrderPrice');
         var miniCart = $('.mini-cart .cart-items');
+        $.ajax({
+            type: 'GET',
+            url : Laravel.baseUrl+'/gio-hang/load',
+        }).done(function(response){
+            countCart.html(response.countCart);
+            sumCartPrice.html(response.sumCartPrice);
+            sumOrderPrice.html(response.sumOrderPrice);
+            miniCart.html(response.miniCart);
+        });
+
         $('body').on('click', '#add-to-cart', function(e){
             e.preventDefault();
             var btn = $(this);
@@ -247,6 +268,7 @@ var App = function() {
                 countCart.html(response.countCart);
                 sumCartPrice.html(response.sumCartPrice);
                 sumOrderPrice.html(response.sumOrderPrice);
+                miniCart.html(response.miniCart);
                 toastr[response.type](response.message, response.title);
             });
         });
@@ -287,11 +309,23 @@ var App = function() {
                 }
             }).done(function(response){
                 if(response.type == 'success'){
-                    $('#pro-key-'+response.key).remove();
+                    $('.pro-key-'+response.key).remove();
                 }
                 countCart.html(response.countCart);
                 sumCartPrice.html(response.sumCartPrice);
                 sumOrderPrice.html(response.sumOrderPrice);
+                miniCart.html(response.miniCart);
+                App.alert({
+                    container: $('#result-coupon'), // alerts parent container(by default placed after the page breadcrumbs)
+                    place: 'append', // "append" or "prepend" in container
+                    type: response.coupon.type, // alert's type
+                    message: response.coupon.message, // alert's message
+                    close: true, // make alert closable
+                    reset: true, // close all previouse alerts first
+                    focus: false, // auto scroll to the alert after shown
+                    closeInSeconds: 0, // auto close after defined seconds
+                    icon: response.coupon.icon // put icon before the message
+                });
                 toastr[response.type](response.message, response.title);
             });
         });
@@ -308,10 +342,22 @@ var App = function() {
                 beforeSend: function(){
                 }
             }).done(function(response){
-                $('#pro-key-'+response.key+' .sumProPrice').html( response.sumProPrice );
+                $('.pro-key-'+response.key+' .sumProPrice').html( response.sumProPrice );
                 countCart.html(response.countCart);
                 sumCartPrice.html(response.sumCartPrice);
                 sumOrderPrice.html(response.sumOrderPrice);
+                miniCart.html(response.miniCart);
+                App.alert({
+                    container: $('#result-coupon'), // alerts parent container(by default placed after the page breadcrumbs)
+                    place: 'append', // "append" or "prepend" in container
+                    type: response.coupon.type, // alert's type
+                    message: response.coupon.message, // alert's message
+                    close: true, // make alert closable
+                    reset: true, // close all previouse alerts first
+                    focus: false, // auto scroll to the alert after shown
+                    closeInSeconds: 0, // auto close after defined seconds
+                    icon: response.coupon.icon // put icon before the message
+                });
                 toastr[response.type](response.message, response.title);
             });
         });
@@ -434,7 +480,7 @@ var App = function() {
                 }
             }).done(function(response){
                 if(response.type == 'success'){
-                    $('#pro-key-'+response.key).remove();
+                    $('.pro-key-'+response.key).remove();
                 }
                 toastr[response.type](response.message, response.title);
             });

@@ -20,14 +20,14 @@
                             </thead>
                             <tbody>
                                 @forelse($cart as $key => $val)
-                                <tr id="pro-key-{{ $key }}">
+                                <tr class="pro-key-{{ $key }}">
                                     <td class="pro-thumbnail"><a href="#"><img src="{{ $val['image'] }}" alt="" /></a></td>
                                     <td class="pro-title"><a href="#">{{ $val['title'] }}</a>
                                         {{ ($val['color_title'] ? $val['color_title'].' - ' : '').($val['size_title'] ? $val['size_title'] : '') }}
                                     </td>
-                                    <td class="pro-price"><span class="amount">{{ $val['price'] }}</span></td>
+                                    <td class="pro-price"><span class="amount">{{ get_currency_vn($val['price'],'') }}</span></td>
                                     <td class="pro-quantity"><div class="product-quantity"><input type="text" value="{{ $val['qty'] }}" class="update-cart" data-ajax="key={{ $key }}" /></div></td>
-                                    <td class="pro-subtotal sumProPrice">{{ $val['sumProPrice'] }}</td>
+                                    <td class="pro-subtotal sumProPrice">{{ get_currency_vn($val['price']*$val['qty'],'') }}</td>
                                     <td class="pro-remove"><a href="#" class="delete-cart" data-ajax="key={{ $key }}" >×</a></td>
                                 </tr>
                                 @empty
@@ -49,9 +49,9 @@
                     </div>
                     <div id="result-coupon">
                         @if( $coupon )
-                        <div class="custom-alerts alert alert-success fade in">
+                        <div class="custom-alerts alert alert-{{ $coupon['effective']['type'] }} fade in">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-                            <i class="fa-lg fa fa-check"></i> {{ __('cart.sale',['attribute'=>$coupon['coupon_amount_text']]) }}
+                            <i class="fa-lg fa fa-{{ $coupon['effective']['icon'] }}"></i> {!! $coupon['effective']['message'] !!}
                         </div>
                         @endif
                     </div>
@@ -63,12 +63,12 @@
                             <tbody>
                                 <tr class="cart-subtotal">
                                     <th> {{ __('cart.total') }} </th>
-                                    <td><span class="amount sumCartPrice">{{ $sumCartPrice }}</span></td>
+                                    <td><span class="amount sumCartPrice"></span></td>
                                 </tr>
                                 <tr class="order-total">
                                     <th> {{ __('cart.order_total') }} </th>
                                     <td>
-                                        <strong><span class="amount sumOrderPrice">{{ $sumOrderPrice }}</span></strong>
+                                        <strong><span class="amount sumOrderPrice"></span></strong>
                                     </td>
                                 </tr>                                           
                             </tbody>

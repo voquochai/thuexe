@@ -19,15 +19,15 @@
                             </thead>
                             <tbody>
                                 <?php $__empty_1 = true; $__currentLoopData = $cart; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $val): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                                <tr id="pro-key-<?php echo e($key); ?>">
+                                <tr class="pro-key-<?php echo e($key); ?>">
                                     <td class="pro-thumbnail"><a href="#"><img src="<?php echo e($val['image']); ?>" alt="" /></a></td>
                                     <td class="pro-title"><a href="#"><?php echo e($val['title']); ?></a>
                                         <?php echo e(($val['color_title'] ? $val['color_title'].' - ' : '').($val['size_title'] ? $val['size_title'] : '')); ?>
 
                                     </td>
-                                    <td class="pro-price"><span class="amount"><?php echo e($val['price']); ?></span></td>
+                                    <td class="pro-price"><span class="amount"><?php echo e(get_currency_vn($val['price'],'')); ?></span></td>
                                     <td class="pro-quantity"><div class="product-quantity"><input type="text" value="<?php echo e($val['qty']); ?>" class="update-cart" data-ajax="key=<?php echo e($key); ?>" /></div></td>
-                                    <td class="pro-subtotal sumProPrice"><?php echo e($val['sumProPrice']); ?></td>
+                                    <td class="pro-subtotal sumProPrice"><?php echo e(get_currency_vn($val['price']*$val['qty'],'')); ?></td>
                                     <td class="pro-remove"><a href="#" class="delete-cart" data-ajax="key=<?php echo e($key); ?>" >×</a></td>
                                 </tr>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
@@ -49,9 +49,9 @@
                     </div>
                     <div id="result-coupon">
                         <?php if( $coupon ): ?>
-                        <div class="custom-alerts alert alert-success fade in">
+                        <div class="custom-alerts alert alert-<?php echo e($coupon['effective']['type']); ?> fade in">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-                            <i class="fa-lg fa fa-check"></i> <?php echo e(__('cart.sale',['attribute'=>$coupon['coupon_amount_text']])); ?>
+                            <i class="fa-lg fa fa-<?php echo e($coupon['effective']['icon']); ?>"></i> <?php echo $coupon['effective']['message']; ?>
 
                         </div>
                         <?php endif; ?>
@@ -64,12 +64,12 @@
                             <tbody>
                                 <tr class="cart-subtotal">
                                     <th> <?php echo e(__('cart.total')); ?> </th>
-                                    <td><span class="amount sumCartPrice"><?php echo e($sumCartPrice); ?></span></td>
+                                    <td><span class="amount sumCartPrice"></span></td>
                                 </tr>
                                 <tr class="order-total">
                                     <th> <?php echo e(__('cart.order_total')); ?> </th>
                                     <td>
-                                        <strong><span class="amount sumOrderPrice"><?php echo e($sumOrderPrice); ?></span></strong>
+                                        <strong><span class="amount sumOrderPrice"></span></strong>
                                     </td>
                                 </tr>                                           
                             </tbody>
