@@ -2815,9 +2815,6 @@ span.sub_label {
 .cart-total .proceed-to-checkout a:hover {
 	background-color: #282828;
 }
-/* -----------------------------------
-  12. Wishlist Page
---------------------------------------*/
 /*-- Wishlist Table --*/
 .wishlist-table {}
 .wishlist-table table {
@@ -2918,64 +2915,28 @@ span.sub_label {
 /*-- Checkout Form --*/
 .checkout-form {}
 .checkout-form h3 {
-	border-bottom: 1px solid #ddd;
-	font-size: 24px;
-	line-height: 17px;
+	font-weight: 600;
+	border-left: 2px solid #94da46;
+	font-size: 16px;
 	margin: 0 0 30px;
-	padding-bottom: 10px;
+	padding-left: 15px;
 	text-transform: uppercase;
 	width: 100%;
-}
-.checkout-form h3 label {
-	font-size: 18px;
-	margin: 0;
+	color: #1f2a37;
 }
 /*-- Label --*/
 .checkout-form label {
-	display: block;
-	font-weight: 400;
-	line-height: 18px;
-	margin-bottom: 10px;
-	overflow: hidden;
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 14px;
+    margin-bottom: 10px;
+    color: #1f2a37;
+    text-transform: capitalize;
 }
 .checkout-form label span {}
 .checkout-form label span.required {
 	color: #ff0000;
-}
-/*-- Input [ Text & Email & Password ] --*/
-.checkout-form input[type="text"],
-.checkout-form input[type="email"],
-.checkout-form input[type="password"] {
-	border: 1px solid #ddd;
-	display: block;
-	height: 40px;
-	padding: 7px 15px;
-	width: 100%;
-}
-/*-- Input [ Checkbox ] --*/
-.checkout-form input[type="checkbox"] {
-	float: left;
-	margin-right: 10px;
-	margin-top: 3px;
-}
-.checkout-form input[type="checkbox"] + label {
-	font-weight: 500;
-	margin-bottom: 0;
-}
-/*-- Select --*/
-.checkout-form select {
-	-moz-appearance: none;
-	-webkit-appearance: none;
-	appearance: none;
-	background: rgba(0, 0, 0, 0) url("img/icon/select-arrow-down.png") no-repeat scroll right 5px center;
-	border: 1px solid #ddd;
-	height: 40px;
-	padding: 7px 15px;
-	text-transform: capitalize;
-	width: 100%;
-}
-.checkout-form select option {
-	padding: 5px 15px;
 }
 /*-- TextArea --*/
 .checkout-form textarea {
@@ -2992,16 +2953,13 @@ span.sub_label {
 	display: block;
 	padding: 30px;
 }
-.coupon-form h3 {
-	margin-bottom: 20px;
-}
 .coupon-form p {}
 .coupon-form input[type="text"] {
 	float: left;
 	width: 200px;
 }
 .coupon-form input[type="submit"] {
-	background-color: #282828;
+	background-color: #1f2a37;
 	border: medium none;
 	color: #fff;
 	font-weight: 500;
@@ -3010,7 +2968,7 @@ span.sub_label {
 	text-transform: uppercase;
 }
 .coupon-form input[type="submit"]:hover {
-	background-color: #ffae00;
+	background-color: #94da46;
 }
 /*-- Order Wrapper --*/
 .order-wrapper {
@@ -3018,13 +2976,14 @@ span.sub_label {
 	padding: 30px;
 }
 .order-wrapper h3 {
-	border-bottom: 1px solid #ddd;
-	font-size: 24px;
-	line-height: 17px;
+	font-weight: 600;
+	border-left: 2px solid #94da46;
+	font-size: 16px;
 	margin: 0 0 30px;
-	padding-bottom: 10px;
+	padding-left: 15px;
 	text-transform: uppercase;
 	width: 100%;
+	color: #1f2a37;
 }
 /*-- Order Table --*/
 .order-table {
@@ -3036,8 +2995,8 @@ span.sub_label {
 .order-table table thead tr th {
 	border-bottom: 1px solid #ddd;
 	border-right: medium none navy;
-	font-size: 16px;
-	line-height: 16px;
+	font-size: 15px;
+	font-weight: 600;
 	padding: 0 0 10px;
 	text-transform: uppercase;
 	width: 250px;
@@ -3070,22 +3029,26 @@ span.sub_label {
 }
 .order-table table tfoot tr th {
 	text-align: left;
+	font-weight: 600;
 }
 .order-table table tfoot tr td {
 	text-align: right;
 }
 /*-- Order Button --*/
-.order-button input[type="submit"] {
-	background-color: #282828;
-	border: medium none;
-	color: #fff;
-	font-weight: 500;
-	height: 40px;
-	padding: 5px 25px;
-	text-transform: uppercase;
+.order-button button[type="submit"] {
+    padding: 15px 40px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-block;
+    color: #fff;
+    border: 0px;
+    text-transform: uppercase;
+    outline: 0;
+    box-shadow: none;
 }
-.order-button input[type="submit"]:hover {
-	background-color: #ffae00;
+.order-button button[type="submit"]:hover {
+	background-color: #94da46;
 }
 /*-- Contact section--*/
 .contact-info {
@@ -3145,7 +3108,7 @@ span.sub_label {
 	font-weight: 600;
 	line-height: 14px;
 	margin-bottom: 10px;
-	color: #536d87;
+	color: #1f2a37;
 	text-transform: capitalize;
 }
 .contact-form form textarea {

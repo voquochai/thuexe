@@ -66,20 +66,18 @@
                             <!-- Cart Toggle -->
                             <a class="cart-toggle" href="javascript:;">
                                 <i class="pe-7s-cart"></i>
-                                <span class="countCart"><?php echo e($countCart); ?></span>
+                                <span class="countCart"></span>
                             </a>
                             <!-- Mini Cart Brief -->
-                            <div class="mini-cart text-left">
+                            <div class="mini-cart">
                                 <div class="cart-top">
-                                    <p><?php echo __('cart.has_item',['attribute'=>$countCart]); ?></p>
+                                    <p><?php echo __('cart.has_item',['attribute'=>0]); ?></p>
                                 </div>
                                 <!-- Cart Products -->
-                                <div class="cart-items clearfix">
-                                    <ul></ul>
-                                </div>
+                                <div class="cart-items clearfix"></div>
                                 <!-- Cart Total -->
                                 <div class="cart-total">
-                                    <p><?php echo e(__('cart.total')); ?> <span class="float-right sumOrderPrice"><?php echo e($sumOrderPrice); ?></span></p>
+                                    <p><?php echo e(__('cart.total')); ?> <span class="float-right sumOrderPrice"></span></p>
                                 </div>
                                 <!-- Cart Button -->
                                 <div class="cart-bottom clearfix">

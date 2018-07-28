@@ -1,7 +1,7 @@
 @extends('frontend.default.master')
 @section('content')
 <!-- PAGE SECTION START -->
-<div class="page-section pt-100 pb-60">
+<section class="page-section ptb-60">
     <div class="container">
         <div class="row">
             @include('frontend.default.blocks.messages')
@@ -11,38 +11,38 @@
                     <div class="col-lg-6 col-md-6 mb-40">
                         <h3> {{ __('cart.billing_details') }} </h3>
                         <div class="row">
-                            <div class="col-xs-12 mb-30">
-                                <label for="b_f_name">{{ __('cart.name') }} <span class="required">*</span></label>                                        
-                                <input id="b_f_name" name="name" type="text" value="{{ old('name') }}"/>
+                            <div class="col-xs-12 mb-15">
+                                <label for="name">{{ __('cart.name') }} <span class="required">*</span></label>                                        
+                                <input type="text" name="name" class="form-control" value="{{ old('name') }}"/>
                             </div>
-                            <div class="col-xs-12 mb-30">
-                                <label>{{ __('cart.address') }} <span class="required">*</span></label>
-                                <input type="text" name="address" value="{{ old('address') }}" />
+                            <div class="col-xs-12 mb-15">
+                                <label for="address">{{ __('cart.address') }} <span class="required">*</span></label>
+                                <input type="text" name="address" class="form-control" value="{{ old('address') }}" />
                             </div>
-                            <div class="col-xs-12 mb-30">
-                                <label for="b_email">Email<span class="required">*</span></label>                                      
-                                <input id="b_email" type="email" name="email" value="{{ old('email') }}" />
+                            <div class="col-xs-12 mb-15">
+                                <label for="email">Email<span class="required">*</span></label>                                      
+                                <input type="email" name="email" class="form-control" value="{{ old('email') }}" />
                             </div>
-                            <div class="col-xs-12 mb-30">
-                                <label for="b_phone">{{ __('cart.phone') }}  <span class="required">*</span></label>                                     
-                                <input id="b_phone" name="phone" type="text" value="{{ old('phone') }}" />
+                            <div class="col-xs-12 mb-15">
+                                <label for="phone">{{ __('cart.phone') }}  <span class="required">*</span></label>                                     
+                                <input type="text" name="phone" class="form-control" value="{{ old('phone') }}" />
                             </div>
-                            <div class="col-sm-6 col-xs-12 mb-30">
-                                <label for="b_city">{{ __('cart.province') }} <span class="required">*</span></label>
-                                <select id="b_province" class="province" name="province_id">
+                            <div class="col-sm-6 col-xs-12 mb-15">
+                                <label for="province">{{ __('cart.province') }} <span class="required">*</span></label>
+                                <select class="province form-control" name="province_id">
                                     <option value="{{ old('province_id') }}" selected ></option>
                                 </select>
                             </div>
-                            <div class="col-sm-6 col-xs-12 mb-30">
-                                <label>{{ __('cart.district') }} <span class="required">*</span></label>                                       
-                                <select id="b_district" class="district" name="district_id">
+                            <div class="col-sm-6 col-xs-12 mb-15">
+                                <label for="district">{{ __('cart.district') }} <span class="required">*</span></label>
+                                <select class="district form-control" name="district_id">
                                     <option value="{{ old('district_id') }}" selected ></option>
                                 </select>
                             </div>
                         </div>
                         <div class="order-notes">
                             <label for="order_note">{{ __('cart.notes') }}</label>
-                            <textarea id="order_note" name="order_note" >{{ old('order_note') }}</textarea>                           
+                            <textarea name="order_note" class="form-control">{{ old('order_note') }}</textarea>                           
                         </div>
                                                              
                     </div>
@@ -51,12 +51,12 @@
                             <div class="cart-coupon">
                                 <h3> Coupon </h3>
                                 <p> {{ __('cart.enter_coupon') }} </p>
-                                <input type="text" placeholder="{{ __('cart.coupon_code') }}" value="{{ @$coupon['code'] }}" />
+                                <input type="text" class="form-control" placeholder="{{ __('cart.coupon_code') }}" value="{{ @$coupon['code'] }}" />
                                 <button type="button" >{{ __('cart.use') }}</button>
                             </div>
                             <div id="result-coupon">
                                 @if( $coupon )
-                                <div class="custom-alerts alert alert-{{ $coupon['effective']['type'] }} fade in">
+                                <div class="alert alert-{{ $coupon['effective']['type'] }} no-margin">
                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
                                     <i class="fa-lg fa fa-{{ $coupon['effective']['icon'] }}"></i> {!! $coupon['effective']['message'] !!}
                                 </div>
@@ -65,7 +65,7 @@
                         </div>
                         <div class="order-wrapper">
                             <h3> {{ __('cart.your_order') }} </h3>
-                            <div class="order-table table-responsive mb-30">
+                            <div class="order-table table-responsive">
                                 <table>
                                     <thead>
                                         <tr>
@@ -124,13 +124,13 @@
                     </div>
                     <div class="col-xs-12">
                         <div class="order-button">
-                            <center> <input type="submit" value="{{ __('cart.place_order') }}"> </center>
+                            <center> <button type="submit" class="btn btn-site">{{ __('cart.place_order') }}</button> </center>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-</div>
+</section>
 <!-- PAGE SECTION END --> 
 @endsection

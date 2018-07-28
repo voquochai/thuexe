@@ -41,7 +41,7 @@
                     <div class="cart-buttons mb-30">
                         <a href="{{ url('/san-pham') }}"> {{ __('cart.continue_shopping') }} </a>
                     </div>
-                    <div class="cart-coupon mb-40">
+                    <div class="cart-coupon">
                         <h4>Coupon</h4>
                         <p> {{ __('cart.enter_coupon') }} </p>
                         <input type="text" placeholder="{{ __('cart.coupon_code') }}" value="{{ @$coupon['code'] }}" />

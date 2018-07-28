@@ -171,14 +171,11 @@ class CartController extends Controller
         }else{
             $sale = get_currency_vn($this->_data['coupon']['coupon_amount']);
         }
-
         $data = ['type' =>'success','icon' =>'check', 'message' => __('cart.coupon_sale',['attribute'=>$sale])];
         $sumCartPrice = 0;
         foreach ($this->_data['cart'] as $key => $val) {
             $sumCartPrice += $val['price']*$val['qty'];
         }
-        
-
         if( $this->_data['coupon']['used'] >= $this->_data['coupon']['number_of_uses'] ){
             $data = [
                 'type' =>'danger',
@@ -256,26 +253,19 @@ class CartController extends Controller
     }
     public function coupon(Request $request){
         if ($request->ajax()) {
-            if( count($this->_data['coupon']) == 0 || $this->_data['coupon']['code'] != $request->code ){
-                $this->_data['coupon'] = Coupon::where('code',$request->code)->whereRaw('FIND_IN_SET(\'publish\',status)')->first();
-            }
+            // Chưa tạo cookie cho coupon
+            $this->_data['coupon'] = Coupon::where('code',$request->code)->whereRaw('FIND_IN_SET(\'publish\',status)')->first();
             if( count($this->_data['coupon']) > 0 ){
                 $data = self::checkCoupon();
-                if($data['type'] == 'danger'){
-                    return response()->json($data);
-                }
                 $totalPrice = self::getTotalPrice();
-                $countCart = count($this->_data['cart']);
-                $cookieCart = cookie('cart', json_encode($this->_data['cart']), 720);
                 $cookieCoupon = cookie('coupon', json_encode($this->_data['coupon']), 720);
                 return response()->json([
-                    'type'  =>  'success',
+                    'type'  =>  $data['type'],
                     'message'   =>  $data['message'],
-                    'icon'  =>  'check',
-                    'countCart' => $countCart,
+                    'icon'  =>  $data['icon'],
                     'sumCartPrice' => get_currency_vn($totalPrice['sumCartPrice'],''),
                     'sumOrderPrice' => get_currency_vn($totalPrice['sumOrderPrice'],'')
-                ])->withCookie($cookieCart)->withCookie($cookieCoupon);
+                ])->withCookie($cookieCoupon);
             }
             return response()->json([
                 'type'  =>  'danger',

@@ -56,7 +56,7 @@
                         <div class="input-group">
                             <input type="text" name="coupon_amount" class="form-control priceFormat" value="<?php echo e(old('coupon_amount')); ?>">
                             <span class="input-group-btn">
-                                <button class="btn" id="change-conditions-type" value="discount_from_total_cart"> VNĐ </button>
+                                <button class="btn btn-info" id="change-conditions-type" value="discount_from_total_cart"> VNĐ </button>
                             </span>
                         </div>
                     </div>
