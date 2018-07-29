@@ -12,7 +12,7 @@ Cám ơn bạn đã đặt hàng tại website chúng tôi
 | MÃ SP | TÊN SẢN PHẨM | GIÁ BÁN (Đ) | SỐ LƯỢNG | TỔNG (Đ) |
 |:-----:|--------------|:-------------:|:--------:|:----------:|
 @forelse($products as $product)
-| {{ $product['code'] }} | {{ $product['title'] }} | {{ number_format($product['price'],0,',','.') }} | {{ $product['qty'] }} | {{ number_format($product['price']*$product['qty'],0,',','.') }} |
+| {{ $product['product_code'] }} | {{ $product['product_title'] }} | {{ number_format($product['product_price'],0,',','.') }} | {{ $product['product_qty'] }} | {{ number_format($product['product_price']*$product['product_qty'],0,',','.') }} |
 @empty
 @endforelse
 <td colspan=3 align="right"> Tổng tiền | <center><b>{{ number_format($order->subtotal, 0, ',', '.') }} đ</b></center> |
@@ -25,7 +25,7 @@ Cám ơn bạn đã đặt hàng tại website chúng tôi
 @endif
 
 @component('mail::panel')
-<p style="text-align: center;">Tổng đơn hàng: <b>{{ number_format($order->total, 0, ',', '.') }} đ</b></p>
+<p style="text-align: center;">Tổng đơn hàng: <b>{{ number_format($order->order_qty, 0, ',', '.') }} đ</b></p>
 @endcomponent
 
 @component('mail::button', ['url' => route('frontend.cart.tracking',['email'=>$order->email, 'code'=>$order->code]), 'color' => 'green'])

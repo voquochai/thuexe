@@ -41,11 +41,11 @@
                     <div class="cart-buttons mb-30">
                         <a href="<?php echo e(url('/san-pham')); ?>"> <?php echo e(__('cart.continue_shopping')); ?> </a>
                     </div>
-                    <div class="cart-coupon mb-40">
+                    <div class="cart-coupon">
                         <h4>Coupon</h4>
                         <p> <?php echo e(__('cart.enter_coupon')); ?> </p>
-                        <input type="text" placeholder="<?php echo e(__('cart.coupon_code')); ?>" value="<?php echo e(@$coupon['code']); ?>" />
-                        <button type="button" ><?php echo e(__('cart.use')); ?></button>
+                        <input type="text" class="form-control" placeholder="<?php echo e(__('cart.coupon_code')); ?>" value="<?php echo e(@$coupon['code']); ?>" />
+                        <button type="button" class="btn btn-site"><?php echo e(__('cart.use')); ?></button>
                     </div>
                     <div id="result-coupon">
                         <?php if( $coupon ): ?>
@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-5 col-xs-12">
-                    <div class="cart-total mb-40">
+                    <div class="cart-total mb-30">
                         <h3> <?php echo e(__('cart.cart_total')); ?> </h3>
                         <table>
                             <tbody>

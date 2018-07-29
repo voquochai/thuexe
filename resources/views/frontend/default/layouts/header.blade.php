@@ -44,7 +44,7 @@
     <div class="header-bottom">
         <div class="container">
             <div class="row">
-                <div class="col-md-2 col-sm-6 col-xs-6">
+                <div class="col-xs-12">
                     <div class="header-logo">
                         @if(Route::currentRouteName() == 'frontend.home.index')
                         <h1><a href="{{ url('/') }}"><img src="{{ (config('settings.logo') && file_exists(public_path('/uploads/photos/'.config('settings.logo'))) ? asset('public/uploads/photos/'.config('settings.logo')) : asset('noimage/190x30')) }}" alt="main logo"><strong>{{ config('settings.site_name') }}</strong></a></h1>
@@ -52,9 +52,7 @@
                         <h2><a href="{{ url('/') }}"><img src="{{ (config('settings.logo') && file_exists(public_path('/uploads/photos/'.config('settings.logo'))) ? asset('public/uploads/photos/'.config('settings.logo')) : asset('noimage/190x30')) }}" alt="main logo"><strong>{{ config('settings.site_name') }}</strong></a></h2>
                         @endif
                     </div>
-                </div>
-                <div class="col-md-2 col-sm-6 col-xs-6 float-right">
-                    <div class="header-option-btns float-right">
+                    <div class="header-option-btns sticker">
                         <!-- Header-search -->
                         <div class="header-search float-left">
                             <button class="search-toggle" data-toggle="modal" data-target="#searchModal" ><i class="pe-7s-search"></i></button>

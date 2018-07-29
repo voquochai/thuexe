@@ -44,8 +44,8 @@
                     <div class="cart-coupon">
                         <h4>Coupon</h4>
                         <p> {{ __('cart.enter_coupon') }} </p>
-                        <input type="text" placeholder="{{ __('cart.coupon_code') }}" value="{{ @$coupon['code'] }}" />
-                        <button type="button" >{{ __('cart.use') }}</button>
+                        <input type="text" class="form-control" placeholder="{{ __('cart.coupon_code') }}" value="{{ @$coupon['code'] }}" />
+                        <button type="button" class="btn btn-site">{{ __('cart.use') }}</button>
                     </div>
                     <div id="result-coupon">
                         @if( $coupon )
@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-5 col-xs-12">
-                    <div class="cart-total mb-40">
+                    <div class="cart-total mb-30">
                         <h3> {{ __('cart.cart_total') }} </h3>
                         <table>
                             <tbody>

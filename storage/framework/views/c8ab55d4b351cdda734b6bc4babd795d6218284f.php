@@ -12,7 +12,7 @@ Cám ơn bạn đã đặt hàng tại website chúng tôi
 | MÃ SP | TÊN SẢN PHẨM | GIÁ BÁN (Đ) | SỐ LƯỢNG | TỔNG (Đ) |
 |:-----:|--------------|:-------------:|:--------:|:----------:|
 <?php $__empty_1 = true; $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-| <?php echo e($product['code']); ?> | <?php echo e($product['title']); ?> | <?php echo e(number_format($product['price'],0,',','.')); ?> | <?php echo e($product['qty']); ?> | <?php echo e(number_format($product['price']*$product['qty'],0,',','.')); ?> |
+| <?php echo e($product['product_code']); ?> | <?php echo e($product['product_title']); ?> | <?php echo e(number_format($product['product_price'],0,',','.')); ?> | <?php echo e($product['product_qty']); ?> | <?php echo e(number_format($product['product_price']*$product['product_qty'],0,',','.')); ?> |
 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
 <?php endif; ?>
 <td colspan=3 align="right"> Tổng tiền | <center><b><?php echo e(number_format($order->subtotal, 0, ',', '.')); ?> đ</b></center> |

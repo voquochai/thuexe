@@ -47,7 +47,7 @@
     <div class="header-bottom">
         <div class="container">
             <div class="row">
-                <div class="col-md-2 col-sm-6 col-xs-6">
+                <div class="col-xs-12">
                     <div class="header-logo">
                         <?php if(Route::currentRouteName() == 'frontend.home.index'): ?>
                         <h1><a href="<?php echo e(url('/')); ?>"><img src="<?php echo e((config('settings.logo') && file_exists(public_path('/uploads/photos/'.config('settings.logo'))) ? asset('public/uploads/photos/'.config('settings.logo')) : asset('noimage/190x30'))); ?>" alt="main logo"><strong><?php echo e(config('settings.site_name')); ?></strong></a></h1>
@@ -55,9 +55,7 @@
                         <h2><a href="<?php echo e(url('/')); ?>"><img src="<?php echo e((config('settings.logo') && file_exists(public_path('/uploads/photos/'.config('settings.logo'))) ? asset('public/uploads/photos/'.config('settings.logo')) : asset('noimage/190x30'))); ?>" alt="main logo"><strong><?php echo e(config('settings.site_name')); ?></strong></a></h2>
                         <?php endif; ?>
                     </div>
-                </div>
-                <div class="col-md-2 col-sm-6 col-xs-6 float-right">
-                    <div class="header-option-btns float-right">
+                    <div class="header-option-btns sticker">
                         <!-- Header-search -->
                         <div class="header-search float-left">
                             <button class="search-toggle" data-toggle="modal" data-target="#searchModal" ><i class="pe-7s-search"></i></button>

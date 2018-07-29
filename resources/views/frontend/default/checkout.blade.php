@@ -8,7 +8,7 @@
             <div class="checkout-form">
                 <form method="post" action="{{ url('/thanh-toan') }}">
                     {{ csrf_field() }}
-                    <div class="col-lg-6 col-md-6 mb-40">
+                    <div class="col-lg-7 col-md-6 col-xs-12 mb-30">
                         <h3> {{ __('cart.billing_details') }} </h3>
                         <div class="row">
                             <div class="col-xs-12 mb-15">
@@ -46,13 +46,13 @@
                         </div>
                                                              
                     </div>
-                    <div class="col-lg-6 col-md-6 col-xs-12 mb-40">
+                    <div class="col-lg-5 col-md-6 col-xs-12 mb-30">
                         <div class="coupon-form mb-30">
                             <div class="cart-coupon">
                                 <h3> Coupon </h3>
                                 <p> {{ __('cart.enter_coupon') }} </p>
                                 <input type="text" class="form-control" placeholder="{{ __('cart.coupon_code') }}" value="{{ @$coupon['code'] }}" />
-                                <button type="button" >{{ __('cart.use') }}</button>
+                                <button type="button" class="btn btn-site">{{ __('cart.use') }}</button>
                             </div>
                             <div id="result-coupon">
                                 @if( $coupon )

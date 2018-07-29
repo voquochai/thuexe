@@ -16,7 +16,7 @@ return [
     'search' => 'Tìm kiếm',
     'keyword' => 'Từ khóa',
     'member' => 'Thành viên',
-    'comment' => 'Bình luận',
+    'comment' => 'Khách hàng nhận xét',
     'view' => 'Lượt xem',
     'newsletter' => 'Đăng ký nhận tin',
     'newsletter_message' => 'Nhập email của bạn để nhận bản tin mới nhất từ chúng tôi',
@@ -70,6 +70,9 @@ return [
     /* Comment */
     'leave_a_comment'   =>  'Nhận xét của bạn',
     'send_comment'   =>  'Gửi nhận xét của bạn',
+    'comment_rating'   =>  'Đánh giá của bạn về sản phẩm này',
+    'comment_title'   =>  'Tiêu đề của nhận xét',
+    'comment_description'   =>  'Viết nhận xét của bạn vào bên dưới',
 
     /* 404 */
     'oops'   =>  'Rất tiếc!',

@@ -1,6 +1,6 @@
 <?php $__env->startSection('content'); ?>
 <!-- PAGE SECTION START -->
-<div class="page-section pt-100 pb-60">
+<section class="page-section ptb-60">
     <div class="container">
         <div class="row">
             <?php echo $__env->make('frontend.default.blocks.messages', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
@@ -8,55 +8,55 @@
                 <form method="post" action="<?php echo e(url('/thanh-toan')); ?>">
                     <?php echo e(csrf_field()); ?>
 
-                    <div class="col-lg-6 col-md-6 mb-40">
+                    <div class="col-lg-7 col-md-6 col-xs-12 mb-30">
                         <h3> <?php echo e(__('cart.billing_details')); ?> </h3>
                         <div class="row">
-                            <div class="col-xs-12 mb-30">
-                                <label for="b_f_name"><?php echo e(__('cart.name')); ?> <span class="required">*</span></label>                                        
-                                <input id="b_f_name" name="name" type="text" value="<?php echo e(old('name')); ?>"/>
+                            <div class="col-xs-12 mb-15">
+                                <label for="name"><?php echo e(__('cart.name')); ?> <span class="required">*</span></label>                                        
+                                <input type="text" name="name" class="form-control" value="<?php echo e(old('name')); ?>"/>
                             </div>
-                            <div class="col-xs-12 mb-30">
-                                <label><?php echo e(__('cart.address')); ?> <span class="required">*</span></label>
-                                <input type="text" name="address" value="<?php echo e(old('address')); ?>" />
+                            <div class="col-xs-12 mb-15">
+                                <label for="address"><?php echo e(__('cart.address')); ?> <span class="required">*</span></label>
+                                <input type="text" name="address" class="form-control" value="<?php echo e(old('address')); ?>" />
                             </div>
-                            <div class="col-xs-12 mb-30">
-                                <label for="b_email">Email<span class="required">*</span></label>                                      
-                                <input id="b_email" type="email" name="email" value="<?php echo e(old('email')); ?>" />
+                            <div class="col-xs-12 mb-15">
+                                <label for="email">Email<span class="required">*</span></label>                                      
+                                <input type="email" name="email" class="form-control" value="<?php echo e(old('email')); ?>" />
                             </div>
-                            <div class="col-xs-12 mb-30">
-                                <label for="b_phone"><?php echo e(__('cart.phone')); ?>  <span class="required">*</span></label>                                     
-                                <input id="b_phone" name="phone" type="text" value="<?php echo e(old('phone')); ?>" />
+                            <div class="col-xs-12 mb-15">
+                                <label for="phone"><?php echo e(__('cart.phone')); ?>  <span class="required">*</span></label>                                     
+                                <input type="text" name="phone" class="form-control" value="<?php echo e(old('phone')); ?>" />
                             </div>
-                            <div class="col-sm-6 col-xs-12 mb-30">
-                                <label for="b_city"><?php echo e(__('cart.province')); ?> <span class="required">*</span></label>
-                                <select id="b_province" class="province" name="province_id">
+                            <div class="col-sm-6 col-xs-12 mb-15">
+                                <label for="province"><?php echo e(__('cart.province')); ?> <span class="required">*</span></label>
+                                <select class="province form-control" name="province_id">
                                     <option value="<?php echo e(old('province_id')); ?>" selected ></option>
                                 </select>
                             </div>
-                            <div class="col-sm-6 col-xs-12 mb-30">
-                                <label><?php echo e(__('cart.district')); ?> <span class="required">*</span></label>                                       
-                                <select id="b_district" class="district" name="district_id">
+                            <div class="col-sm-6 col-xs-12 mb-15">
+                                <label for="district"><?php echo e(__('cart.district')); ?> <span class="required">*</span></label>
+                                <select class="district form-control" name="district_id">
                                     <option value="<?php echo e(old('district_id')); ?>" selected ></option>
                                 </select>
                             </div>
                         </div>
                         <div class="order-notes">
                             <label for="order_note"><?php echo e(__('cart.notes')); ?></label>
-                            <textarea id="order_note" name="order_note" ><?php echo e(old('order_note')); ?></textarea>                           
+                            <textarea name="order_note" class="form-control"><?php echo e(old('order_note')); ?></textarea>                           
                         </div>
                                                              
                     </div>
-                    <div class="col-lg-6 col-md-6 col-xs-12 mb-40">
+                    <div class="col-lg-5 col-md-6 col-xs-12 mb-30">
                         <div class="coupon-form mb-30">
                             <div class="cart-coupon">
                                 <h3> Coupon </h3>
                                 <p> <?php echo e(__('cart.enter_coupon')); ?> </p>
-                                <input type="text" placeholder="<?php echo e(__('cart.coupon_code')); ?>" value="<?php echo e(@$coupon['code']); ?>" />
-                                <button type="button" ><?php echo e(__('cart.use')); ?></button>
+                                <input type="text" class="form-control" placeholder="<?php echo e(__('cart.coupon_code')); ?>" value="<?php echo e(@$coupon['code']); ?>" />
+                                <button type="button" class="btn btn-site"><?php echo e(__('cart.use')); ?></button>
                             </div>
                             <div id="result-coupon">
                                 <?php if( $coupon ): ?>
-                                <div class="custom-alerts alert alert-<?php echo e($coupon['effective']['type']); ?> fade in">
+                                <div class="alert alert-<?php echo e($coupon['effective']['type']); ?> no-margin">
                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
                                     <i class="fa-lg fa fa-<?php echo e($coupon['effective']['icon']); ?>"></i> <?php echo $coupon['effective']['message']; ?>
 
@@ -66,7 +66,7 @@
                         </div>
                         <div class="order-wrapper">
                             <h3> <?php echo e(__('cart.your_order')); ?> </h3>
-                            <div class="order-table table-responsive mb-30">
+                            <div class="order-table table-responsive">
                                 <table>
                                     <thead>
                                         <tr>
@@ -125,14 +125,14 @@
                     </div>
                     <div class="col-xs-12">
                         <div class="order-button">
-                            <center> <input type="submit" value="<?php echo e(__('cart.place_order')); ?>"> </center>
+                            <center> <button type="submit" class="btn btn-site"><?php echo e(__('cart.place_order')); ?></button> </center>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-</div>
+</section>
 <!-- PAGE SECTION END --> 
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('frontend.default.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
