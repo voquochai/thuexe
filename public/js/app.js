@@ -516,7 +516,7 @@ var App = function() {
 
         $('.comment-form .rating').on('click', '.fa-star', function(e){
             var rate = $(this).attr('data-rate');
-            $('.comment-form input[name="rating"]').val(rate);
+            $('.comment-form input[name="score"]').val(rate);
             for(var i=0; i<=4; i++){
                 if(i<rate) $('.comment-form .rating .fa').eq(i).addClass('selected');
                 else $('.comment-form .rating .fa').eq(i).removeClass('selected');

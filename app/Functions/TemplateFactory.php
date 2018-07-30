@@ -144,7 +144,7 @@ class TemplateFactory {
                 $id=$v->id;
                 $result .= '<li>';
                 $result .= '
-                    <div class="single-comment" data-lvl="'.$id.'"">
+                    <div class="single-comment clearfix" data-lvl="'.$id.'"">
                         <div class="image float-left"><img src="'.asset('noimage/50x50').'" alt="" class="img-circle"></div>
                         <div class="content">
                             <div class="head">

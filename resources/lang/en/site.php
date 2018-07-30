@@ -44,6 +44,8 @@ return [
     'reset' =>  'Reset',
 
     /* Product */
+    'product_color'  =>  'Colors',
+    'product_size'  =>  'Sizes',
     'product_price'  =>  'Price',
     'product_code'  =>  'Product code',
     'product_detail'   =>  'Product detail',
@@ -68,11 +70,25 @@ return [
     /* Comment */
     'leave_a_comment'   =>  'Leave a comment',
     'send_comment'   =>  'Send comment',
+    'comment_rating'   =>  'Your rating of this product',
+    'comment_title'   =>  'The title of the comment',
+    'comment_description'   =>  'Write your review below',
+    'comment_title_placeholder'   =>  'Enter comment title (optional)',
+    'comment_description_placeholder'   =>  'Enter your comment about this product',
 
     /* 404 */
     'oops'   =>  'Oops! You\'re lost',
     'return_home'   =>  'Return home',
     'or_try'   =>  'or try the search bar below',
     'can_not_find'   =>  'We can not find the page you\'re looking for',
+    'maintenance'   =>  'Website is under construction. Please come back later',
+
+    /* Nice time */
+    'no_date'   =>  'No date provided',
+    'periods'   =>  ['second', 'minute', 'hour', 'day', 'week', 'month', 'year', 'decade'],
+    'ago'   =>  'ago',
+    'from_now'   =>  'from now',
+    'bad_date'   =>  'Bad date',
+    'many_second'   =>  's',
 
 ];

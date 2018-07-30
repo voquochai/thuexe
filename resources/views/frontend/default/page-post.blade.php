@@ -20,8 +20,6 @@
                     </div>
                     <div class="content mb40">{!! $post->contents !!}</div>
                 </div>
-                <!-- Comments Wrapper -->
-                @include('frontend.default.blocks.comment')
             </div>
             <div class="col-lg-3 col-md-4 col-xs-12">
                 @include('frontend.default.layouts.sidebar')

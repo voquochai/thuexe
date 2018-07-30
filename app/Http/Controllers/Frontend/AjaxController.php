@@ -25,13 +25,13 @@ class AjaxController extends Controller
         
         switch($request->act){
             case 'newsletter':
-                $data = $this->newsletter($request);
+                $data = self::newsletter($request);
                 break;
             case 'contact':
-                $data = $this->contact($request);
+                $data = self::contact($request);
                 break;
             case 'comment':
-                $data = $this->comment($request);
+                $data = self::comment($request);
                 break;
         }
         return response()->json($data);
@@ -129,17 +129,18 @@ class AjaxController extends Controller
 
     public function comment($request){
         $valid = Validator::make($request->all(), [
-            'name' => 'required',
-            'email' => 'required|email',
+            // 'name' => 'required',
+            // 'email' => 'required|email',
+            'score' => 'required|integer|between:1,5',
             'description' => 'required',
-            // 'score' => 'required|between:1,5'
+            
         ], [
-            'name.required' => __('validation.required', ['attribute'=>__('site.name')]),
-            'email.required' => __('validation.required', ['attribute'=>'Email']),
-            'email.email' => __('validation.email', ['attribute'=>'Email']),
+            // 'name.required' => __('validation.required', ['attribute'=>__('site.name')]),
+            // 'email.required' => __('validation.required', ['attribute'=>'Email']),
+            // 'email.email' => __('validation.email', ['attribute'=>'Email']),
+            'score.required' => 'Yêu cầu nhập vào điểm số',
+            'score.between' => 'Vui lòng chỉ nhập từ :min tới :max khi chấm điểm',
             'description.required' => __('validation.required', ['attribute'=>__('site.content')]),
-            // 'score.required' => 'Yêu cầu nhập vào điểm số',
-            // 'score.between' => 'Vui lòng chỉ nhập từ :min tới :max khi chấm điểm'
         ]);
 
         $data['type'] = 'danger';
@@ -150,24 +151,26 @@ class AjaxController extends Controller
             return $data;
         } else {
 
-            $client_ip = $request->getClientIp();
-            $table = $request->product_id ? 'product' : 'post' ;
-            $id = $request->product_id ? $request->product_id : $request->post_id ;
+            // $client_ip = $request->getClientIp();
+            // $table = $request->product_id ? 'product' : 'post' ;
+            // $id = $request->product_id ? $request->product_id : $request->post_id ;
 
-            if(Cache::has($client_ip.'_comment_'.$table.'_'.$id)){
-                $data['message'] = __('site.comment_wait', ['attribute'=>( $table == 'product' ? __('site.product') : __('site.post') )] );
-                return $data;
-            }else{
-                Cache::add($client_ip.'_comment_'.$table.'_'.$id,$id,10);
-            }
+            // if(Cache::has($client_ip.'_comment_'.$table.'_'.$id)){
+            //     $data['message'] = __('site.comment_wait', ['attribute'=>( $table == 'product' ? __('site.product') : __('site.post') )] );
+            //     return $data;
+            // }else{
+            //     Cache::add($client_ip.'_comment_'.$table.'_'.$id,$id,10);
+            // }
 
             $data_insert['parent'] = (int)$request->parent;
             $data_insert['product_id'] = ($request->product_id) ? $request->product_id : null ;
             $data_insert['post_id'] = ($request->post_id) ? $request->post_id : null ;
             $data_insert['member_id'] = auth()->guard('member')->check() ? auth()->guard('member')->id() : null ;
-            $data_insert['name'] = $request->name;
-            $data_insert['email'] = $request->email;
+            // $data_insert['name'] = $request->name;
+            // $data_insert['email'] = $request->email;
+            $data_insert['title'] = $request->title;
             $data_insert['description'] = $request->description;
+            $data_insert['score'] = $request->score;
             $data_insert['status'] = '';
             $data_insert['type'] = $request->type;
             $data_insert['created_at'] = new DateTime();

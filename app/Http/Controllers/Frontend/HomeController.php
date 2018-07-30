@@ -38,7 +38,6 @@ class HomeController extends Controller
     }
 
     public function index(Request $request){
-
         $this->_data['new_products'] = DB::table('products as A')
             ->leftjoin('product_languages as B', 'A.id', '=', 'B.product_id')
             ->select('A.id','A.code','A.regular_price','A.sale_price','A.link','A.image','A.alt','A.category_id','A.user_id','A.type','A.status','B.title', 'B.slug')

@@ -18,9 +18,10 @@ class CreateCommentsTable extends Migration
             $table->integer('parent')->default(0);
             $table->string('name')->nullable();
             $table->string('email')->nullable();
+            $table->string('title')->nullable();
             $table->text('description')->nullable();
             $table->longText('contents')->nullable();
-            $table->tinyInteger('rating')->default(1);
+            $table->tinyInteger('score')->default(1);
             $table->integer('like')->default(0);
             $table->integer('product_id')->unsigned()->nullable();
             $table->foreign('product_id')->references('id')->on('products')

@@ -73,12 +73,22 @@ return [
     'comment_rating'   =>  'Đánh giá của bạn về sản phẩm này',
     'comment_title'   =>  'Tiêu đề của nhận xét',
     'comment_description'   =>  'Viết nhận xét của bạn vào bên dưới',
+    'comment_title_placeholder'   =>  'Nhập tiêu đề nhận xét (không bắt buộc)',
+    'comment_description_placeholder'   =>  'Nhập nhận xét của bạn về sản phẩm này',
 
     /* 404 */
     'oops'   =>  'Rất tiếc!',
     'return_home'   =>  'Trở về Trang chủ',
     'or_try'   =>  'hoặc thử thanh tìm kiếm bên dưới',
     'can_not_find'   =>  'Chúng tôi không thể tìm thấy trang bạn đang tìm kiếm',
-    'maintenance'   =>  'Website đang trong giai đoạn nâng cấp. Vui lòng quay lại sau.',
+    'maintenance'   =>  'Website đang trong giai đoạn nâng cấp. Vui lòng quay lại sau',
+
+    /* Nice time */
+    'no_date'   =>  'Không có ngày nào được cung cấp',
+    'periods'   =>  ['giây', 'phút', 'giờ', 'ngày', 'tuần', 'tháng', 'năm', 'thế kỷ'],
+    'ago'   =>  'trước',
+    'from_now'   =>  'ngay lúc này',
+    'bad_date'   =>  'Ngày không hợp lệ',
+    'many_second'   =>  '',
 
 ];
