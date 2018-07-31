@@ -3217,59 +3217,6 @@ span.sub_label {
 	font-size: 20px;
 	margin-bottom: 20px;
 }
-/*-- Comment List --*/
-.comment-list {}
-.comment-list li {}
-.comment-list li ul {
-	margin-left: 100px;
-}
-.comment-list li ul li {}
-/*-- Single Comment --*/
-.single-comment {
-	margin-bottom: 45px;
-	padding-right: 30px;
-}
-.single-comment .image {
-	border-radius: 50%;
-	display: block;
-	height: 90px;
-	margin-right: 20px;
-	width: 90px;
-}
-.single-comment .image img {
-	border-radius: 50%;
-	width: 100%;
-}
-.single-comment .content {}
-.single-comment .content .head {
-	margin-bottom: 10px;
-}
-.single-comment .content .head .author-time {
-	float: left;
-}
-.single-comment .content .head .author-time h4 {
-	color: #666666;
-	font-size: 18px;
-	font-weight: 500;
-	line-height: 14px;
-	margin-bottom: 7px;
-}
-.single-comment .content .head .author-time span {
-	color: #999999;
-	display: block;
-	font-size: 12px;
-	font-weight: 500;
-	line-height: 14px;
-}
-.single-comment .content .head a {
-	color: #ffae00;
-	display: block;
-	float: right;
-	font-size: 14px;
-	font-weight: 400;
-	margin-top: 5px;
-}
-.single-comment .content p {}
 /*-- Comment Form --*/
 .comment-form { margin-bottom: 30px; }
 .comment-form form {}

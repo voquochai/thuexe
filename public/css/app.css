@@ -67,14 +67,12 @@ code {
     -webkit-flex-wrap: wrap;
     justify-content: center;
 }
-.cursor-default{
+.cursor-default {
     cursor: default;
 }
-
-.min-width-120{
+.min-width-120 {
     min-width: 120px !important;
 }
-
 /* Rounded Element */
 .rounded-2 {
     border-radius: 2px !important;
@@ -139,10 +137,10 @@ code {
 .capitalize {
     text-transform: capitalize
 }
-.underline{
+.underline {
     text-decoration: underline;
 }
-.line-through{
+.line-through {
     text-decoration: line-through;
 }
 .border {
@@ -260,10 +258,10 @@ code {
     padding-top: 60px;
     padding-bottom: 60px;
 }
-.pd-5{
+.pd-5 {
     padding: 5px;
 }
-.pd-10{
+.pd-10 {
     padding: 10px;
 }
 /* IE8 & IE9 mode utilities */
@@ -769,7 +767,6 @@ td > .mt-checkbox.mt-checkbox-single {
 .mt-radio-inline .mt-radio:last-child {
     margin-right: 0;
 }
-
 .note {
     margin: 0 0 20px;
     padding: 15px 30px 15px 15px;
@@ -867,16 +864,14 @@ td > .mt-checkbox.mt-checkbox-single {
     border-color: #f6b3b8;
     box-shadow: 5px 5px rgba(246, 184, 189, .2)
 }
-
 .note .highlight,
 .note code,
 .note.note-default {
     background-color: #fff
 }
-.note p{
+.note p {
     font-size: 13px;
 }
-
 .table-borderless > tbody > tr > td,
 .table-borderless > tbody > tr > th,
 .table-borderless > tfoot > tr > td,
@@ -885,16 +880,14 @@ td > .mt-checkbox.mt-checkbox-single {
 .table-borderless > thead > tr > th {
     border: none;
 }
-.table-responsive .table thead tr th{
+.table-responsive .table thead tr th {
     text-align: center;
 }
-
-.btn-site{
+.btn-site {
     color: #fff;
     background-color: #94da46;
 }
-
-.btn-site:hover{
+.btn-site:hover {
     color: #94da46;
     background-color: #fff;
 }
@@ -938,7 +931,6 @@ td > .mt-checkbox.mt-checkbox-single {
     background-color: #fff;
     color: #94da46;
 }
-
 /*-- Quantity --*/
 .product-quantity {
     border: 1px solid #ddd;
@@ -1009,4 +1001,198 @@ td > .mt-checkbox.mt-checkbox-single {
 .color-list button.active i,
 .size-list button.active i {
     opacity: 1 !important;
+}
+/*--Timeline--*/
+.timeline {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    margin-bottom: 30px;
+}
+.timeline:before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 4px;
+    background: #f5f6fa;
+    top: 0px;
+    bottom: 0px;
+    margin-left: 38px;
+}
+.timeline .timeline-item {
+    margin: 0;
+    padding: 0;
+}
+.timeline .timeline-badge {
+    float: left;
+    position: relative;
+    height: 80px;
+    width: 80px;
+}
+.timeline .timeline-badge-userpic {
+    width: 80px;
+    border: 4px #f5f6fa solid;
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    border-radius: 50% !important;
+}
+.timeline .timeline-badge-userpic img {
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    border-radius: 50% !important;
+    vertical-align: middle !important;
+}
+.timeline .timeline-icon {
+    width: 80px;
+    height: 80px;
+    background-color: #f5f6fa;
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    border-radius: 50% !important;
+    padding-top: 30px;
+    padding-left: 22px;
+    margin-bottom: 5px;
+}
+.timeline .timeline-icon i {
+    font-size: 34px;
+}
+.timeline .timeline-badge-name,
+.timeline .timeline-badge-time {
+    text-align: center;
+}
+.timeline .timeline-badge-name {
+    font-size: 13px;
+    font-weight: 600;
+}
+.timeline .timeline-badge-time {
+    font-size: 11px;
+}
+.timeline .timeline-wrap {
+    margin-left: 110px;
+}
+.timeline .timeline-body {
+    position: relative;
+    padding: 20px;
+    margin-top: 20px;
+    background-color: #f5f6fa;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+}
+.timeline .timeline-body:before,
+.timeline .timeline-body:after {
+    content: " ";
+    display: table;
+}
+.timeline .timeline-body:after {
+    clear: both;
+}
+.timeline .timeline-body-arrow {
+    position: absolute;
+    top: 30px;
+    left: -14px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 14px 14px 14px 0;
+    border-color: transparent #f5f6fa transparent transparent;
+}
+.timeline .timeline-body-head {
+    margin-bottom: 10px;
+}
+.timeline .timeline-body-head-caption {
+    float: left;
+}
+.timeline .timeline-body-head-caption .rating .fa {
+    font-size: 15px;
+    margin-right: 3px;
+}
+.timeline .timeline-body-head-caption .rating .fa.active {
+    color: #fdd22f;
+}
+.timeline .timeline-body-title {
+    font-size: 15px;
+    font-weight: 600;
+}
+.timeline .timeline-body-alerttitle {
+    font-size: 16px;
+    font-weight: 600;
+}
+.timeline .timeline-body-time {
+    font-size: 14px;
+}
+.timeline .timeline-body-head-actions {
+    float: right;
+}
+.timeline .timeline-body-head-actions .btn {
+    font-size: 12px;
+    border-color: #32c5d2;
+    color: #32c5d2;
+    background: none;
+    border-radius: 25px;
+}
+.timeline .timeline-body-content {
+    font-size: 14px;
+    margin-top: 30px;
+}
+.timeline .timeline-body-img {
+    width: 100px;
+    height: 100px;
+    margin: 5px 20px 0 0px;
+}
+.timeline.white-bg:before {
+    background: #fff;
+}
+.timeline.white-bg .timeline-badge-userpic {
+    border-color: #fff;
+}
+.timeline.white-bg .timeline-icon {
+    background-color: #fff;
+}
+.timeline.white-bg .timeline-body {
+    background-color: #fff;
+}
+.timeline.white-bg .timeline-body-arrow {
+    border-color: transparent #fff transparent transparent;
+}
+@media (max-width: 767px) {
+    .timeline .timeline-body-head-caption {
+        width: 100%;
+    }
+    .timeline .timeline-body-head-actions {
+        float: left;
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
+@media (max-width: 479px) {
+    .timeline:before {
+        margin-left: 28px;
+    }
+    .timeline .timeline-badge {
+        width: 60px;
+        height: 60px;
+    }
+    .timeline .timeline-badge-userpic {
+        width: 60px;
+    }
+    .timeline .timeline-icon {
+        width: 60px;
+        height: 60px;
+        padding-top: 23px;
+        padding-left: 18px;
+    }
+    .timeline .timeline-icon i {
+        font-size: 25px;
+    }
+    .timeline .timeline-wrap {
+        margin-left: 80px;
+    }
+    .timeline .timeline-body {}
+    .timeline .timeline-body-arrow {
+        top: 17px;
+    }
 }

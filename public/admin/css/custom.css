@@ -53,8 +53,6 @@ body{font-size: 13px;}
 .select2-container--bootstrap .select2-selection--multiple .select2-selection__choice{ background-color: #f2f2f2; }
 .select2-container--bootstrap .select2-selection--multiple .select2-search--inline .select2-search__field{ height: 30px; }
 
-.timeline .timeline-body-content { margin-top: 45px; }
-.btn-comment-expand .fa{ transition: all .3s ease; -webkit-transition: all .3s ease; }
 .btn-comment-expand.active{ border-color: #32c5d2;color: #FFFFFF;background-color: #32c5d2; }
 .btn-comment-expand.active .fa{ transform: rotate(-180deg); }
 

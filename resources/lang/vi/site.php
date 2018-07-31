@@ -61,6 +61,7 @@ return [
     'comment_success'   =>  'Góp ý thành công',
     'comment_fail'   =>  'Góp ý thất bại',
     'comment_wait'   =>  'Bạn đã bình luận cho :attribute này. Vui lòng thử lại sau ít phút',
+    'reply_wait'   =>  'Bạn đã gửi trả lời cho bình luận này. Vui lòng thử lại sau ít phút',
 
     'no_data'   =>  'Dữ liệu không tồn tại',
 
@@ -70,6 +71,7 @@ return [
     /* Comment */
     'leave_a_comment'   =>  'Nhận xét của bạn',
     'send_comment'   =>  'Gửi nhận xét của bạn',
+    'reply'   =>  'Trả lời',
     'comment_rating'   =>  'Đánh giá của bạn về sản phẩm này',
     'comment_title'   =>  'Tiêu đề của nhận xét',
     'comment_description'   =>  'Viết nhận xét của bạn vào bên dưới',

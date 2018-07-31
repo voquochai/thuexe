@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 12, 2018 lúc 07:09 PM
+-- Thời gian đã tạo: Th7 31, 2018 lúc 07:38 PM
 -- Phiên bản máy phục vụ: 10.1.30-MariaDB
 -- Phiên bản PHP: 5.6.33
 
@@ -87,7 +87,9 @@ INSERT INTO `categories` (`id`, `parent`, `image`, `alt`, `icon`, `priority`, `s
 (5, 0, NULL, NULL, NULL, 4, 'publish', 'san-pham', NULL, '2018-06-29 17:28:19', '2018-06-29 17:28:19'),
 (6, 2, NULL, NULL, NULL, 1, 'publish,index', 'san-pham', NULL, '2018-06-29 18:03:16', '2018-06-29 18:03:21'),
 (7, 0, NULL, NULL, NULL, 1, 'publish', 'tin-tuc', NULL, '2018-06-30 16:01:24', '2018-06-30 16:01:24'),
-(8, 3, NULL, NULL, NULL, 1, 'index,publish', 'san-pham', NULL, '2018-07-05 17:06:22', '2018-07-05 17:06:22');
+(8, 3, NULL, NULL, NULL, 1, 'index,publish', 'san-pham', NULL, '2018-07-05 17:06:22', '2018-07-05 17:06:22'),
+(9, 2, NULL, NULL, NULL, 2, 'publish', 'san-pham', NULL, '2018-07-14 16:47:28', '2018-07-14 16:47:28'),
+(10, 2, NULL, NULL, NULL, 3, 'publish', 'san-pham', NULL, '2018-07-14 16:47:44', '2018-07-14 16:47:44');
 
 -- --------------------------------------------------------
 
@@ -119,7 +121,9 @@ INSERT INTO `category_languages` (`id`, `title`, `slug`, `description`, `content
 (6, 'Phụ kiện', 'phu-kien', NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 5),
 (7, 'Áo thun nam', 'ao-thun-nam', NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 6),
 (8, 'Danh mục tin tức 1', 'danh-muc-tin-tuc-1', NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 7),
-(9, 'Áo thun nữ', 'ao-thun-nu', NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 8);
+(9, 'Áo thun nữ', 'ao-thun-nu', NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 8),
+(10, 'Áo sơ mi nam', 'ao-so-mi-nam', NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 9),
+(11, 'Áo khoác nam', 'ao-khoac-nam', NULL, NULL, '{\"title\":null,\"keywords\":null,\"description\":null}', 'vi', 10);
 
 -- --------------------------------------------------------
 
@@ -132,9 +136,10 @@ CREATE TABLE `comments` (
   `parent` int(11) NOT NULL DEFAULT '0',
   `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` text COLLATE utf8mb4_unicode_ci,
   `contents` longtext COLLATE utf8mb4_unicode_ci,
-  `rating` tinyint(4) NOT NULL DEFAULT '1',
+  `score` tinyint(4) NOT NULL DEFAULT '1',
   `like` int(11) NOT NULL DEFAULT '0',
   `product_id` int(10) UNSIGNED DEFAULT NULL,
   `post_id` int(10) UNSIGNED DEFAULT NULL,
@@ -146,6 +151,25 @@ CREATE TABLE `comments` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `comments`
+--
+
+INSERT INTO `comments` (`id`, `parent`, `name`, `email`, `title`, `description`, `contents`, `score`, `like`, `product_id`, `post_id`, `member_id`, `priority`, `status`, `type`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, 0, 'Võ Quốc Hải', 'quochainina@gmail.com', NULL, 'Test', NULL, 1, 0, 10, NULL, NULL, 1, 'publish', 'default', NULL, '2018-07-29 17:14:54', '2018-07-29 17:14:54'),
+(2, 1, NULL, NULL, NULL, 'test', NULL, 1, 0, 10, NULL, NULL, 1, 'publish', 'default', NULL, '2018-07-31 15:49:13', '2018-07-31 15:49:13'),
+(3, 1, NULL, NULL, NULL, 'sfsfsfsd', NULL, 1, 0, 10, NULL, NULL, 1, '', 'default', NULL, '2018-07-31 16:02:36', '2018-07-31 16:02:36'),
+(4, 0, NULL, NULL, NULL, 'fergagag', NULL, 5, 0, 10, NULL, NULL, 1, 'publish', 'default', NULL, '2018-07-31 16:02:48', '2018-07-31 16:02:48'),
+(5, 4, NULL, NULL, NULL, 'ẻgergerg', NULL, 1, 0, 10, NULL, NULL, 1, '', 'default', NULL, '2018-07-31 16:03:33', '2018-07-31 16:03:33'),
+(6, 0, NULL, NULL, 'Good', 'ok men', NULL, 3, 0, 10, NULL, NULL, 1, 'publish', 'default', NULL, '2018-07-31 17:17:47', '2018-07-31 17:17:47'),
+(7, 6, NULL, NULL, NULL, 'Thanks', NULL, 1, 0, 10, NULL, NULL, 1, 'publish', 'default', NULL, '2018-07-31 17:18:39', '2018-07-31 17:18:39'),
+(8, 4, NULL, NULL, NULL, 'abc', NULL, 1, 0, 10, NULL, NULL, 1, '', 'default', NULL, '2018-07-31 17:21:00', '2018-07-31 17:21:00'),
+(9, 1, NULL, NULL, NULL, 'dgsgd', NULL, 1, 0, 10, NULL, NULL, 1, '', 'default', NULL, '2018-07-31 17:25:29', '2018-07-31 17:25:29'),
+(10, 0, NULL, NULL, 'dgnhfsgnfn', 'dfbdfbdfb', NULL, 3, 0, 10, NULL, NULL, 1, '', 'default', NULL, '2018-07-31 17:32:45', '2018-07-31 17:32:45'),
+(11, 6, NULL, NULL, NULL, 'dsgsdfds', NULL, 1, 0, 10, NULL, NULL, 1, '', 'default', NULL, '2018-07-31 17:32:54', '2018-07-31 17:32:54'),
+(12, 4, NULL, NULL, NULL, 'dfdhd', NULL, 1, 0, 10, NULL, NULL, 1, '', 'default', NULL, '2018-07-31 17:33:51', '2018-07-31 17:33:51'),
+(13, 1, NULL, NULL, NULL, 'abdcsd', NULL, 1, 0, 10, NULL, NULL, 1, '', 'default', NULL, '2018-07-31 17:38:28', '2018-07-31 17:38:28');
 
 -- --------------------------------------------------------
 
@@ -173,6 +197,13 @@ CREATE TABLE `coupons` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `coupons`
+--
+
+INSERT INTO `coupons` (`id`, `code`, `title`, `description`, `coupon_amount`, `number_of_uses`, `min_restriction_amount`, `max_restriction_amount`, `change_conditions_type`, `begin_at`, `end_at`, `priority`, `status`, `type`, `used`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, 'KK4JYA', 'Khuyến mãu 2/9', NULL, 200000, 10, 1000000, 0, 'discount_from_total_cart', '2018-07-25 17:00:00', '2018-09-01 17:00:00', 1, 'publish', NULL, 1, NULL, '2018-07-26 15:44:58', '2018-07-26 15:44:58');
 
 -- --------------------------------------------------------
 
@@ -288,6 +319,16 @@ CREATE TABLE `media_libraries` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `media_libraries`
+--
+
+INSERT INTO `media_libraries` (`id`, `image`, `alt`, `link`, `size`, `editor`, `priority`, `status`, `mime_type`, `type`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(2, '2018-07/product2_1531592186.jpg', 'product2', NULL, 17570, '\"\"', 1, 'publish', 'image/jpeg', 'san-pham', NULL, '2018-07-14 18:16:26', '2018-07-14 18:17:36'),
+(3, '2018-07/product3_1531592186.jpg', 'product3', NULL, 8687, '\"\"', 2, 'publish', 'image/jpeg', 'san-pham', NULL, '2018-07-14 18:16:26', '2018-07-14 18:17:36'),
+(4, '2018-07/product4_1531592186.jpg', 'product4', NULL, 16053, '\"\"', 3, 'publish', 'image/jpeg', 'san-pham', NULL, '2018-07-14 18:16:26', '2018-07-14 18:17:36'),
+(5, '2018-07/product5_1531592186.jpg', 'product5', NULL, 17309, '\"\"', 4, 'publish', 'image/jpeg', 'san-pham', NULL, '2018-07-14 18:16:26', '2018-07-14 18:17:36');
 
 -- --------------------------------------------------------
 
@@ -416,6 +457,17 @@ CREATE TABLE `orders` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `orders`
+--
+
+INSERT INTO `orders` (`id`, `code`, `coupon_code`, `coupon_amount`, `shipping`, `subtotal`, `order_qty`, `order_price`, `name`, `phone`, `email`, `address`, `note`, `district_id`, `province_id`, `payment_id`, `member_id`, `user_id`, `status_id`, `priority`, `status`, `type`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, 'DH00001', 'KK4JYA', 200000, 0, 400000, 2, 200000, 'Võ Quốc Hải', '1679933525', 'quochainina@gmail.com', 'Tầng 3, Tòa nhà SG TEL', NULL, 1, 1, 0, NULL, NULL, 1, 1, 'publish', 'online', NULL, '2018-07-26 15:55:19', '2018-07-26 15:55:19'),
+(2, 'DH00002', NULL, 0, 0, 200000, 1, 200000, 'Võ Quốc Hải', '1679933525', 'khowebonline@gmail.com', 'Tầng 3, Tòa nhà SG TEL', 'Test', 110, 8, 0, NULL, NULL, 1, 1, 'publish', 'online', NULL, '2018-07-29 16:02:10', '2018-07-29 16:02:10'),
+(3, 'DH00003', NULL, 0, 0, 200000, 1, 200000, 'Võ Quốc Hải', '1679933525', 'khowebonline@gmail.com', 'Tầng 3, Tòa nhà SG TEL', 'Test', 110, 8, 0, NULL, NULL, 1, 1, 'publish', 'online', NULL, '2018-07-29 16:11:43', '2018-07-29 16:11:43'),
+(4, 'DH00004', NULL, 0, 0, 200000, 1, 200000, 'Võ Quốc Hải', '1679933525', 'khowebonline@gmail.com', 'Tầng 3, Tòa nhà SG TEL', 'test', 63, 4, 0, NULL, NULL, 1, 1, 'publish', 'online', NULL, '2018-07-29 16:12:17', '2018-07-29 16:12:17'),
+(5, 'DH00005', NULL, 0, 0, 200000, 1, 200000, 'Võ Quốc Hải', '1679933525', 'khowebonline@gmail.com', 'Tầng 3, Tòa nhà SG TEL', 'test', 63, 4, 0, NULL, NULL, 1, 1, 'publish', 'online', NULL, '2018-07-29 16:13:39', '2018-07-29 16:13:39');
+
 -- --------------------------------------------------------
 
 --
@@ -436,6 +488,18 @@ CREATE TABLE `order_details` (
   `order_id` int(10) UNSIGNED NOT NULL,
   `status` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'publish'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `order_details`
+--
+
+INSERT INTO `order_details` (`id`, `product_id`, `product_code`, `product_title`, `product_qty`, `product_price`, `size_id`, `size_title`, `color_id`, `color_title`, `order_id`, `status`) VALUES
+(1, 9, '26855', 'Tên sản phẩm 2', 1, 200000, 0, NULL, 0, NULL, 1, 'publish'),
+(2, 8, '4', 'Tên sản phẩm 3', 1, 200000, 0, NULL, 0, NULL, 1, 'publish'),
+(3, 9, '26855', 'Tên sản phẩm 2', 1, 200000, 0, NULL, 0, NULL, 2, 'publish'),
+(4, 9, '26855', 'Tên sản phẩm 2', 1, 200000, 0, NULL, 0, NULL, 3, 'publish'),
+(5, 9, '26855', 'Tên sản phẩm 2', 1, 200000, 0, NULL, 0, NULL, 4, 'publish'),
+(6, 9, '26855', 'Tên sản phẩm 2', 1, 200000, 0, NULL, 0, NULL, 5, 'publish');
 
 -- --------------------------------------------------------
 
@@ -658,7 +722,7 @@ INSERT INTO `posts` (`id`, `link`, `image`, `alt`, `attachments`, `priority`, `s
 (17, NULL, '2018-07/blog3.jpg', NULL, '', 1, 'publish,new', 1, 1, 'tin-tuc', 0, NULL, '2018-06-29 15:43:53', '2018-07-07 08:31:34'),
 (18, NULL, '2018-07/blog4.jpg', NULL, '', 1, 'publish,new', 1, 1, 'tin-tuc', 0, NULL, '2018-06-29 15:43:53', '2018-07-07 08:31:28'),
 (19, NULL, '2018-07/blog5.jpg', NULL, '', 1, 'publish,new', 1, 1, 'tin-tuc', 0, NULL, '2018-06-29 15:43:53', '2018-07-07 08:31:21'),
-(20, NULL, '2018-07/blog6.jpg', NULL, '', 1, 'publish,new', 1, 1, 'tin-tuc', 0, NULL, '2018-06-29 15:43:53', '2018-07-07 08:31:14'),
+(20, NULL, '2018-07/blog6.jpg', NULL, '', 1, 'publish,new', 1, 1, 'tin-tuc', 4, NULL, '2018-06-29 15:43:53', '2018-07-07 08:31:14'),
 (21, NULL, '2018-07/portfolio1.jpg', NULL, '', 1, 'publish', 1, 1, 'bo-suu-tap', 0, NULL, '2018-07-05 15:22:12', '2018-07-05 15:33:54'),
 (22, NULL, '2018-07/portfolio2.jpg', NULL, NULL, 1, 'publish', 1, 1, 'bo-suu-tap', 0, NULL, '2018-07-05 15:34:13', '2018-07-05 15:34:13'),
 (23, NULL, '2018-07/portfolio3.jpg', NULL, NULL, 1, 'publish', 1, 1, 'bo-suu-tap', 0, NULL, '2018-07-05 15:34:27', '2018-07-05 15:34:27'),
@@ -795,8 +859,8 @@ INSERT INTO `products` (`id`, `code`, `regular_price`, `sale_price`, `original_p
 (6, '1', 290000, 200000, 50000, 500, NULL, '2018-07/product5.jpg', NULL, '', 1, 'publish,new', NULL, 1, 1, 'san-pham', 0, NULL, '2018-06-29 15:43:52', '2018-07-01 15:46:01'),
 (7, '5252', 290000, 200000, 50000, 500, NULL, '2018-07/product4.jpg', NULL, '', 1, 'publish,new', NULL, 1, 1, 'san-pham', 0, NULL, '2018-06-29 15:43:52', '2018-07-01 15:45:39'),
 (8, '4', 290000, 200000, 50000, 500, NULL, '2018-07/product3.jpg', NULL, '', 1, 'publish,new', NULL, 1, 1, 'san-pham', 0, NULL, '2018-06-29 15:43:52', '2018-07-01 15:45:13'),
-(9, '26855', 290000, 200000, 50000, 500, NULL, '2018-07/product2.jpg', NULL, '', 1, 'publish,new', NULL, 1, 1, 'san-pham', 0, NULL, '2018-06-29 15:43:52', '2018-07-01 15:45:00'),
-(10, '77443553', 290000, 200000, 50000, 500, NULL, '2018-07/product1.jpg', NULL, '', 1, 'publish,new', NULL, 1, 1, 'san-pham', 0, NULL, '2018-06-29 15:43:52', '2018-07-01 15:44:46');
+(9, '26855', 290000, 200000, 50000, 500, NULL, '2018-07/product2.jpg', NULL, '', 1, 'publish,new', NULL, 1, 1, 'san-pham', 2, NULL, '2018-06-29 15:43:52', '2018-07-01 15:45:00'),
+(10, '77443553', 290000, 200000, 50000, 500, NULL, '2018-07/product1.jpg', NULL, '2,3,4,5', 1, 'new,publish', NULL, 1, 1, 'san-pham', 49, NULL, '2018-06-29 15:43:52', '2018-07-14 18:17:36');
 
 -- --------------------------------------------------------
 
@@ -1010,11 +1074,11 @@ INSERT INTO `settings` (`id`, `name`, `value`) VALUES
 (15, 'site_copyright', 'KHOWEBONLINE @ 2018 COPYRIGHT'),
 (16, 'fanpage', NULL),
 (17, 'google_coordinates', NULL),
-(18, 'email_host', NULL),
-(19, 'email_port', NULL),
-(20, 'email_smtpsecure', NULL),
-(21, 'email_username', 'voquochai'),
-(22, 'email_password', '12345678'),
+(18, 'email_host', 'smtp.gmail.com'),
+(19, 'email_port', '587'),
+(20, 'email_smtpsecure', 'tls'),
+(21, 'email_username', 'khowebonline'),
+(22, 'email_password', 'cchmfuqjleisbvym'),
 (23, 'email_to', NULL),
 (24, 'email_cc', NULL),
 (25, 'email_bcc', NULL),
@@ -1525,25 +1589,25 @@ ALTER TABLE `attribute_languages`
 -- AUTO_INCREMENT cho bảng `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `category_languages`
 --
 ALTER TABLE `category_languages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT cho bảng `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT cho bảng `coupons`
 --
 ALTER TABLE `coupons`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `groups`
@@ -1573,7 +1637,7 @@ ALTER TABLE `link_languages`
 -- AUTO_INCREMENT cho bảng `media_libraries`
 --
 ALTER TABLE `media_libraries`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `members`
@@ -1591,13 +1655,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `pages`

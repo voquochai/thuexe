@@ -490,16 +490,26 @@ var App = function() {
     var handleComment = function(){
         $('.comment-list').on('click','.reply', function(e){
             e.preventDefault();
-            var container = $(this).closest('li');
+            var btn = $(this);
+            var container = btn.closest('.timeline-body');
             if( container.find('.comment-form').length > 0 ) return false;
-            var parentID = $(this).attr('data-id');
-            var form = $('.comment-form.main-form').clone().removeClass('main-form').addClass('display-hide');
-            
-            form.find('input[name="parent"]').val(parentID);
+            var parentID = parseInt(btn.attr('data-parent'));
+            var productID = parseInt(btn.attr('data-product'));
+            var postID = parseInt(btn.attr('data-post'));
+            // var form = $('.comment-form.main-form').clone().removeClass('main-form').addClass('display-hide');
+            var form = $('<form action="#" method="post" class="comment-form display-hide">'+
+                    '<input type="hidden" name="score" value="1">'+
+                    '<input type="hidden" name="parent" value="'+parentID+'">'+
+                    '<input type="hidden" name="product_id" value="'+productID+'">'+
+                    '<input type="hidden" name="post_id" value="'+postID+'">'+
+                    '<div class="form-group"><textarea name="description" class="form-control" rows="6"></textarea></div>'+
+                    '<div class="form-group"><button type="submit" class="btn btn-site btn-ajax" data-ajax="act=reply|type=default"> Trả lời </button></div>'+
+                '</form>');
+
             $('.comment-list .comment-form').slideUp('fast', function(){
                 $(this).remove();
             });
-            container.append(form);
+            form.insertAfter(container);
             form.slideDown('fast', function(){
                 App.scrollTo(form);
             });
@@ -556,6 +566,9 @@ var App = function() {
                     closeInSeconds: 5, // auto close after defined seconds
                     icon: response.icon // put icon before the message
                 });
+                if( typeof response.remove_element !== 'undefined'){
+                    frm.find('*:not(.alert, .fa, .close)').remove();
+                }
             });
         });
     }

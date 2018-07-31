@@ -14489,7 +14489,6 @@ Timeline
   .timeline .timeline-badge {
     float: left;
     position: relative;
-    padding-right: 30px;
     height: 80px;
     width: 80px; }
   .timeline .timeline-badge-userpic {
@@ -14511,9 +14510,18 @@ Timeline
     -moz-border-radius: 50% !important;
     border-radius: 50% !important;
     padding-top: 30px;
-    padding-left: 22px; }
+    padding-left: 22px;
+    margin-bottom: 5px; }
   .timeline .timeline-icon i {
     font-size: 34px; }
+  .timeline .timeline-badge-name,
+  .timeline .timeline-badge-time{
+    text-align: center; }
+  .timeline .timeline-badge-name{
+    font-weight: 600;
+  }
+  .timeline .timeline-badge-time{
+    font-size: 11px; }
   .timeline .timeline-wrap {
     margin-left: 110px;
   }
@@ -14546,22 +14554,26 @@ Timeline
     margin-bottom: 10px; }
   .timeline .timeline-body-head-caption {
     float: left; }
+  .timeline .timeline-body-head-caption .rating .fa{
+    font-size: 15px; margin-right: 3px;
+  }
+  .timeline .timeline-body-head-caption .rating .fa.active{
+    color: #fdd22f; }
   .timeline .timeline-body-title {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600; }
   .timeline .timeline-body-alerttitle {
     font-size: 16px;
     font-weight: 600; }
   .timeline .timeline-body-time {
-    font-size: 14px;
-    margin-left: 10px; }
+    font-size: 14px; }
   .timeline .timeline-body-head-actions {
     float: right; }
-  .timeline .timeline-body-head-actions .btn-group {
-    margin-top: -2px; }
+  .timeline .timeline-body-head-actions .btn {
+    font-size: 12px; }
   .timeline .timeline-body-content {
     font-size: 14px;
-    margin-top: 35px; }
+    margin-top: 30px; }
   .timeline .timeline-body-img {
     width: 100px;
     height: 100px;
@@ -14590,7 +14602,6 @@ Timeline
   .timeline:before {
     margin-left: 28px; }
   .timeline .timeline-badge {
-    padding-right: 40px;
     width: 60px;
     height: 60px; }
   .timeline .timeline-badge-userpic {
@@ -14602,8 +14613,9 @@ Timeline
     padding-left: 18px; }
   .timeline .timeline-icon i {
     font-size: 25px; }
-  .timeline .timeline-body {
+  .timeline .timeline-wrap{
     margin-left: 80px; }
+  .timeline .timeline-body {}
   .timeline .timeline-body-arrow {
     top: 17px; } }
 

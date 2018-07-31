@@ -30,7 +30,7 @@ class AjaxController extends Controller
             case 'contact':
                 $data = self::contact($request);
                 break;
-            case 'comment':
+            case 'comment';case 'reply':
                 $data = self::comment($request);
                 break;
         }
@@ -129,15 +129,10 @@ class AjaxController extends Controller
 
     public function comment($request){
         $valid = Validator::make($request->all(), [
-            // 'name' => 'required',
-            // 'email' => 'required|email',
             'score' => 'required|integer|between:1,5',
             'description' => 'required',
             
         ], [
-            // 'name.required' => __('validation.required', ['attribute'=>__('site.name')]),
-            // 'email.required' => __('validation.required', ['attribute'=>'Email']),
-            // 'email.email' => __('validation.email', ['attribute'=>'Email']),
             'score.required' => 'Yêu cầu nhập vào điểm số',
             'score.between' => 'Vui lòng chỉ nhập từ :min tới :max khi chấm điểm',
             'description.required' => __('validation.required', ['attribute'=>__('site.content')]),
@@ -151,23 +146,32 @@ class AjaxController extends Controller
             return $data;
         } else {
 
-            // $client_ip = $request->getClientIp();
-            // $table = $request->product_id ? 'product' : 'post' ;
-            // $id = $request->product_id ? $request->product_id : $request->post_id ;
-
-            // if(Cache::has($client_ip.'_comment_'.$table.'_'.$id)){
-            //     $data['message'] = __('site.comment_wait', ['attribute'=>( $table == 'product' ? __('site.product') : __('site.post') )] );
-            //     return $data;
-            // }else{
-            //     Cache::add($client_ip.'_comment_'.$table.'_'.$id,$id,10);
-            // }
+            $client_ip = $request->getClientIp();
+            $table = $request->product_id ? 'product' : 'post' ;
+            $id = $request->product_id ? $request->product_id : $request->post_id ;
+            if($request->act == 'comment'){
+                if(Cache::has($client_ip.'_comment_'.$table.'_'.$id)){
+                    $data['message'] = __('site.comment_wait', ['attribute'=>( $table == 'product' ? __('site.product') : __('site.post') )] );
+                    return $data;
+                }else{
+                    Cache::add($client_ip.'_comment_'.$table.'_'.$id,$id,10);
+                }
+            }elseif($request->act == 'reply'){
+                $data['remove_element'] = 'true';
+                if(Cache::has($client_ip.'_reply_'.$table.'_'.(int)$request->parent)){
+                    $data['message'] = __('site.reply_wait');
+                    return $data;
+                }else{
+                    Cache::add($client_ip.'_reply_'.$table.'_'.(int)$request->parent,(int)$request->parent,10);
+                }
+            }
 
             $data_insert['parent'] = (int)$request->parent;
             $data_insert['product_id'] = ($request->product_id) ? $request->product_id : null ;
             $data_insert['post_id'] = ($request->post_id) ? $request->post_id : null ;
             $data_insert['member_id'] = auth()->guard('member')->check() ? auth()->guard('member')->id() : null ;
-            // $data_insert['name'] = $request->name;
-            // $data_insert['email'] = $request->email;
+            $data_insert['name'] = $request->name;
+            $data_insert['email'] = $request->email;
             $data_insert['title'] = $request->title;
             $data_insert['description'] = $request->description;
             $data_insert['score'] = $request->score;

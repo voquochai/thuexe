@@ -290,6 +290,19 @@ class ToolFactory {
         return "$difference $periods[$j] {$tense}";
     }
 
+    public function buildRating($score=0){
+        $result =   '<span class="rating">';
+        for($i=0;$i<5;$i++){
+            if($i<$score){
+                $result .= '<i class="fa fa-star active" data-rate="'.($i+1).'"></i>';
+            }else{
+                $result .= '<i class="fa fa-star" data-rate="'.($i+1).'"></i>';
+            }
+        }
+        $result .=  '</span>';
+        return $result;
+    }
+
     public function getComments($data,$parent=0,$lvl=0){
         $result = '';
         if( isset($data[$parent]) ){
@@ -307,15 +320,16 @@ class ToolFactory {
                         <div class="timeline-icon">
                             <i class="'.($v->status == '' ? 'icon-user-unfollow font-red-haze' : 'icon-user-following font-green-haze').'"></i>
                         </div>
+                        <div class="timeline-badge-name">'.$v->name.'</div>
+                        <div class="timeline-badge-time font-grey-cascade">'.self::niceTime($v->created_at).'</div>
                     </div>
                     <div class="timeline-wrap">
                         <div class="timeline-body">
                             <div class="timeline-body-arrow"> </div>
                             <div class="timeline-body-head">
                                 <div class="timeline-body-head-caption">
-                                    <a href="javascript:;" class="timeline-body-title font-blue-madison">'.$v->name.'</a>
-                                    <span class="timeline-body-time font-grey-cascade">'.self::niceTime($v->created_at).'</span>
-                                    <div class="font-grey-cascade">'.$v->email.'</div>
+                                    '.self::buildRating($v->score).'
+                                    <a href="javascript:;" class="timeline-body-title font-blue-madison">'.$v->title.'</a>
                                 </div>
                                 <div class="timeline-body-head-actions">
                                     <a href="#" class="btn btn-circle green btn-outline btn-sm btn-comment-expand"> <i class="fa fa-angle-down"></i> </a>

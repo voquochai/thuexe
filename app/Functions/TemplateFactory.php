@@ -135,6 +135,48 @@ class TemplateFactory {
         $result = '';
         if( isset($data[$parent]) ){
             if( $parent==0 ){
+                $result .= '<div class="timeline comment-list">';
+            }else{
+                $result .= '<div class="timeline comment-list">';
+                krsort($data[$parent]);
+            }
+            foreach($data[$parent] as $k=>$v){
+                $id=$v->id;
+                $result .= '<div class="timeline-item">';
+                $result .= '
+                    <div class="timeline-badge">
+                        <div class="timeline-icon">
+                            <i class="'.($v->status == '' ? 'icon-user-unfollow font-red-haze' : 'icon-user-following font-green-haze').'"></i>
+                        </div>
+                        <div class="timeline-badge-name">'.$v->name.'</div>
+                        <div class="timeline-badge-time font-grey-cascade">'.Tool::niceTime($v->created_at).'</div>
+                    </div>
+                    <div class="timeline-wrap">
+                        <div class="timeline-body">
+                            <div class="timeline-body-arrow"> </div>
+                            <div class="timeline-body-head">
+                                <div class="timeline-body-head-caption">
+                                    '.Tool::buildRating($v->score).'
+                                    <span class="timeline-body-title font-blue-madison">'.$v->title.'</span>
+                                </div>
+                                <div class="timeline-body-head-actions">
+                                    '.($lvl < 1 ? '<a href="#" class="btn reply" data-parent="'.$v->id.'" data-product="'.( @$v->product_id ? $v->product_id : '0' ).'" data-post="'.( @$v->post_id ? $v->post_id : '0' ).'">'.__('site.reply').'</a>' : '').'</div>
+                            </div>
+                            <div class="timeline-body-content">
+                                <div class="font-grey-cascade">'.$v->description.'</div>
+                            </div>
+                            
+                        </div>';
+                        $result .= self::getTemplateComment($data,$id,$lvl+1);
+                $result .= '</div>';
+                $result .= '</div>';
+            }
+            $result .= '</div>';
+        }
+        return $result;
+        $result = '';
+        if( isset($data[$parent]) ){
+            if( $parent==0 ){
                 $result .= '<ul class="comment-list">';
             }else{
                 $result .= '<ul>';
@@ -152,7 +194,7 @@ class TemplateFactory {
                                     <h4>'.$v->name.'</h4>
                                     <span>'.Tool::niceTime($v->created_at).'</span>
                                 </div>
-                                '.($lvl < 1 ? '<a href="#" class="reply" data-id="'.$id.'">Trả lời</a>' : '').'
+                                
                             </div>
                             <p>'.$v->description.'</p>
                         </div>

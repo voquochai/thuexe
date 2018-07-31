@@ -127,9 +127,9 @@ var Admin = function(){
             var btn = $(this);
             var wrap = btn.closest('.timeline-wrap');
             if( wrap.find(' > .comment-form').length > 0 ) return false;
-            var parentID = btn.attr('data-parent');
-            var productID = btn.attr('data-product');
-            var postID = btn.attr('data-post');
+            var parentID = parseInt(btn.attr('data-parent'));
+            var productID = parseInt(btn.attr('data-product'));
+            var postID = parseInt(btn.attr('data-post'));
             $('.timeline .comment-form').slideUp(function(){
                 $(this).remove();
             });

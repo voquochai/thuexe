@@ -350,3 +350,15 @@ Stack trace:
 #13 D:\xampp\htdocs\laravel\begreen\public\index.php(58): Illuminate\Foundation\Http\Kernel->terminate(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
 #14 D:\xampp\htdocs\laravel\begreen\index.php(20): require_once('D:\\xampp\\htdocs...')
 #15 {main}  
+[2018-07-31 23:33:07] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'return' (T_RETURN)' in E:\xampp\htdocs\laravel\begreen\app\Functions\ToolFactory.php:303
+Stack trace:
+#0 {main}  
+[2018-07-31 23:33:31] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'return' (T_RETURN)' in E:\xampp\htdocs\laravel\begreen\app\Functions\ToolFactory.php:303
+Stack trace:
+#0 {main}  
+[2018-07-31 23:33:38] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'return' (T_RETURN)' in E:\xampp\htdocs\laravel\begreen\app\Functions\ToolFactory.php:303
+Stack trace:
+#0 {main}  
+[2018-07-31 23:52:45] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined method App\Functions\TemplateFactory::niceTime()' in E:\xampp\htdocs\laravel\begreen\app\Functions\TemplateFactory.php:152
+Stack trace:
+#0 {main}  

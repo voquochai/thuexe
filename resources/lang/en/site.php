@@ -61,6 +61,7 @@ return [
     'comment_success'   =>  'Successful',
     'comment_fail'   =>  'Failed',
     'comment_wait'   =>  'You have commented this :attribute. Please try again in a few minutes',
+    'reply_wait'   =>  'You have sent a reply to this comment. Please try again in a few minutes',
 
     'no_data'   =>  'No data not found',
 
@@ -70,6 +71,7 @@ return [
     /* Comment */
     'leave_a_comment'   =>  'Leave a comment',
     'send_comment'   =>  'Send comment',
+    'reply'   =>  'Reply',
     'comment_rating'   =>  'Your rating of this product',
     'comment_title'   =>  'The title of the comment',
     'comment_description'   =>  'Write your review below',
