@@ -32,7 +32,7 @@
                                 </form>
                             </li>
                             @else
-                            <li><a href="{{ url('/login') }}"> {{ __('account.login') }} </a></li>
+                            <li><a href="{{ url('/login') }}" data-target="#login" data-toggle="modal"> {{ __('account.login') }} </a></li>
                             <li><a href="{{ url('/register') }}">  {{ __('account.register') }} </a></li>
                             @endif
                         </ul>
@@ -47,7 +47,7 @@
                 <div class="col-xs-12">
                     <div class="header-logo">
                         @if(Route::currentRouteName() == 'frontend.home.index')
-                        <h1><a href="{{ url('/') }}"><img src="{{ (config('settings.logo') && file_exists(public_path('/uploads/photos/'.config('settings.logo'))) ? asset('public/uploads/photos/'.config('settings.logo')) : asset('noimage/190x30')) }}" alt="main logo"><strong>{{ config('settings.site_name') }}</strong></a></h1>
+                        <h1><a href="{{ url('/') }}"><img src="{{ (config('settings.logo') && file_exists(public_path('/uploads/photos/'.config('settings.logo'))) ? asset('public/uploads/photos/'.config('settings.logo')) : asset('noimage/190x30')) }}" alt="Logo"><strong>{{ config('settings.site_name') }}</strong></a></h1>
                         @else
                         <h2><a href="{{ url('/') }}"><img src="{{ (config('settings.logo') && file_exists(public_path('/uploads/photos/'.config('settings.logo'))) ? asset('public/uploads/photos/'.config('settings.logo')) : asset('noimage/190x30')) }}" alt="main logo"><strong>{{ config('settings.site_name') }}</strong></a></h2>
                         @endif

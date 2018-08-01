@@ -1049,12 +1049,13 @@ td > .mt-checkbox.mt-checkbox-single {
     -webkit-border-radius: 50% !important;
     -moz-border-radius: 50% !important;
     border-radius: 50% !important;
-    padding-top: 30px;
+    padding-top: 22px;
     padding-left: 22px;
     margin-bottom: 5px;
 }
 .timeline .timeline-icon i {
     font-size: 34px;
+    color: #32c5d2;
 }
 .timeline .timeline-badge-name,
 .timeline .timeline-badge-time {

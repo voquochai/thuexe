@@ -43,9 +43,11 @@
     <link rel="stylesheet" href="{{ asset('public/packages/bootstrap-select/css/bootstrap-select.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/css/pe-icon-7-stroke.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/css/simple-line-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('public/css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('public/themes/default/css/plugins.css') }}">
     <link rel="stylesheet" href="{{ asset('public/css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/css/login.css') }}">
     <link rel="stylesheet" href="{{ asset('public/themes/default/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('public/themes/default/css/responsive.css') }}">
     @yield('custom_css')
@@ -76,7 +78,8 @@
 		@yield('content')
         
         @include('frontend.default.layouts.brand')
-		@include('frontend.default.layouts.footer')
+        @include('frontend.default.layouts.footer')
+		@include('frontend.default.blocks.modals')
 	</div>
 	<!-- Body main wrapper end -->
     

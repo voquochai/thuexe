@@ -146,7 +146,7 @@ class TemplateFactory {
                 $result .= '
                     <div class="timeline-badge">
                         <div class="timeline-icon">
-                            <i class="'.($v->status == '' ? 'icon-user-unfollow font-red-haze' : 'icon-user-following font-green-haze').'"></i>
+                            <i class="icon-user"></i>
                         </div>
                         <div class="timeline-badge-name">'.$v->name.'</div>
                         <div class="timeline-badge-time font-grey-cascade">'.Tool::niceTime($v->created_at).'</div>

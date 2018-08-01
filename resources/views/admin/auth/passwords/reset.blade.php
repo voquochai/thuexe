@@ -4,36 +4,23 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>
-        {{ config('app.name', 'Laravel') }}
-    </title>
-
-    <!-- Styles -->
-    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <title>{{ config('app.name', 'Administrator') }}</title>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=all">
     <link rel="stylesheet" href="{{ asset('public/packages/font-awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/packages/simple-line-icons/simple-line-icons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/packages/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/packages/bootstrap-switch/css/bootstrap-switch.min.css') }}">
-    <!-- END GLOBAL MANDATORY STYLES -->
-    
-    <!-- BEGIN THEME GLOBAL STYLES -->
     <link rel="stylesheet" href="{{ asset('public/admin/css/components.css') }}">
     <link rel="stylesheet" href="{{ asset('public/admin/css/plugins.css') }}">
-    <!-- END THEME GLOBAL STYLES -->
-
-    <!-- BEGIN THEME LAYOUT STYLES -->
     <link rel="stylesheet" href="{{ asset('public/admin/css/login.css') }}">
-    <!-- END THEME LAYOUT STYLES -->
     <link rel="shortcut icon" href="favicon.ico" />
 </head>
 <body class="login">
     <div class="logo">
-        <a href="index.html"> <img src="../assets/pages/img/logo-big.png" alt="" /> </a>
+        @if( config('settings.logo') && file_exists(public_path('/uploads/photos/'.config('settings.logo'))) )
+        <a href="{{ url('/') }}"> <img src="{{ asset('public/uploads/photos/'.config('settings.logo')) }}" alt="main logo"> </a>
+        @endif
     </div>
     <div class="content">
         <form class="forget-form" role="form" method="POST" action="{{ route('admin.password.request') }}">
