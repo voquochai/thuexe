@@ -322,16 +322,26 @@ Custom color buttons
 /***
 Customized Bootstrap Close Icon 
 ***/
+.alert{
+    position: relative;
+}
 .close {
-    display: inline-block;
-    margin-top: 0px;
-    margin-right: 0px;
-    width: 9px;
-    height: 9px;
-    background-repeat: no-repeat !important;
-    text-indent: -10000px;
-    outline: none;
-    background-image: url("../images/remove-icon-small.png") !important;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    font-family: 'Pe-icon-7-stroke';
+    speak: none;
+    font-style: normal;
+    font-weight: bold;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    z-index: 10;
+}
+.close:before{
+    content: "\e680";
 }
 .toast {
     -webkit-box-shadow: none!important;
@@ -605,7 +615,7 @@ Bootstrap Select
 .mt-checkbox > span {
     border: 1px solid #d9d9d9;
     position: absolute;
-    top: 1px;
+    top: 0;
     left: 0;
     height: 18px;
     width: 18px;

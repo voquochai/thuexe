@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'sign_in_with_facebook'    =>  'Đăng nhập bằng facebook',
+    'sign_in_with_google'    =>  'Đăng nhập bằng google',
+    'sign_in_with_zalo'    =>  'Đăng nhập bằng zalo',
     'enter_personal_details'    =>  'Nhập thông tin cá nhân của bạn bên dưới',
     'enter_email'   =>  'Nhập địa chỉ Email của bạn để đặt lại mật khẩu',
 	'send_reset_password'	=>	'Gửi lại mật khẩu',
@@ -25,8 +28,8 @@ return [
     'back'  =>  'Quay lại',
     'remember'  =>  'Ghi nhớ',
     'forgot_password'   =>  'Quên mật khẩu ?',
-    'click_here'	=>	' Đừng lo, click vào <a href=":attribute">đây</a> để cấp lại mật khẩu.',
-    'no_account'    =>  'Bạn chưa có tài khoản ? <a href=":attribute" > Tạo tài khoản </a>',
+    'click_here'	=>	' Đừng lo, click vào <a href=":attribute" data-target="#ajax-modal-forget" data-toggle="modal" data-dismiss="modal">đây</a> để cấp lại mật khẩu.',
+    'no_account'    =>  'Bạn chưa có tài khoản ? <a href=":attribute" data-target="#ajax-modal-register" data-toggle="modal" data-dismiss="modal"> Tạo tài khoản </a>',
 
     // Sidebar
 

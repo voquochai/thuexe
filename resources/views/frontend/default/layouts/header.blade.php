@@ -32,8 +32,8 @@
                                 </form>
                             </li>
                             @else
-                            <li><a href="{{ url('/login') }}" data-target="#login" data-toggle="modal"> {{ __('account.login') }} </a></li>
-                            <li><a href="{{ url('/register') }}">  {{ __('account.register') }} </a></li>
+                            <li><a href="{{ url('/login') }}" data-target="#ajax-modal-login" data-toggle="modal"> {{ __('account.login') }} </a></li>
+                            <li><a href="{{ url('/register') }}" data-target="#ajax-modal-register" data-toggle="modal" > {{ __('account.register') }} </a></li>
                             @endif
                         </ul>
                     </li>

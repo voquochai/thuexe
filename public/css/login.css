@@ -1,6 +1,16 @@
-#login.modal .modal-body {
-    border-radius: 6px;
+#ajax-modal-login.modal .close,
+#ajax-modal-register.modal .close{
+    top: -12px;
+    right: -12px;
     background-color: #ccc;
+    border-radius: 50%;
+    opacity: 1;
+    font-size: 25px;
+}
+#ajax-modal-login.modal .modal-body,
+#ajax-modal-register.modal .modal-body {
+    border-radius: 6px;
+    background-color: #f8f8f8;
 }
 .login-wrap .logo {
     padding: 15px;
@@ -9,6 +19,7 @@
     border-radius: 6px 0px 0px 6px;
     margin-top: -15px;
     margin-bottom: -15px;
+    height: 477px;
 }
 
 .login-wrap .alert ul {
@@ -27,16 +38,40 @@
     padding: 15px;
 }
 
+.login-wrap .content .control-label{
+    text-align: right;
+    margin-top: 5px;
+    font-weight: 600;
+}
+
 .login-wrap .content h3 {
     color: #000;
 }
 
 .login-wrap .content h4 {
+    font-size: 16px;
     color: #555;
 }
 
 .login-wrap .content p {
     color: #222;
+}
+
+.login-wrap .content .social-icons{
+    margin: 0px;
+    padding: 0px;
+}
+.login-wrap .content .social-icons li{
+    display: block;
+    list-style: none;
+    margin-bottom: 10px;
+}
+.login-wrap .content .social-icons li a{
+    padding: 10px 15px 10px 55px;
+}
+.login-wrap .content .social-icons li a>:first-child{
+    width: 42px;
+    line-height: 42px;
 }
 
 .login-wrap .content .login-form,
@@ -66,13 +101,7 @@
     margin-bottom: 25px;
 }
 
-.login-wrap .content .form-actions {
-    background-color: #fff;
-    clear: both;
-    border: 0px;
-    border-bottom: 1px solid #eee;
-    padding: 0px 30px 25px 30px;
-}
+.login-wrap .content .form-actions {}
 
 .login-wrap .content .forget-form .form-actions {
     border: 0;
@@ -96,18 +125,21 @@
 }
 
 .login-wrap .content .forget-password {
-    margin-top: 25px;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    margin-top: 20px;
 }
 
 .login-wrap .content .create-account {
-    border-top: 1px dotted #eee;
+    border-top: 1px solid #eee;
     padding-top: 10px;
     margin-top: 15px;
 }
 
+.login-wrap .content .forget-password a,
 .login-wrap .content .create-account a {
-    display: inline-block;
-    margin-top: 5px;
+    text-decoration: underline;
+    color: #94da46;
 }
 
 

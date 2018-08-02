@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'sign_in_with_facebook'    =>  'Sign in with facebook',
+    'sign_in_with_google'    =>  'Sign in with google',
+    'sign_in_with_zalo'    =>  'Sign in with zalo',
     'enter_personal_details'    =>  'Enter your personal information below',
     'enter_email'   =>  'Enter email address to reset your password',
 	'send_reset_password'	=>	'Send password',
@@ -25,8 +28,8 @@ return [
     'back'  =>  'Back',
     'remember'  =>  'Remember',
     'forgot_password'   =>  'Forgot password?',
-    'click_here'	=>	'no worries, click <a href=":attribute">here</a> to reset your password.',
-    'no_account'    =>  'Don\'t have an account yet ? <a href=":attribute" > Create an account </a>',
+    'click_here'	=>	'no worries, click <a href=":attribute" data-target="#ajax-modal-forget" data-toggle="modal" data-dismiss="modal">here</a> to reset your password.',
+    'no_account'    =>  'Don\'t have an account yet ? <a href=":attribute" data-target="#ajax-modal-login" data-toggle="modal" data-dismiss="modal"> Create an account </a>',
 
     // Sidebar
 

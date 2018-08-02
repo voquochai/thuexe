@@ -35,8 +35,8 @@
                                 </form>
                             </li>
                             <?php else: ?>
-                            <li><a href="<?php echo e(url('/login')); ?>" data-target="#login" data-toggle="modal"> <?php echo e(__('account.login')); ?> </a></li>
-                            <li><a href="<?php echo e(url('/register')); ?>">  <?php echo e(__('account.register')); ?> </a></li>
+                            <li><a href="<?php echo e(url('/login')); ?>" data-target="#ajax-modal-login" data-toggle="modal"> <?php echo e(__('account.login')); ?> </a></li>
+                            <li><a href="<?php echo e(url('/register')); ?>" data-target="#ajax-modal-register" data-toggle="modal" > <?php echo e(__('account.register')); ?> </a></li>
                             <?php endif; ?>
                         </ul>
                     </li>
