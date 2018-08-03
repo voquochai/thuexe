@@ -39,13 +39,16 @@
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=vietnamese">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico&amp;subset=vietnamese">
     <link rel="stylesheet" href="<?php echo e(asset('public/css/bootstrap.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('public/css/bootstrap-social.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('public/packages/bootstrap-toastr/toastr.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('public/packages/bootstrap-select/css/bootstrap-select.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('public/css/font-awesome.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('public/css/pe-icon-7-stroke.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('public/css/simple-line-icons.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('public/css/animate.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('public/themes/default/css/plugins.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('public/css/app.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('public/css/login.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('public/themes/default/css/style.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('public/themes/default/css/responsive.css')); ?>">
     <?php echo $__env->yieldContent('custom_css'); ?>
@@ -77,7 +80,8 @@
 		<?php echo $__env->yieldContent('content'); ?>
         
         <?php echo $__env->make('frontend.default.layouts.brand', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-		<?php echo $__env->make('frontend.default.layouts.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        <?php echo $__env->make('frontend.default.layouts.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+		<?php echo $__env->make('frontend.default.blocks.modals', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 	</div>
 	<!-- Body main wrapper end -->
     

@@ -571,8 +571,23 @@ var App = function() {
                 }
             });
         });
-        $(document).on('hidden.bs.modal', function (e) {
-            $(e.target).removeData('bs.modal');
+
+        $('body').on('click', '.btn-login', function(e){
+            e.preventDefault();
+            var btn = $(this);
+            var frm = btn.parents('form');
+            var dataAjax = frm.serialize()+'&_token='+Laravel.csrfToken;
+            $.ajax({
+                type: 'POST',
+                url : Laravel.baseUrl+'/login',
+                data: dataAjax,
+                beforeSend: function(){
+                    btn.button('loading');
+                }
+            }).done(function(response){
+                btn.button('reset');
+                console.log(response);
+            });
         });
     }
     

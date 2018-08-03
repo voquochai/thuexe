@@ -10,7 +10,6 @@
                 <div class="content">
                     <form class="register-form" role="form" method="POST" action="{{ route('frontend.register') }}">
                         {{ csrf_field() }}
-                        <p class="hint"> {{ __('account.enter_personal_details') }}: </p>
                         <div class="row">@include('admin.blocks.messages')</div>
                         <div class="form-group row">
                             <label class="control-label col-md-3">{{ __('account.name') }}</label>
@@ -69,7 +68,7 @@
 
                         <div class="form-actions row">
                             <div class="col-md-9 pull-right">
-                                <a href="{{ route('frontend.login') }}" class="btn btn-default">{{ __('account.back') }}</a>
+                                <a href="{{ route('frontend.login') }}" class="btn btn-default" data-target="#ajax-modal-login" data-toggle="modal" data-dismiss="modal">{{ __('account.back') }}</a>
                                 <button type="submit" class="btn btn-site pull-right">{{ __('account.register') }}</button>
                             </div>
                         </div>

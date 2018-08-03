@@ -1,5 +1,5 @@
-#ajax-modal-login.modal .close,
-#ajax-modal-register.modal .close{
+#ajax-modal-login.modal .modal-content > .close,
+#ajax-modal-register.modal .modal-content > .close{
     top: -12px;
     right: -12px;
     background-color: #ccc;
@@ -139,6 +139,11 @@
 .login-wrap .content .forget-password a,
 .login-wrap .content .create-account a {
     text-decoration: underline;
+    font-weight: 600;
+    color: #333;
+}
+.login-wrap .content .forget-password a:hover,
+.login-wrap .content .create-account a:hover {
     color: #94da46;
 }
 
