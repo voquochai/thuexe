@@ -24,7 +24,8 @@ textarea,
 .alert{
 	border-radius: 0px;
 }
-.btn-site{
+.btn-site,
+.btn-site:focus{
 	color: #fff;
     background-color: #1f2a37;
 }

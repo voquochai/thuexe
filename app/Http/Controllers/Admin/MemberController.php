@@ -39,16 +39,16 @@ class MemberController extends Controller
         $valid = Validator::make($request->all(), [
             'data.name' => 'required',
             'data.email' => 'required|email|unique:members,email',
-            'data.username' => 'required|alpha_dash|unique:members,username',
+            // 'data.username' => 'required|alpha_dash|unique:members,username',
             'password' => 'required|min:6|confirmed'
         ], [
             'data.name.required' => 'Vui lòng nhập Họ Tên',
             'data.email.required' => 'Vui lòng nhập Email',
             'data.email.email' => 'Không đúng định dạng Email',
             'data.email.unique' => 'Email này đã trùng, vui lòng chọn Email khác',
-            'data.username.required' => 'Vui lòng nhập Tên đăng nhập',
-            'data.username.alpha_dash' => 'Tên đăng nhập không được chứa các ký tự đặc biệt',
-            'data.username.unique' => 'Tên đăng nhập này đã trùng, vui lòng chọn tên khác',
+            // 'data.username.required' => 'Vui lòng nhập Tên đăng nhập',
+            // 'data.username.alpha_dash' => 'Tên đăng nhập không được chứa các ký tự đặc biệt',
+            // 'data.username.unique' => 'Tên đăng nhập này đã trùng, vui lòng chọn tên khác',
             'password.required' => 'Vui lòng nhập Mật khẩu',
             'password.min' => 'Mật khẩu có ít nhất :min ký tự',
             'password.confirmed' => 'Confirm Mật khẩu không chính xác',
@@ -87,16 +87,16 @@ class MemberController extends Controller
         $valid = Validator::make($request->all(), [
             'data.name' => 'required',
             'data.email' => 'required|email|unique:members,email,'.$id,
-            'data.username' => 'required|alpha_dash|unique:members,username,'.$id,
+            // 'data.username' => 'required|alpha_dash|unique:members,username,'.$id,
             'password' => 'confirmed'
         ], [
             'data.name.required' => 'Vui lòng nhập Họ Tên',
             'data.email.required' => 'Vui lòng nhập Email',
             'data.email.email' => 'Không đúng định dạng Email',
             'data.email.unique' => 'Email này đã trùng, vui lòng chọn Email khác',
-            'data.username.required' => 'Vui lòng nhập Tên đăng nhập',
-            'data.username.alpha_dash' => 'Tên đăng nhập không được chứa các ký tự đặc biệt',
-            'data.username.unique' => 'Tên đăng nhập này đã trùng, vui lòng chọn tên khác',
+            // 'data.username.required' => 'Vui lòng nhập Tên đăng nhập',
+            // 'data.username.alpha_dash' => 'Tên đăng nhập không được chứa các ký tự đặc biệt',
+            // 'data.username.unique' => 'Tên đăng nhập này đã trùng, vui lòng chọn tên khác',
             'password.confirmed' => 'Confirm Mật khẩu không chính xác',
         ]);
 

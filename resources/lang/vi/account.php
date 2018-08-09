@@ -19,6 +19,8 @@ return [
     'password_confirm' => 'Xác nhận mật khẩu',
     'profile' => 'Thông tin tài khoản',
 
+    'successful' => 'Đăng ký thành công',
+
     'name'	=>	'Họ và tên',
     'address'	=>	'Địa chỉ',
     'phone'	=>	'Điện thoại',
@@ -28,8 +30,8 @@ return [
     'back'  =>  'Quay lại',
     'remember'  =>  'Ghi nhớ',
     'forgot_password'   =>  'Quên mật khẩu ?',
-    'click_here'	=>	' Đừng lo, click vào <a href=":attribute" data-target="#ajax-modal-forget" data-toggle="modal" data-dismiss="modal">đây</a> để cấp lại mật khẩu.',
-    'no_account'    =>  'Bạn chưa có tài khoản ? <a href=":attribute" data-target="#ajax-modal-register" data-toggle="modal" data-dismiss="modal"> Tạo tài khoản </a>',
+    'click_here'	=>	' Đừng lo, click vào <a href="#ajax-modal-forget" data-toggle="modal" data-dismiss="modal">đây</a> để cấp lại mật khẩu.',
+    'no_account'    =>  'Bạn chưa có tài khoản ? <a href="#ajax-modal-register" data-toggle="modal" data-dismiss="modal"> Tạo tài khoản </a>',
 
     // Sidebar
 

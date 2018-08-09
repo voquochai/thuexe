@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Frontend\Auth;
 use App\Member;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Notifications\UserRegistered;
 use Illuminate\Http\Request;
@@ -59,18 +61,18 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required',
             'email' => 'required|email|unique:members,email',
-            'username' => 'required|alpha_dash|unique:members,username',
+            // 'username' => 'required|alpha_dash|unique:members,username',
             'password' => 'required|min:6|confirmed',
             'policy' => 'required',
         ], [
             'name.required' => 'Vui lòng nhập Họ Tên',
             'email.required' => 'Vui lòng nhập Email',
             'email.email' => 'Không đúng định dạng Email',
-            'email.unique' => 'Email này đã trùng, vui lòng chọn Email khác',
-            'username.required' => 'Vui lòng nhập Tên đăng nhập',
-            'username.alpha_dash' => 'Tên đăng nhập không được chứa các ký tự đặc biệt',
-            'username.unique' => 'Tên đăng nhập này đã trùng, vui lòng chọn tên khác',
-            'password.required' => 'Vui lòng nhập Mật khẩu',
+            'email.unique' => 'Email này đã được sử dụng, vui lòng chọn Email khác',
+            // 'username.required' => 'Vui lòng nhập Tên đăng nhập',
+            // 'username.alpha_dash' => 'Tên đăng nhập không được chứa các ký tự đặc biệt',
+            // 'username.unique' => 'Tên đăng nhập này đã trùng, vui lòng chọn tên khác',
+            // 'password.required' => 'Vui lòng nhập Mật khẩu',
             'password.min' => 'Mật khẩu có ít nhất :min ký tự',
             'password.confirmed' => 'Confirm Mật khẩu không chính xác',
             'policy.required' => 'Bạn chưa đồng ý Điều khoản dịch vụ & Chính sách bảo mật của chúng tôi',
@@ -90,14 +92,25 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'phone' => $data['phone'],
             'address' => $data['address'],
-            'username' => $data['username'],
+            // 'username' => $data['username'],
             'password' => bcrypt($data['password']),
-            'remember_token' => str_random(10),
+            // 'remember_token' => str_random(10),
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
         if($user) session()->flash('success', 'Thêm dữ liệu <b>'.$user->name.'</b> thành công');
         return $user;
+    }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+
+        return ['type'=>'success', 'icon'=>'check', 'message'=>__('account.successful')];
     }
 
     protected function registered(Request $request, $user)

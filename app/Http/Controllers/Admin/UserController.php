@@ -42,16 +42,16 @@ class UserController extends Controller
         $valid = Validator::make($request->all(), [
             'data.name' => 'required',
             'data.email' => 'required|email|unique:users,email',
-            'data.username' => 'required|alpha_dash|unique:users,username',
+            // 'data.username' => 'required|alpha_dash|unique:users,username',
             'password' => 'required|min:6|confirmed'
         ], [
             'data.name.required' => 'Vui lòng nhập Họ Tên',
             'data.email.required' => 'Vui lòng nhập Email',
             'data.email.email' => 'Không đúng định dạng Email',
             'data.email.unique' => 'Email này đã trùng, vui lòng chọn Email khác',
-            'data.username.required' => 'Vui lòng nhập Tên đăng nhập',
-            'data.username.alpha_dash' => 'Tên đăng nhập không được chứa các ký tự đặc biệt',
-            'data.username.unique' => 'Tên đăng nhập này đã trùng, vui lòng chọn tên khác',
+            // 'data.username.required' => 'Vui lòng nhập Tên đăng nhập',
+            // 'data.username.alpha_dash' => 'Tên đăng nhập không được chứa các ký tự đặc biệt',
+            // 'data.username.unique' => 'Tên đăng nhập này đã trùng, vui lòng chọn tên khác',
             'password.required' => 'Vui lòng nhập Mật khẩu',
             'password.min' => 'Mật khẩu có ít nhất :min ký tự',
             'password.confirmed' => 'Confirm Mật khẩu không chính xác',

@@ -19,6 +19,8 @@ return [
     'password_confirm' => 'Confirm password',
     'profile' => 'Profile',
 
+    'successful' => 'Successful',
+
     'name'	=>	'Name',
     'address'	=>	'Address',
     'phone'	=>	'Phone',
@@ -28,8 +30,8 @@ return [
     'back'  =>  'Back',
     'remember'  =>  'Remember',
     'forgot_password'   =>  'Forgot password?',
-    'click_here'	=>	'no worries, click <a href=":attribute" data-target="#ajax-modal-forget" data-toggle="modal" data-dismiss="modal">here</a> to reset your password.',
-    'no_account'    =>  'Don\'t have an account yet ? <a href=":attribute" data-target="#ajax-modal-login" data-toggle="modal" data-dismiss="modal"> Create an account </a>',
+    'click_here'	=>	'no worries, click <a href="#ajax-modal-forget" data-toggle="modal" data-dismiss="modal">here</a> to reset your password.',
+    'no_account'    =>  'Don\'t have an account yet ? <a href="#ajax-modal-register" data-toggle="modal" data-dismiss="modal"> Create an account </a>',
 
     // Sidebar
 

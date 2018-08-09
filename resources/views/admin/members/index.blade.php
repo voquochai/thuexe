@@ -43,7 +43,7 @@
                                     </label>
                                 </th>
                                 <th width="3%"> Thứ tự </th>
-								<th width="10%"> Username </th>
+								{{--<th width="10%"> Tên đăng nhập </th>--}}
                                 <th width="7%"> Họ và tên </th>
                                 <th width="7%"> Email </th>
                                 <th width="7%"> Điện thoại </th>
@@ -63,7 +63,7 @@
                                     </label>
                                 </td>
                                 <td align="center"> <input type="text" name="priority" class="form-control input-mini input-priority" value="{{ $item->priority }}" data-ajax="act=update_priority|table=members|id={{ $item->id }}|col=priority"> </td>
-                                <td align="center"><a href="{{ route('admin.member.edit',['id'=>$item->id]) }}"> {{ $item->username }} </a></td>
+                                {{--<td align="center"><a href="{{ route('admin.member.edit',['id'=>$item->id]) }}"> {{ $item->username }} </a></td>--}}
                                 <td align="center">{{$item->name}}</td>
                                 <td align="center">{{$item->email}}</td>
                                 <td align="center">{{$item->phone}}</td>

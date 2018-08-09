@@ -584,9 +584,69 @@ var App = function() {
                 beforeSend: function(){
                     btn.button('loading');
                 }
+            }).fail(function(status){
+                App.alert({
+                    container: frm, // alerts parent container(by default placed after the page breadcrumbs)
+                    place: 'prepend', // "append" or "prepend" in container
+                    type: 'danger', // alert's type
+                    message: status.responseJSON[Object.keys(status.responseJSON)[0]], // alert's message
+                    close: true, // make alert closable
+                    reset: true, // close all previouse alerts first
+                    focus: false, // auto scroll to the alert after shown
+                    closeInSeconds: 5, // auto close after defined seconds
+                    icon: 'warning' // put icon before the message
+                });
             }).done(function(response){
-                btn.button('reset');
                 console.log(response);
+            }).always(function(){
+                btn.button('reset');
+            });
+        });
+
+        $('body').on('click', '.btn-register', function(e){
+            e.preventDefault();
+            var btn = $(this);
+            var frm = btn.parents('form');
+            var dataAjax = frm.serialize()+'&_token='+Laravel.csrfToken;
+            $.ajax({
+                type: 'POST',
+                url : Laravel.baseUrl+'/register',
+                data: dataAjax,
+                beforeSend: function(){
+                    btn.button('loading');
+                }
+            }).fail(function(status){
+                App.alert({
+                    container: frm, // alerts parent container(by default placed after the page breadcrumbs)
+                    place: 'prepend', // "append" or "prepend" in container
+                    type: 'danger', // alert's type
+                    message: status.responseJSON[Object.keys(status.responseJSON)[0]], // alert's message
+                    close: true, // make alert closable
+                    reset: true, // close all previouse alerts first
+                    focus: false, // auto scroll to the alert after shown
+                    closeInSeconds: 5, // auto close after defined seconds
+                    icon: 'warning' // put icon before the message
+                });
+            }).done(function(response){
+                if(response.type == 'success'){
+                    frm.find('*:not([type="hidden"])').val('');
+                }
+                App.alert({
+                    container: $('#ajax-modal-login form'), // alerts parent container(by default placed after the page breadcrumbs)
+                    place: 'prepend', // "append" or "prepend" in container
+                    type: response.type, // alert's type
+                    message: response.message, // alert's message
+                    close: true, // make alert closable
+                    reset: true, // close all previouse alerts first
+                    focus: false, // auto scroll to the alert after shown
+                    closeInSeconds: 5, // auto close after defined seconds
+                    icon: response.icon // put icon before the message
+                });
+                $('#ajax-modal-register').modal('hide').on('hidden.bs.modal', function (e) {
+                    $('#ajax-modal-login').modal('show');
+                });
+            }).always(function(){
+                btn.button('reset');
             });
         });
     }

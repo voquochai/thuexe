@@ -193,21 +193,3 @@
     color: #999;
     font-size: 13px;
 }
-
-@media (max-width: 480px) {
-    /***
-  Login page
-  ***/
-    .login-wrap .logo {
-        margin-top: 10px;
-    }
-    .login-wrap .content {
-        width: 280px;
-    }
-    .login-wrap .content h3 {
-        font-size: 22px;
-    }
-    .login-wrap .checkbox {
-        font-size: 13px;
-    }
-}
