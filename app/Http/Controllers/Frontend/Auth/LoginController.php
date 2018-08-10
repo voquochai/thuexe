@@ -51,4 +51,13 @@ class LoginController extends Controller
         return \Auth::guard('member');
     }
 
+    protected function sendLoginResponse(Request $request)
+    {
+        $request->session()->regenerate();
+
+        $this->clearLoginAttempts($request);
+
+        return ['type'=>'success', 'icon'=>'check', 'message'=>__('account.sign_in_success'), 'redirect'=>url('/')];
+    }
+
 }

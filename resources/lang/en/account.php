@@ -19,7 +19,8 @@ return [
     'password_confirm' => 'Confirm password',
     'profile' => 'Profile',
 
-    'successful' => 'Successful',
+    'sign_up_success' => 'Sign up success',
+    'sign_in_success' => 'Sign in success',
 
     'name'	=>	'Name',
     'address'	=>	'Address',

@@ -1,11 +1,9 @@
 <!Doctype html>
 <html lang="{{ app()->getLocale() }}">
-
 <head>
-    <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="robots" content="index" />
+    <meta name="robots" content="noindex, nofollow" />
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ @$meta_seo->title }}</title>
@@ -29,7 +27,7 @@
     <meta property="og:image" content="{{ @$meta_seo->image }}" />
     <meta property="og:description" content="{{ @$meta_seo->description }}" />
     <meta property="og:site_name" content="{{ config('settings.site_name') }}" />
-    <meta property="fb:admins" content="Facebook numberic ID" />
+    <meta property="fb:admins" content="{{ config('settings.facebook_app_id') }}" />
     <!-- Geo data -->
     <meta name="geo.placename" content="Viet Nam" />
     <meta name="geo.position" content="x;x" />
@@ -38,58 +36,47 @@
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('public/uploads/photos/'.config('settings.favicon')) }}">
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&subset=vietnamese">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=vietnamese">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico&amp;subset=vietnamese">
     <link rel="stylesheet" href="{{ asset('public/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/css/bootstrap-social.css') }}">
     <link rel="stylesheet" href="{{ asset('public/packages/bootstrap-toastr/toastr.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/packages/bootstrap-select/css/bootstrap-select.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/themes/default/css/pe-icon-7-stroke.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/css/pe-icon-7-stroke.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/css/simple-line-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('public/themes/default/css/plugins.css') }}">
     <link rel="stylesheet" href="{{ asset('public/css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/css/member.css') }}">
     <link rel="stylesheet" href="{{ asset('public/themes/default/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('public/themes/default/css/responsive.css') }}">
     @yield('custom_css')
-</head>
-<body>
-    <div id="fb-root"></div>
-    <script async defer>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/{{ config('siteconfig.social.'.app()->getLocale()) }}/sdk.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
-    
-	<!-- Body main wrapper start -->
-	<div class="wrapper">
-		<!-- START HEADER SECTION -->
-		@include('frontend.default.layouts.header')
-		<!-- END HEADER SECTION -->
+    {{ config('settings.script_head') }}
 
-		<!-- Search Modal -->
-		@include('frontend.default.layouts.search')
+</head>
+<body {!! $site['class'] ? 'class="'.$site['class'].'"' : '' !!} >
+
+    <div class="wrapper">
+        @include('frontend.default.layouts.header')
+        @include('frontend.default.layouts.navbar')
+        @include('frontend.default.layouts.search')
 
         @include('frontend.default.layouts.breadcrumb')
-
-        <!-- PAGE SECTION START -->
-        <div class="page-section section pt-100 pb-60">
+        
+        <section class="page-section ptb-60">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-9 col-md-8 col-xs-12 float-right">
-                        
-                        @yield('content')
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-xs-12">
-                        @include('frontend.member.sidebar')
-                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">@include('frontend.member.sidebar')</div>
+                    <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">@yield('content')</div>
                 </div>
             </div>
-        </div>
-        <!-- PAGE SECTION END -->
-	    
-		@include('frontend.default.layouts.footer')
+        </section>
 
-	</div>
-	<!-- Body main wrapper end -->
+        @include('frontend.default.layouts.brand')
+        @include('frontend.default.layouts.footer')
+    </div>
+    <!-- Body main wrapper end -->
     
     <script>
         window.Laravel = {!! json_encode([
@@ -100,13 +87,15 @@
     <script src="{{ asset('public/jsons/province.json') }}"></script>
     <script src="{{ asset('public/jsons/district.json') }}"></script>
     <script src="{{ asset('public/js/modernizr-2.8.3.min.js') }}"></script>
-	<script src="{{ asset('public/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('public/js/jquery.min.js') }}"></script>
     <script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
-	<script src="{{ asset('public/packages/bootstrap-toastr/toastr.min.js') }}"></script>
-	<script src="{{ asset('public/themes/default/js/plugins.js') }}"></script>
-	<script src="{{ asset('public/js/app.js') }}"></script>
-	<script src="{{ asset('public/themes/default/js/main.js') }}"></script>
-	@yield('custom_script')
-</body>
+    <script src="{{ asset('public/packages/bootstrap-toastr/toastr.min.js') }}"></script>
+    <script src="{{ asset('public/packages/bootstrap-select/js/bootstrap-select.min.js') }}"></script>
+    <script src="{{ asset('public/themes/default/js/plugins.js') }}"></script>
+    <script src="{{ asset('public/js/app.js') }}"></script>
+    <script src="{{ asset('public/themes/default/js/main.js') }}"></script>
 
+    @yield('custom_script')
+    {{ config('settings.script_body') }}
+</body>
 </html>

@@ -1,8 +1,7 @@
 <div class="sidebar">
-    <div class="single-sidebar mb-40">
-        <p class="text-center"> {{ __('account.account_of') }} </p>
-        <h3 class="sidebar-title text-center">{{ auth()->guard('member')->user()->name }}</h3>
-        <ul class="category-sidebar">
+    <div class="sidebar-widget mb-20">
+        <h4 class="title">{{ auth()->guard('member')->user()->name }}</h4>
+        <ul class="category">
             <li> <a href="{{ route('frontend.member.profile') }}"> {{ __('account.profile') }} </a> </li>
             <li> <a href=""> {{ __('account.notification') }} </a> </li>
             <li> <a href="{{ route('frontend.member.order') }}"> {{ __('account.order_management') }} </a> </li>

@@ -1,4 +1,4 @@
-<div class="col-md-12" id="alert-container">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 	@if (count($errors) > 0)
 	<div class="alert alert-danger" role="alert">
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
@@ -24,7 +24,7 @@
 
 	@if (session('status'))
     <div class="alert alert-success">
-        {{ session('status') }}
+        {!! session('status') !!}
     </div>
     @endif
 </div>

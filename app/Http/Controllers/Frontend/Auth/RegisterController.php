@@ -110,7 +110,7 @@ class RegisterController extends Controller
 
         $this->guard()->login($user);
 
-        return ['type'=>'success', 'icon'=>'check', 'message'=>__('account.successful')];
+        return ['type'=>'success', 'icon'=>'check', 'message'=>__('account.sign_up_success')];
     }
 
     protected function registered(Request $request, $user)

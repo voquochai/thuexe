@@ -38,31 +38,29 @@ class MemberController extends Controller
             $this->_data = set_type($request->type,$lang);
             $this->_data['lang'] = $lang;
             $this->_data['meta_seo'] = set_meta_tags($lang);
-
-            $this->_data['site']['title'] = __('site.member');
-            $this->_data['breadcrumb'] = '<li> <a href="'.url('/').'">'.__('site.home').'</a> </li>';
-            $this->_data['breadcrumb'] .= '<li> <a href="'.url('/member').'"> '.$this->_data['site']['title'].' </a> </li>';
-
             View::share('siteconfig', config('siteconfig'));
-            $cart = is_array($cart = json_decode($request->cookie('cart'), true)) ? $cart : [];
-            if (count($cart) > 0) {
-                $this->_data['countCart'] = count($cart);
-                
-            }else{
-                $this->_data['countCart'] = 0;
-            }
             return $next($request);
         });
     }
 
     public function index(){
         
+        $this->_data['site']['title'] = __('site.member');
+        $this->_data['breadcrumb'] = '<li> <a href="'.url('/').'">'.__('site.home').'</a> </li>';
+        $this->_data['breadcrumb'] .= '<li> <a href="'.url('/member').'"> '.$this->_data['site']['title'].' </a> </li>';
+
+
         $id = auth()->guard('member')->user()->id;
         $this->_data['items'] = Order::where('member_id',$id)->get();
         return view('frontend.member.index', $this->_data);
     }
 
     public function profile(Request $request){
+
+        $this->_data['site']['title'] = __('site.member');
+        $this->_data['breadcrumb'] = '<li> <a href="'.url('/').'">'.__('site.home').'</a> </li>';
+        $this->_data['breadcrumb'] .= '<li> <a href="'.url('/member').'"> '.__('account.profile').' </a> </li>';
+
         $id = auth()->guard('member')->user()->id;
         $member = Member::find($id);
         if ($request->isMethod('put')) {
@@ -98,12 +96,22 @@ class MemberController extends Controller
     }
 
     public function orders(){
+
+        $this->_data['site']['title'] = __('site.member');
+        $this->_data['breadcrumb'] = '<li> <a href="'.url('/').'">'.__('site.home').'</a> </li>';
+        $this->_data['breadcrumb'] .= '<li> <a href="'.url('/member').'"> '.__('account.profile').' </a> </li>';
+
         $id = auth()->guard('member')->user()->id;
         $this->_data['items'] = Order::where('member_id',$id)->paginate(25);
         return view('frontend.member.orders', $this->_data);
     }
 
     public function orderDetail($id){
+
+        $this->_data['site']['title'] = __('site.member');
+        $this->_data['breadcrumb'] = '<li> <a href="'.url('/').'">'.__('site.home').'</a> </li>';
+        $this->_data['breadcrumb'] .= '<li> <a href="'.url('/member').'"> '.__('account.profile').' </a> </li>';
+
         $member_id = auth()->guard('member')->user()->id;
         $this->_data['item'] = Order::where('member_id',$member_id)->where('id',$id)->first();
         if ($this->_data['item'] !== null) {

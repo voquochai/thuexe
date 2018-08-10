@@ -1,13 +1,10 @@
 @extends('frontend.member.master')
 @section('content')
-<div class="row"> @include('frontend.default.blocks.messages') </div>
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">{{ __('cart.your_order') }}</h3>
-    </div>
-    <div class="panel-body">
-        <div class="table-responsive">
-            <table class="table table-bordered table-condensed">
+<div class="row">
+    @include('frontend.default.blocks.messages')
+    <div class="col-xs-12">
+        <div class="cart-table table-responsive">
+            <table>
                 <thead>
                     <tr>
                         <th width="10%"> Ngày đặt </th>
@@ -34,8 +31,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="text-center"> {{ $items->links('frontend.default.layouts.paginate') }} </div>
+        <div class="text-center"> {{ $items->links('frontend.default.blocks.paginate') }} </div>
     </div>
 </div>
-
 @endsection

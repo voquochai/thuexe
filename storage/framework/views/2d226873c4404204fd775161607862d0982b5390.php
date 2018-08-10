@@ -23,20 +23,19 @@
                         <ul>
                             <?php if( auth()->guard('member')->check() ): ?>
                             <li>
-                                <a href="<?php echo e(route('frontend.member.profile')); ?>">
-                                    <i class="icon-user"></i> Thông tin </a>
+                                <a href="<?php echo e(route('frontend.member.profile')); ?>"> <?php echo e(__('account.profile')); ?> </a>
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="javascript:;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <i class="icon-key"></i> Thoát </a>
-                                <form id="logout-form" action="<?php echo e(route('frontend.logout')); ?>" method="POST" style="display: none;">
+                                <a href="javascript:;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <?php echo e(__('account.exit')); ?> </a>
+                                <form id="logout-form" action="<?php echo e(route('frontend.logout')); ?>" method="POST" class="hidden">
                                     <?php echo e(csrf_field()); ?>
 
                                 </form>
                             </li>
                             <?php else: ?>
                             <li><a href="#ajax-modal-login" data-toggle="modal"> <?php echo e(__('account.login')); ?> </a></li>
-                            <li><a href="<?php echo e(url('/register')); ?>" data-target="#ajax-modal-register" data-toggle="modal" > <?php echo e(__('account.register')); ?> </a></li>
+                            <li><a href="#ajax-modal-register" data-toggle="modal" > <?php echo e(__('account.register')); ?> </a></li>
                             <?php endif; ?>
                         </ul>
                     </li>

@@ -1,9 +1,5 @@
-/**
-Core script to handle the entire theme and core functions
-**/
 var App = function() {
 
-    // IE mode
     var isRTL = false;
     var isIE8 = false;
     var isIE9 = false;
@@ -11,7 +7,6 @@ var App = function() {
 
     var resizeHandlers = [];
 
-    // initializes main settings
     var handleInit = function() {
 
         if ($('body').css('direction') === 'rtl') {
@@ -23,39 +18,36 @@ var App = function() {
         isIE10 = !!navigator.userAgent.match(/MSIE 10.0/);
 
         if (isIE10) {
-            $('html').addClass('ie10'); // detect IE10 version
+            $('html').addClass('ie10');
         }
 
         if (isIE10 || isIE9 || isIE8) {
-            $('html').addClass('ie'); // detect IE10 version
+            $('html').addClass('ie');
         }
     };
 
-    // runs callback functions set by App.addResponsiveHandler().
     var _runResizeHandlers = function() {
-        // reinitialize other subscribed elements
         for (var i = 0; i < resizeHandlers.length; i++) {
             var each = resizeHandlers[i];
             each.call();
         }
     };
 
-    // handle the layout reinitialization on window resize
     var handleOnResize = function() {
         var resize;
         if (isIE8) {
             var currheight;
             $(window).resize(function() {
                 if (currheight == document.documentElement.clientHeight) {
-                    return; //quite event since only body resized not window.
+                    return;
                 }
                 if (resize) {
                     clearTimeout(resize);
                 }
                 resize = setTimeout(function() {
                     _runResizeHandlers();
-                }, 50); // wait 50ms until window resize finishes.                
-                currheight = document.documentElement.clientHeight; // store last body client height
+                }, 50);
+                currheight = document.documentElement.clientHeight;
             });
         } else {
             $(window).resize(function() {
@@ -64,7 +56,7 @@ var App = function() {
                 }
                 resize = setTimeout(function() {
                     _runResizeHandlers();
-                }, 50); // wait 50ms until window resize finishes.
+                }, 50);
             });
         }
     };
@@ -89,18 +81,14 @@ var App = function() {
         });
     };
 
-    // Handle textarea autosize 
     var handleTextareaAutosize = function() {
         if (typeof(autosize) == "function") {
             autosize(document.querySelector('textarea.autosizeme'));
         }
     }
 
-    // Fix input placeholder issue for IE8 and IE9
     var handleFixInputPlaceholderForIE = function() {
-        //fix html5 placeholder attribute for ie7 & ie8
-        if (isIE8 || isIE9) { // ie8 & ie9
-            // this is html5 placeholder fix for inputs, inputs with placeholder-no-fix class will be skipped(e.g: we need this for password fields)
+        if (isIE8 || isIE9) {
             $('input[placeholder]:not(.placeholder-no-fix), textarea[placeholder]:not(.placeholder-no-fix)').each(function() {
                 var input = $(this);
 
@@ -122,8 +110,6 @@ var App = function() {
             });
         }
     };
-
-    // handle group element heights
     var handleHeight = function() {
         $('[data-auto-height]').each(function() {
             var parent = $(this);
@@ -178,8 +164,6 @@ var App = function() {
             "hideMethod": "fadeOut"
         }
     }
-
-    // Handles counterup plugin wrapper
     var handleCounterup = function() {
         if (!$().counterUp) {
             return;
@@ -316,15 +300,15 @@ var App = function() {
                 sumOrderPrice.html(response.sumOrderPrice);
                 miniCart.html(response.miniCart);
                 App.alert({
-                    container: $('#result-coupon'), // alerts parent container(by default placed after the page breadcrumbs)
-                    place: 'append', // "append" or "prepend" in container
-                    type: response.coupon.type, // alert's type
-                    message: response.coupon.message, // alert's message
-                    close: true, // make alert closable
-                    reset: true, // close all previouse alerts first
-                    focus: false, // auto scroll to the alert after shown
-                    closeInSeconds: 0, // auto close after defined seconds
-                    icon: response.coupon.icon // put icon before the message
+                    container: $('#result-coupon'),
+                    place: 'append',
+                    type: response.coupon.type,
+                    message: response.coupon.message,
+                    close: true,
+                    reset: true,
+                    focus: false,
+                    closeInSeconds: 0,
+                    icon: response.coupon.icon
                 });
                 toastr[response.type](response.message, response.title);
             });
@@ -348,15 +332,15 @@ var App = function() {
                 sumOrderPrice.html(response.sumOrderPrice);
                 miniCart.html(response.miniCart);
                 App.alert({
-                    container: $('#result-coupon'), // alerts parent container(by default placed after the page breadcrumbs)
-                    place: 'append', // "append" or "prepend" in container
-                    type: response.coupon.type, // alert's type
-                    message: response.coupon.message, // alert's message
-                    close: true, // make alert closable
-                    reset: true, // close all previouse alerts first
-                    focus: false, // auto scroll to the alert after shown
-                    closeInSeconds: 0, // auto close after defined seconds
-                    icon: response.coupon.icon // put icon before the message
+                    container: $('#result-coupon'),
+                    place: 'append',
+                    type: response.coupon.type,
+                    message: response.coupon.message,
+                    close: true,
+                    reset: true,
+                    focus: false,
+                    closeInSeconds: 0,
+                    icon: response.coupon.icon
                 });
                 toastr[response.type](response.message, response.title);
             });
@@ -391,15 +375,15 @@ var App = function() {
 
             if( $input.val() === ''){
                 App.alert({
-                    container: $('#result-coupon'), // alerts parent container(by default placed after the page breadcrumbs)
-                    place: 'append', // "append" or "prepend" in container
-                    type: 'danger', // alert's type
-                    message: 'Bạn chưa nhập mã coupon', // alert's message
-                    close: true, // make alert closable
-                    reset: true, // close all previouse alerts first
-                    focus: false, // auto scroll to the alert after shown
-                    closeInSeconds: 5, // auto close after defined seconds
-                    icon: 'warning' // put icon before the message
+                    container: $('#result-coupon'),
+                    place: 'append',
+                    type: 'danger',
+                    message: 'Bạn chưa nhập mã coupon',
+                    close: true,
+                    reset: true,
+                    focus: false,
+                    closeInSeconds: 5,
+                    icon: 'warning'
                 });
                 return fasle;
             }
@@ -416,15 +400,15 @@ var App = function() {
                     sumOrderPrice.html(response.sumOrderPrice);
                 }
                 App.alert({
-                    container: $('#result-coupon'), // alerts parent container(by default placed after the page breadcrumbs)
-                    place: 'append', // "append" or "prepend" in container
-                    type: response.type, // alert's type
-                    message: response.message, // alert's message
-                    close: true, // make alert closable
-                    reset: true, // close all previouse alerts first
-                    focus: false, // auto scroll to the alert after shown
-                    closeInSeconds: 0, // auto close after defined seconds
-                    icon: response.icon // put icon before the message
+                    container: $('#result-coupon'),
+                    place: 'append',
+                    type: response.type,
+                    message: response.message,
+                    close: true,
+                    reset: true,
+                    focus: false,
+                    closeInSeconds: 0,
+                    icon: response.icon
                 });
             });
         });
@@ -556,15 +540,15 @@ var App = function() {
                     frm.find('*:not([type="hidden"])').val('');
                 }
                 App.alert({
-                    container: frm, // alerts parent container(by default placed after the page breadcrumbs)
-                    place: 'prepend', // "append" or "prepend" in container
-                    type: response.type, // alert's type
-                    message: response.message, // alert's message
-                    close: true, // make alert closable
-                    reset: true, // close all previouse alerts first
-                    focus: false, // auto scroll to the alert after shown
-                    closeInSeconds: 5, // auto close after defined seconds
-                    icon: response.icon // put icon before the message
+                    container: frm,
+                    place: 'prepend',
+                    type: response.type,
+                    message: response.message,
+                    close: true,
+                    reset: true,
+                    focus: false,
+                    closeInSeconds: 5,
+                    icon: response.icon
                 });
                 if( typeof response.remove_element !== 'undefined'){
                     frm.find('*:not(.alert, .fa, .close)').remove();
@@ -586,18 +570,31 @@ var App = function() {
                 }
             }).fail(function(status){
                 App.alert({
-                    container: frm, // alerts parent container(by default placed after the page breadcrumbs)
-                    place: 'prepend', // "append" or "prepend" in container
-                    type: 'danger', // alert's type
-                    message: status.responseJSON[Object.keys(status.responseJSON)[0]], // alert's message
-                    close: true, // make alert closable
-                    reset: true, // close all previouse alerts first
-                    focus: false, // auto scroll to the alert after shown
-                    closeInSeconds: 5, // auto close after defined seconds
-                    icon: 'warning' // put icon before the message
+                    container: frm,
+                    place: 'prepend',
+                    type: 'danger',
+                    message: status.responseJSON[Object.keys(status.responseJSON)[0]],
+                    close: true,
+                    reset: true,
+                    focus: false,
+                    closeInSeconds: 5,
+                    icon: 'warning'
                 });
             }).done(function(response){
-                console.log(response);
+                if( typeof response.redirect !== 'undefined'){
+                    window.location.href=response.redirect;
+                }
+                App.alert({
+                    container: frm,
+                    place: 'prepend',
+                    type: response.type,
+                    message: response.message,
+                    close: true,
+                    reset: true,
+                    focus: false,
+                    closeInSeconds: 5,
+                    icon: response.icon
+                });
             }).always(function(){
                 btn.button('reset');
             });
@@ -617,30 +614,30 @@ var App = function() {
                 }
             }).fail(function(status){
                 App.alert({
-                    container: frm, // alerts parent container(by default placed after the page breadcrumbs)
-                    place: 'prepend', // "append" or "prepend" in container
-                    type: 'danger', // alert's type
-                    message: status.responseJSON[Object.keys(status.responseJSON)[0]], // alert's message
-                    close: true, // make alert closable
-                    reset: true, // close all previouse alerts first
-                    focus: false, // auto scroll to the alert after shown
-                    closeInSeconds: 5, // auto close after defined seconds
-                    icon: 'warning' // put icon before the message
+                    container: frm,
+                    place: 'prepend',
+                    type: 'danger',
+                    message: status.responseJSON[Object.keys(status.responseJSON)[0]],
+                    close: true,
+                    reset: true,
+                    focus: false,
+                    closeInSeconds: 5,
+                    icon: 'warning'
                 });
             }).done(function(response){
                 if(response.type == 'success'){
                     frm.find('*:not([type="hidden"])').val('');
                 }
                 App.alert({
-                    container: $('#ajax-modal-login form'), // alerts parent container(by default placed after the page breadcrumbs)
-                    place: 'prepend', // "append" or "prepend" in container
-                    type: response.type, // alert's type
-                    message: response.message, // alert's message
-                    close: true, // make alert closable
-                    reset: true, // close all previouse alerts first
-                    focus: false, // auto scroll to the alert after shown
-                    closeInSeconds: 5, // auto close after defined seconds
-                    icon: response.icon // put icon before the message
+                    container: $('#ajax-modal-login form'),
+                    place: 'prepend',
+                    type: response.type,
+                    message: response.message,
+                    close: true,
+                    reset: true,
+                    focus: false,
+                    closeInSeconds: 5,
+                    icon: response.icon
                 });
                 $('#ajax-modal-register').modal('hide').on('hidden.bs.modal', function (e) {
                     $('#ajax-modal-login').modal('show');
@@ -654,19 +651,13 @@ var App = function() {
     //* END:CORE HANDLERS *//
 
     return {
-
-        //main function to initiate the theme
         init: function() {
-            //IMPORTANT!!!: Do not modify the core handlers call order.
+            handleInit();
+            handleOnResize();
+            handleAlerts();
+            this.addResizeHandler(handleHeight);
 
-            //Core handlers
-            handleInit(); // initialize core variables
-            handleOnResize(); // set and handle responsive
-            handleAlerts(); // set and handle responsive
-            //Handle group element heights
-            this.addResizeHandler(handleHeight); // handle auto calculating height on window resize
-            // Hacks
-            handleFixInputPlaceholderForIE(); //IE8 & IE9 input placeholder issue fix
+            handleFixInputPlaceholderForIE();
             handleToastr();
             handleCounterup();
             handlePlaces();
@@ -676,148 +667,33 @@ var App = function() {
             handleRegister();
         },
 
-        //main function to initiate core javascript after ajax complete
         initAjax: function() {
         },
 
-        //init main components 
         initComponents: function() {
             this.initAjax();
         },
 
-        //public function to add callback a function which will be called on window resize
         addResizeHandler: function(func) {
             resizeHandlers.push(func);
         },
 
-        //public functon to call _runresizeHandlers
         runResizeHandlers: function() {
             _runResizeHandlers();
-        },
-
-        // wrApper function to scroll(focus) to an element
-        scrollTo: function(el, offeset) {
-            var pos = (el && el.length > 0) ? el.offset().top : 0;
-
-            if (el) {
-                if ($('body').hasClass('page-header-fixed')) {
-                    pos = pos - $('.page-header').height();
-                } else if ($('body').hasClass('page-header-top-fixed')) {
-                    pos = pos - $('.page-header-top').height();
-                } else if ($('body').hasClass('page-header-menu-fixed')) {
-                    pos = pos - $('.page-header-menu').height();
-                }
-                pos = pos + (offeset ? offeset : -1 * el.height());
-            }
-
-            $('html,body').animate({
-                scrollTop: pos
-            }, 'slow');
-        },
-
-        initSlimScroll: function(el) {
-            $(el).each(function() {
-                if ($(this).attr("data-initialized")) {
-                    return; // exit
-                }
-
-                var height;
-
-                if ($(this).attr("data-height")) {
-                    height = $(this).attr("data-height");
-                } else {
-                    height = $(this).css('height');
-                }
-
-                $(this).slimScroll({
-                    allowPageScroll: true, // allow page scroll when the element scroll is ended
-                    size: '7px',
-                    color: ($(this).attr("data-handle-color") ? $(this).attr("data-handle-color") : '#bbb'),
-                    wrapperClass: ($(this).attr("data-wrapper-class") ? $(this).attr("data-wrapper-class") : 'slimScrollDiv'),
-                    railColor: ($(this).attr("data-rail-color") ? $(this).attr("data-rail-color") : '#eaeaea'),
-                    position: isRTL ? 'left' : 'right',
-                    height: height,
-                    alwaysVisible: ($(this).attr("data-always-visible") == "1" ? true : false),
-                    railVisible: ($(this).attr("data-rail-visible") == "1" ? true : false),
-                    disableFadeOut: true
-                });
-
-                $(this).attr("data-initialized", "1");
-            });
-        },
-
-        destroySlimScroll: function(el) {
-            $(el).each(function() {
-                if ($(this).attr("data-initialized") === "1") { // destroy existing instance before updating the height
-                    $(this).removeAttr("data-initialized");
-                    $(this).removeAttr("style");
-
-                    var attrList = {};
-
-                    // store the custom attribures so later we will reassign.
-                    if ($(this).attr("data-handle-color")) {
-                        attrList["data-handle-color"] = $(this).attr("data-handle-color");
-                    }
-                    if ($(this).attr("data-wrapper-class")) {
-                        attrList["data-wrapper-class"] = $(this).attr("data-wrapper-class");
-                    }
-                    if ($(this).attr("data-rail-color")) {
-                        attrList["data-rail-color"] = $(this).attr("data-rail-color");
-                    }
-                    if ($(this).attr("data-always-visible")) {
-                        attrList["data-always-visible"] = $(this).attr("data-always-visible");
-                    }
-                    if ($(this).attr("data-rail-visible")) {
-                        attrList["data-rail-visible"] = $(this).attr("data-rail-visible");
-                    }
-
-                    $(this).slimScroll({
-                        wrapperClass: ($(this).attr("data-wrapper-class") ? $(this).attr("data-wrapper-class") : 'slimScrollDiv'),
-                        destroy: true
-                    });
-
-                    var the = $(this);
-
-                    // reassign custom attributes
-                    $.each(attrList, function(key, value) {
-                        the.attr(key, value);
-                    });
-
-                }
-            });
-        },
-
-        // function to scroll to the top
-        scrollTop: function() {
-            App.scrollTo();
-        },
-
-        startPageLoading: function(options) {
-            if (options && options.animate) {
-                $('.page-spinner-bar').remove();
-                $('body').append('<div class="page-spinner-bar"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>');
-            } else {
-                $('.page-loading').remove();
-                $('body').append('<div class="page-loading"><img src="' + this.getGlobalImgPath() + 'loading-spinner-grey.gif"/>&nbsp;&nbsp;<span>' + (options && options.message ? options.message : 'Loading...') + '</span></div>');
-            }
-        },
-
-        stopPageLoading: function() {
-            $('.page-loading, .page-spinner-bar').remove();
         },
 
         alert: function(options) {
 
             options = $.extend(true, {
-                container: "", // alerts parent container(by default placed after the page breadcrumbs)
-                place: "append", // "append" or "prepend" in container 
-                type: 'success', // alert's type
-                message: "", // alert's message
-                close: true, // make alert closable
-                reset: true, // close all previouse alerts first
-                focus: true, // auto scroll to the alert after shown
-                closeInSeconds: 0, // auto close after defined seconds
-                icon: "" // put icon before the message
+                container: "",
+                place: "append",
+                type: 'success',
+                message: "",
+                close: true,
+                reset: true,
+                focus: true,
+                closeInSeconds: 0,
+                icon: ""
             }, options);
 
             var id = App.getUniqueID("App_alert");
@@ -860,7 +736,7 @@ var App = function() {
 
             return id;
         },
-        //public function to get a paremeter by name from URL
+
         getURLParameter: function(paramName) {
             var searchString = window.location.search.substring(1),
                 i, val, params = searchString.split("&");
@@ -874,7 +750,6 @@ var App = function() {
             return null;
         },
 
-        // check for device touch support
         isTouchDevice: function() {
             try {
                 document.createEvent("TouchEvent");
@@ -884,32 +759,16 @@ var App = function() {
             }
         },
 
-        // To get the correct viewport width based on  http://andylangton.co.uk/articles/javascript/get-viewport-size-javascript/
-        getViewPort: function() {
-            var e = window,
-                a = 'inner';
-            if (!('innerWidth' in window)) {
-                a = 'client';
-                e = document.documentElement || document.body;
-            }
-
-            return {
-                width: e[a + 'Width'],
-                height: e[a + 'Height']
-            };
-        },
-
         getUniqueID: function(prefix) {
             return 'prefix_' + Math.floor(Math.random() * (new Date()).getTime());
         },
 
         getResponsiveBreakpoint: function(size) {
-            // bootstrap responsive breakpoints
             var sizes = {
-                'xs' : 480,     // extra small
-                'sm' : 768,     // small
-                'md' : 992,     // medium
-                'lg' : 1200     // large
+                'xs' : 480,
+                'sm' : 768,
+                'md' : 992,
+                'lg' : 1200
             };
 
             return sizes[size] ? sizes[size] : 0; 
@@ -919,5 +778,5 @@ var App = function() {
 }();
 
 $(document).ready(function() {    
-   App.init(); // init metronic core componets
+    App.init();
 });

@@ -139,7 +139,7 @@
 
                                     <div class="form-actions row">
                                         <div class="col-md-9 col-sm-12 col-xs-12 pull-right">
-                                            <a href="#ajax-modal-login" class="btn btn-default" data-toggle="modal" data-dismiss="modal">{{ __('account.back') }}</a>
+                                            <button type="button" data-target="#ajax-modal-login" class="btn" data-toggle="modal" data-dismiss="modal">{{ __('account.back') }}</button>
                                             <button type="button" class="btn btn-register btn-site pull-right">{{ __('account.register') }}</button>
                                         </div>
                                     </div>

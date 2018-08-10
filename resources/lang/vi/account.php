@@ -19,7 +19,8 @@ return [
     'password_confirm' => 'Xác nhận mật khẩu',
     'profile' => 'Thông tin tài khoản',
 
-    'successful' => 'Đăng ký thành công',
+    'sign_up_success' => 'Đăng ký thành công',
+    'sign_in_success' => 'Đăng nhập thành công',
 
     'name'	=>	'Họ và tên',
     'address'	=>	'Địa chỉ',

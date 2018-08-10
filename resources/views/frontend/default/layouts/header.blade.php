@@ -21,13 +21,12 @@
                         <ul>
                             @if ( auth()->guard('member')->check() )
                             <li>
-                                <a href="{{ route('frontend.member.profile') }}">
-                                    <i class="icon-user"></i> Thông tin </a>
+                                <a href="{{ route('frontend.member.profile') }}"> {{ __('account.profile') }} </a>
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="javascript:;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <i class="icon-key"></i> Thoát </a>
-                                <form id="logout-form" action="{{ route('frontend.logout') }}" method="POST" style="display: none;">
+                                <a href="javascript:;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('account.exit') }} </a>
+                                <form id="logout-form" action="{{ route('frontend.logout') }}" method="POST" class="hidden">
                                     {{ csrf_field() }}
                                 </form>
                             </li>

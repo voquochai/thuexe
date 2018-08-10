@@ -1,4 +1,4 @@
-<div class="col-md-12" id="alert-container">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 	<?php if(count($errors) > 0): ?>
 	<div class="alert alert-danger" role="alert">
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
@@ -24,7 +24,7 @@
 
 	<?php if(session('status')): ?>
     <div class="alert alert-success">
-        <?php echo e(session('status')); ?>
+        <?php echo session('status'); ?>
 
     </div>
     <?php endif; ?>
