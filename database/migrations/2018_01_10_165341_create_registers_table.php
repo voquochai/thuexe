@@ -20,6 +20,8 @@ class CreateRegistersTable extends Migration
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
             $table->string('address')->nullable();
+            $table->integer('district_id')->default(0);
+            $table->integer('province_id')->default(0);
             $table->integer('gender')->default(0);
             $table->text('description')->nullable();
             $table->longText('contents')->nullable();

@@ -21,6 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('phone')->nullable();
             $table->string('email')->unique();
             $table->string('address')->nullable();
+            $table->integer('district_id')->default(0);
+            $table->integer('province_id')->default(0);
             $table->string('image')->nullable();
             $table->integer('priority')->default(1);
             $table->string('status',100)->default('publish');

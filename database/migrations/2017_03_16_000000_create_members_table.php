@@ -21,6 +21,8 @@ class CreateMembersTable extends Migration
             $table->string('phone')->nullable();
             $table->string('email')->unique();
             $table->string('address')->nullable();
+            $table->integer('district_id')->default(0);
+            $table->integer('province_id')->default(0);
             $table->string('image')->nullable();
             $table->string('oauth_id',50)->nullable();
             $table->string('oauth_provider',50)->nullable();

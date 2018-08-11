@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Setting;
 use App\Member;
 use App\Order;
+use App\OrderDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\View;
@@ -115,45 +116,7 @@ class MemberController extends Controller
         $member_id = auth()->guard('member')->user()->id;
         $this->_data['item'] = Order::where('member_id',$member_id)->where('id',$id)->first();
         if ($this->_data['item'] !== null) {
-
-            $product_id    = explode(',',$this->_data['item']['product_id']);
-            $product_code  = explode(',',$this->_data['item']['product_code']);
-            $product_size  = explode(',',$this->_data['item']['product_size']);
-            $product_color = explode(',',$this->_data['item']['product_color']);
-            $product_qty   = explode(',',$this->_data['item']['product_qty']);
-            $product_price = explode(',',$this->_data['item']['product_price']);
-            $products = [];
-            foreach($product_id as $key => $id){
-                $product = DB::table('product_languages')
-                    ->select('title')
-                    ->where('product_id',$id)
-                    ->where('language',$this->_data['lang'])
-                    ->first();
-
-                $color = DB::table('attribute_languages')
-                            ->select('title')
-                            ->where('attribute_id',$product_color[$key])
-                            ->where('language',$this->_data['lang'])
-                            ->first();
-
-                $size = DB::table('attribute_languages')
-                            ->select('title')
-                            ->where('attribute_id',$product_size[$key])
-                            ->where('language',$this->_data['lang'])
-                            ->first();
-                $products[$key]['id']     =  $id;
-                $products[$key]['code']   =  $product_code[$key];
-                $products[$key]['price']  =  $product_price[$key];
-                $products[$key]['qty']    =  $product_qty[$key];
-                $products[$key]['color']  =  $product_color[$key];
-                $products[$key]['size']   =  $product_size[$key];
-                $products[$key]['pname']  =  @$product->title;
-                $products[$key]['pcolor'] =  @$color->title;
-                $products[$key]['psize']  =  @$size->title;
-                $products[$key]['sumProPrice']  =  $product_price[$key]*$product_qty[$key];
-            }
-            $this->_data['products'] = $products;
-            
+            $this->_data['products'] = $this->_data['item']->details()->get();
         }
         return view('frontend.member.order_detail', $this->_data);
     }

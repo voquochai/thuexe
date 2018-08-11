@@ -92,6 +92,8 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'phone' => $data['phone'],
             'address' => $data['address'],
+            'province_id' => $data['province_id'],
+            'district_id' => $data['district_id'],
             // 'username' => $data['username'],
             'password' => bcrypt($data['password']),
             // 'remember_token' => str_random(10),

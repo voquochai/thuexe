@@ -100,6 +100,22 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
+                                        <label class="control-label col-md-3">Tỉnh / Thành phố</label>
+                                        <div class="col-md-9 col-sm-12 col-xs-12">
+                                            <select class="form-control province" name="province_id">
+                                                {{ old('province_id') ? '<option value="'.old('province_id').'" selected ></option>' : '' }}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="control-label col-md-3">Quận / Huyện</label>
+                                        <div class="col-md-9 col-sm-12 col-xs-12">
+                                            <select class="form-control district" name="district_id">
+                                                {{ old('district_id') ? '<option value="'.old('district_id').'" selected ></option>' : '' }}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
                                         <label class="control-label col-md-3">Email</label>
                                         <div class="col-md-9 col-sm-12 col-xs-12">
                                             <input type="text" name="email" class="form-control" value="{{ old('email') }}" placeholder="Email">

@@ -40,6 +40,23 @@
             </div>
 
             <div class="form-group row">
+                <label class="control-label col-md-3">Tỉnh / Thành phố</label>
+                <div class="col-md-9 col-sm-12 col-xs-12">
+                    <select class="form-control province" name="data[province_id]">
+                        <option value="<?php echo e($member->province_id); ?>" selected ></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-md-3">Quận / Huyện</label>
+                <div class="col-md-9 col-sm-12 col-xs-12">
+                    <select class="form-control district" name="data[district_id]">
+                        <option value="<?php echo e($member->district_id); ?>" selected ></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
                 <label class="control-label col-md-3">Mật khẩu cũ</label>
                 <div class="col-md-9 col-sm-12 col-xs-12">
                     <input type="password" name="oldpassword" class="form-control" value="">

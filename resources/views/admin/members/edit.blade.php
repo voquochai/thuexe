@@ -46,6 +46,22 @@
                             <input type="text" name="data[address]" class="form-control" value="{{ $item->address }}">
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="control-label">Tỉnh / Thành phố</label>
+                        <div>
+                            <select class="form-control province" name="data[province_id]">
+                                <option value="{{ $item->province_id }}" selected ></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Quận / Huyện</label>
+                        <div>
+                            <select class="form-control district" name="data[district_id]">
+                                <option value="{{ $item->district_id }}" selected ></option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

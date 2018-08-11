@@ -2774,7 +2774,6 @@ span.sub_label {
 	width: 200px;
 }
 .cart-coupon button[type="button"] {
-	text-transform: uppercase;
 }
 .cart-coupon button[type="button"]:hover {
 	background-color: #94da46;
