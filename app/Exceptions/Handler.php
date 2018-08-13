@@ -62,6 +62,9 @@ class Handler extends ExceptionHandler
         if($request->route()->getPrefix() === '/admin'){
             return redirect()->guest(route('admin.login'));
         }
+        if($request->route()->getPrefix() === '/qlyxe'){
+            return redirect()->guest(route('qlyxe.login'));
+        }
 
         return redirect()->guest(route('frontend.login'));
     }

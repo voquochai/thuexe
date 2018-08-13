@@ -18,7 +18,8 @@ class UsersTableSeeder extends Seeder
     		'name' => 'Kho web online',
             'email' => 'khowebonline@gmail.com',
 	        'username' => '',
-	        'password' => bcrypt('123456'),
+            'password' => bcrypt('123456'),
+	        'type' => 'user',
 	        'remember_token' => str_random(10),
     	]);
 
@@ -28,50 +29,50 @@ class UsersTableSeeder extends Seeder
             'display_name' => 'Administrator',
         ]);
 
-        $product = Role::create([
-            'name' => 'san-pham',
-            'display_name' => 'Sản phẩm',
-        ]);
+        // $product = Role::create([
+        //     'name' => 'san-pham',
+        //     'display_name' => 'Sản phẩm',
+        // ]);
 
-        $sale = Role::create([
-            'name' => 'sales',
-            'display_name' => 'Bán hàng',
-        ]);
+        // $sale = Role::create([
+        //     'name' => 'sales',
+        //     'display_name' => 'Bán hàng',
+        // ]);
 
-        $wms = Role::create([
-            'name' => 'wms',
-            'display_name' => 'Kho hàng'
-        ]);
+        // $wms = Role::create([
+        //     'name' => 'wms',
+        //     'display_name' => 'Kho hàng'
+        // ]);
 
-        $news = Role::create([
-            'name' => 'tin-tuc',
-            'display_name' => 'Tin tức',
-        ]);
+        // $news = Role::create([
+        //     'name' => 'tin-tuc',
+        //     'display_name' => 'Tin tức',
+        // ]);
 
-        $services = Role::create([
-            'name' => 'dich-vu',
-            'display_name' => 'Dịch vụ',
-        ]);
+        // $services = Role::create([
+        //     'name' => 'dich-vu',
+        //     'display_name' => 'Dịch vụ',
+        // ]);
 
-        $page = Role::create([
-            'name' => 'pages',
-            'display_name' => 'Trang tĩnh',
-        ]);
+        // $page = Role::create([
+        //     'name' => 'pages',
+        //     'display_name' => 'Trang tĩnh',
+        // ]);
 
-        $photo = Role::create([
-            'name' => 'photos',
-            'display_name' => 'Hình ảnh'
-        ]);
+        // $photo = Role::create([
+        //     'name' => 'photos',
+        //     'display_name' => 'Hình ảnh'
+        // ]);
 
-        $link = Role::create([
-            'name' => 'links',
-            'display_name' => 'Liên kết'
-        ]);
+        // $link = Role::create([
+        //     'name' => 'links',
+        //     'display_name' => 'Liên kết'
+        // ]);
 
-        $register = Role::create([
-            'name' => 'registers',
-            'display_name' => 'Đăng ký'
-        ]);
+        // $register = Role::create([
+        //     'name' => 'registers',
+        //     'display_name' => 'Đăng ký'
+        // ]);
 
         // Assign Users with roles
         $user->roles()->attach($admin->id);

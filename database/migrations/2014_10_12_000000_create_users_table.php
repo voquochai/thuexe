@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('image')->nullable();
             $table->integer('priority')->default(1);
             $table->string('status',100)->default('publish');
+            $table->string('type',50)->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
