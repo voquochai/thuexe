@@ -11,23 +11,20 @@
     <link rel="stylesheet" href="{{ asset('public/packages/simple-line-icons/simple-line-icons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/packages/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/admin/css/components.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/admin/css/plugins.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/admin/css/login.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/qlyxe/css/login.css') }}">
     <link href="{{ asset('public/uploads/photos/'.config('settings.favicon')) }}" rel="shortcut icon" type="image/x-icon" />
 </head>
 <body class="login">
-    
     <div class="logo">
         @if( config('settings.logo') && file_exists(public_path('/uploads/photos/'.config('settings.logo'))) )
         <a href="{{ url('/') }}"> <img src="{{ asset('public/uploads/photos/'.config('settings.logo')) }}" alt="main logo"> </a>
         @endif
     </div>
-    
     <div class="content">
-        <form class="login-form" role="form" method="POST" action="{{ route('admin.login') }}">
+        <form class="login-form" role="form" method="POST" action="{{ route('qlyxe.login') }}">
             {{ csrf_field() }}
-            <h3 class="form-title font-green uppercase">Quản trị website</h3>
-            <div class="row">@include('admin.blocks.messages')</div>
+            <h3 class="form-title font-green uppercase">Đăng nhập</h3>
+            <div class="row">@include('qlyxe.blocks.messages')</div>
             <div class="form-group">
                 <label for="email" class="control-label visible-ie8 visible-ie9">Email</label>
                 <input type="text" class="form-control form-control-solid placeholder-no-fix" name="email" value="{{ old('email') }}" autocomplete="off" placeholder="Email">
@@ -38,39 +35,40 @@
                 <input type="password" class="form-control form-control-solid placeholder-no-fix" name="password" autocomplete="off" placeholder="Password">
             </div>
             <div class="form-actions">
-                <div>
-                    <label class="rememberme check mt-checkbox mt-checkbox-outline">
-                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>Ghi nhớ
-                        <span></span>
-                    </label>
-                    |
-                    <a href="{{ route('admin.password.request') }}" id="forget-password" class="forget-password">Quên mật khẩu?</a>
-                </div>
                 <button type="submit" class="btn green uppercase">Đăng nhập</button>
+                <label class="rememberme check mt-checkbox mt-checkbox-outline">
+                    <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>Ghi nhớ
+                    <span></span>
+                </label>
+                <a href="{{ route('qlyxe.password.request') }}" id="forget-password" class="forget-password">Quên mật khẩu?</a>
+            </div>
+            <div class="login-options">
+                <h4>Hoặc đăng nhập bằng</h4>
+                <ul class="social-icons">
+                    <li>
+                        <a class="social-icon-color facebook" data-original-title="facebook" href="javascript:;"></a>
+                    </li>
+                    <li>
+                        <a class="social-icon-color twitter" data-original-title="Twitter" href="javascript:;"></a>
+                    </li>
+                    <li>
+                        <a class="social-icon-color googleplus" data-original-title="Goole Plus" href="javascript:;"></a>
+                    </li>
+                    <li>
+                        <a class="social-icon-color linkedin" data-original-title="Linkedin" href="javascript:;"></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="create-account">
+                <p>
+                    <a href="{{ route('qlyxe.register') }}" id="register-btn" class="uppercase">Tạo tài khoản</a>
+                </p>
             </div>
         </form>
     </div>
-
-    <!-- SCRIPT -->
-    <script>
-        @php
-        $routeArray = explode('.',Route::currentRouteName());
-        $routeName = $routeArray[1].'.'.( isset($_GET['type']) ? $_GET['type'] : '');
-        @endphp
-        window.Laravel = {!! json_encode([
-            'csrfToken' =>  csrf_token(),
-            'baseUrl'   =>  url('/'),
-            'routeName'   =>  $routeName,
-        ]) !!}
-    </script>
-    <!-- BEGIN CORE PLUGINS -->
     <script src="{{ asset('public/packages/jquery.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('public/packages/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
     <!-- END CORE PLUGINS -->
-
-    <!-- BEGIN THEME GLOBAL SCRIPTS -->
-    <script src="{{ asset('public/admin/js/app.js') }}" type="text/javascript"></script>
-    <!-- END THEME GLOBAL SCRIPTS -->
     
 </body>
 </html>

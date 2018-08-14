@@ -28,32 +28,32 @@
     <link rel="stylesheet" href="{{ asset('public/packages/yoast-seo/style.css') }}">
     <link rel="stylesheet" href="{{ asset('public/packages/yoast-seo/yoast-seo.min.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('public/admin/css/components.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/admin/css/plugins.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/admin/css/profile.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/admin/css/layout.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/admin/css/themes/darkblue.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/admin/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/qlyxe/css/components.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/qlyxe/css/plugins.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/qlyxe/css/profile.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/qlyxe/css/layout.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/qlyxe/css/themes/darkblue.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/qlyxe/css/custom.css') }}">
     <link rel="shortcut icon" href="{{ asset('public/uploads/photos/'.config('settings.favicon')) }}" />
     @yield('custom_css')
     
 </head>
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-content-white">
-    @include('admin.layouts.header')
+    @include('qlyxe.layouts.header')
     <div class="clearfix"> </div>
     <div class="page-container">
-        @include('admin.layouts.sidebar')
+        @include('qlyxe.layouts.sidebar')
         <div class="page-content-wrapper">
             <div class="page-content">
                 <div class="page-bar">
                     <ul class="page-breadcrumb">
                         <li>
-                            <a href="{{ route('admin.dashboard.index') }}"> <i class="icon-home"></i> </a>
+                            <a href="{{ route('qlyxe.dashboard.index') }}"> <i class="icon-home"></i> </a>
                             <i class="fa fa-circle"></i>
                         </li>
                         @yield('breadcrumb')
                     </ul>
-                    @if(Route::currentRouteName() == 'admin.dashboard.index')
+                    @if(Route::currentRouteName() == 'qlyxe.dashboard.index')
                     <div class="page-toolbar">
                         <div id="dashboard-report-range" class="pull-right tooltips btn btn-sm" data-container="body" data-placement="bottom" data-original-title="Change dashboard date range">
                             <i class="icon-calendar"></i>&nbsp;
@@ -67,7 +67,7 @@
             </div>
         </div>
     </div>
-    @include('admin.layouts.footer')
+    @include('qlyxe.layouts.footer')
 
     <script>
         @php
@@ -123,9 +123,9 @@
     <script src="{{ asset('public/packages/yoast-seo/example-b.js') }}" type="text/javascript"></script>
     @endif
 
-    <script src="{{ asset('public/admin/js/app.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('public/admin/js/layout.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('public/admin/js/admin.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/qlyxe/js/app.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/qlyxe/js/layout.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/qlyxe/js/qlyxe.js') }}" type="text/javascript"></script>
     @yield('custom_script')
 </body>
 </html>

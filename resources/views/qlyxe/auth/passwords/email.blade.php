@@ -11,9 +11,9 @@
     <link rel="stylesheet" href="{{ asset('public/packages/simple-line-icons/simple-line-icons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/packages/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/packages/bootstrap-switch/css/bootstrap-switch.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/admin/css/components.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/admin/css/plugins.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/admin/css/login.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/qlyxe/css/components.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/qlyxe/css/plugins.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/qlyxe/css/login.css') }}">
     <link href="{{ asset('public/uploads/photos/'.config('settings.favicon')) }}" rel="shortcut icon" type="image/x-icon" />
 </head>
 <body class="login">
@@ -23,18 +23,18 @@
         @endif
     </div>
     <div class="content">
-        <form class="forget-form" role="form" method="POST" action="{{ route('admin.password.email') }}">
+        <form class="forget-form" role="form" method="POST" action="{{ route('qlyxe.password.email') }}">
             {{ csrf_field() }}
             <h3 class="form-title font-green uppercase">Quên mật khẩu</h3>
             <p> Nhập địa chỉ Email của bạn để đặt lại mật khẩu </p>
-            <div class="row">@include('admin.blocks.messages')</div>
+            <div class="row">@include('qlyxe.blocks.messages')</div>
             <div class="form-group">
                 <label for="email" class="control-label visible-ie8 visible-ie9">E-Mail Address</label>
                 <input id="email" type="email" class="form-control form-control-solid placeholder-no-fix" name="email" value="{{ old('email') }}" autocomplete="off" placeholder="Email">
             </div>
             <div class="form-actions">
-                <a href="{{ route('admin.login') }}" class="btn grey-salsa uppercase">Quay lại</a>
-                <button type="submit" class="btn green uppercase"> Gửi mật khẩu </button>
+                <a href="{{ route('qlyxe.login') }}" class="btn btn-default">Quay lại</a>
+                <button type="submit" class="btn green uppercase pull-right"> Gửi mật khẩu </button>
             </div>
         </form>
     </div>
@@ -58,7 +58,7 @@
     <!-- END CORE PLUGINS -->
 
     <!-- BEGIN THEME GLOBAL SCRIPTS -->
-    <script src="{{ asset('public/admin/js/app.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/qlyxe/js/app.js') }}" type="text/javascript"></script>
     <!-- END THEME GLOBAL SCRIPTS -->
 </body>
 </html>
