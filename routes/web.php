@@ -230,60 +230,50 @@ Route::group(['prefix'=>'qlyxe', 'as'=> 'qlyxe.', 'namespace'=>'Qlyxe'], functio
 		
 		Route::get('/', 'DashboardController@index')->name('dashboard.index');
 
-		Route::group(['middleware' => ['checkRoles:admin']], function(){
-        	// Categories
-			Route::get('/categories', 'CategoryController@index')->name('category.index');
-			Route::get('/categories/create', 'CategoryController@create')->name('category.create');
-			Route::post('/categories', 'CategoryController@store')->name('category.store');
-			Route::get('/categories/{id}', 'CategoryController@edit')->where('id','[0-9]+')->name('category.edit');
-			Route::put('/categories/{id}', 'CategoryController@update')->name('category.update');
-			Route::delete('/categories/{id}', 'CategoryController@delete')->name('category.delete');
+		// Categories
+		Route::get('/categories', 'CategoryController@index')->name('category.index');
+		Route::get('/categories/create', 'CategoryController@create')->name('category.create');
+		Route::post('/categories', 'CategoryController@store')->name('category.store');
+		Route::get('/categories/{id}', 'CategoryController@edit')->where('id','[0-9]+')->name('category.edit');
+		Route::put('/categories/{id}', 'CategoryController@update')->name('category.update');
+		Route::delete('/categories/{id}', 'CategoryController@delete')->name('category.delete');
 
-			// Attributes
-			Route::get('/attributes', 'AttributeController@index')->name('attribute.index');
-			Route::get('/attributes/create', 'AttributeController@create')->name('attribute.create');
-			Route::post('/attributes', 'AttributeController@store')->name('attribute.store');
-			Route::get('/attributes/{id}', 'AttributeController@edit')->where('id','[0-9]+')->name('attribute.edit');
-			Route::put('/attributes/{id}', 'AttributeController@update')->name('attribute.update');
-			Route::delete('/attributes/{id}', 'AttributeController@delete')->name('attribute.delete');
+		// Attributes
+		Route::get('/attributes', 'AttributeController@index')->name('attribute.index');
+		Route::get('/attributes/create', 'AttributeController@create')->name('attribute.create');
+		Route::post('/attributes', 'AttributeController@store')->name('attribute.store');
+		Route::get('/attributes/{id}', 'AttributeController@edit')->where('id','[0-9]+')->name('attribute.edit');
+		Route::put('/attributes/{id}', 'AttributeController@update')->name('attribute.update');
+		Route::delete('/attributes/{id}', 'AttributeController@delete')->name('attribute.delete');
 
-			// Suppliers
-	        Route::get('/suppliers', 'SupplierController@index')->name('supplier.index');
-	        Route::get('/suppliers/create', 'SupplierController@create')->name('supplier.create');
-	        Route::post('/suppliers', 'SupplierController@store')->name('supplier.store');
-	        Route::get('/suppliers/{id}', 'SupplierController@edit')->where('id','[0-9]+')->name('supplier.edit');
-	        Route::put('/suppliers/{id}', 'SupplierController@update')->name('supplier.update');
-	        Route::delete('/suppliers/{id}', 'SupplierController@delete')->name('supplier.delete');
+		// Coupons
+        Route::get('/coupons', 'CouponController@index')->name('coupon.index');
+        Route::get('/coupons/create', 'CouponController@create')->name('coupon.create');
+        Route::post('/coupons', 'CouponController@store')->name('coupon.store');
+        Route::get('/coupons/{id}', 'CouponController@edit')->where('id','[0-9]+')->name('coupon.edit');
+        Route::put('/coupons/{id}', 'CouponController@update')->name('coupon.update');
+        Route::delete('/coupons/{id}', 'CouponController@delete')->name('coupon.delete');
 
-			// Coupons
-	        Route::get('/coupons', 'CouponController@index')->name('coupon.index');
-	        Route::get('/coupons/create', 'CouponController@create')->name('coupon.create');
-	        Route::post('/coupons', 'CouponController@store')->name('coupon.store');
-	        Route::get('/coupons/{id}', 'CouponController@edit')->where('id','[0-9]+')->name('coupon.edit');
-	        Route::put('/coupons/{id}', 'CouponController@update')->name('coupon.update');
-	        Route::delete('/coupons/{id}', 'CouponController@delete')->name('coupon.delete');
+        // Products
+		Route::get('/products', 'ProductController@index')->name('product.index');
+		Route::get('/products/create', 'ProductController@create')->name('product.create');
+		Route::post('/products', 'ProductController@store')->name('product.store');
+		Route::get('/products/{id}', 'ProductController@edit')->where('id','[0-9]+')->name('product.edit');
+		Route::put('/products/{id}', 'ProductController@update')->name('product.update');
+		Route::delete('/products/{id}', 'ProductController@delete')->name('product.delete');
 
-	        // Products
-			Route::get('/products', 'ProductController@index')->name('product.index');
-			Route::get('/products/create', 'ProductController@create')->name('product.create');
-			Route::post('/products', 'ProductController@store')->name('product.store');
-			Route::get('/products/{id}', 'ProductController@edit')->where('id','[0-9]+')->name('product.edit');
-			Route::put('/products/{id}', 'ProductController@update')->name('product.update');
-			Route::delete('/products/{id}', 'ProductController@delete')->name('product.delete');
+		Route::get('/products/ajax', 'ProductController@ajax')->name('product.ajax');
+		Route::get('/products/export', 'ProductController@export')->name('product.export');
+		Route::post('/products/import', 'ProductController@import')->name('product.import');
 
-			Route::get('/products/ajax', 'ProductController@ajax')->name('product.ajax');
-			Route::get('/products/export', 'ProductController@export')->name('product.export');
-			Route::post('/products/import', 'ProductController@import')->name('product.import');
-
-			// Orders
-	        Route::get('/orders', 'OrderController@index')->name('order.index');
-	        Route::get('/orders/ajax', 'OrderController@ajax')->name('order.ajax');
-	        Route::get('/orders/create', 'OrderController@create')->name('order.create');
-	        Route::post('/orders', 'OrderController@store')->name('order.store');
-	        Route::get('/orders/{id}', 'OrderController@edit')->where('id','[0-9]+')->name('order.edit');
-	        Route::put('/orders/{id}', 'OrderController@update')->name('order.update');
-	        Route::delete('/orders/{id}', 'OrderController@delete')->name('order.delete');
-		});
+		// Orders
+        Route::get('/orders', 'OrderController@index')->name('order.index');
+        Route::get('/orders/ajax', 'OrderController@ajax')->name('order.ajax');
+        Route::get('/orders/create', 'OrderController@create')->name('order.create');
+        Route::post('/orders', 'OrderController@store')->name('order.store');
+        Route::get('/orders/{id}', 'OrderController@edit')->where('id','[0-9]+')->name('order.edit');
+        Route::put('/orders/{id}', 'OrderController@update')->name('order.update');
+        Route::delete('/orders/{id}', 'OrderController@delete')->name('order.delete');
 
 		Route::get('/profile', 'UserController@profile')->name('user.profile');
 		Route::put('/profile/{id}', 'UserController@updateProfile')->where('id','[0-9]+')->name('user.update_profile');

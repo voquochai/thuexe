@@ -28,11 +28,11 @@
     <link rel="stylesheet" href="{{ asset('public/packages/yoast-seo/style.css') }}">
     <link rel="stylesheet" href="{{ asset('public/packages/yoast-seo/yoast-seo.min.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('public/qlyxe/css/components.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/qlyxe/css/plugins.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/qlyxe/css/profile.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/qlyxe/css/layout.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/qlyxe/css/themes/darkblue.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/admin/css/components.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/admin/css/plugins.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/admin/css/profile.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/admin/css/layout.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/admin/css/themes/darkblue.css') }}">
     <link rel="stylesheet" href="{{ asset('public/qlyxe/css/custom.css') }}">
     <link rel="shortcut icon" href="{{ asset('public/uploads/photos/'.config('settings.favicon')) }}" />
     @yield('custom_css')
@@ -123,9 +123,9 @@
     <script src="{{ asset('public/packages/yoast-seo/example-b.js') }}" type="text/javascript"></script>
     @endif
 
-    <script src="{{ asset('public/qlyxe/js/app.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('public/qlyxe/js/layout.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('public/qlyxe/js/qlyxe.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/admin/js/app.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/admin/js/layout.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/admin/js/admin.js') }}" type="text/javascript"></script>
     @yield('custom_script')
 </body>
 </html>

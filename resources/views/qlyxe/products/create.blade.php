@@ -1,7 +1,7 @@
-@extends('admin.app')
+@extends('qlyxe.app')
 @section('breadcrumb')
 <li>
-    <a href="{{ route('admin.product.index', ['type'=>$type]) }}"> {{ $pageTitle }} </a>
+    <a href="{{ route('qlyxe.product.index', ['type'=>$type]) }}"> {{ $pageTitle }} </a>
     <i class="fa fa-circle"></i>
 </li>
 <li>
@@ -10,9 +10,9 @@
 @endsection
 @section('content')
 <div class="row">
-    @include('admin.blocks.messages')
+    @include('qlyxe.blocks.messages')
     <!-- BEGIN FORM-->
-    <form role="form" method="POST" action="{{ route('admin.product.store',['type'=>$type]) }}" enctype="multipart/form-data" >
+    <form role="form" method="POST" action="{{ route('qlyxe.product.store',['type'=>$type]) }}" enctype="multipart/form-data" >
         {{ csrf_field() }}
         <div class="col-lg-9 col-xs-12"> 
             <div class="portlet box green">
@@ -354,7 +354,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" data-dismiss="modal" class="btn default">Thoát</button>
-            <button type="button" class="btn green btn-quick-add" data-ajax="data[supplier_id]" data-url="{{ route('admin.supplier.store',['type'=>'default']) }}"> <i class="fa fa-check"></i> Lưu</button>
+            <button type="button" class="btn green btn-quick-add" data-ajax="data[supplier_id]" data-url="{{ route('qlyxe.supplier.store',['type'=>'default']) }}"> <i class="fa fa-check"></i> Lưu</button>
         </div>
     </form>
 </div>
@@ -395,7 +395,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" data-dismiss="modal" class="btn default">Thoát</button>
-            <button type="button" class="btn green btn-quick-add" data-ajax="data[category_id]" data-url="{{ route('admin.category.store',['type'=>$type]) }}"> <i class="fa fa-check"></i> Lưu</button>
+            <button type="button" class="btn green btn-quick-add" data-ajax="data[category_id]" data-url="{{ route('qlyxe.category.store',['type'=>$type]) }}"> <i class="fa fa-check"></i> Lưu</button>
         </div>
     </form>
 </div>
@@ -458,7 +458,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" data-dismiss="modal" class="btn default">Thoát</button>
-                        <button type="button" class="btn green btn-quick-add" data-ajax="'.$k.'[]" data-url="'.route('admin.attribute.store',['type'=>$k]).'"> <i class="fa fa-check"></i> Lưu</button>
+                        <button type="button" class="btn green btn-quick-add" data-ajax="'.$k.'[]" data-url="'.route('qlyxe.attribute.store',['type'=>$k]).'"> <i class="fa fa-check"></i> Lưu</button>
                     </div>
                 </form>
             </div>';

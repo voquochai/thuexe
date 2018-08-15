@@ -80,32 +80,14 @@ return [
 		],
 	],
 	'category' => [
-		'san-pham'	=>	[
+		'thue-xe'	=>	[
 			'page-title'	=>	'Danh mục',
 			'level' =>	1,
 			'icon'	=>	false,
 			'description' =>	false,
 			'contents'    =>	false,
 			'image'       =>	false,
-			'seo'	=>	true,
-			'thumbs'	=>	[
-				'_small' => [
-					'width'  =>	300,
-					'height' =>	200,
-				],
-			],
-			'status' => [
-				'publish' => 'Hiển thị',
-			]
-		],
-		'tin-tuc'	=>	[
-			'page-title'	=>	'Danh mục',
-			'level' =>	1,
-			'icon'	=>	false,
-			'description' =>	false,
-			'contents'    =>	false,
-			'image'       =>	false,
-			'seo'	=>	true,
+			'seo'	=>	false,
 			'thumbs'	=>	[
 				'_small' => [
 					'width'  =>	300,
@@ -137,17 +119,17 @@ return [
 		'path'	=>	'uploads/categories'
 	],
 	'product' => [
-		'san-pham' 	=>	[
-			'page-title'	=>	'Sản phẩm',
+		'thue-xe' 	=>	[
+			'page-title'	=>	'Xe',
 			'category'    =>	true,
 			'supplier'    =>	false,
 			'description' =>	true,
-			'contents'    =>	true,
-			'link'    =>	true,
+			'contents'    =>	false,
+			'link'    =>	false,
 			'attributes'    =>	true,
 			'image'       =>	true,
-			'images'      =>	true,
-			'seo'	=>	true,
+			'images'      =>	false,
+			'seo'	=>	false,
 			'thumbs'	=>	[
 				'_small' => [
 					'width'  =>	300,
@@ -161,7 +143,6 @@ return [
 				],
 			],
 			'status'      => [
-				'new'     => 'Mới',
 				'publish'     => 'Hiển thị',
 			],
 		],

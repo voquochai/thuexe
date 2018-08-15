@@ -1,4 +1,4 @@
-@extends('admin.app')
+@extends('qlyxe.app')
 @section('breadcrumb')
 <li>
     <span> {{ $pageTitle }} </span>
@@ -6,11 +6,11 @@
 @endsection
 @section('content')
 <div class="row">
-	@include('admin.blocks.messages')
+	@include('qlyxe.blocks.messages')
 	<div class="col-md-12">
         <div class="portlet">
             <div class="portlet-body">
-                <form role="form" method="GET" id="form-search" class="form-inline text-right" action="{{ route('admin.product.index') }}" >
+                <form role="form" method="GET" id="form-search" class="form-inline text-right" action="{{ route('qlyxe.product.index') }}" >
                     <input type="hidden" name="type" value="{{ $type }}">
                     @if($siteconfig[$type]['category'])
                     <div class="form-group">
@@ -43,7 +43,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <a href="{{ route('admin.product.index',['type'=>$type]) }}" class="btn default"> <i class="fa fa-refresh"></i> Đặt lại</a>
+                        <a href="{{ route('qlyxe.product.index',['type'=>$type]) }}" class="btn default"> <i class="fa fa-refresh"></i> Đặt lại</a>
                         <button type="submit" class="btn green"> <i class="fa fa-search"></i> Tìm kiếm</button>
                     </div>
                 </form>
@@ -55,7 +55,7 @@
                     <i class="icon-layers"></i>Danh sách
                 </div>
                 <div class="actions">
-                    <a href="{{ route('admin.product.create',['type'=>$type]) }}" class="btn btn-sm btn-default"> Thêm mới </a>
+                    <a href="{{ route('qlyxe.product.create',['type'=>$type]) }}" class="btn btn-sm btn-default"> Thêm mới </a>
                     <div class="btn-group">
                         <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="javascript:;" aria-expanded="false"> Hành động (<span class="count-checkbox">0</span>)
                             <i class="fa fa-angle-down"></i>
@@ -77,13 +77,13 @@
                         </a>
                         <ul class="dropdown-menu pull-right">
                             <li>
-                                <a href="{{ route('admin.product.export', array_merge(Request::query(),['extension'=>'xlsx']) ) }}"> Export Excel </a>
+                                <a href="{{ route('qlyxe.product.export', array_merge(Request::query(),['extension'=>'xlsx']) ) }}"> Export Excel </a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.product.export', array_merge(Request::query(),['extension'=>'csv ']) ) }}"> Export CSV </a>
+                                <a href="{{ route('qlyxe.product.export', array_merge(Request::query(),['extension'=>'csv ']) ) }}"> Export CSV </a>
                             </li>
                             <li>
-                                <form role="form" method="POST" action="{{ route('admin.product.import') }}" enctype="multipart/form-data" >
+                                <form role="form" method="POST" action="{{ route('qlyxe.product.import') }}" enctype="multipart/form-data" >
                                     {{ csrf_field() }}
                                     <input type="file" name="file" class="hidden">
                                     <a href="javascript:;" class="btn-import"> Import </a>
@@ -131,7 +131,7 @@
                                 @if($siteconfig[$type]['category'])
                                 <td align="center"> {{ $item->category }} </td>
                                 @endif
-                                <td align="center"><a href="{{ route('admin.product.edit',['id'=>$item->id, 'type'=>$type]) }}"> {{ $item->title }} </a></td>
+                                <td align="center"><a href="{{ route('qlyxe.product.edit',['id'=>$item->id, 'type'=>$type]) }}"> {{ $item->title }} </a></td>
                                 @if($siteconfig[$type]['image'])
                                 <td align="center">{!! ( ($item->image && file_exists(public_path(get_thumbnail($path.'/'.$item->image))) ) ? '<img src="'.asset( get_thumbnail('public/'.$path.'/'.$item->image) ).'" height="50" />' : '') !!}</td>
                                 @endif
@@ -142,8 +142,8 @@
                                     @endforeach
                                 </td>
                                 <td align="center">
-                                    <a href="{{ route('admin.product.edit',['id'=>$item->id, 'type'=>$type]) }}" class="btn btn-sm blue" title="Chỉnh sửa"> <i class="fa fa-edit"></i> </a>
-                                    <form action="{{ route('admin.product.delete',['id'=>$item->id, 'type'=>$type]) }}" method="post">
+                                    <a href="{{ route('qlyxe.product.edit',['id'=>$item->id, 'type'=>$type]) }}" class="btn btn-sm blue" title="Chỉnh sửa"> <i class="fa fa-edit"></i> </a>
+                                    <form action="{{ route('qlyxe.product.delete',['id'=>$item->id, 'type'=>$type]) }}" method="post">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
                                         <button type="button" class="btn btn-sm btn-delete red" title="Xóa"> <i class="fa fa-times"></i> </button>

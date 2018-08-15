@@ -1,7 +1,7 @@
-@extends('admin.app')
+@extends('qlyxe.app')
 @section('breadcrumb')
 <li>
-    <a href="{{ route('admin.category.index', ['type'=>$type]) }}"> {{$pageTitle}} </a>
+    <a href="{{ route('qlyxe.category.index', ['type'=>$type]) }}"> {{$pageTitle}} </a>
     <i class="fa fa-circle"></i>
 </li>
 <li>
@@ -10,9 +10,9 @@
 @endsection
 @section('content')
 <div class="row">
-    @include('admin.blocks.messages')
+    @include('qlyxe.blocks.messages')
     <!-- BEGIN FORM-->
-    <form role="form" method="POST" action="{{ route('admin.category.update',['id'=>$item->id,'type'=>$type]) }}" enctype="multipart/form-data" >
+    <form role="form" method="POST" action="{{ route('qlyxe.category.update',['id'=>$item->id,'type'=>$type]) }}" enctype="multipart/form-data" >
         {{ csrf_field() }}
         {{ method_field('put') }}
         <input type="hidden" name="redirects_to" value="{{ (old('redirects_to')) ? old('redirects_to') : url()->previous() }}" />

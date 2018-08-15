@@ -301,13 +301,13 @@
                     <ul class="dropdown-menu dropdown-menu-default">
                         @if (!Auth::guest())
                         <li>
-                            <a href="{{ route('admin.user.profile') }}">
+                            <a href="{{ route('qlyxe.user.profile') }}">
                                 <i class="icon-user"></i> Thông tin </a>
                         </li>
                         <li class="divider"> </li>
                         <li>
-                            <a href="{{ route('admin.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <i class="icon-key"></i> Thoát </a>
-                            <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+                            <a href="{{ route('qlyxe.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <i class="icon-key"></i> Thoát </a>
+                            <form id="logout-form" action="{{ route('qlyxe.logout') }}" method="POST" style="display: none;">
                                 {{ csrf_field() }}
                             </form>
                         </li>

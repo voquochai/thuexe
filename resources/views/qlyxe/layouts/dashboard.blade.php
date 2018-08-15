@@ -1,4 +1,4 @@
-@extends('admin.app')
+@extends('qlyxe.app')
 @section('breadcrumb')
 <li>
     <span> Bảng điều khiển </span>

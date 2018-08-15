@@ -1,4 +1,4 @@
-@extends('admin.app')
+@extends('qlyxe.app')
 @section('breadcrumb')
 <li>
     <span> {{$pageTitle}} </span>
@@ -6,7 +6,7 @@
 @endsection
 @section('content')
 <div class="row">
-	@include('admin.blocks.messages')
+	@include('qlyxe.blocks.messages')
 	<div class="col-md-12">
 		<div class="portlet box green">
 			<div class="portlet-title">
@@ -14,7 +14,7 @@
                     <i class="icon-layers"></i>Danh sách
                 </div>
                 <div class="actions">
-                    <a href="{{ route('admin.category.create',['type'=>$type]) }}" class="btn btn-sm btn-default"> Thêm mới </a>
+                    <a href="{{ route('qlyxe.category.create',['type'=>$type]) }}" class="btn btn-sm btn-default"> Thêm mới </a>
                     <div class="btn-group">
                         <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="javascript:;" aria-expanded="false"> Hành động (<span class="count-checkbox">0</span>)
                             <i class="fa fa-angle-down"></i>
