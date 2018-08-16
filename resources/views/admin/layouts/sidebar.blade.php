@@ -66,27 +66,35 @@
                 echo $dataSidebar;
             @endphp
 
-            <li class="nav-item">
-                <a href="javascript:;" class="nav-link nav-toggle">
-                    <i class="icon-exclamation"></i>
-                    <span class="title">Bán hàng</span>
-                    <span class="arrow"></span>
-                </a>
-                <ul class="sub-menu">
-
-                    <li class="nav-item">
-                        <a href="{{ route('admin.order.index',['type'=>'online']) }}" data-route="order.online" class="nav-link">
-                            <span class="title">Đơn hàng</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="{{ route('admin.coupon.index') }}" data-route="coupon" class="nav-link">
-                            <span class="title">Coupon</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+            @php
+                $dataSidebar = '
+                <li class="nav-item">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="icon-exclamation"></i>
+                        <span class="title">Bán hàng</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">';
+                foreach( @config('siteconfig.order') as $key => $val ){
+                    if( $key == 'default' || $key == 'path') continue;
+                    if( @config('siteconfig.order.'.$key) ){
+                        $dataSidebar .= '
+                        <li class="nav-item">
+                            <a href="'.route('admin.order.index',['type'=>$key]).'" data-route="order.'.$key.'" class="nav-link ">
+                                <span class="title">'.config('siteconfig.order.'.$key.'.page-title').'</span>
+                            </a>
+                        </li>';
+                    }
+                }
+                $dataSidebar .= '
+                <li class="nav-item">
+                    <a href="'.route('admin.coupon.index').'" data-route="coupon.'.$key.'" class="nav-link ">
+                        <span class="title">Coupon</span>
+                    </a>
+                </li>';
+                $dataSidebar .= '</ul></li>';
+                echo $dataSidebar;
+            @endphp
 
             <li class="nav-item">
                 <a href="javascript:;" class="nav-link nav-toggle">

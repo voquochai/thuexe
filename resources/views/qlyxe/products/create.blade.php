@@ -211,7 +211,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">Biển số xe</label>
+                        <label class="control-label">Số xe</label>
                         <div>
                             <input type="text" name="code" value="{{ old('code') }}" class="form-control">
                         </div>

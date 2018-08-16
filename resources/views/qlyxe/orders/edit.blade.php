@@ -90,7 +90,7 @@
                 <div class="portlet-body">
 
                     <div class="form-group">
-                        <label class="control-label">Mã đơn hàng</label>
+                        <label class="control-label">Mã phiếu</label>
                         <div>
                             <input type="text" class="form-control" value="{{ $item->code }}" disabled>
                         </div>
@@ -179,13 +179,11 @@
     <table class="table table-bordered table-condensed">
         <thead>
             <tr>
-                <th width="7%"> Mã SP </th>
-                <th width="15%"> Tên sản phẩm </th>
-                <th width="7%"> Màu sắc </th>
-                <th width="7%"> Kích cỡ </th>
-                <th width="8%"> Giá bán </th>
-                <th width="6%"> Số lượng </th>
-                <th width="10%"> Thành tiền </th>
+                <th width="7%"> Số xe </th>
+                <th width="15%"> Tên xe </th>
+                <th width="10%"> Giá cho thuê </th>
+                <th width="8%"> Thời gian </th>
+                <th width="8%"> Thành tiền </th>
                 <th width="3%"> Xóa </th>
             </tr>
         </thead>
@@ -196,32 +194,22 @@
                     <input type="hidden" :name="'products['+ key +'][code]'" v-model="item.code">
                     <input type="hidden" :name="'products['+ key +'][title]'" v-model="item.title">
                     <input type="hidden" :name="'products['+ key +'][price]'" v-model="item.price">
-                    <input type="hidden" :name="'products['+ key +'][color_id]'" v-model="item.selectColor.id">
-                    <input type="hidden" :name="'products['+ key +'][size_id]'" v-model="item.selectSize.id">
-                    <input type="hidden" :name="'products['+ key +'][color_title]'" v-model="item.selectColor.title">
-                    <input type="hidden" :name="'products['+ key +'][size_title]'" v-model="item.selectSize.title">
                     @{{ item.code }}
                 </td>
                 <td>
                     @{{ item.title }}
                 </td>
                 <td align="center">
-                    <select v-if="item.colors" v-model="item.selectColor" class="form-control">
-                        <option v-for="(color, keyC) in item.colors" v-bind:value="{ id: color.id, title: color.title }" > @{{ color.title }} </option>
+                    <select v-if="item.prices" v-model="item.price" class="form-control">
+                        <option v-for="(price, keyP) in item.prices" v-bind:value="price" > @{{ formatPrice(price) + ' / ' + keyP }} </option>
                     </select>
                 </td>
-                <td align="center">
-                    <select v-if="item.sizes" v-model="item.selectSize" class="form-control">
-                        <option v-for="(size, keyS) in item.sizes" v-bind:value="{ id: size.id, title: size.title }"> @{{ size.title }} </option>
-                    </select>
-                </td>
-                <td align="center"> @{{ formatPrice(item.price) }} </td>
                 <td align="center"> <input type="text" :name="'products['+ key +'][qty]'" class="form-control validate[required,min[1]]" v-model.number="item.qty"> </td>
                 <td align="center">@{{ formatPrice(subtotal[key]) }}</td>
                 <td align="center"> <button type="button" v-on:click="deleteProduct(item)" class="btn btn-sm btn-danger"><i class="fa fa-close"></i></button> </td>
             </tr>
             <tr>
-                <td align="right" colspan="30"> Tổng: <span class="font-red-mint font-md bold"> @{{ formatPrice(total) }} đ</span> </td>
+                <td align="right" colspan="30"> Tổng tiền: <span class="font-red-mint font-md bold"> @{{ formatPrice(total) }} đ</span> </td>
             </tr>
         </tbody>
     </table>
@@ -304,10 +292,11 @@
                             "price": select2data[i].price,
                             "title": select2data[i].title,
                             "qty": select2data[i].qty,
-                            "colors": select2data[i].colors,
-                            "sizes": select2data[i].sizes,
-                            "selectColor": select2data[i].selectColor,
-                            "selectSize": select2data[i].selectSize
+                            "prices": {
+                                "Giờ" : select2data[i].original_price,
+                                "Ngày" : select2data[i].regular_price,
+                                "Tháng" : select2data[i].sale_price,
+                            }
                         });
                     }
                 }

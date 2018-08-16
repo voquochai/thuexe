@@ -46,9 +46,8 @@
                                 </th>
                                 <th width="3%"> Thứ tự </th>
                                 <th width="10%"> Khách hàng </th>
-                                <th width="7%"> Mã đơn hàng </th>
-                                <th width="7%"> Số lượng </th>
-                                <th width="7%"> Tổng giá </th>
+                                <th width="7%"> Mã phiếu </th>
+                                <th width="7%"> Tổng tiền </th>
                                 <th width="10%"> Ngày đặt </th>
                                 <th width="10%"> Tình trạng </th>
                                 <th width="10%"> Thực thi </th>
@@ -57,8 +56,6 @@
 						<tbody>
                             <tr>
                                 <td colspan="30" align="center">
-                                    Tổng số lượng: <span class="font-red-mint font-md bold"> {{ get_currency_vn($total->qty,'') }} </span>
-                                    -
                                     Tổng tiền: <span class="font-red-mint font-md bold"> {{ get_currency_vn($total->price,'') }} </span>
                                 </td>
                             </tr>
@@ -73,7 +70,6 @@
                                 <td align="center"> <input type="text" name="priority" class="form-control input-mini input-priority" value="{{ $item->priority }}" data-ajax="act=update_priority|table=orders|id={{ $item->id }}|col=priority"> </td>
                                 <td align="center"><a href="{{ route('qlyxe.order.edit',['id'=>$item->id, 'type'=>$type]) }}"> {{ $item->name.' - '.$item->phone }} </a></td>
                                 <td align="center">{{ $item->code }}</td>
-                                <td align="center">{{ $item->order_qty }}</td>
                                 <td align="center">{!! get_currency_vn($item->order_price,'') !!}</td>
                                 <td align="center">{{ $item->created_at }}</td>
                                 <td align="center"> <span class="label label-sm label-{{ config('siteconfig.order_thuexe_labels.'.$item->status_id) }}">{{ config('siteconfig.order_thuexe_status.'.$item->status_id) }}</span></td>

@@ -235,7 +235,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">Biển số xe</label>
+                        <label class="control-label">Số xe</label>
                         <div>
                             <input type="text" name="code" value="{{ $item->code }}" class="form-control">
                         </div>

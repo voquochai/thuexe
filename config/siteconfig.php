@@ -34,12 +34,14 @@ return [
 		'2'	=>	'Chuyển khoản ngân hàng',
 	],
 	'order_thuexe_status' => [
-		'1'	=>	'Đã nhận tiền',
-		'2'	=>	'Hủy phiếu',
+		'1'	=>	'Đang thuê xe',
+		'2'	=>	'Đã hoàn thành',
+		'3'	=>	'Hủy phiếu',
 	],
 	'order_thuexe_labels' => [
-		'1'	=>	'success',
-		'2'	=>	'danger',
+		'1'	=>	'warning',
+		'2'	=>	'success',
+		'3'	=>	'danger',
 	],
 	'order' => [
 		'online' 	=>	[

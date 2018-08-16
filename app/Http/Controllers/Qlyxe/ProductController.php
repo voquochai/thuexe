@@ -123,11 +123,12 @@ class ProductController extends Controller
     public function store(Request $request){
         $valid = Validator::make($request->all(), [
             'dataL.vi.title'   => 'required',
-            'code'        => 'unique:products,code',
+            'code'        => 'required|unique:products,code',
             'image'            => 'image|max:2048',
             'data.category_id' => 'exists:categories,id'
         ], [
             'dataL.vi.title.required'   => 'Vui lòng nhập Tên xe',
+            'code.required'          => 'Vui lòng nhập số xe',
             'code.unique'          => 'Biển số xe đã tồn tại, vui lòng nhập mã khác',
             'image.image'               => 'Không đúng chuẩn hình ảnh cho phép',
             'image.max'                 => 'Dung lượng vượt quá giới hạn cho phép là :max KB',
@@ -260,11 +261,12 @@ class ProductController extends Controller
         // dd($request);
         $valid = Validator::make($request->all(), [
             'dataL.vi.title' => 'required',
-            'code' => 'unique:products,code,'.$id,
+            'code' => 'required|unique:products,code,'.$id,
             'image' => 'image|max:2048',
             'data.category_id' => 'exists:categories,id'
         ], [
             'dataL.vi.title.required'    => 'Vui lòng nhập Tên xe',
+            'code.required'    => 'Vui lòng nhập số xe',
             'code.unique' => 'Biển số xe đã tồn tại, vui lòng nhập mã khác',
             'image.image' => 'Không đúng chuẩn hình ảnh cho phép',
             'image.max' => 'Dung lượng vượt quá giới hạn cho phép là :max KB',
