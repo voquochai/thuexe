@@ -1,7 +1,7 @@
-@extends('admin.app')
+@extends('qlyxe.app')
 @section('breadcrumb')
 <li>
-    <a href="{{ route('admin.order.index', ['type'=>$type]) }}"> {{ $pageTitle }} </a>
+    <a href="{{ route('qlyxe.order.index', ['type'=>$type]) }}"> {{ $pageTitle }} </a>
     <i class="fa fa-circle"></i>
 </li>
 <li>
@@ -10,9 +10,9 @@
 @endsection
 @section('content')
 <div class="row" id="qh-app">
-    @include('admin.blocks.messages')
+    @include('qlyxe.blocks.messages')
     <!-- BEGIN FORM-->
-    <form role="form" method="POST" action="{{ route('admin.order.update',['id'=>$item->id,'type'=>$type]) }}">
+    <form role="form" method="POST" action="{{ route('qlyxe.order.update',['id'=>$item->id,'type'=>$type]) }}">
         {{ csrf_field() }}
         {{ method_field('put') }}
         <input type="hidden" name="redirects_to" value="{{ (old('redirects_to')) ? old('redirects_to') : url()->previous() }}" />
@@ -24,7 +24,7 @@
                 <div class="portlet-body">
                     <div class="form-group">
                         <div class="input-group select2-bootstrap-append">
-                            <select id="select2-button-addons-single-input-group-sm" class="form-control select2-data-ajax"  multiple="" data-label="Tên hoặc mã sản phẩm" data-url="{{ route('admin.order.ajax',['t'=>'san-pham']) }}">
+                            <select id="select2-button-addons-single-input-group-sm" class="form-control select2-data-ajax"  multiple="" data-label="Tên hoặc mã sản phẩm" data-url="{{ route('qlyxe.order.ajax',['t'=>'san-pham']) }}">
                             </select>
                             <span class="input-group-btn"> <button v-on:click="addProduct" type="button" id="btn-select" class="btn btn-info"> Chọn </button> </span>
                         </div>
@@ -290,17 +290,26 @@
             addProduct: function () {
                 var select2data = $(".select2-data-ajax").select2("data");
                 for (var i = 0; i < select2data.length; i++) {
-                    this.products.push({
-                        "id": select2data[i].id,
-                        "code": select2data[i].code,
-                        "price": select2data[i].price,
-                        "title": select2data[i].title,
-                        "qty": select2data[i].qty,
-                        "colors": select2data[i].colors,
-                        "sizes": select2data[i].sizes,
-                        "selectColor": select2data[i].selectColor,
-                        "selectSize": select2data[i].selectSize
-                    });
+                    var flag = false;
+                    for (var j = 0; j < this.products.length; j++) {
+                        if( this.products[j].id == select2data[i].id ){
+                            flag = true;
+                            break;
+                        }
+                    }
+                    if(!flag){
+                        this.products.push({
+                            "id": select2data[i].id,
+                            "code": select2data[i].code,
+                            "price": select2data[i].price,
+                            "title": select2data[i].title,
+                            "qty": select2data[i].qty,
+                            "colors": select2data[i].colors,
+                            "sizes": select2data[i].sizes,
+                            "selectColor": select2data[i].selectColor,
+                            "selectSize": select2data[i].selectSize
+                        });
+                    }
                 }
             }
         }

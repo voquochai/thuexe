@@ -230,14 +230,6 @@ Route::group(['prefix'=>'qlyxe', 'as'=> 'qlyxe.', 'namespace'=>'Qlyxe'], functio
 		
 		Route::get('/', 'DashboardController@index')->name('dashboard.index');
 
-		// Categories
-		Route::get('/categories', 'CategoryController@index')->name('category.index');
-		Route::get('/categories/create', 'CategoryController@create')->name('category.create');
-		Route::post('/categories', 'CategoryController@store')->name('category.store');
-		Route::get('/categories/{id}', 'CategoryController@edit')->where('id','[0-9]+')->name('category.edit');
-		Route::put('/categories/{id}', 'CategoryController@update')->name('category.update');
-		Route::delete('/categories/{id}', 'CategoryController@delete')->name('category.delete');
-
 		// Attributes
 		Route::get('/attributes', 'AttributeController@index')->name('attribute.index');
 		Route::get('/attributes/create', 'AttributeController@create')->name('attribute.create');

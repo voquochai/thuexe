@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Qlyxe;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +27,7 @@ class OrderController extends Controller
         $this->_data['siteconfig'] = config('siteconfig.order');
         $this->_data['default_language'] = config('siteconfig.general.language');
         $this->_data['languages'] = config('siteconfig.languages');
-        $this->_data['pageTitle'] = $this->_data['siteconfig'][$this->_data['type']]['page-title'];
+        $this->_data['pageTitle'] = 'Phiếu thuê xe';
     }
 
     /**
@@ -49,7 +49,7 @@ class OrderController extends Controller
             ->where('status_id', '<' , 4)
             ->where('type',$this->_data['type'])->first();
 
-        return view('admin.orders.index',$this->_data);
+        return view('qlyxe.orders.index',$this->_data);
     }
 
     public function ajax(Request $request){
@@ -97,7 +97,7 @@ class OrderController extends Controller
     }
     
     public function create(){
-        return view('admin.orders.create',$this->_data);
+        return view('qlyxe.orders.create',$this->_data);
     }
 
     public function store(Request $request){
@@ -178,7 +178,7 @@ class OrderController extends Controller
             $order->code          =    update_code($order->id,'DH');
             $order->save();
             $order->details()->saveMany($dataInsert);
-            return redirect()->route('admin.order.index',['type'=>$this->_data['type']])->with('success','Thêm dữ liệu <b>'.$order->code.'</b> thành công');
+            return redirect()->route('qlyxe.order.index',['type'=>$this->_data['type']])->with('success','Thêm dữ liệu <b>'.$order->code.'</b> thành công');
         }
         
     }
@@ -222,9 +222,9 @@ class OrderController extends Controller
                 }
                 $this->_data['products'] = $products;
             }
-            return view('admin.orders.edit',$this->_data);
+            return view('qlyxe.orders.edit',$this->_data);
         }
-        return redirect()->route('admin.order.index',['type'=>$this->_data['type']])->with('danger', 'Dữ liệu không tồn tại');
+        return redirect()->route('qlyxe.order.index',['type'=>$this->_data['type']])->with('danger', 'Dữ liệu không tồn tại');
     }
 
     public function update(Request $request, $id){
@@ -312,11 +312,11 @@ class OrderController extends Controller
         if ($order !== null) {
             if( $order->delete() ){
                 OrderDetail::whereIn('id',$order->details()->pluck('id')->toArray())->delete();
-                return redirect()->route('admin.order.index',['type'=>$this->_data['type']])->with('success', 'Xóa dữ liệu <b>'.$deleted.'</b> thành công');
+                return redirect()->route('qlyxe.order.index',['type'=>$this->_data['type']])->with('success', 'Xóa dữ liệu <b>'.$deleted.'</b> thành công');
             }else{
-                return redirect()->route('admin.order.index',['type'=>$this->_data['type']])->with('danger', 'Xóa dữ liệu bị lỗi');
+                return redirect()->route('qlyxe.order.index',['type'=>$this->_data['type']])->with('danger', 'Xóa dữ liệu bị lỗi');
             }
         }
-        return redirect()->route('admin.order.index',['type'=>$this->_data['type']])->with('danger', 'Dữ liệu không tồn tại');
+        return redirect()->route('qlyxe.order.index',['type'=>$this->_data['type']])->with('danger', 'Dữ liệu không tồn tại');
     }
 }

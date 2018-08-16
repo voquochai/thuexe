@@ -139,13 +139,13 @@ class MenuFactory{
 	                            </label>
 	                        </td>
 	                        <td align="center"> <input type="text" name="priority" class="form-control input-mini input-priority" value="'.$val->priority.'" data-ajax="act=update_priority|table=categories|id='.$id.'|col=priority"> </td>
-	                        <td align="left"> <a href="'.route(auth()->user()->type.'.category.edit',[$id, 'type'=>$_GET['type']]).'"> '.$prefix.' '.$name.' </a> </td>
+	                        <td align="left"> <a href="'.route('admin.category.edit',[$id, 'type'=>$_GET['type']]).'"> '.$prefix.' '.$name.' </a> </td>
 	                        '.$hasImage.'
 	                        <td align="center"> '.$val->created_at.' </td>
 	                        <td align="center"> '.$button.' </td>
 	                        <td align="center">
-	                            <a href="'.route(auth()->user()->type.'.category.edit',[$id, 'type'=>$_GET['type']]).'" class="btn btn-sm blue" title="Chỉnh sửa"> <i class="fa fa-edit"></i> </a>
-	                            <form action="'.route(auth()->user()->type.'.category.delete',[$id, 'type'=>$_GET['type']]).'" method="post">
+	                            <a href="'.route('admin.category.edit',[$id, 'type'=>$_GET['type']]).'" class="btn btn-sm blue" title="Chỉnh sửa"> <i class="fa fa-edit"></i> </a>
+	                            <form action="'.route('admin.category.delete',[$id, 'type'=>$_GET['type']]).'" method="post">
 	                                '.csrf_field().'
 	                                '.method_field('DELETE').'
 	                                <button type="button" class="btn btn-sm btn-delete red" title="Xóa"> <i class="fa fa-times"></i> </button>

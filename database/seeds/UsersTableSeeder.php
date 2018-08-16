@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'khowebonline@gmail.com',
 	        'username' => '',
             'password' => bcrypt('123456'),
-	        'type' => 'user',
+	        'type' => 'admin',
 	        'remember_token' => str_random(10),
     	]);
 

@@ -34,7 +34,7 @@ class ProductController extends Controller
         $this->_data['languages'] = config('siteconfig.languages');
         $this->_data['path'] = $this->_data['siteconfig']['path'];
         $this->_data['thumbs'] = config('settings.thumbs.product') ? config('settings.thumbs.product') : $this->_data['siteconfig'][$this->_data['type']]['thumbs'];
-        $this->_data['pageTitle'] = $this->_data['siteconfig'][$this->_data['type']]['page-title'];
+        $this->_data['pageTitle'] = 'Quản lý xe';
     }
 
     /**
@@ -58,6 +58,7 @@ class ProductController extends Controller
             ->whereRaw($whereRaw)
             ->where('B.language', $this->_data['default_language'])
             ->where('C.language', $this->_data['default_language'])
+            ->orderBy('A.user_id', Auth::id())
             ->orderBy('A.priority','asc')
             ->orderBy('A.id','desc')
             ->paginate(25);
@@ -120,16 +121,14 @@ class ProductController extends Controller
     }
 
     public function store(Request $request){
-        // dd($request);
         $valid = Validator::make($request->all(), [
             'dataL.vi.title'   => 'required',
-            'code'        => 'required|unique:products,code',
+            'code'        => 'unique:products,code',
             'image'            => 'image|max:2048',
             'data.category_id' => 'exists:categories,id'
         ], [
-            'dataL.vi.title.required'   => 'Vui lòng nhập Tên Sản Phẩm',
-            'code.required'   => 'Vui lòng nhập Mã Sản Phẩm',
-            'code.unique'          => 'Mã sản phẩm đã tồn tại, vui lòng nhập mã khác',
+            'dataL.vi.title.required'   => 'Vui lòng nhập Tên xe',
+            'code.unique'          => 'Biển số xe đã tồn tại, vui lòng nhập mã khác',
             'image.image'               => 'Không đúng chuẩn hình ảnh cho phép',
             'image.max'                 => 'Dung lượng vượt quá giới hạn cho phép là :max KB',
             'data.category_id.exists'   => 'Vui lòng chọn Danh mục',
@@ -261,13 +260,12 @@ class ProductController extends Controller
         // dd($request);
         $valid = Validator::make($request->all(), [
             'dataL.vi.title' => 'required',
-            'code' => 'required|unique:products,code,'.$id,
+            'code' => 'unique:products,code,'.$id,
             'image' => 'image|max:2048',
             'data.category_id' => 'exists:categories,id'
         ], [
-            'dataL.vi.title.required'    => 'Vui lòng nhập Tên Sản Phẩm',
-            'code.required'   => 'Vui lòng nhập Mã Sản Phẩm',
-            'code.unique' => 'Mã sản phẩm đã tồn tại, vui lòng nhập mã khác',
+            'dataL.vi.title.required'    => 'Vui lòng nhập Tên xe',
+            'code.unique' => 'Biển số xe đã tồn tại, vui lòng nhập mã khác',
             'image.image' => 'Không đúng chuẩn hình ảnh cho phép',
             'image.max' => 'Dung lượng vượt quá giới hạn cho phép là :max KB',
             'data.category_id.exists' => 'Vui lòng chọn Danh mục',

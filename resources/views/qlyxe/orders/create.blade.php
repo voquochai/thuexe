@@ -1,7 +1,7 @@
-@extends('admin.app')
+@extends('qlyxe.app')
 @section('breadcrumb')
 <li>
-    <a href="{{ route('admin.order.index', ['type'=>$type]) }}"> {{ $pageTitle }} </a>
+    <a href="{{ route('qlyxe.order.index', ['type'=>$type]) }}"> {{ $pageTitle }} </a>
     <i class="fa fa-circle"></i>
 </li>
 <li>
@@ -10,9 +10,9 @@
 @endsection
 @section('content')
 <div class="row" id="qh-app">
-    @include('admin.blocks.messages')
+    @include('qlyxe.blocks.messages')
     <!-- BEGIN FORM-->
-    <form role="form" method="POST" action="{{ route('admin.order.store',['type'=>$type]) }}" class="form-validation">
+    <form role="form" method="POST" action="{{ route('qlyxe.order.store',['type'=>$type]) }}" class="form-validation">
         {{ csrf_field() }}
         <div class="col-lg-9 col-xs-12"> 
             <div class="portlet box green">
@@ -22,7 +22,7 @@
                 <div class="portlet-body">
                     <div class="form-group">
                         <div class="input-group select2-bootstrap-append">
-                            <select id="select2-button-addons-single-input-group-sm" class="form-control select2-data-ajax"  multiple="" data-label="Tên hoặc mã sản phẩm" data-url="{{ route('admin.order.ajax',['t'=>'san-pham']) }}">
+                            <select id="select2-button-addons-single-input-group-sm" class="form-control select2-data-ajax"  multiple="" data-label="Tên hoặc mã sản phẩm" data-url="{{ route('qlyxe.order.ajax',['t'=>'thue-xe']) }}">
                             </select>
                             <span class="input-group-btn"> <button v-on:click="addProduct" type="button" id="btn-select" class="btn btn-info"> Chọn </button> </span>
                         </div>
@@ -104,7 +104,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">Phí vận chuyển</label>
+                        <label class="control-label">Phí thêm</label>
                         <div class="input-group">
                             <input type="text" name="shipping" class="form-control" value="{{ old('shipping') }}" v-model.number="shipping">
                             <span class="input-group-addon"> Đ </span>
@@ -130,7 +130,7 @@
                         <label class="control-label">Hình thức thanh toán</label>
                         <div>
                             <select class="selectpicker show-tick show-menu-arrow form-control" name="data[payment_id]">
-                                @foreach( config('siteconfig.payment_method') as $key => $val)
+                                @foreach( config('siteconfig.payment_method_thuexe') as $key => $val)
                                 <option value="{{ $key }}" {{ (old('data.payment_id')) ? ( (in_array($key,old('data.payment_id'))) ? 'selected' : '') : ($key==1)?'selected':'' }} > {{ $val }} </option>
                                 @endforeach
                             </select>
@@ -141,7 +141,7 @@
                         <label class="control-label">Tình trạng</label>
                         <div>
                             <select class="selectpicker show-tick show-menu-arrow form-control" name="data[status_id]">
-                                @foreach( config('siteconfig.order_site_status') as $key => $val)
+                                @foreach( config('siteconfig.order_thuexe_status') as $key => $val)
                                 <option value="{{ $key }}" {{ (old('data.status_id')) ? ( (in_array($key,old('data.status_id'))) ? 'selected' : '') : ($key==1)?'selected':'' }} > {{ $val }} </option>
                                 @endforeach
                             </select>
@@ -170,13 +170,9 @@
     <table class="table table-bordered table-condensed">
         <thead>
             <tr>
-                <th width="7%"> Mã SP </th>
-                <th width="15%"> Tên sản phẩm </th>
-                <th width="7%"> Màu sắc </th>
-                <th width="7%"> Kích cỡ </th>
-                <th width="8%"> Giá bán </th>
-                <th width="6%"> Số lượng </th>
-                <th width="10%"> Thành tiền </th>
+                <th width="7%"> Biển số xe </th>
+                <th width="15%"> Tên xe </th>
+                <th width="8%"> Giá cho thuê </th>
                 <th width="3%"> Xóa </th>
             </tr>
         </thead>
@@ -187,28 +183,12 @@
                     <input type="hidden" :name="'products['+ key +'][code]'" v-model="item.code">
                     <input type="hidden" :name="'products['+ key +'][title]'" v-model="item.title">
                     <input type="hidden" :name="'products['+ key +'][price]'" v-model="item.price">
-                    <input type="hidden" :name="'products['+ key +'][color_id]'" v-model="item.selectColor.id">
-                    <input type="hidden" :name="'products['+ key +'][size_id]'" v-model="item.selectSize.id">
-                    <input type="hidden" :name="'products['+ key +'][color_title]'" v-model="item.selectColor.title">
-                    <input type="hidden" :name="'products['+ key +'][size_title]'" v-model="item.selectSize.title">
                     @{{ item.code }}
                 </td>
                 <td>
                     @{{ item.title }}
                 </td>
-                <td align="center">
-                    <select v-if="item.colors" v-model="item.selectColor" class="form-control">
-                        <option v-for="(color, keyC) in item.colors" v-bind:value="{ id: color.id, title: color.title }" > @{{ color.title }} </option>
-                    </select>
-                </td>
-                <td align="center">
-                    <select v-if="item.sizes" v-model="item.selectSize" class="form-control">
-                        <option v-for="(size, keyS) in item.sizes" v-bind:value="{ id: size.id, title: size.title }"> @{{ size.title }} </option>
-                    </select>
-                </td>
                 <td align="center"> @{{ formatPrice(item.price) }} </td>
-                <td align="center"> <input type="text" :name="'products['+ key +'][qty]'" class="form-control validate[required,min[1]]" v-model.number="item.qty"> </td>
-                <td align="center">@{{ formatPrice(subtotal[key]) }}</td>
                 <td align="center"> <button type="button" v-on:click="deleteProduct(item)" class="btn btn-sm btn-danger"><i class="fa fa-close"></i></button> </td>
             </tr>
             <tr>
@@ -275,17 +255,21 @@
             addProduct: function () {
                 var select2data = $(".select2-data-ajax").select2("data");
                 for (var i = 0; i < select2data.length; i++) {
-                    this.products.push({
-                        "id": select2data[i].id,
-                        "code": select2data[i].code,
-                        "price": select2data[i].price,
-                        "title": select2data[i].title,
-                        "qty": select2data[i].qty,
-                        "colors": select2data[i].colors,
-                        "sizes": select2data[i].sizes,
-                        "selectColor": "",
-                        "selectSize": ""
-                    });
+                    var flag = false;
+                    for (var j = 0; j < this.products.length; j++) {
+                        if( this.products[j].id == select2data[i].id ){
+                            flag = true;
+                            break;
+                        }
+                    }
+                    if(!flag){
+                        this.products.push({
+                            "id": select2data[i].id,
+                            "code": select2data[i].code,
+                            "price": select2data[i].price,
+                            "title": select2data[i].title
+                        });
+                    }
                 }
             }
         }

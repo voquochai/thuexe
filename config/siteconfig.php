@@ -29,9 +29,27 @@ return [
 		'3'	=>	'primary',
 		'4'	=>	'danger',
 	],
+	'payment_method_thuexe' => [
+		'1'	=>	'Thanh toán tại cửa hàng',
+		'2'	=>	'Chuyển khoản ngân hàng',
+	],
+	'order_thuexe_status' => [
+		'1'	=>	'Đã nhận tiền',
+		'2'	=>	'Hủy phiếu',
+	],
+	'order_thuexe_labels' => [
+		'1'	=>	'success',
+		'2'	=>	'danger',
+	],
 	'order' => [
 		'online' 	=>	[
 			'page-title'	=>	'Đơn hàng',
+			'status'      => [
+				'publish'     => 'Hiển thị'
+			]
+		],
+		'thue-xe' 	=>	[
+			'page-title'	=>	'Phiếu thuê xe',
 			'status'      => [
 				'publish'     => 'Hiển thị'
 			]
@@ -81,7 +99,25 @@ return [
 	],
 	'category' => [
 		'thue-xe'	=>	[
-			'page-title'	=>	'Danh mục',
+			'page-title'	=>	'Danh mục xe',
+			'level' =>	1,
+			'icon'	=>	false,
+			'description' =>	false,
+			'contents'    =>	false,
+			'image'       =>	false,
+			'seo'	=>	false,
+			'thumbs'	=>	[
+				'_small' => [
+					'width'  =>	300,
+					'height' =>	200,
+				],
+			],
+			'status' => [
+				'publish' => 'Hiển thị',
+			]
+		],
+		'khach-san'	=>	[
+			'page-title'	=>	'Danh mục khách sạn',
 			'level' =>	1,
 			'icon'	=>	false,
 			'description' =>	false,
@@ -121,6 +157,33 @@ return [
 	'product' => [
 		'thue-xe' 	=>	[
 			'page-title'	=>	'Xe',
+			'category'    =>	true,
+			'supplier'    =>	false,
+			'description' =>	true,
+			'contents'    =>	false,
+			'link'    =>	false,
+			'attributes'    =>	true,
+			'image'       =>	true,
+			'images'      =>	false,
+			'seo'	=>	false,
+			'thumbs'	=>	[
+				'_small' => [
+					'width'  =>	300,
+					'height' =>	300,
+				],'_medium' => [
+					'width'  =>	600,
+					'height' =>	600,
+				],'_large' => [
+					'width'  =>	1000,
+					'height' =>	1000,
+				],
+			],
+			'status'      => [
+				'publish'     => 'Hiển thị',
+			],
+		],
+		'khach-san' 	=>	[
+			'page-title'	=>	'Khách sạn',
 			'category'    =>	true,
 			'supplier'    =>	false,
 			'description' =>	true,

@@ -1,0 +1,1 @@
+<h2><?php echo e($exception->getMessage()); ?></h2>

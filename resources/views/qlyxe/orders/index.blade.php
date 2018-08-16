@@ -1,4 +1,4 @@
-@extends('admin.app')
+@extends('qlyxe.app')
 @section('breadcrumb')
 <li>
     <span> {{ $pageTitle }} </span>
@@ -6,7 +6,7 @@
 @endsection
 @section('content')
 <div class="row">
-	@include('admin.blocks.messages')
+	@include('qlyxe.blocks.messages')
 	<div class="col-md-12">
 		<div class="portlet box green">
 			<div class="portlet-title">
@@ -14,7 +14,7 @@
                     <i class="icon-layers"></i>Danh sách
                 </div>
                 <div class="actions">
-                    <a href="{{ route('admin.order.create',['type'=>$type]) }}" class="btn btn-sm btn-default"> Thêm mới </a>
+                    <a href="{{ route('qlyxe.order.create',['type'=>$type]) }}" class="btn btn-sm btn-default"> Thêm mới </a>
                     <div class="btn-group">
                         <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="javascript:;" aria-expanded="false"> Hành động (<span class="count-checkbox">0</span>)
                             <i class="fa fa-angle-down"></i>
@@ -71,15 +71,15 @@
                                     </label>
                                 </td>
                                 <td align="center"> <input type="text" name="priority" class="form-control input-mini input-priority" value="{{ $item->priority }}" data-ajax="act=update_priority|table=orders|id={{ $item->id }}|col=priority"> </td>
-                                <td align="center"><a href="{{ route('admin.order.edit',['id'=>$item->id, 'type'=>$type]) }}"> {{ $item->name.' - '.$item->phone }} </a></td>
+                                <td align="center"><a href="{{ route('qlyxe.order.edit',['id'=>$item->id, 'type'=>$type]) }}"> {{ $item->name.' - '.$item->phone }} </a></td>
                                 <td align="center">{{ $item->code }}</td>
                                 <td align="center">{{ $item->order_qty }}</td>
                                 <td align="center">{!! get_currency_vn($item->order_price,'') !!}</td>
                                 <td align="center">{{ $item->created_at }}</td>
-                                <td align="center"> <span class="label label-sm label-{{ config('siteconfig.order_site_labels.'.$item->status_id) }}">{{ config('siteconfig.order_site_status.'.$item->status_id) }}</span></td>
+                                <td align="center"> <span class="label label-sm label-{{ config('siteconfig.order_thuexe_labels.'.$item->status_id) }}">{{ config('siteconfig.order_thuexe_status.'.$item->status_id) }}</span></td>
                                 <td align="center">
-                                    <a href="{{ route('admin.order.edit',['id'=>$item->id, 'type'=>$type]) }}" class="btn btn-sm blue" title="Chỉnh sửa"> <i class="fa fa-edit"></i> </a>
-                                    <form action="{{ route('admin.order.delete',['id'=>$item->id, 'type'=>$type]) }}" method="post">
+                                    <a href="{{ route('qlyxe.order.edit',['id'=>$item->id, 'type'=>$type]) }}" class="btn btn-sm blue" title="Chỉnh sửa"> <i class="fa fa-edit"></i> </a>
+                                    <form action="{{ route('qlyxe.order.delete',['id'=>$item->id, 'type'=>$type]) }}" method="post">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
                                         <button type="button" class="btn btn-sm btn-delete red" title="Xóa"> <i class="fa fa-times"></i> </button>

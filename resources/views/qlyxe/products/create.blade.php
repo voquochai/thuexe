@@ -170,7 +170,7 @@
 
                     @if($siteconfig[$type]['category'])
                     <div class="form-group">
-                        <label class="control-label"> <a href="#" title="Thêm danh mục" data-target="#category-modal" data-toggle="modal" class="sbold"> Danh mục </a> </label>
+                        <label class="control-label">  Danh mục </label>
                         <div>
                             <select name="data[category_id]" class="selectpicker show-tick show-menu-arrow form-control">
                                 @php
@@ -211,14 +211,14 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">Mã sản phẩm </label>
+                        <label class="control-label">Biển số xe</label>
                         <div>
                             <input type="text" name="code" value="{{ old('code') }}" class="form-control">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">Giá gốc</label>
+                        <label class="control-label">Giá theo giờ</label>
                         <div class="input-group">
                             <input type="text" name="original_price" class="form-control priceFormat" value="{{ (old('original_price')) ? old('original_price') : 0 }}">
                             <span class="input-group-addon"> Đ </span>
@@ -226,7 +226,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">Giá bán</label>
+                        <label class="control-label">Giá theo ngày</label>
                         <div class="input-group">
                             <input type="text" name="regular_price" class="form-control priceFormat" value="{{ (old('regular_price')) ? old('regular_price') : 0 }}">
                             <span class="input-group-addon"> Đ </span>
@@ -234,18 +234,10 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">Giá khuyến mãi</label>
+                        <label class="control-label">Giá theo tháng</label>
                         <div class="input-group">
                             <input type="text" name="sale_price" class="form-control priceFormat" value="{{ (old('sale_price')) ? old('sale_price') : 0 }}">
                             <span class="input-group-addon"> Đ </span>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label">Trọng lượng</label>
-                        <div class="input-group">
-                            <input type="text" name="weight" class="form-control priceFormat" value="{{ (old('weight')) ? old('weight') : 0 }}">
-                            <span class="input-group-addon"> G </span>
                         </div>
                     </div>
 
@@ -355,47 +347,6 @@
         <div class="modal-footer">
             <button type="button" data-dismiss="modal" class="btn default">Thoát</button>
             <button type="button" class="btn green btn-quick-add" data-ajax="data[supplier_id]" data-url="{{ route('qlyxe.supplier.store',['type'=>'default']) }}"> <i class="fa fa-check"></i> Lưu</button>
-        </div>
-    </form>
-</div>
-@endif
-
-@if($siteconfig[$type]['category'])
-<!-- Add Category Modal -->
-<div id="category-modal" class="modal fade" tabindex="-1" data-focus-on="input:first">
-    <form role="form" method="POST" action="#">
-        <input type="hidden" name="priority" value="1">
-        <input type="hidden" name="status[]" value="publish">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-            <h4 class="modal-title uppercase">Thêm danh mục</h4>
-        </div>
-        <div class="modal-body">
-            <div class="form-group">
-                <label class="control-label">Danh mục cha</label>
-                <div>
-                    <select name="data[parent]" class="selectpicker show-tick show-menu-arrow form-control">
-                        <option value="0">Chọn danh mục</option>
-                        @php
-                            Menu::resetMenu();
-                            Menu::setMenu($categories);
-                            echo Menu::getMenuSelectLimit();
-                        @endphp
-                    </select>
-                </div>
-            </div>
-            @foreach($languages as $key => $lang)
-            <div class="form-group">
-                <label for="name" class="control-label">Tên <sub>({{ $lang }})</sub> </label>
-                <div>
-                    <input type="text" class="form-control input-rs" name="dataL[{{ $key }}][title]" value="">
-                </div>
-            </div>
-            @endforeach
-        </div>
-        <div class="modal-footer">
-            <button type="button" data-dismiss="modal" class="btn default">Thoát</button>
-            <button type="button" class="btn green btn-quick-add" data-ajax="data[category_id]" data-url="{{ route('qlyxe.category.store',['type'=>$type]) }}"> <i class="fa fa-check"></i> Lưu</button>
         </div>
     </form>
 </div>
