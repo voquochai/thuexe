@@ -249,6 +249,7 @@ Route::group(['prefix'=>'qlyxe', 'as'=> 'qlyxe.', 'namespace'=>'Qlyxe'], functio
         // Products
 		Route::get('/products', 'ProductController@index')->name('product.index');
 		Route::get('/products/create', 'ProductController@create')->name('product.create');
+		Route::post('/products/quickly', 'ProductController@quickly')->name('product.quickly');
 		Route::post('/products', 'ProductController@store')->name('product.store');
 		Route::get('/products/{id}', 'ProductController@edit')->where('id','[0-9]+')->name('product.edit');
 		Route::put('/products/{id}', 'ProductController@update')->name('product.update');

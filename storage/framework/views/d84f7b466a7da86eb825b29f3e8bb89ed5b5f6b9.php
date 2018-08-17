@@ -45,9 +45,8 @@
                                 </th>
                                 <th width="3%"> Thứ tự </th>
                                 <th width="10%"> Khách hàng </th>
-                                <th width="7%"> Mã đơn hàng </th>
-                                <th width="7%"> Số lượng </th>
-                                <th width="7%"> Tổng giá </th>
+                                <th width="7%"> Mã phiếu </th>
+                                <th width="7%"> Tổng tiền </th>
                                 <th width="10%"> Ngày đặt </th>
                                 <th width="10%"> Tình trạng </th>
                                 <th width="10%"> Thực thi </th>
@@ -56,8 +55,6 @@
 						<tbody>
                             <tr>
                                 <td colspan="30" align="center">
-                                    Tổng số lượng: <span class="font-red-mint font-md bold"> <?php echo e(get_currency_vn($total->qty,'')); ?> </span>
-                                    -
                                     Tổng tiền: <span class="font-red-mint font-md bold"> <?php echo e(get_currency_vn($total->price,'')); ?> </span>
                                 </td>
                             </tr>
@@ -72,7 +69,6 @@
                                 <td align="center"> <input type="text" name="priority" class="form-control input-mini input-priority" value="<?php echo e($item->priority); ?>" data-ajax="act=update_priority|table=orders|id=<?php echo e($item->id); ?>|col=priority"> </td>
                                 <td align="center"><a href="<?php echo e(route('qlyxe.order.edit',['id'=>$item->id, 'type'=>$type])); ?>"> <?php echo e($item->name.' - '.$item->phone); ?> </a></td>
                                 <td align="center"><?php echo e($item->code); ?></td>
-                                <td align="center"><?php echo e($item->order_qty); ?></td>
                                 <td align="center"><?php echo get_currency_vn($item->order_price,''); ?></td>
                                 <td align="center"><?php echo e($item->created_at); ?></td>
                                 <td align="center"> <span class="label label-sm label-<?php echo e(config('siteconfig.order_thuexe_labels.'.$item->status_id)); ?>"><?php echo e(config('siteconfig.order_thuexe_status.'.$item->status_id)); ?></span></td>

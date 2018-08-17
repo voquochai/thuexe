@@ -1,23 +1,26 @@
 <?php $__env->startSection('breadcrumb'); ?>
 <li>
-    <a href="<?php echo e(route('qlyxe.product.index', ['type'=>$type])); ?>"> <?php echo e($pageTitle); ?> </a>
+    <a href="<?php echo e(route('admin.product.index', ['type'=>$type])); ?>"> <?php echo e($pageTitle); ?> </a>
     <i class="fa fa-circle"></i>
 </li>
 <li>
-    <span> Thêm mới </span>
+    <span>Chỉnh sửa</span>
 </li>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 <div class="row">
-    <?php echo $__env->make('qlyxe.blocks.messages', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <?php echo $__env->make('admin.blocks.messages', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
     <!-- BEGIN FORM-->
-    <form role="form" method="POST" action="<?php echo e(route('qlyxe.product.store',['type'=>$type])); ?>" enctype="multipart/form-data" >
+    <form role="form" method="POST" action="<?php echo e(route('admin.product.update',['id'=>$item->id,'type'=>$type])); ?>" enctype="multipart/form-data" >
         <?php echo e(csrf_field()); ?>
 
+        <?php echo e(method_field('put')); ?>
+
+        <input type="hidden" name="redirects_to" value="<?php echo e((old('redirects_to')) ? old('redirects_to') : url()->previous()); ?>" />
         <div class="col-lg-9 col-xs-12"> 
             <div class="portlet box green">
                 <div class="portlet-title">
-                    <div class="caption"> Thêm mới </div>
+                    <div class="caption"> Chỉnh sửa </div>
                     <ul class="nav nav-tabs">
                         <?php $__currentLoopData = $languages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $lang): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <li>
@@ -30,16 +33,18 @@
                             <a href="#tab_images" data-toggle="tab" aria-expanded="false"> Thư viện ảnh </a>
                         </li>
                         <?php endif; ?>
+
                     </ul>
                 </div>
                 <div class="portlet-body">
                     <div class="tab-content">
+                        <?php  $i=0;  ?>
                         <?php $__currentLoopData = $languages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $lang): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="tab-pane" id="tab_<?php echo e($key); ?>">
                             <div class="form-group">
                                 <label for="name" class="control-label">Tên</label>
                                 <div>
-                                    <input type="text" class="form-control <?php echo (( $key==$default_language )?'title':''); ?>" name="dataL[<?php echo e($key); ?>][title]" value="<?php echo e(old('dataL.'.$key.'.title')); ?>">
+                                    <input type="text" class="form-control <?php echo (( $key==$default_language ) ? 'title' : ''); ?>" name="dataL[<?php echo e($key); ?>][title]" value="<?php echo e(isset( $item->languages[$i] ) ? $item->languages[$i]['title'] : ''); ?>">
                                 </div>
                             </div>
 
@@ -47,7 +52,7 @@
                             <div class="form-group">
                                 <label for="description" class="control-label">Mô tả</label>
                                 <div>
-                                    <textarea name="dataL[<?php echo e($key); ?>][description]" class="form-control" rows="6"><?php echo e(old('dataL.'.$key.'.description')); ?></textarea>
+                                    <textarea name="dataL[<?php echo e($key); ?>][description]" class="form-control" rows="6"><?php echo e(isset( $item->languages[$i] ) ? $item->languages[$i]['description'] : ''); ?></textarea>
                                 </div>
                             </div>
                             <?php endif; ?>
@@ -56,7 +61,7 @@
                             <div class="form-group">
                                 <label class="control-label">Nội dung</label>
                                 <div class="ck-editor">
-                                    <textarea name="dataL[<?php echo e($key); ?>][contents]" id="contents_<?php echo e($key); ?>" class="form-control content" rows="6"><?php echo e(old('dataL.'.$key.'.contents')); ?></textarea>
+                                    <textarea name="dataL[<?php echo e($key); ?>][contents]" id="contents_<?php echo e($key); ?>" class="form-control content" rows="6"><?php echo e(isset( $item->languages[$i] ) ? $item->languages[$i]['contents'] : ''); ?></textarea>
                                 </div>
                             </div>
                             <?php endif; ?>
@@ -65,21 +70,21 @@
                             <div class="form-group">
                                 <label class="control-label">Meta Title</label>
                                 <div>
-                                    <input type="text" name="dataL[<?php echo e($key); ?>][meta_seo][title]" class="form-control meta-title" value="<?php echo e(old('dataL.'.$key.'.meta_seo.title')); ?>">
+                                    <input type="text" name="dataL[<?php echo e($key); ?>][meta_seo][title]" class="form-control meta-title" value="<?php echo e(isset( $item->languages[$i] ) ? $item->languages[$i]->meta_seo['title'] : ''); ?>">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label">Meta Keywords</label>
                                 <div>
-                                    <textarea name="dataL[<?php echo e($key); ?>][meta_seo][keywords]" class="form-control meta-keywords" rows="6"><?php echo e(old('dataL.'.$key.'.meta_seo.keywords')); ?></textarea>
+                                    <textarea name="dataL[<?php echo e($key); ?>][meta_seo][keywords]" class="form-control meta-keywords" rows="6"><?php echo e(isset( $item->languages[$i] ) ? $item->languages[$i]->meta_seo['keywords'] : ''); ?></textarea>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label">Meta Description</label>
                                 <div>
-                                    <textarea name="dataL[<?php echo e($key); ?>][meta_seo][description]" class="form-control meta-description" rows="6"><?php echo e(old('dataL.'.$key.'.meta_seo.description')); ?></textarea>
+                                    <textarea name="dataL[<?php echo e($key); ?>][meta_seo][description]" class="form-control meta-description" rows="6"><?php echo e(isset( $item->languages[$i] ) ? $item->languages[$i]->meta_seo['description'] : ''); ?></textarea>
                                 </div>
                             </div>
                             <?php endif; ?>
@@ -90,14 +95,35 @@
                                 <qh-attributes-<?php echo e($key); ?>></qh-attributes-<?php echo e($key); ?>>
                             </div>
                             <?php endif; ?>
-                            
+
                         </div>
+                        <?php  $i++  ?>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                         <?php if($siteconfig[$type]['images']): ?>
                         <div class="tab-pane" id="tab_images">
                             <div class="text-align-reverse margin-bottom-10">
-                                <input type="file" name="files">
+                                <input type="file" name="files" data-fileuploader-files='[
+                                <?php $__empty_1 = true; $__currentLoopData = $images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                                    <?php echo e((($key > 0) ? ',' : '')); ?>
+
+                                    {
+                                        "name":"<?php echo e($image->image); ?>",
+                                        "size": <?php echo e($image->size); ?>,
+                                        "type":"<?php echo e($image->mime_type); ?>",
+                                        "file":"<?php echo e(asset('public/'.$path.'/'.$image->image.'?v='.time())); ?>",
+                                        "data":{
+                                            "id":"<?php echo e($image->id); ?>",
+                                            "alt":"<?php echo e($image->alt); ?>",
+                                            "priority":"<?php echo e($image->priority); ?>",
+                                            "url":"<?php echo e(route('download.file',$path.'/'.$image->image)); ?>",
+                                            "config":"product",
+                                            "type":"<?php echo e($type); ?>"
+                                        }
+                                    }
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                                <?php endif; ?>
+                                ]'>
                             </div>
                             <div class="fileuploader-items"></div>
                         </div>
@@ -160,7 +186,7 @@
                             <select name="data[supplier_id]" class="selectpicker show-tick show-menu-arrow form-control">
                                 <option value=""> -- Chọn nhà cung cấp -- </option>
                                 <?php $__empty_1 = true; $__currentLoopData = $suppliers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $supplier): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                                <option value="<?php echo e($supplier->id); ?>" <?php echo e((old('supplier_id')) ? (($supplier->id == old('supplier_id')) ? 'selected' : '') : ''); ?> > <?php echo e($supplier->name); ?> </option>
+                                <option value="<?php echo e($supplier->id); ?>" <?php echo e((($supplier->id == $item->supplier_id) ? 'selected' : '')); ?> > <?php echo e($supplier->name); ?> </option>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                                 <?php endif; ?>
                             </select>
@@ -170,12 +196,12 @@
 
                     <?php if($siteconfig[$type]['category']): ?>
                     <div class="form-group">
-                        <label class="control-label">  Danh mục </label>
+                        <label class="control-label"> <a href="#" title="Thêm danh mục" data-target="#category-modal" data-toggle="modal" class="sbold"> Danh mục </a> </label>
                         <div>
                             <select name="data[category_id]" class="selectpicker show-tick show-menu-arrow form-control">
                                 <?php 
                                     Menu::setMenu($categories);
-                                    echo Menu::getMenuSelect(0,0,'',old('data.category_id'));
+                                    echo Menu::getMenuSelect(0,0,'',$item->category_id);
                                  ?>
                             </select>
                         </div>
@@ -188,7 +214,7 @@
                                 if(!$v) continue;
                                 $option = '';
                                 foreach($attrs[$k] as $l){
-                                    $option .= '<option value="'.$l->id.'" '.( (old($k)) ? ((in_array($l->id,old($k))) ? 'selected' : '') : '' ).'>'.$l->title.'</option>';
+                                    $option .= '<option value="'.$l->id.'" '.( in_array($l->id,$item->getIdsAttribute($k)) ? 'selected' : '' ).'>'.$l->title.'</option>';
                                 }
 
                                 echo '<div class="form-group">
@@ -202,42 +228,50 @@
                             }
                         }
                      ?>
-
+                    
                     <div class="form-group">
                         <label class="control-label">Slug</label>
                         <div>
-                            <input type="text" name="dataL[vi][slug]" class="form-control slug">
+                            <input type="text" name="dataL[vi][slug]" class="form-control slug" value="<?php echo e($item->languages[0]->slug); ?>">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">Số xe</label>
+                        <label class="control-label">Mã sản phẩm</label>
                         <div>
-                            <input type="text" name="code" value="<?php echo e(old('code')); ?>" class="form-control">
+                            <input type="text" name="code" value="<?php echo e($item->code); ?>" class="form-control">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">Giá theo giờ</label>
+                        <label class="control-label">Giá gốc</label>
                         <div class="input-group">
-                            <input type="text" name="original_price" class="form-control priceFormat" value="<?php echo e((old('original_price')) ? old('original_price') : 0); ?>">
+                            <input type="text" name="original_price" value="<?php echo e($item->original_price); ?>" class="form-control priceFormat">
                             <span class="input-group-addon"> Đ </span>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">Giá theo ngày</label>
+                        <label class="control-label">Giá bán</label>
                         <div class="input-group">
-                            <input type="text" name="regular_price" class="form-control priceFormat" value="<?php echo e((old('regular_price')) ? old('regular_price') : 0); ?>">
+                            <input type="text" name="regular_price" value="<?php echo e($item->regular_price); ?>" class="form-control priceFormat">
                             <span class="input-group-addon"> Đ </span>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">Giá theo tháng</label>
+                        <label class="control-label">Giá khuyến mãi</label>
                         <div class="input-group">
-                            <input type="text" name="sale_price" class="form-control priceFormat" value="<?php echo e((old('sale_price')) ? old('sale_price') : 0); ?>">
+                            <input type="text" name="sale_price" value="<?php echo e($item->sale_price); ?>" class="form-control priceFormat">
                             <span class="input-group-addon"> Đ </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Trọng lượng</label>
+                        <div class="input-group">
+                            <input type="text" name="weight" value="<?php echo e($item->weight); ?>" class="form-control priceFormat">
+                            <span class="input-group-addon"> G </span>
                         </div>
                     </div>
 
@@ -245,17 +279,22 @@
                     <div class="form-group">
                         <label class="control-label">Hình ảnh</label>
                         <div>
-                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                            <div class="fileinput <?php echo e(( $item->image && file_exists(public_path(get_thumbnail($path.'/'.$item->image))) ) ? 'fileinput-exists' : 'fileinput-new'); ?>" data-provides="fileinput">
                                 <div class="fileinput-new thumbnail">
                                     <img src="<?php echo e(asset('noimage/'.$thumbs['_small']['width'].'x'.$thumbs['_small']['height'])); ?>" alt="">
                                 </div>
-                                <div class="fileinput-preview fileinput-exists thumbnail"> </div>
+                                <div class="fileinput-preview fileinput-exists thumbnail">
+                                    <?php if( $item->image && file_exists(public_path(get_thumbnail($path.'/'.$item->image))) ): ?>
+                                    <img src="<?php echo e(asset( get_thumbnail('public/'.$path.'/'.$item->image) )); ?>" alt="">
+                                    <?php endif; ?>
+                                </div>
                                 <div>
                                     <span class="btn default btn-file">
-                                    <span class="fileinput-new"> Chọn hình ảnh </span>
-                                    <span class="fileinput-exists"> Thay đổi </span>
-                                    <input type="file" name="image"> </span>
-                                    <a href="javascript:;" class="btn default fileinput-exists" data-dismiss="fileinput"> Xóa </a>
+                                        <span class="fileinput-new"> Chọn hình ảnh </span>
+                                        <span class="fileinput-exists"> Thay đổi </span>
+                                        <input type="file" name="image">
+                                    </span>
+                                    <a href="javascript:;" class="btn btn-delete-file default fileinput-exists" data-dismiss="fileinput" data-ajax="act=delete_file|path=<?php echo e($path.'/'.$item->image); ?>|thumbs=<?php echo e(json_encode($thumbs)); ?>"> Xóa </a>
                                 </div>
                             </div>
                         </div>
@@ -263,7 +302,7 @@
                     <div class="form-group">
                         <label class="control-label">Alt</label>
                         <div>
-                            <input type="text" name="data[alt]" class="form-control" value="<?php echo e(old('data.alt')); ?>">
+                            <input type="text" name="data[alt]" value="<?php echo e($item->alt); ?>" class="form-control">
                         </div>
                     </div>
                     <?php endif; ?>
@@ -272,7 +311,7 @@
                     <div class="form-group">
                         <label class="control-label">Link</label>
                         <div>
-                            <input type="text" name="data[link]" class="form-control" value="<?php echo e(old('data.link')); ?>">
+                            <input type="text" name="data[link]" value="<?php echo e($item->link); ?>" class="form-control">
                         </div>
                     </div>
                     <?php endif; ?>
@@ -281,16 +320,18 @@
                         <label class="control-label">Tình trạng</label>
                         <div>
                             <select class="selectpicker show-tick show-menu-arrow form-control" name="status[]" multiple>
-                                <?php $__currentLoopData = $siteconfig[$type]['status']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $val): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <option value="<?php echo e($key); ?>" <?php echo e((old('status')) ? ( (in_array($key,old('status'))) ? 'selected' : '') : ($key=='publish')?'selected':''); ?> > <?php echo e($val); ?> </option>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <optgroup >
+                                    <?php $__currentLoopData = $siteconfig[$type]['status']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $val): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($key); ?>" <?php echo e((strpos($item->status,$key) !== false)?'selected':''); ?> > <?php echo e($val); ?> </option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </optgroup>
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label">Thứ tự</label>
                         <div>
-                            <input type="text" name="priority" class="form-control priceFormat" value="<?php echo e((old('priority')) ? old('priority') : 1); ?>">
+                            <input type="text" name="priority" value="<?php echo e($item->priority); ?>" class="form-control priceFormat">
                         </div>
                     </div>
                     <div class="form-group">
@@ -302,6 +343,7 @@
         </div>
     </form>
 </div>
+
 <?php if($siteconfig[$type]['supplier']): ?>
 <!-- Add Supplier Modal -->
 <div id="supplier-modal" class="modal fade" tabindex="-1" data-focus-on="input:first">
@@ -346,7 +388,48 @@
         </div>
         <div class="modal-footer">
             <button type="button" data-dismiss="modal" class="btn default">Thoát</button>
-            <button type="button" class="btn green btn-quick-add" data-ajax="data[supplier_id]" data-url="<?php echo e(route('qlyxe.supplier.store',['type'=>'default'])); ?>"> <i class="fa fa-check"></i> Lưu</button>
+            <button type="button" class="btn green btn-quick-add" data-ajax="data[supplier_id]" data-url="<?php echo e(route('admin.supplier.store',['type'=>'default'])); ?>"> <i class="fa fa-check"></i> Lưu</button>
+        </div>
+    </form>
+</div>
+<?php endif; ?>
+
+<?php if($siteconfig[$type]['category']): ?>
+<!-- Add Category Modal -->
+<div id="category-modal" class="modal fade" tabindex="-1" data-focus-on="input:first">
+    <form role="form" method="POST" action="#">
+        <input type="hidden" name="priority" value="1">
+        <input type="hidden" name="status[]" value="publish">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+            <h4 class="modal-title uppercase">Thêm danh mục</h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label class="control-label">Danh mục cha</label>
+                <div>
+                    <select name="data[parent]" class="selectpicker show-tick show-menu-arrow form-control">
+                        <option value="0">Chọn danh mục</option>
+                        <?php 
+                            Menu::resetMenu();
+                            Menu::setMenu($categories);
+                            echo Menu::getMenuSelectLimit();
+                         ?>
+                    </select>
+                </div>
+            </div>
+            <?php $__currentLoopData = $languages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $lang): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <div class="form-group">
+                <label for="name" class="control-label">Tên <sub>(<?php echo e($lang); ?>)</sub> </label>
+                <div>
+                    <input type="text" class="form-control input-rs" name="dataL[<?php echo e($key); ?>][title]" value="">
+                </div>
+            </div>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </div>
+        <div class="modal-footer">
+            <button type="button" data-dismiss="modal" class="btn default">Thoát</button>
+            <button type="button" class="btn green btn-quick-add" data-ajax="data[category_id]" data-url="<?php echo e(route('admin.category.store',['type'=>$type])); ?>"> <i class="fa fa-check"></i> Lưu</button>
         </div>
     </form>
 </div>
@@ -367,31 +450,31 @@
             }
 
             if( config('siteconfig.attribute.'.$k.'.colorpicker') ){
-            $colorInput = '<div class="form-group">
-                <label class="control-label">Mã màu</label>
-                <div class="input-group colorpicker-component" data-color="#2b3643">
-                    <input type="text" name="data[value]" value="" class="form-control"/>
-                    <span class="input-group-addon"><i></i></span>
-                </div>
-            </div>';
+                $colorInput = '<div class="form-group">
+                    <label class="control-label">Mã màu</label>
+                    <div class="input-group colorpicker-component" data-color="#2b3643">
+                        <input type="text" name="data[value]" value="" class="form-control"/>
+                        <span class="input-group-addon"><i></i></span>
+                    </div>
+                </div>';
             }else{
                 $colorInput = '';
             }
 
             if( config('siteconfig.attribute.'.$k.'.price') ){
-            $priceInput = '<div class="form-group">
-                <label class="control-label">Giá bán</label>
-                <div class="input-group">
-                    <input type="text" name="regular_price" value="" class="form-control priceFormat"/>
-                    <span class="input-group-addon">Đ</span>
-                </div>
-            </div><div class="form-group">
-                <label class="control-label">Giá khuyến mãi</label>
-                <div class="input-group">
-                    <input type="text" name="sale_price" value="" class="form-control priceFormat"/>
-                    <span class="input-group-addon">Đ</span>
-                </div>
-            </div>';
+                $priceInput = '<div class="form-group">
+                    <label class="control-label">Giá bán</label>
+                    <div class="input-group">
+                        <input type="text" name="regular_price" value="" class="form-control priceFormat"/>
+                        <span class="input-group-addon">Đ</span>
+                    </div>
+                </div><div class="form-group">
+                    <label class="control-label">Giá khuyến mãi</label>
+                    <div class="input-group">
+                        <input type="text" name="sale_price" value="" class="form-control priceFormat"/>
+                        <span class="input-group-addon">Đ</span>
+                    </div>
+                </div>';
             }else{
                 $priceInput = '';
             }
@@ -409,7 +492,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" data-dismiss="modal" class="btn default">Thoát</button>
-                        <button type="button" class="btn green btn-quick-add" data-ajax="'.$k.'[]" data-url="'.route('qlyxe.attribute.store',['type'=>$k]).'"> <i class="fa fa-check"></i> Lưu</button>
+                        <button type="button" class="btn green btn-quick-add" data-ajax="'.$k.'[]" data-url="'.route('admin.attribute.store',['type'=>$k]).'"> <i class="fa fa-check"></i> Lưu</button>
                     </div>
                 </form>
             </div>';
@@ -421,6 +504,7 @@
 
 <?php $__env->startSection('custom_script'); ?>
     <?php if($siteconfig[$type]['attributes']): ?>
+        <?php  $i=0;  ?>
         <?php $__currentLoopData = $languages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $lang): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <script type="text/x-template" id="qh-attributes-template-<?php echo e($key); ?>">
             <div>
@@ -442,7 +526,7 @@
         </script>
         <script type="text/javascript">
             <?php 
-            $attributes = old('attributes.'.$key) ? json_encode(old('attributes.'.$key)) : null;
+            $attributes = $item->languages[$i]['original']['attributes'] ? $item->languages[$i]['original']['attributes'] : null;
              ?>
             Vue.component('qh-attributes-<?php echo e($key); ?>', {
                 template: '#qh-attributes-template-<?php echo e($key); ?>',
@@ -470,7 +554,8 @@
                 el: '#qh-app-<?php echo e($key); ?>'
             });
         </script>
+        <?php  $i++  ?>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     <?php endif; ?>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('qlyxe.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('admin.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
