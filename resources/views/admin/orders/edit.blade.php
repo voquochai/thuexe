@@ -12,7 +12,7 @@
 <div class="row" id="qh-app">
     @include('admin.blocks.messages')
     <!-- BEGIN FORM-->
-    <form role="form" method="POST" action="{{ route('admin.order.update',['id'=>$item->id,'type'=>$type]) }}">
+    <form role="form" method="POST" action="{{ route('admin.order.update',['id'=>$item->id,'type'=>$type]) }}" class="form-validation">
         {{ csrf_field() }}
         {{ method_field('put') }}
         <input type="hidden" name="redirects_to" value="{{ (old('redirects_to')) ? old('redirects_to') : url()->previous() }}" />

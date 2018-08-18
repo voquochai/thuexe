@@ -120,6 +120,42 @@ class ProductController extends Controller
     	return view('qlyxe.products.create',$this->_data);
     }
 
+    public function quickly(Request $request){
+        $valid = Validator::make($request->all(), [
+            'products'   => 'required',
+        ], [
+            'products.required'   => 'Vui lòng chọn xe',
+        ]);
+        if ($valid->fails()) {
+            return redirect()->back()->withErrors($valid)->withInput();
+        } else {
+            foreach($request->products as $value){
+                for($i=0, $count = count($value['qty']); $i < $count; $i++){
+                    $product = new Product;
+                    $product->category_id = $value['category_id'];
+                    $product->code           = null;
+                    $product->original_price = floatval($value['original_price']);
+                    $product->regular_price  = floatval($value['regular_price']);
+                    $product->sale_price     = floatval($value['sale_price']);
+                    $product->weight         = 0;
+                    $product->priority       = 1;
+                    $product->status         = 'publish';
+                    $product->user_id        = Auth::id();
+                    $product->type           = $this->_data['type'];
+                    $product->created_at     = new DateTime();
+                    $product->updated_at     = new DateTime();
+                    $product->save();
+                    $product->languages()->save([
+                        'title' =>  $value['title'],
+                    ]);
+                }
+            }
+
+            return redirect()->route('qlyxe.product.index',['type'=>$this->_data['type']])->with('success','Thêm dữ liệu thành công');
+        }
+        
+    }
+
     public function store(Request $request){
         $valid = Validator::make($request->all(), [
             'dataL.vi.title'   => 'required',
