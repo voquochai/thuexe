@@ -46,7 +46,8 @@ class MenuFactory{
 		}
 	}
 	public function resetMenu(){
-		$this->_result = $this->_data = $this->_baseurl = '';
+		$this->_data = array();
+		$this->_result = $this->_baseurl = '';
 	}
 	public function getMenu($self=0,$parent=0,$lvl=0){
 		if( isset($this->_data[$parent]) ){
