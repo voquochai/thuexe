@@ -10,7 +10,7 @@
             <div class="header-top-right">
                 <ul>
                     <li>
-                        <a href="#">
+                        <a href="javascript:;">
                             <i class="fa fa-user"></i>
                             @if ( auth()->guard('member')->check() )
                                 {{ auth()->guard('member')->user()->name }}

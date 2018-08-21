@@ -84,6 +84,7 @@ return [
     'or_try'   =>  'or try the search bar below',
     'can_not_find'   =>  'We can not find the page you\'re looking for',
     'maintenance'   =>  'Website is under construction. Please come back later',
+    'update_content'   =>  'Content is updating',
 
     /* Nice time */
     'no_date'   =>  'No date provided',

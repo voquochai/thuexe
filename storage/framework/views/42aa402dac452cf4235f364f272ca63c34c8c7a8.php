@@ -11,7 +11,7 @@
 <div class="row" id="qh-app">
     <?php echo $__env->make('qlyxe.blocks.messages', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
     <!-- BEGIN FORM-->
-    <form role="form" method="POST" action="<?php echo e(route('qlyxe.order.update',['id'=>$item->id,'type'=>$type])); ?>">
+    <form role="form" method="POST" action="<?php echo e(route('qlyxe.order.update',['id'=>$item->id,'type'=>$type])); ?>" class="form-validation">
         <?php echo e(csrf_field()); ?>
 
         <?php echo e(method_field('put')); ?>
@@ -25,7 +25,7 @@
                 <div class="portlet-body">
                     <div class="form-group">
                         <div class="input-group select2-bootstrap-append">
-                            <select id="select2-button-addons-single-input-group-sm" class="form-control select2-data-ajax"  multiple="" data-label="Tên hoặc mã sản phẩm" data-url="<?php echo e(route('qlyxe.order.ajax',['t'=>'san-pham'])); ?>">
+                            <select id="select2-button-addons-single-input-group-sm" class="form-control select2-data-ajax"  multiple="" data-label="Tên hoặc mã sản phẩm" data-url="<?php echo e(route('qlyxe.order.ajax',['t'=>$type])); ?>">
                             </select>
                             <span class="input-group-btn"> <button v-on:click="addProduct" type="button" id="btn-select" class="btn btn-info"> Chọn </button> </span>
                         </div>

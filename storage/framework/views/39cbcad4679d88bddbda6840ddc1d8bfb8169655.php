@@ -176,7 +176,7 @@
                 <th width="15%"> Tên xe </th>
                 <th width="10%"> Giá cho thuê </th>
                 <th width="8%"> Thời gian </th>
-                <th width="8%"> Thành tiền  </th>
+                <th width="8%"> Thành tiền </th>
                 <th width="3%"> Xóa </th>
             </tr>
         </thead>
@@ -194,7 +194,7 @@
                 </td>
                 <td align="center">
                     <select v-if="item.prices" v-model="item.price" class="form-control">
-                        <option v-for="(price, key) in item.prices" v-bind:value="price"> {{ formatPrice(price) + ' / ' + key }} </option>
+                        <option v-for="(price, keyP) in item.prices" v-bind:value="price"> {{ formatPrice(price) + ' / ' + keyP }} </option>
                     </select>
                 </td>
                 <td align="center"> <input type="text" :name="'products['+ key +'][qty]'" class="form-control validate[required,min[1]]" v-model.number="item.qty"> </td>

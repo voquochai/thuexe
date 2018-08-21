@@ -615,7 +615,7 @@ var Admin = function(){
 
         $(".select2-data-ajax").select2({
             width: "off",
-            closeOnSelect: true,
+            closeOnSelect: false,
             allowClear: true,
             placeholder: placeholder,
             ajax: {

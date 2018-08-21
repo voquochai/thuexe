@@ -130,7 +130,7 @@ class ProductController extends Controller
             return redirect()->back()->withErrors($valid)->withInput();
         } else {
             foreach($request->products as $value){
-                for($i=0, $count = count($value['qty']); $i < $count; $i++){
+                for($i=0; $i < (int)$value['qty']; $i++){
                     $product = new Product;
                     $product->category_id = $value['category_id'];
                     $product->code           = null;
@@ -145,9 +145,11 @@ class ProductController extends Controller
                     $product->created_at     = new DateTime();
                     $product->updated_at     = new DateTime();
                     $product->save();
-                    $product->languages()->save([
+                    $product->languages()->save(new ProductLanguage([
                         'title' =>  $value['title'],
-                    ]);
+                        'slug'  =>  str_slug($value['title']),
+                        'language'  =>  'vi'
+                    ]));
                 }
             }
 
@@ -159,13 +161,13 @@ class ProductController extends Controller
     public function store(Request $request){
         $valid = Validator::make($request->all(), [
             'dataL.vi.title'   => 'required',
-            'code'        => 'required|unique:products,code',
+            // 'code'        => 'required|unique:products,code',
             'image'            => 'image|max:2048',
             'data.category_id' => 'exists:categories,id'
         ], [
             'dataL.vi.title.required'   => 'Vui lòng nhập Tên xe',
-            'code.required'          => 'Vui lòng nhập số xe',
-            'code.unique'          => 'Biển số xe đã tồn tại, vui lòng nhập mã khác',
+            // 'code.required'          => 'Vui lòng nhập số xe',
+            // 'code.unique'          => 'Biển số xe đã tồn tại, vui lòng nhập mã khác',
             'image.image'               => 'Không đúng chuẩn hình ảnh cho phép',
             'image.max'                 => 'Dung lượng vượt quá giới hạn cho phép là :max KB',
             'data.category_id.exists'   => 'Vui lòng chọn Danh mục',
@@ -297,13 +299,13 @@ class ProductController extends Controller
         // dd($request);
         $valid = Validator::make($request->all(), [
             'dataL.vi.title' => 'required',
-            'code' => 'required|unique:products,code,'.$id,
+            // 'code' => 'required|unique:products,code,'.$id,
             'image' => 'image|max:2048',
             'data.category_id' => 'exists:categories,id'
         ], [
             'dataL.vi.title.required'    => 'Vui lòng nhập Tên xe',
-            'code.required'    => 'Vui lòng nhập số xe',
-            'code.unique' => 'Biển số xe đã tồn tại, vui lòng nhập mã khác',
+            // 'code.required'    => 'Vui lòng nhập số xe',
+            // 'code.unique' => 'Biển số xe đã tồn tại, vui lòng nhập mã khác',
             'image.image' => 'Không đúng chuẩn hình ảnh cho phép',
             'image.max' => 'Dung lượng vượt quá giới hạn cho phép là :max KB',
             'data.category_id.exists' => 'Vui lòng chọn Danh mục',

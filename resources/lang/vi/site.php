@@ -84,6 +84,7 @@ return [
     'or_try'   =>  'hoặc thử thanh tìm kiếm bên dưới',
     'can_not_find'   =>  'Chúng tôi không thể tìm thấy trang bạn đang tìm kiếm',
     'maintenance'   =>  'Website đang trong giai đoạn nâng cấp. Vui lòng quay lại sau',
+    'update_content'   =>  'Nội dung đang trong quá trình cập nhật',
 
     /* Nice time */
     'no_date'   =>  'Không có ngày nào được cung cấp',

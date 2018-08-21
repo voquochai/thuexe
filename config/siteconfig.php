@@ -44,7 +44,7 @@ return [
 		'3'	=>	'danger',
 	],
 	'order' => [
-		'online' 	=>	[
+		'san-pham' 	=>	[
 			'page-title'	=>	'Đơn hàng',
 			'status'      => [
 				'publish'     => 'Hiển thị'

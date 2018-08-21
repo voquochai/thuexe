@@ -10,7 +10,7 @@
             <div class="header-top-right">
                 <ul>
                     <li>
-                        <a href="#">
+                        <a href="javascript:;">
                             <i class="fa fa-user"></i>
                             <?php if( auth()->guard('member')->check() ): ?>
                                 <?php echo e(auth()->guard('member')->user()->name); ?>
