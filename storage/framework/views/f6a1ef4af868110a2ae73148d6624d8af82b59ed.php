@@ -126,7 +126,7 @@
 
     <script src="<?php echo e(asset('public/admin/js/app.js')); ?>" type="text/javascript"></script>
     <script src="<?php echo e(asset('public/admin/js/layout.js')); ?>" type="text/javascript"></script>
-    <script src="<?php echo e(asset('public/admin/js/admin.js')); ?>" type="text/javascript"></script>
+    <script src="<?php echo e(asset('public/qlyxe/js/admin.js')); ?>" type="text/javascript"></script>
     <?php echo $__env->yieldContent('custom_script'); ?>
 </body>
 </html>

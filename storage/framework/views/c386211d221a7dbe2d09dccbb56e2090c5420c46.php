@@ -7,8 +7,14 @@
             <li class="nav-item start padding-tb-20">
                 <a href="<?php echo e(route('qlyxe.dashboard.index')); ?>" data-route="dashboard" class="nav-link">
                     <i class="icon-home"></i>
-                    <span class="title">Bảng điều khiển</span>
+                    <span class="title">Thống kê</span>
                     <span class="selected"></span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="<?php echo e(route('qlyxe.product.quickly',['type'=>'thue-xe'])); ?>" data-route="product.thue-xe" class="nav-link">
+                    <i class="icon-exclamation"></i>
+                    <span class="title">Nhập xe</span>
                 </a>
             </li>
             <li class="nav-item">

@@ -125,7 +125,7 @@
 
     <script src="{{ asset('public/admin/js/app.js') }}" type="text/javascript"></script>
     <script src="{{ asset('public/admin/js/layout.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('public/admin/js/admin.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/qlyxe/js/admin.js') }}" type="text/javascript"></script>
     @yield('custom_script')
 </body>
 </html>

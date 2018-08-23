@@ -230,26 +230,9 @@ Route::group(['prefix'=>'qlyxe', 'as'=> 'qlyxe.', 'namespace'=>'Qlyxe'], functio
 		
 		Route::get('/', 'DashboardController@index')->name('dashboard.index');
 
-		// Attributes
-		Route::get('/attributes', 'AttributeController@index')->name('attribute.index');
-		Route::get('/attributes/create', 'AttributeController@create')->name('attribute.create');
-		Route::post('/attributes', 'AttributeController@store')->name('attribute.store');
-		Route::get('/attributes/{id}', 'AttributeController@edit')->where('id','[0-9]+')->name('attribute.edit');
-		Route::put('/attributes/{id}', 'AttributeController@update')->name('attribute.update');
-		Route::delete('/attributes/{id}', 'AttributeController@delete')->name('attribute.delete');
-
-		// Coupons
-        Route::get('/coupons', 'CouponController@index')->name('coupon.index');
-        Route::get('/coupons/create', 'CouponController@create')->name('coupon.create');
-        Route::post('/coupons', 'CouponController@store')->name('coupon.store');
-        Route::get('/coupons/{id}', 'CouponController@edit')->where('id','[0-9]+')->name('coupon.edit');
-        Route::put('/coupons/{id}', 'CouponController@update')->name('coupon.update');
-        Route::delete('/coupons/{id}', 'CouponController@delete')->name('coupon.delete');
-
         // Products
 		Route::get('/products', 'ProductController@index')->name('product.index');
 		Route::get('/products/create', 'ProductController@create')->name('product.create');
-		Route::post('/products/quickly', 'ProductController@quickly')->name('product.quickly');
 		Route::post('/products', 'ProductController@store')->name('product.store');
 		Route::get('/products/{id}', 'ProductController@edit')->where('id','[0-9]+')->name('product.edit');
 		Route::put('/products/{id}', 'ProductController@update')->name('product.update');
@@ -258,6 +241,8 @@ Route::group(['prefix'=>'qlyxe', 'as'=> 'qlyxe.', 'namespace'=>'Qlyxe'], functio
 		Route::get('/products/ajax', 'ProductController@ajax')->name('product.ajax');
 		Route::get('/products/export', 'ProductController@export')->name('product.export');
 		Route::post('/products/import', 'ProductController@import')->name('product.import');
+		Route::get('/products/quickly', 'ProductController@quickly')->name('product.quickly');
+		Route::post('/products/quickly', 'ProductController@quickly')->name('product.quickly');
 
 		// Orders
         Route::get('/orders', 'OrderController@index')->name('order.index');

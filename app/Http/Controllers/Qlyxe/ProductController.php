@@ -121,41 +121,54 @@ class ProductController extends Controller
     }
 
     public function quickly(Request $request){
-        $valid = Validator::make($request->all(), [
-            'products'   => 'required',
-        ], [
-            'products.required'   => 'Vui lòng chọn xe',
-        ]);
-        if ($valid->fails()) {
-            return redirect()->back()->withErrors($valid)->withInput();
-        } else {
-            foreach($request->products as $value){
-                for($i=0; $i < (int)$value['qty']; $i++){
-                    $product = new Product;
-                    $product->category_id = $value['category_id'];
-                    $product->code           = null;
-                    $product->original_price = floatval($value['original_price']);
-                    $product->regular_price  = floatval($value['regular_price']);
-                    $product->sale_price     = floatval($value['sale_price']);
-                    $product->weight         = 0;
-                    $product->priority       = 1;
-                    $product->status         = 'publish';
-                    $product->user_id        = Auth::id();
-                    $product->type           = $this->_data['type'];
-                    $product->created_at     = new DateTime();
-                    $product->updated_at     = new DateTime();
-                    $product->save();
-                    $product->languages()->save(new ProductLanguage([
-                        'title' =>  $value['title'],
-                        'slug'  =>  str_slug($value['title']),
-                        'language'  =>  'vi'
-                    ]));
+        if ($request->isMethod('post')) {
+            $valid = Validator::make($request->all(), [
+                'products'   => 'required',
+            ], [
+                'products.required'   => 'Vui lòng chọn xe',
+            ]);
+            if ($valid->fails()) {
+                return redirect()->back()->withErrors($valid)->withInput();
+            } else {
+                foreach($request->products as $value){
+                    for($i=0; $i < (int)$value['qty']; $i++){
+                        $product = new Product;
+                        $product->category_id = $value['category_id'];
+                        $product->code           = null;
+                        $product->original_price = floatval($value['original_price']);
+                        $product->regular_price  = floatval($value['regular_price']);
+                        $product->sale_price     = floatval($value['sale_price']);
+                        $product->weight         = 0;
+                        $product->priority       = 1;
+                        $product->status         = 'publish';
+                        $product->user_id        = Auth::id();
+                        $product->type           = $this->_data['type'];
+                        $product->created_at     = new DateTime();
+                        $product->updated_at     = new DateTime();
+                        $product->save();
+                        $product->languages()->save(new ProductLanguage([
+                            'title' =>  $value['title'],
+                            'slug'  =>  str_slug($value['title']),
+                            'language'  =>  'vi'
+                        ]));
+                    }
+                }
+
+                return redirect()->route('qlyxe.product.index',['type'=>$this->_data['type']])->with('success','Thêm dữ liệu thành công');
+            }
+        }else{
+
+            $this->_data['suppliers'] = $this->getSupplier();
+            $this->_data['categories'] = $this->getCategories($this->_data['type']);
+            if( config('siteconfig.attribute.'.$this->_data['type']) && config('siteconfig.attribute.'.$this->_data['type']) !='default'  ){
+                foreach( config('siteconfig.attribute.'.$this->_data['type']) as $k => $v ){
+                    if( !$v ) continue;
+                    $this->_data['attrs'][$k] = $this->getAttributes($k);
                 }
             }
-
-            return redirect()->route('qlyxe.product.index',['type'=>$this->_data['type']])->with('success','Thêm dữ liệu thành công');
-        }
         
+            return view('qlyxe.products.quickly',$this->_data);
+        }
     }
 
     public function store(Request $request){
