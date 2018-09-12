@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\DB;
 
 use Cache;
+use Spatie\SchemaOrg\Schema;
 
 class HomeController extends Controller
 {
@@ -74,6 +75,11 @@ class HomeController extends Controller
             ->orderBy('A.id','desc')
             ->limit(6)
             ->get();
+
+        $this->_data['Schema'] = Schema::localBusiness()
+            ->name('Spatie')
+            ->email('info@spatie.be')
+            ->contactPoint(Schema::contactPoint()->areaServed('Worldwide'));
         
         return view('frontend.default.index', $this->_data);
     }

@@ -103,6 +103,8 @@
 
 	@yield('custom_script')
     {{ config('settings.script_body') }}
+
+    {!! $Schema->toScript() !!}
 </body>
 
 </html>
