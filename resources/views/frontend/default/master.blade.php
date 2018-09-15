@@ -104,7 +104,9 @@
 	@yield('custom_script')
     {{ config('settings.script_body') }}
 
-    {!! $Schema->toScript() !!}
+    @if( @$SchemaOrg )
+    {!! $SchemaOrg->toScript() !!}
+    @endif
 </body>
 
 </html>

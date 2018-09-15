@@ -107,8 +107,10 @@
     <?php echo e(config('settings.script_body')); ?>
 
 
-    <?php echo $Schema->toScript(); ?>
+    <?php if( @$SchemaOrg ): ?>
+    <?php echo $SchemaOrg->toScript(); ?>
 
+    <?php endif; ?>
 </body>
 
 </html>

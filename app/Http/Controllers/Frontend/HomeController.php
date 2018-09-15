@@ -75,11 +75,6 @@ class HomeController extends Controller
             ->orderBy('A.id','desc')
             ->limit(6)
             ->get();
-
-        $this->_data['Schema'] = Schema::localBusiness()
-            ->name('Spatie')
-            ->email('info@spatie.be')
-            ->contactPoint(Schema::contactPoint()->areaServed('Worldwide'));
         
         return view('frontend.default.index', $this->_data);
     }
@@ -95,6 +90,22 @@ class HomeController extends Controller
             $current_seo->keywords ? $this->_data['meta_seo']->keywords = $current_seo->keywords : '';
             $current_seo->description ? $this->_data['meta_seo']->description = $current_seo->description : '';
         }
+
+        if(@config('settings.google_coordinates')){
+            $coordinates = str_replace(['(',')'],'',config('settings.google_coordinates'));
+            $coordinates = explode(', ',$coordinates);
+        }else{
+            $coordinates = explode(', ',config('siteconfig.general.google_coordinates'));
+        }
+
+        $this->_data['SchemaOrg'] = Schema::localBusiness()
+            ->name(config('settings.site_name'))
+            ->email(config('settings.site_email'))
+            ->image(asset('public/uploads/photos/'.config('settings.logo')))
+            ->address(config('settings.site_address'))
+            ->url(url()->current())
+            ->telephone(config('settings.site_hotline'))
+            ->geo(Schema::GeoCoordinates()->latitude($coordinates[0])->longitude($coordinates[1]));
         
         return view('frontend.default.contact',$this->_data);
     }
@@ -132,6 +143,10 @@ class HomeController extends Controller
                     ->orderBy('A.priority','asc')
                     ->orderBy('A.id','desc')
                     ->paginate(config('settings.product_per_page') ? config('settings.product_per_page') : 20);
+
+                $this->_data['SchemaOrg'] = Schema::Product()
+                    ->name( $this->_data['category']->title )
+                    ->image( $this->_data['category']->image );
 
                 return view('frontend.default.products',$this->_data);
             }elseif($this->_data['template'] == 'post'){

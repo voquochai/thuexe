@@ -100,6 +100,24 @@ return [
 		],
 	],
 	'category' => [
+		'san-pham'	=>	[
+			'page-title'	=>	'Danh mục sản phẩm',
+			'level' =>	1,
+			'icon'	=>	false,
+			'description' =>	false,
+			'contents'    =>	false,
+			'image'       =>	false,
+			'seo'	=>	false,
+			'thumbs'	=>	[
+				'_small' => [
+					'width'  =>	300,
+					'height' =>	200,
+				],
+			],
+			'status' => [
+				'publish' => 'Hiển thị',
+			]
+		],
 		'thue-xe'	=>	[
 			'page-title'	=>	'Danh mục xe',
 			'level' =>	1,
@@ -157,6 +175,33 @@ return [
 		'path'	=>	'uploads/categories'
 	],
 	'product' => [
+		'san-pham' 	=>	[
+			'page-title'	=>	'Sản phẩm',
+			'category'    =>	true,
+			'supplier'    =>	false,
+			'description' =>	true,
+			'contents'    =>	false,
+			'link'    =>	false,
+			'attributes'    =>	true,
+			'image'       =>	true,
+			'images'      =>	false,
+			'seo'	=>	false,
+			'thumbs'	=>	[
+				'_small' => [
+					'width'  =>	300,
+					'height' =>	300,
+				],'_medium' => [
+					'width'  =>	600,
+					'height' =>	600,
+				],'_large' => [
+					'width'  =>	1000,
+					'height' =>	1000,
+				],
+			],
+			'status'      => [
+				'publish'     => 'Hiển thị',
+			],
+		],
 		'thue-xe' 	=>	[
 			'page-title'	=>	'Xe',
 			'category'    =>	true,
