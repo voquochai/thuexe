@@ -107,7 +107,7 @@ return [
 			'description' =>	false,
 			'contents'    =>	false,
 			'image'       =>	false,
-			'seo'	=>	false,
+			'seo'	=>	true,
 			'thumbs'	=>	[
 				'_small' => [
 					'width'  =>	300,
