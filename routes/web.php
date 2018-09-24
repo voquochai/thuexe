@@ -14,6 +14,46 @@
 Route::get('/login/facebook', 'Socialite\FacebookController@redirectToProvider')->name('login.facebook');
 Route::get('/login/facebook/callback', 'Socialite\FacebookController@handleProviderCallback')->name('login.facebook.callback');
 
+Route::get('/noimage/{width}x{height}', function(Intervention\Image\Facades\Image $image, $w, $h){
+	if(!file_exists(public_path('images/noimage/'.$w.'x'.$h.'.jpg'))){
+		$image::canvas($w,$h,'#ccc')
+		->text($w.'x'.$h, $w/2, $h/2, function($font) use($w) {
+		    $font->file( public_path('fonts/Roboto-Regular.ttf') );
+		    $font->size($w/8);
+		    $font->color('#333');
+		    $font->align('center');
+		    $font->valign('center');
+		    // $font->angle(45);
+		})->save( public_path('images/noimage/'.$w.'x'.$h.'.jpg') );
+	}
+	return response()->file( public_path('images/noimage/'.$w.'x'.$h.'.jpg') );
+});
+
+Route::get('/download/{file}', function($file){
+	return response()->download(public_path($file));
+})->where('file','.*')->name('download.file');
+
+Route::get('/sitemap.xml', function(Spatie\Sitemap\SitemapGenerator $sitemap){
+	$sitemap::create(url('/'))->writeToFile(public_path('sitemap.xml'));
+	return response(file_get_contents(public_path('sitemap.xml')), 200, ['Content-Type' => 'application/xml']);
+});
+
+
+// Route::get('/uploads/{img}', function(Intervention\Image\Facades\Image $image, $img){
+// 	if(file_exists(public_path('uploads/'.$img))){
+// 		$img = $image::make(public_path('uploads/'.$img));
+// 		if(file_exists(public_path('uploads/photos/'.config('settings.watermark'))))
+// 			$img->insert(public_path('uploads/photos/'.config('settings.watermark')), 'bottom-right', 10, 10);
+//         return $img->response();
+// 	}
+// })->where('img','.*');
+
+// Route::get('/thumbnail/{width}x{height}x{zc}/{file}', function(Intervention\Image\Facades\Image $image, $w, $h, $zc, $file){
+// 	return $image::make( public_path($file) )
+// 		->resize($w,$h)->response();
+// })->where('file','.*');
+
+
 Route::group(['prefix'=>'admin', 'as'=> 'admin.', 'namespace'=>'Admin'], function(){
 	Auth::routes();
 	Route::group(['middleware' => ['auth', 'checkUsers:admin']], function(){
@@ -259,39 +299,6 @@ Route::group(['prefix'=>'qlyxe', 'as'=> 'qlyxe.', 'namespace'=>'Qlyxe'], functio
 	});
 });
 
-Route::get('/noimage/{width}x{height}', function(Intervention\Image\Facades\Image $image, $w, $h){
-	if(!file_exists(public_path('images/noimage/'.$w.'x'.$h.'.jpg'))){
-		$image::canvas($w,$h,'#ccc')
-		->text($w.'x'.$h, $w/2, $h/2, function($font) use($w) {
-		    $font->file( public_path('fonts/Roboto-Regular.ttf') );
-		    $font->size($w/8);
-		    $font->color('#333');
-		    $font->align('center');
-		    $font->valign('center');
-		    // $font->angle(45);
-		})->save( public_path('images/noimage/'.$w.'x'.$h.'.jpg') );
-	}
-	return response()->file( public_path('images/noimage/'.$w.'x'.$h.'.jpg') );
-});
-
-// Route::get('/uploads/{img}', function(Intervention\Image\Facades\Image $image, $img){
-// 	if(file_exists(public_path('uploads/'.$img))){
-// 		$img = $image::make(public_path('uploads/'.$img));
-// 		if(file_exists(public_path('uploads/photos/'.config('settings.watermark'))))
-// 			$img->insert(public_path('uploads/photos/'.config('settings.watermark')), 'bottom-right', 10, 10);
-//         return $img->response();
-// 	}
-// })->where('img','.*');
-
-Route::get('/thumbnail/{width}x{height}x{zc}/{file}', function(Intervention\Image\Facades\Image $image, $w, $h, $zc, $file){
-	return $image::make( public_path($file) )
-		->resize($w,$h)->response();
-})->where('file','.*');
-
-Route::get('/download/{file}', function($file){
-	return response()->download(public_path($file));
-})->where('file','.*')->name('download.file');
-
 Route::group(['as'=>'frontend.', 'namespace'=>'Frontend', 'middleware'=>'checkMaintenance'], function(){
 	Auth::routes();
 	Route::group(['middleware' => 'auth:member'], function(){
@@ -334,4 +341,3 @@ Route::group(['as'=>'frontend.', 'namespace'=>'Frontend', 'middleware'=>'checkMa
 	Route::get('/{type}' , 'HomeController@archive')->name('home.archive');
 
 });
-

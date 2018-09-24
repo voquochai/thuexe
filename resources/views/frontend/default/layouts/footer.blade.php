@@ -13,7 +13,7 @@
                 <!-- Footer Widget -->
                 <div class="footer-widget col-md-3 col-sm-12 col-xs-12 mb-40">
                     <div class="logo mb-20">
-                        <a href="index.html"><img src="{{ (config('settings.logo') && file_exists(public_path('/uploads/photos/'.config('settings.logo'))) ? asset('public/uploads/photos/'.config('settings.logo')) : asset('noimage/170x55')) }}" alt="logo"></a>
+                        <a href="{{ url('/') }}"><img src="{{ (config('settings.logo') && file_exists(public_path('/uploads/photos/'.config('settings.logo'))) ? asset('public/uploads/photos/'.config('settings.logo')) : asset('noimage/170x55')) }}" alt="logo"></a>
                     </div>
                     {!! @$footer->contents !!}
                     <div class="footer-social fix">

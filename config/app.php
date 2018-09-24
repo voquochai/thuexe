@@ -183,6 +183,7 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Milon\Barcode\BarcodeServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Spatie\Sitemap\SitemapServiceProvider::class,
         App\Functions\Providers\MenuServiceProvider::class,
     ],
 
